@@ -4,7 +4,7 @@
  * Traffic Management config section — v2.8 "non-zero implies enabled" schema (#5123).
  *
  * Meshtastic protobufs commit d4f7ddb1 removed nine TrafficManagementConfig
- * fields and reserved their tags. MeshMonitor kept rendering controls for all
+ * fields and reserved their tags. MeshRadar kept rendering controls for all
  * of them, which silently did nothing on 2.8 firmware — the exact firmware the
  * section is gated to. These tests pin the surviving surface so those controls
  * can't come back.

@@ -246,7 +246,7 @@ function hopLimitParamError(nodeType: string, nodeId: string, raw: unknown): str
 /**
  * Minimum time between two sends of the same automation waypoint (#5482),
  * in seconds. Enforced at run time from the persisted `waypoints.lastBroadcastAt`,
- * so saving the automation or restarting MeshMonitor never re-arms it.
+ * so saving the automation or restarting MeshRadar never re-arms it.
  */
 export const WAYPOINT_AUTOMATION_MIN_INTERVAL_SECONDS = 30 * 60;
 

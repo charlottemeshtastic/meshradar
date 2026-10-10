@@ -529,7 +529,7 @@ const DeviceConfigSection: React.FC<DeviceConfigSectionProps> = ({
             <span style={{ fontSize: '1.1rem', lineHeight: 1 }}><UiIcon name="alert" /></span>
             <span>
               {t('device_config.rebroadcast_warning',
-                'This mode may prevent the Channel Database from decrypting packets from distant nodes, as encrypted packets won\'t be forwarded to MeshMonitor for analysis.'
+                'This mode may prevent the Channel Database from decrypting packets from distant nodes, as encrypted packets won\'t be forwarded to MeshRadar for analysis.'
               )}
             </span>
           </div>

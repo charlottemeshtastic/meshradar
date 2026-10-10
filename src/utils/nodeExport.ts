@@ -9,7 +9,7 @@ import { getEffectiveHops } from './nodeHops.js';
  * Produces CSV / HTML exports of the currently-displayed node list for mesh
  * upgrade planning. Values are the same *current* values shown in the UI — not
  * historical averages — so columns are labelled accordingly (e.g. "SNR (dB)",
- * not "Avg. SNR"), because MeshMonitor stores instantaneous node state.
+ * not "Avg. SNR"), because MeshRadar stores instantaneous node state.
  *
  * This module is pure/transform-only and framework-agnostic so it can be unit
  * tested without a DOM; the single DOM helper (`downloadTextFile`) is isolated
@@ -161,7 +161,7 @@ export interface NodesToHtmlOptions {
 
 /** Render export rows as a standalone, styled, printable HTML document. */
 export function nodesToHtml(rows: NodeExportRow[], opts: NodesToHtmlOptions = {}): string {
-  const title = opts.title || 'MeshMonitor Node List';
+  const title = opts.title || 'MeshRadar Node List';
   const subtitle = [
     `${rows.length} node${rows.length === 1 ? '' : 's'}`,
     opts.generatedAt ? `generated ${opts.generatedAt}` : null,

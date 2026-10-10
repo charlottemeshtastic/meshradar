@@ -1,7 +1,7 @@
 /**
  * Cross-page configuration search (#5182).
  *
- * MeshMonitor's settings are spread over five tabs and roughly eighty sections,
+ * MeshRadar's settings are spread over five tabs and roughly eighty sections,
  * and the number only goes up. Browser find cannot help — it sees the page you
  * are already on, which is the one place you have already looked. This palette
  * searches the whole catalogue in `configSections.ts` and navigates to the

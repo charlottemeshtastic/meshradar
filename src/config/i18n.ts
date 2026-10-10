@@ -1,5 +1,5 @@
 /**
- * i18n Configuration for MeshMonitor
+ * i18n Configuration for MeshRadar
  *
  * Provides internationalization support using i18next.
  * Translations are loaded from /locales/{lng}.json files.

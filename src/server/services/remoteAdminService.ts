@@ -61,7 +61,7 @@ export function remoteConfigKey(configType: number, isModuleConfig: boolean): st
 /**
  * Module types whose LOCAL request is tracked in pendingModuleConfigRequests, so
  * an empty (all-default, Proto3-omitted) reply can be filed under the right
- * key. These are the modules MeshMonitor has a config UI for. Key names come
+ * key. These are the modules MeshRadar has a config UI for. Key names come
  * from the registry; only the membership is kept here.
  */
 export const LOCAL_PENDING_MODULE_CONFIG_TYPES: readonly number[] = [0, 5, 9, 13, 14, 15, 16];

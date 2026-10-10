@@ -1,7 +1,7 @@
 /**
  * Reorder mode for the MeshCore Channels list (#5379).
  *
- * Sets a MeshMonitor-side display order only; no device writes, no airtime.
+ * Sets a MeshRadar-side display order only; no device writes, no airtime.
  * Rows drag by their handle (mouse, touch, keyboard via dnd-kit) and also carry
  * explicit move up / move down buttons, so reordering never depends on a drag
  * gesture. Save hands the new slot-id order to the parent; Cancel drops it.
@@ -137,7 +137,7 @@ export const MeshCoreChannelReorderList: React.FC<MeshCoreChannelReorderListProp
       <p className={styles.hint}>
         {t(
           'meshcore.channels.order.hint',
-          'Drag channels or use the arrows. This changes the order in MeshMonitor only; the channel slots on the device stay as they are.',
+          'Drag channels or use the arrows. This changes the order in MeshRadar only; the channel slots on the device stay as they are.',
         )}
       </p>
       <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>

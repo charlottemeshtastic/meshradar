@@ -866,9 +866,9 @@ function App() {
   // Update page title when connected node name changes
   useEffect(() => {
     if (connectedNodeName) {
-      document.title = `MeshMonitor – ${connectedNodeName}`;
+      document.title = `MeshRadar – ${connectedNodeName}`;
     } else {
-      document.title = 'MeshMonitor - Meshtastic Node Monitoring';
+      document.title = 'MeshRadar - Meshtastic Node Monitoring';
     }
   }, [connectedNodeName]);
 

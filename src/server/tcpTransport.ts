@@ -35,7 +35,7 @@ export class TcpTransport extends EventEmitter implements ITransport {
   // Initial-config-sync stall detection (#5122).
   //
   // A reporter watched a node go silent mid-sync and stay that way: no data, no
-  // error, no FIN. MeshMonitor's own state read `isConnected=true,
+  // error, no FIN. MeshRadar's own state read `isConnected=true,
   // configuring=true` for 70+ seconds with zero reconnect attempts, because the
   // only liveness guard is the idle watchdog below — 5 minutes by default, polled
   // once a minute. A sync that stalls is not an idle link: it will never recover

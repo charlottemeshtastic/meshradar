@@ -640,7 +640,7 @@ describe('CoverageReport', () => {
       expect(screen.queryByRole('option', { name: new RegExp(PUBKEY) })).not.toBeInTheDocument();
     });
 
-    it('the setup guidance panel carries the zero-hop, never-flood, MeshMonitor-button, and stored-position warnings plus the airtime figures', () => {
+    it('the setup guidance panel carries the zero-hop, never-flood, MeshRadar-button, and stored-position warnings plus the airtime figures', () => {
       renderReport();
       fireEvent.click(screen.getByText('Setup guidance'));
 

@@ -14,7 +14,7 @@
  *
  * `compareVersions` in `src/server/utils/systemInfo.ts` is deliberately NOT
  * folded in here — it is a different operation (a general N-segment
- * MeshMonitor *app* release comparator returning -1/0/1, which splits on
+ * MeshRadar *app* release comparator returning -1/0/1, which splits on
  * `[-.]` so `4.16.0-rc2` compares equal to `4.16.0`, and which throws on a
  * non-string by design; `rules.test.ts` depends on that throw).
  *

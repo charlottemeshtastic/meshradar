@@ -18,7 +18,7 @@
  * because the remote could only express whole seconds.
  *
  * So: compare `timestamp` truncated to the second — the real resolution of the
- * wire format — and break ties with `receivedAt`, MeshMonitor's own monotonic
+ * wire format — and break ties with `receivedAt`, MeshRadar's own monotonic
  * clock, which is stamped identically for both directions. Sub-second detail in
  * a locally-sent `timestamp` is deliberately NOT used for ordering; it is
  * precision we cannot have for the other side, and trusting it is exactly what

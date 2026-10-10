@@ -4,9 +4,9 @@
  * Meshtastic 2.8 made position and telemetry broadcast **opt-in** rather than
  * always-on (firmware #10929). A node upgraded to 2.8 without opting back in
  * keeps talking on the mesh (NodeInfo, text, routing) but stops emitting
- * position fixes and device telemetry. From MeshMonitor's side the node looks
+ * position fixes and device telemetry. From MeshRadar's side the node looks
  * half-dead — the map marker freezes and the telemetry graphs go flat — and
- * users reasonably blame MeshMonitor instead of the firmware change.
+ * users reasonably blame MeshRadar instead of the firmware change.
  *
  * This module derives an informational notice at RENDER TIME from data the
  * node list already carries. It is DISPLAY ONLY:
@@ -84,7 +84,7 @@ export interface Firmware28SilenceInput {
   telemetryTimestamp?: number | null;
   /** A manually-pinned position is not evidence about broadcast config. */
   positionIsOverride?: boolean;
-  /** A trilaterated estimate is MeshMonitor's own guess, not a broadcast. */
+  /** A trilaterated estimate is MeshRadar's own guess, not a broadcast. */
   positionIsEstimated?: boolean;
 }
 

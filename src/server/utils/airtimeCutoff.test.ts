@@ -101,7 +101,7 @@ describe('averageStrongestNeighborUtilization', () => {
 
   it('admits hopsAway=1 candidates when maxHops is 1 (issue #4801)', () => {
     // The reporter's setup: a CLIENT_BASE node relays to routers, so the
-    // routers arrive at the MeshMonitor-connected node as hopsAway=1.
+    // routers arrive at the MeshRadar-connected node as hopsAway=1.
     const r = averageStrongestNeighborUtilization(
       [
         n({ hopsAway: 1, rssi: -50, channelUtilization: 60 }),

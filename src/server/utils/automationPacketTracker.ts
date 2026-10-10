@@ -1,7 +1,7 @@
 /**
  * Automation-originated packet tracker (#5414).
  *
- * Records the packet ids MeshMonitor puts on the wire on behalf of an
+ * Records the packet ids MeshRadar puts on the wire on behalf of an
  * automation (auto-ack tapbacks, auto-responder replies, auto-announce, timer
  * and geofence triggers, Automation Engine actions, auto-ping, scheduled
  * requests, ...). An `mqtt_bridge` with `dropAutomationUplinks` enabled asks
@@ -9,10 +9,10 @@
  * publish it upstream.
  *
  * Why: firmware ORs `config.lora.config_ok_to_mqtt` into every phone-API
- * packet, so MeshMonitor cannot clear the ok_to_mqtt bit on a single
+ * packet, so MeshRadar cannot clear the ok_to_mqtt bit on a single
  * automated send. Upstream declined to change this (meshtastic/firmware#11994):
  * ok_to_mqtt is a node-level privacy intent, by design not overridable from
- * the phone API. The bridge uplink is the one path MeshMonitor controls.
+ * the phone API. The bridge uplink is the one path MeshRadar controls.
  *
  * Keying: one map per sending source (`sourceId`), each entry holding the
  * node number that originated it. A match needs BOTH the packet id and the

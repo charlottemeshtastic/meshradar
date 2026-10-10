@@ -7,7 +7,7 @@
  * (`isMqttProxyLinkMisconfigured`) and sent only to viewers who may read the
  * source's device configuration. This component only draws it.
  *
- * MeshMonitor cannot see an MQTT Proxy sidecar until it has injected broker
+ * MeshRadar cannot see an MQTT Proxy sidecar until it has injected broker
  * traffic, so the text says so rather than call a working setup broken.
  */
 import React, { useId, useState } from 'react';
@@ -28,7 +28,7 @@ const MqttProxyWarning: React.FC<MqttProxyWarningProps> = ({ sourceId, onOpenDev
   const detailId = useId();
   const title = t(
     'source.mqtt_proxy_warning_title',
-    'Proxy to Client is on, but no MQTT source is linked. This node gets no MQTT traffic through MeshMonitor. Click for details.',
+    'Proxy to Client is on, but no MQTT source is linked. This node gets no MQTT traffic through MeshRadar. Click for details.',
   );
   // The card itself is a button: keep clicks and keys inside this control.
   const stop = (e: React.SyntheticEvent) => e.stopPropagation();
@@ -62,13 +62,13 @@ const MqttProxyWarning: React.FC<MqttProxyWarningProps> = ({ sourceId, onOpenDev
           <p>
             {t(
               'source.mqtt_proxy_warning_body',
-              'This node has "Proxy to Client" on, so it relies on MeshMonitor to carry its MQTT traffic, and no MQTT source is linked to it. It hears MQTT traffic only when another node repeats it over LoRa.',
+              'This node has "Proxy to Client" on, so it relies on MeshRadar to carry its MQTT traffic, and no MQTT source is linked to it. It hears MQTT traffic only when another node repeats it over LoRa.',
             )}
           </p>
           <p>
             {t(
               'source.mqtt_proxy_warning_sidecar',
-              'If the MQTT Proxy sidecar is attached to this source’s Virtual Node, ignore this: MeshMonitor cannot see a sidecar until it passes broker traffic to the node.',
+              'If the MQTT Proxy sidecar is attached to this source’s Virtual Node, ignore this: MeshRadar cannot see a sidecar until it passes broker traffic to the node.',
             )}
           </p>
           <div className={styles.links}>

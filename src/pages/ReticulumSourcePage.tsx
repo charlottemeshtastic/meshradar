@@ -71,7 +71,7 @@ function ReticulumSourceInner() {
           <UiIcon name="back" size={16} /> {t('unified.back_to_sources', 'Sources')}
         </button>
         {/* #4939: the back-to-sources button already anchors the header, so the
-            MeshMonitor logo + wordmark are redundant on a per-source page — show
+            MeshRadar logo + wordmark are redundant on a per-source page — show
             only the source name. */}
         <div className="dashboard-topbar-logo">
           {sourceName && (

@@ -133,7 +133,7 @@ export function recordMqttEcho(
 /**
  * True if (topic, packetId) was recorded (and not yet expired) by
  * {@link recordMqttEcho} on the opposite-direction store — i.e. this message
- * is an echo of one MeshMonitor itself just forwarded, and should be dropped
+ * is an echo of one MeshRadar itself just forwarded, and should be dropped
  * rather than re-forwarded again (which would loop).
  */
 export function matchesMqttEcho(

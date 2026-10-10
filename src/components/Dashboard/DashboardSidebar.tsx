@@ -156,7 +156,7 @@ interface DashboardSidebarProps {
  * Build the per-source mesh-activity badge shown beside the link-state badge.
  *
  * The link-state badge ("Connected"/"Connecting"/...) only reflects the
- * MeshMonitor↔gateway TCP/serial link. Users on issue #2883 found that
+ * MeshRadar↔gateway TCP/serial link. Users on issue #2883 found that
  * misleading because a gateway can be "Connected" while every mesh node it
  * has heard is now stale. This badge complements link state with mesh
  * liveness — total nodes vs. nodes heard in the last ~2h — colored by ratio

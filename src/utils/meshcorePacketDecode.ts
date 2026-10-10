@@ -187,7 +187,7 @@ export interface DecodedMultipart {
  * CONTROL (0x0B) framing. The public docs give only the first byte ("upper 4
  * bits is sub_type", the rest "typically unencrypted data"), so the field
  * layouts below come from the firmware's node-discovery exchange — the same
- * one MeshMonitor already speaks in `meshcoreNativeBackend` (#1027, #4516):
+ * one MeshRadar already speaks in `meshcoreNativeBackend` (#1027, #4516):
  *
  *   REQ  (0x80): [0] sub_type|prefix_only, [1] type filter bitmask,
  *                [2..5] tag (uint32 LE), [6..9] optional `since`

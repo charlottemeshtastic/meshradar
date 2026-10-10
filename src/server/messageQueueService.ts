@@ -112,7 +112,7 @@ export class MessageQueueService {
    *                           exactly once and reported as success as soon as
    *                           it reaches the radio — a retry would be a blind
    *                           resend with no way to know the first one landed.
-   * @param origin - `'automation'` for sends MeshMonitor makes on its own
+   * @param origin - `'automation'` for sends MeshRadar makes on its own
    *                 (#5414), so an MQTT bridge can keep them off the upstream
    *                 broker. Absent ⇒ manual.
    */

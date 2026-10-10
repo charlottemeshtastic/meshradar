@@ -456,7 +456,7 @@ router.get(
         data: {
           enabled: enabled === 'true',
           intervalHours: parseInt(intervalHours || '6', 10) || 6,
-          message: message || 'MeshMonitor {VERSION} online for {DURATION} — {CONTACTCOUNT} contacts',
+          message: message || 'MeshRadar {VERSION} online for {DURATION} — {CONTACTCOUNT} contacts',
           channelIndexes: (channelIndexesRaw || '')
             .split(',')
             .map(s => s.trim())

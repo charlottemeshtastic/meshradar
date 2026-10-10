@@ -26,7 +26,7 @@ describe('deviceCounters (#5101 P3 WP2)', () => {
     }
   });
 
-  it('excludes MeshMonitor-computed transport series types', () => {
+  it('excludes MeshRadar-computed transport series types', () => {
     for (const type of [
       'systemNodesHeardRf',
       'systemNodesHeardUdp',

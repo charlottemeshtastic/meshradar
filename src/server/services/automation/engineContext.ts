@@ -35,7 +35,7 @@ export interface NodeFacts {
   airUtilTx?: number;
   snr?: number;
   isFavorite?: boolean;
-  /** MeshMonitor-computed mobility: 0 = stationary, 1 = mobile (>100 m history span). */
+  /** MeshRadar-computed mobility: 0 = stationary, 1 = mobile (>100 m history span). */
   mobile?: number;
 }
 
@@ -112,11 +112,11 @@ export interface NodeDataProvider {
   /**
    * Own/local node number for a Meshtastic source — used to drop self-originated
    * events (messages/telemetry/node updates our own node produced) so automations
-   * never fire on MeshMonitor's own traffic (#3914). Optional; absent → no drop.
+   * never fire on MeshRadar's own traffic (#3914). Optional; absent → no drop.
    */
   getLocalNodeNum?(sourceId: string | null): Promise<number | null>;
   /**
-   * True when a node number belongs to ANY source MeshMonitor owns. The
+   * True when a node number belongs to ANY source MeshRadar owns. The
    * per-source `getLocalNodeNum` is null for a source with no local identity —
    * an `mqtt_bridge` — yet our own messages still arrive there, relayed to the
    * broker by third-party gateways. Without this the #3914 self-origin guard is
@@ -129,7 +129,7 @@ export interface NodeDataProvider {
    * received messages (#3914). Optional; absent → no drop.
    */
   getSelfPublicKey?(sourceId: string | null): Promise<string | null>;
-  /** True when a MeshCore public key belongs to ANY MeshCore source MeshMonitor owns —
+  /** True when a MeshCore public key belongs to ANY MeshCore source MeshRadar owns —
    *  cross-source fallback for the self-guard on multi-MC-source / bridge setups (#4577 P2). */
   isOwnPublicKey?(pubkey: string): Promise<boolean>;
   /**

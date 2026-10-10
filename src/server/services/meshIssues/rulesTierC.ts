@@ -74,7 +74,7 @@ export interface TierCRuleContext {
    *  `thresholds.ts`). */
   windowHours: number;
   /**
-   * nodeNum -> the source ids on which that node is MeshMonitor's own
+   * nodeNum -> the source ids on which that node is MeshRadar's own
    * directly-connected local node (#5388). A local node streams
    * deviceMetrics to its client over the phone API every ~60s, far faster
    * than it broadcasts to the mesh, and those rows land in `telemetry` like

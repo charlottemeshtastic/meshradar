@@ -379,7 +379,7 @@ export class DeviceAdminService {
       // rendering the pre-save values every time it remounts.
       //
       // Most module saves hid that: the firmware reboots after
-      // `set_module_config`, MeshMonitor's link drops, and the reconnect
+      // `set_module_config`, MeshRadar's link drops, and the reconnect
       // re-downloads the whole config. MeshBeacon is on the firmware's
       // no-reboot allowlist (`shouldReboot = false`, alongside
       // statusmessage/mqtt/serial), so its stale cache never got corrected.

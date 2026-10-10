@@ -3,7 +3,7 @@
  * NULL-sourceId rows in auto_traceroute_nodes / auto_time_sync_nodes) to the
  * default source's namespace.
  *
- * Background: Pre-4.x MeshMonitor stored automation, scheduler, and other
+ * Background: Pre-4.x MeshRadar stored automation, scheduler, and other
  * runtime settings under un-namespaced keys (e.g. `autoResponderEnabled`).
  * 4.x introduced per-source settings via the `source:{id}:{key}` prefix.
  * `getSettingForSource` previously fell back to the global key when no

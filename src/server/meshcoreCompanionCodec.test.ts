@@ -151,7 +151,7 @@ describe('meshcoreCompanionCodec — encoders round-trip through meshcore.js dec
       radioBw: 250000, // wire Hz == 250 kHz
       radioSf: 11,
       radioCr: 5,
-      name: 'MeshMonitor VNode',
+      name: 'MeshRadar VNode',
     };
 
     const decoded = await decodeWithMeshcore(ResponseCodes.SelfInfo, encodeSelfInfo(wire));
@@ -170,7 +170,7 @@ describe('meshcoreCompanionCodec — encoders round-trip through meshcore.js dec
     expect(decoded.radioBw).toBe(250000);
     expect(decoded.radioSf).toBe(11);
     expect(decoded.radioCr).toBe(5);
-    expect(decoded.name).toBe('MeshMonitor VNode');
+    expect(decoded.name).toBe('MeshRadar VNode');
   });
 
   it('CurrTime decodes to the same epoch seconds', async () => {
@@ -182,11 +182,11 @@ describe('meshcoreCompanionCodec — encoders round-trip through meshcore.js dec
   it('DeviceInfo decodes firmware version, build date and model', async () => {
     const decoded = await decodeWithMeshcore(
       ResponseCodes.DeviceInfo,
-      encodeDeviceInfo({ firmwareVer: 7, firmwareBuildDate: '19 Feb 2025', manufacturerModel: 'MeshMonitor Virtual Node' }),
+      encodeDeviceInfo({ firmwareVer: 7, firmwareBuildDate: '19 Feb 2025', manufacturerModel: 'MeshRadar Virtual Node' }),
     );
     expect(decoded.firmwareVer).toBe(7);
     expect(decoded.firmware_build_date).toBe('19 Feb 2025');
-    expect(decoded.manufacturerModel).toBe('MeshMonitor Virtual Node');
+    expect(decoded.manufacturerModel).toBe('MeshRadar Virtual Node');
   });
 
   it('ContactsStart decodes the announced count', async () => {

@@ -198,7 +198,7 @@ const FirmwareUpdateSection: React.FC<FirmwareUpdateSectionProps> = ({ baseUrl, 
     !!gatewayInfo.gatewayIp &&
     !gatewayInfo.isBridged;
 
-  // #5677: hardware MeshMonitor cannot update at all (meshtasticd, a
+  // #5677: hardware MeshRadar cannot update at all (meshtasticd, a
   // simulator, an unmapped or non-OTA board) gets a card in place of the
   // update UI. The verdict comes from the same list OTA preflight enforces.
   //
@@ -214,7 +214,7 @@ const FirmwareUpdateSection: React.FC<FirmwareUpdateSectionProps> = ({ baseUrl, 
     [hwModelSettled, gatewayInfo.hwModel]
   );
 
-  // Issue #3413: a node is considered recovered/reachable only when MeshMonitor
+  // Issue #3413: a node is considered recovered/reachable only when MeshRadar
   // currently has a live connection AND the node is answering. This gates the
   // half-flash recovery action below — clearing the safety marker should only
   // happen once the device is actually back online and accepting connections.
@@ -233,7 +233,7 @@ const FirmwareUpdateSection: React.FC<FirmwareUpdateSectionProps> = ({ baseUrl, 
   // surfacing the raw "DELETE /api/firmware/recovery-marker/..." toast.
   const [halfFlashedNodeId, setHalfFlashedNodeId] = useState<string | null>(null);
   const [isClearingMarker, setIsClearingMarker] = useState(false);
-  // #5249: local-file upload. `acknowledgedRisk` gates Install — MeshMonitor
+  // #5249: local-file upload. `acknowledgedRisk` gates Install — MeshRadar
   // cannot tell whether an uploaded binary belongs to this board, so the user
   // confirms that explicitly rather than us implying a check we didn't do.
   const [isUploading, setIsUploading] = useState(false);
@@ -717,7 +717,7 @@ const FirmwareUpdateSection: React.FC<FirmwareUpdateSectionProps> = ({ baseUrl, 
               : gatewayInfo.sourceType && gatewayInfo.sourceType !== 'meshtastic_tcp'
               ? t(
                   'firmware.ota_unavailable_non_tcp',
-                  'OTA firmware update is only available for TCP sources. The active source ({{type}}) cannot be flashed from MeshMonitor.',
+                  'OTA firmware update is only available for TCP sources. The active source ({{type}}) cannot be flashed from MeshRadar.',
                   { type: gatewayInfo.sourceType }
                 )
               : t(
@@ -839,7 +839,7 @@ const FirmwareUpdateSection: React.FC<FirmwareUpdateSectionProps> = ({ baseUrl, 
           >
             {t(
               'firmware.custom_url_warning',
-              'MeshMonitor does not check that the downloaded file is firmware for this board. Flashing a binary built for a different board will brick the node, and recovery needs a USB cable. Make sure the URL was built for:',
+              'MeshRadar does not check that the downloaded file is firmware for this board. Flashing a binary built for a different board will brick the node, and recovery needs a USB cable. Make sure the URL was built for:',
             )}{' '}
             <strong>
               {gatewayInfo.hwModel > 0
@@ -882,7 +882,7 @@ const FirmwareUpdateSection: React.FC<FirmwareUpdateSectionProps> = ({ baseUrl, 
           >
             {t(
               'firmware.local_warning',
-              'MeshMonitor does not check that an uploaded file is firmware for this board. Flashing a binary built for a different board will brick the node, and recovery needs a USB cable. Make sure the file you pick was built for:',
+              'MeshRadar does not check that an uploaded file is firmware for this board. Flashing a binary built for a different board will brick the node, and recovery needs a USB cable. Make sure the file you pick was built for:',
             )}{' '}
             <strong>{gatewayInfo.hwModel > 0
               ? getHardwareModelName(gatewayInfo.hwModel)
@@ -1289,7 +1289,7 @@ const FirmwareUpdateSection: React.FC<FirmwareUpdateSectionProps> = ({ baseUrl, 
               <p style={{ margin: '0.5rem 0' }}>
                 {t(
                   'firmware.recovery_explanation',
-                  'A previous OTA attempt did not finish, so MeshMonitor flagged this node to prevent another flash on a possibly corrupted device. Recover it via a USB-tethered flash first. Once it is back online, clear the flag below to retry.'
+                  'A previous OTA attempt did not finish, so MeshRadar flagged this node to prevent another flash on a possibly corrupted device. Recover it via a USB-tethered flash first. Once it is back online, clear the flag below to retry.'
                 )}
               </p>
               {/* Live "online and accepting connections" indicator */}

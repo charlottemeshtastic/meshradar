@@ -5,7 +5,7 @@ import { UiIcon } from './icons';
  * The "we haven't received this node's NODEINFO yet" badge, shown in the node
  * list's indicator group (issue #4720, feature-parity tracker #4718 item H).
  *
- * MeshMonitor already *knew* which nodes were incomplete — `isNodeComplete()`
+ * MeshRadar already *knew* which nodes were incomplete — `isNodeComplete()`
  * has long driven the `showIncompleteNodes` filter — but when such a node was
  * on screen nothing marked it as partial. The only visible difference was a
  * "Copy NodeInfo" action gated on `nodes:write`, so a read-only user saw a node

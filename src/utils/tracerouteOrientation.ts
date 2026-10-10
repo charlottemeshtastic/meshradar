@@ -10,7 +10,7 @@
  *
  *  - **Requester-first** `{ from: requester, to: responder }`.
  *    `recordTracerouteRequest` writes a pending row (`route` NULL) when a
- *    request goes out through MeshMonitor (the UI, auto-traceroute, an
+ *    request goes out through MeshRadar (the UI, auto-traceroute, an
  *    automation, a Virtual Node client). The reply then UPDATES that row in
  *    place and does not touch `from`/`to`.
  *  - **Reply-packet** `{ from: responder, to: requester }`. A reply that finds

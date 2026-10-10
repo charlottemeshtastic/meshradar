@@ -313,9 +313,9 @@ export const SecurityTab: React.FC<SecurityTabProps> = ({ onTabChange, onSelectD
       // Determine the message based on the issue type
       let message = '';
       if (node.keyIsLowEntropy) {
-        message = 'MeshMonitor Security Notification: Your node has a low entropy key. Read more: https://bit.ly/4oL5m0P';
+        message = 'MeshRadar Security Notification: Your node has a low entropy key. Read more: https://bit.ly/4oL5m0P';
       } else if (node.duplicateKeyDetected && duplicateCount) {
-        message = `MeshMonitor Security Notification: Your node has a key shared with ${duplicateCount} other nearby nodes. Read more: https://bit.ly/4okVACV`;
+        message = `MeshRadar Security Notification: Your node has a key shared with ${duplicateCount} other nearby nodes. Read more: https://bit.ly/4okVACV`;
       }
 
       // Select the node + pre-fill the draft atomically (survives the #4183

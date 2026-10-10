@@ -15,8 +15,8 @@ import type { AutomationTokenInfo, AutomationTokenGroup } from '../AutomationTok
 
 /** Tokens that expand in every MeshCore automation surface. */
 export const MESHCORE_GLOBAL_TOKENS: AutomationTokenInfo[] = [
-  { token: '{VERSION}', description: 'MeshMonitor version' },
-  { token: '{DURATION}', description: 'MeshMonitor uptime' },
+  { token: '{VERSION}', description: 'MeshRadar version' },
+  { token: '{DURATION}', description: 'MeshRadar uptime' },
   { token: '{CONTACTCOUNT}', description: 'Total known contacts' },
   { token: '{COMPANIONCOUNT}', description: 'Number of companion contacts' },
   { token: '{REPEATERCOUNT}', description: 'Number of repeater contacts' },

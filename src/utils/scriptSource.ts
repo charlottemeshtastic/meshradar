@@ -3,7 +3,7 @@
  *
  * A script's update source is a GitHub file: `owner/repo/path/to/script.py`,
  * optionally with a branch (`owner/repo/tree/branch/path`), or the same thing
- * as a github.com URL. MeshMonitor fetches it through the GitHub Contents API,
+ * as a github.com URL. MeshRadar fetches it through the GitHub Contents API,
  * so it never has to guess a default branch.
  *
  * Nothing here touches the network or the filesystem, so both the server and

@@ -1,7 +1,7 @@
 /*
  * TransportSeries.module.css (#5101 Phase 3, WP4)
  *
- * Caption and empty-state styles for the two MeshMonitor-computed
+ * Caption and empty-state styles for the two MeshRadar-computed
  * per-transport charts (TransportSeriesGraphs, TransportSeriesChart,
  * TransportSeriesPlot). Everything else — the chart card, grid, header and
  * favorite-star chrome — reuses the existing global `telemetry-graphs` /

@@ -97,7 +97,7 @@ export const nodesSqlite = sqliteTable('nodes', {
   hasRemoteAdmin: integer('hasRemoteAdmin', { mode: 'boolean' }).default(false),
   lastRemoteAdminCheck: integer('lastRemoteAdminCheck'),
   remoteAdminMetadata: text('remoteAdminMetadata'),
-  // Free-text per-node notes — MeshMonitor-local annotation (#3921). Never
+  // Free-text per-node notes — MeshRadar-local annotation (#3921). Never
   // synced to the mesh; purely a server-side label like the mobile clients'
   // local "notes" field.
   notes: text('notes'),
@@ -215,7 +215,7 @@ export const nodesPostgres = pgTable('nodes', {
   hasRemoteAdmin: pgBoolean('hasRemoteAdmin').default(false),
   lastRemoteAdminCheck: pgBigint('lastRemoteAdminCheck', { mode: 'number' }),
   remoteAdminMetadata: pgText('remoteAdminMetadata'),
-  // Free-text per-node notes — MeshMonitor-local annotation (#3921). Never
+  // Free-text per-node notes — MeshRadar-local annotation (#3921). Never
   // synced to the mesh; purely a server-side label like the mobile clients'
   // local "notes" field.
   notes: pgText('notes'),
@@ -329,7 +329,7 @@ export const nodesMysql = mysqlTable('nodes', {
   hasRemoteAdmin: myBoolean('hasRemoteAdmin').default(false),
   lastRemoteAdminCheck: myBigint('lastRemoteAdminCheck', { mode: 'number' }),
   remoteAdminMetadata: myVarchar('remoteAdminMetadata', { length: 4096 }),
-  // Free-text per-node notes — MeshMonitor-local annotation (#3921). Never
+  // Free-text per-node notes — MeshRadar-local annotation (#3921). Never
   // synced to the mesh; purely a server-side label like the mobile clients'
   // local "notes" field.
   notes: myVarchar('notes', { length: 2000 }),

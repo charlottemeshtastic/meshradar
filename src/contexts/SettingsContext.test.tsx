@@ -426,7 +426,7 @@ describe('SettingsProvider', () => {
     expect(contextValue.setTimeFormat).toBeDefined();
   });
 
-  it('should default new users to system appearance with mocha dark and latte light themes', async () => {
+  it('should default new users to system appearance with miami-vice dark and latte light themes', async () => {
     mockSystemIsDark = false;
     installMatchMediaMock();
     mockFetch.mockReset();
@@ -452,7 +452,7 @@ describe('SettingsProvider', () => {
     });
 
     expect(contextValue.appearanceMode).toBe('system');
-    expect(contextValue.darkTheme).toBe('mocha');
+    expect(contextValue.darkTheme).toBe('miami-vice');
     expect(contextValue.lightTheme).toBe('latte');
     expect(contextValue.theme).toBe('latte');
     expect(document.documentElement.getAttribute('data-theme')).toBe('latte');
@@ -587,8 +587,8 @@ describe('SettingsProvider', () => {
     await setMockSystemAppearance(true);
 
     await waitFor(() => {
-      expect(contextValue.theme).toBe('mocha');
-      expect(document.documentElement.getAttribute('data-theme')).toBe('mocha');
+      expect(contextValue.theme).toBe('miami-vice');
+      expect(document.documentElement.getAttribute('data-theme')).toBe('miami-vice');
     });
   });
 
@@ -621,7 +621,7 @@ describe('SettingsProvider', () => {
     await setMockSystemAppearance(false);
 
     await waitFor(() => {
-      expect(contextValue.theme).toBe('mocha');
+      expect(contextValue.theme).toBe('miami-vice');
     });
 
     await act(async () => {

@@ -2,7 +2,7 @@
  * Tests for MeshCore contact removal + the resurrection guard (issue #3878).
  *
  * A room server that no longer exists on the network can linger on the
- * companion's saved-contact list. Deleting it from MeshMonitor used to be
+ * companion's saved-contact list. Deleting it from MeshRadar used to be
  * undone by the next advert-triggered / reconnect `get_contacts` sync, which
  * re-`persistContact`s every device contact — so "Remove" appeared to do
  * nothing. Removal now tombstones the key so re-sync can't resurrect the row,

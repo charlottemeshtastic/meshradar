@@ -7,7 +7,7 @@
  * Up to firmware 2.7.x a node's number was derived from its hardware MAC
  * address. Meshtastic 2.8 derives it from the node's public-key identity
  * instead, and the change is one-way. A node that upgrades therefore arrives
- * in MeshMonitor as a brand-new node: new `nodeNum`, new `nodeId`, empty
+ * in MeshRadar as a brand-new node: new `nodeNum`, new `nodeId`, empty
  * history. Its telemetry, packet log, positions and messages stay attached to
  * the old number, and the node list shows what looks like a duplicate with the
  * same long name. After a mesh-wide upgrade, half the node list goes dark at

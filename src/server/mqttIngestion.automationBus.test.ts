@@ -1,6 +1,6 @@
 /**
  * End-to-end guard for #4593: an MQTT-ingested text message must reach the
- * Automation Engine — WITHOUT letting MeshMonitor answer its own traffic.
+ * Automation Engine — WITHOUT letting MeshRadar answer its own traffic.
  *
  * The chain exercised here is the real one, minus the singleton bootstrap:
  *   ingestServiceEnvelope → dataEventEmitter('data', message:new)
@@ -12,7 +12,7 @@
  * same way production does: through `sourceManagerRegistry`.
  *
  * Why the self-origin half matters (the #3914 hazard, re-opened by #4593):
- * an `mqtt_bridge` has no local node of its own, so a message MeshMonitor sent
+ * an `mqtt_bridge` has no local node of its own, so a message MeshRadar sent
  * on a Meshtastic source comes back down the bridge — uplinked by somebody
  * else's gateway — as an ordinary inbound packet from our own nodeNum. If the
  * engine fired on that, an auto-reply automation would answer its own reply

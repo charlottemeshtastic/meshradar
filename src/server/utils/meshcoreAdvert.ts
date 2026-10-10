@@ -7,7 +7,7 @@
  * A repeater cannot send a zero-hop advert because its firmware predates the
  * `advert.zerohop` CLI verb. `floodSent` is true when this very request went
  * out as a FLOOD (old firmware prefix-matches `advert.zerohop` as `advert`),
- * false when MeshMonitor refused it up front after an earlier detection.
+ * false when MeshRadar refused it up front after an earlier detection.
  */
 export class MeshCoreZeroHopAdvertUnsupportedError extends Error {
   readonly code = 'ZERO_HOP_ADVERT_UNSUPPORTED';

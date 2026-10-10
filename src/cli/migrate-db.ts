@@ -273,7 +273,7 @@ function parseArgs(): MigrationOptions {
 
 function printHelp(): void {
   console.log(`
-Database Migration Tool for MeshMonitor
+Database Migration Tool for MeshRadar
 
 Usage:
   npx ts-node src/cli/migrate-db.ts [options]
@@ -496,7 +496,7 @@ function sanitizeValue(value: unknown, pgType: string): unknown {
  * Build a default source row for the v3.x → v4.0 migration. Mirrors the
  * `_legacyDefaultSource.ts` helper used by the runtime migrations so that
  * databases produced by this CLI are indistinguishable from databases an
- * upgraded MeshMonitor would create on its first run.
+ * upgraded MeshRadar would create on its first run.
  */
 function buildDefaultSource(): {
   id: string;
@@ -924,7 +924,7 @@ async function resetMySQLAutoIncrement(pool: mysql.Pool): Promise<void> {
 }
 
 async function migrate(options: MigrationOptions): Promise<void> {
-  console.log('\n🚀 MeshMonitor Database Migration Tool\n');
+  console.log('\n🚀 MeshRadar Database Migration Tool\n');
   console.log('━'.repeat(50));
 
   if (!options.from || !options.to) {

@@ -583,7 +583,7 @@ export interface MeshCoreConfig {
   reconnectMaxAttempts?: number;       // default 0 (forever).
 
   // Virtual Node server (opt-in). Exposes this MeshCore node over TCP so the
-  // MeshCore mobile app can connect through MeshMonitor over WiFi (issue #3535).
+  // MeshCore mobile app can connect through MeshRadar over WiFi (issue #3535).
   // See docs/internal/dev-notes/MESHCORE_VIRTUAL_NODE_DESIGN.md.
   virtualNode?: MeshCoreVirtualNodeConfig;
 
@@ -743,7 +743,7 @@ export interface MeshCoreContact {
   /**
    * Whether the firmware's favourite bit (flags & 0x01) is currently set on the
    * device for this contact. This is what actually protects the contact from
-   * contact-table eviction (#4838), separate from MeshMonitor's local
+   * contact-table eviction (#4838), separate from MeshRadar's local
    * `meshcore_nodes.isFavorite` column. `reconcileDeviceFavorites` keeps the two
    * in sync.
    */
@@ -918,7 +918,7 @@ export interface MeshCoreMessage {
    */
   filtered?: 'ignore' | 'block';
   /**
-   * MeshMonitor's own wall clock (ms) when this message was created or observed
+   * MeshRadar's own wall clock (ms) when this message was created or observed
    * — NOT the sender's clock, and stamped identically for both directions.
    *
    * `timestamp` cannot order a stream: a received message takes its time from
@@ -1241,7 +1241,7 @@ export type AddContactToDeviceResult =
   | { status: 'already_on_device' }
   /** The table is full (or its capacity is unknown): ask the user first. */
   | { status: 'confirm_full'; count: number; maxContacts: number | null }
-  /** Blocked: these MeshMonitor favourites lack the device favourite bit. */
+  /** Blocked: these MeshRadar favourites lack the device favourite bit. */
   | { status: 'favorites_unprotected'; unprotected: string[] }
   /** The firmware refused: table full and "overwrite oldest" off. */
   | { status: 'table_full'; count: number; maxContacts: number | null }
@@ -1272,7 +1272,7 @@ export type PushContactsToDeviceResult =
   | {
       status: 'done';
       added: Array<{ publicKey: string; name: string | null }>;
-      /** MeshMonitor nodes the radio already held. */
+      /** MeshRadar nodes the radio already held. */
       alreadyOnDevice: number;
       skipped: PushContactsSkipped[];
       /** Eligible nodes left out: no free slot, the limit, or unknown capacity. */
@@ -1290,7 +1290,7 @@ export type PushContactsToDeviceResult =
   | { status: 'unavailable' }
   | { status: 'failed'; error: string };
 
-/** MeshMonitor's node list vs the companion's contact table (#5502). */
+/** MeshRadar's node list vs the companion's contact table (#5502). */
 export interface DeviceContactSyncStatus {
   /** A connected Companion (the only kind with a contact table to sync). */
   available: boolean;
@@ -1298,7 +1298,7 @@ export interface DeviceContactSyncStatus {
   manualAddContacts: number | null;
   /** Bit 0 clear = the radio stores contacts heard via advert. */
   autoAddEnabled: boolean | null;
-  /** MeshMonitor favourites the radio's contact table does not hold. */
+  /** MeshRadar favourites the radio's contact table does not hold. */
   missingFavorites: Array<{ publicKey: string; name: string | null }>;
   deviceContactCount: number;
   /**
@@ -2007,7 +2007,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
 
       // Push the configured default path hash size to the companion's persistent
       // NodePrefs (#4945). Best-effort and Companion-only; a reconnect re-asserts
-      // it so the device always matches the MeshMonitor setting.
+      // it so the device always matches the MeshRadar setting.
       void this.applyDefaultPathHashSize();
 
       // Start the Virtual Node server (opt-in) now that the local node identity
@@ -2139,7 +2139,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
         sourceId: this.sourceId,
         config: obs,
         device: () => ({
-          origin: this.localNode?.name || this.sourceName || 'MeshMonitor',
+          origin: this.localNode?.name || this.sourceName || 'MeshRadar',
           model: this.localNode?.model,
           // Some firmwares report `ver` with a leading 'v' already (live
           // device: 'v1.15.0-dee3e26') — don't double it up.
@@ -2870,7 +2870,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
     } else if (event_type === 'node_discovered') {
       // 0x8E NODE_DISCOVER_RESP from an active discovery burst (CMD 55).
       // The native backend already registered the node on the device; here
-      // we mirror it into MeshMonitor's contact store (so it shows up in the
+      // we mirror it into MeshRadar's contact store (so it shows up in the
       // UI) and tally the in-flight discovery session for the result toast.
       // A discovery response carries only the key, type, and SNR — name and
       // position arrive later via the normal advert path.
@@ -2966,7 +2966,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
       // Virtual Node can bridge it to connected apps as a LogRxData(0x88) push
       // (#3963). Deliberately NOT gated on the packet-monitor setting: a feed
       // consumer like Remote-Terminal's channel finder wants every packet even
-      // when MeshMonitor's own packet log is off. Fields used downstream:
+      // when MeshRadar's own packet log is off. Fields used downstream:
       // `snr` (dB), `rssi` (dBm), `raw_hex` (whole OTA frame).
       this.emit('ota_packet', data);
       // Full OTA packet metadata for the MeshCore Packet Monitor. Capture is
@@ -3197,10 +3197,10 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
         this.sourceId,
       );
       const fullHeardBy = all.map((r) => ({ hash: r.repeaterHash, name: r.repeaterName, snr: r.snr }));
-      // This relay count is surfaced to MeshMonitor's own UI only. It is NOT
+      // This relay count is surfaced to MeshRadar's own UI only. It is NOT
       // forwarded to a Virtual Node companion, by protocol necessity (#3871):
       // a channel send is an unacked fire-and-forget flood, so the companion
-      // already got `Ok(0)` and closed the send; the count is a MeshMonitor-
+      // already got `Ok(0)` and closed the send; the count is a MeshRadar-
       // derived metric that accrues asynchronously (here, up to HEARD_WINDOW_MS
       // later) and the companion protocol has no push frame or message handle to
       // annotate an already-sent channel message with it. The DM ack path
@@ -3584,7 +3584,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
    * (AES-128). Re-syncs the DB from the device afterwards so any side-effect
    * (e.g. the firmware normalising the name) is reflected immediately.
    *
-   * `scope` (#3667) is a MeshMonitor-owned region tag the device never stores;
+   * `scope` (#3667) is a MeshRadar-owned region tag the device never stores;
    * when provided it is persisted to the DB row AFTER the device re-sync (which
    * preserves but never sets scope). `undefined` leaves any existing scope
    * untouched; `null`/'' clears it. Plain region name, no leading '#'.
@@ -5040,7 +5040,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
         // Only keys already parked as genuinely new are considered, so a bulk
         // contact sync never notifies for the rest of the list.
         this.flushPendingNewNodeNotifications();
-        // Sync the firmware favourite bit with MeshMonitor's local favourites
+        // Sync the firmware favourite bit with MeshRadar's local favourites
         // now that we have fresh device flags. Runs on connect (backfilling
         // existing favourites onto the device) and on every subsequent refresh.
         await this.reconcileDeviceFavorites();
@@ -5251,7 +5251,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
    * Resolve the effective MeshCore region/scope for an outbound send (#3667):
    * a channel's own scope overrides the source default scope; otherwise the
    * source default applies. Returns the plain region name (no leading '#'), or
-   * null when MeshMonitor has no scope configured — in which case the flood
+   * null when MeshRadar has no scope configured — in which case the flood
    * scope is cleared and the node falls back to its OWN persistent default
    * region (this is "inherit", not forced-unscoped; see applyFloodScope #4932).
    */
@@ -6660,7 +6660,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
     }
     // CMD_SEND_TRACE_PATH's flags byte only encodes power-of-two hop widths
     // (device: `1 << (flags & 0x03)`), so 1- and 2-byte hops are
-    // representable but the 3-byte width MeshMonitor also supports elsewhere
+    // representable but the 3-byte width MeshRadar also supports elsewhere
     // is not (#4786).
     if (hashBytes !== 1 && hashBytes !== 2) {
       logger.warn(`[MeshCore] Trace-path: ${hashBytes}-byte hop hash width for ${publicKey.substring(0, 16)}… is not supported by the device's trace-path command (only 1 or 2 bytes/hop)`);
@@ -7014,7 +7014,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
   }
 
   /**
-   * Add a node MeshMonitor knows about (heard via an advert the radio did not
+   * Add a node MeshRadar knows about (heard via an advert the radio did not
    * store, evicted earlier, or known only from the DB) to the companion's own
    * contact table, so the radio can log in to / query / message it (#5349).
    * Local serial write via CMD_ADD_UPDATE_CONTACT — nothing is transmitted.
@@ -7026,15 +7026,15 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
    *    whose favourite bit (flags & 0x01) is CLEAR — never a favourite.
    *  - Full, "overwrite oldest" OFF (or every contact is a favourite): the
    *    firmware refuses with ERR_CODE_TABLE_FULL; nothing changes.
-   * So a favourite can only be evicted if MeshMonitor's favourite never
+   * So a favourite can only be evicted if MeshRadar's favourite never
    * reached the device bit. When the table is full (or its capacity can't be
    * read) we therefore:
    *  1. require `confirmFull` (the UI's confirm step), and
-   *  2. re-sync MeshMonitor favourites onto the device (refreshContacts →
+   *  2. re-sync MeshRadar favourites onto the device (refreshContacts →
    *     reconcileDeviceFavorites) and verify every favourite the radio holds
    *     now carries the bit. If any does not, the add is BLOCKED.
    * The added contact carries the favourite bit itself when it is a
-   * MeshMonitor favourite. ADV_TYPE_NONE (unknown type) is refused because the
+   * MeshRadar favourite. ADV_TYPE_NONE (unknown type) is refused because the
    * firmware's eviction for that type ignores favourites.
    */
   async addContactToDevice(
@@ -7074,7 +7074,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
         return { status: 'confirm_full', count, maxContacts };
       }
       // Make sure the firmware's own eviction guard covers every favourite:
-      // refreshContacts() re-asserts MeshMonitor favourites onto the device
+      // refreshContacts() re-asserts MeshRadar favourites onto the device
       // (reconcileDeviceFavorites), then a fresh read VERIFIES the bits —
       // the in-memory mirror is updated optimistically, so it is not proof.
       await this.refreshContacts();
@@ -7155,7 +7155,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
   private contactPushInFlight = false;
 
   /**
-   * How MeshMonitor's node list lines up with the companion's own contact
+   * How MeshRadar's node list lines up with the companion's own contact
    * table (#5502), for the Settings banner. Reads the in-memory mirror and
    * the DB only — no device IO.
    */
@@ -7205,7 +7205,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
   }
 
   /**
-   * Bulk "Push to radio" (#5502): copy nodes MeshMonitor tracks for this
+   * Bulk "Push to radio" (#5502): copy nodes MeshRadar tracks for this
    * source into the companion's contact table, so the radio can log in to,
    * poll and message them.
    *
@@ -7493,7 +7493,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
    * {@link removeContact} requires. This is the cleanup fallback for malformed
    * or "ghost" rows (e.g. a room server that landed in the DB twice, once with a
    * truncated public key) that the device's `remove_contact` can't match, so the
-   * stale entry can still be removed from MeshMonitor. Works while disconnected
+   * stale entry can still be removed from MeshRadar. Works while disconnected
    * and regardless of device type.
    */
   async forgetLocalContact(publicKey: string): Promise<boolean> {
@@ -8716,7 +8716,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
    *     (the local-access marker), so `clock sync` is ALWAYS rejected with
    *     "clock cannot go backwards" and the RTC never moves;
    *   - over remote-admin (CliData DM) it uses the *sending* node's RTC, which
-   *     MeshMonitor's local companion never keeps synced, so the target
+   *     MeshRadar's local companion never keeps synced, so the target
    *     inherits our drift (the reported "~22 minutes behind").
    *
    * The `time <epoch>` verb instead sets the RTC directly from the epoch in the
@@ -9722,7 +9722,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
    * The device push is best-effort and companion-only: the local star still
    * works if the write fails (disconnected, repeater source, or the contact
    * isn't in the device table because it was never synced or was evicted).
-   * MeshMonitor is the source of truth for favourites — `reconcileDeviceFavorites`
+   * MeshRadar is the source of truth for favourites — `reconcileDeviceFavorites`
    * re-asserts local favourites onto the device and mirrors device-side
    * favourites back into the DB.
    */
@@ -9766,17 +9766,17 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
   }
 
   /**
-   * Reconcile the firmware favourite bit with MeshMonitor's local favourites,
+   * Reconcile the firmware favourite bit with MeshRadar's local favourites,
    * using `this.contacts` (freshly read device flags) and the persisted
    * `isFavorite` column. Two directions, both preserving the protective intent
    * of a favourite:
    *
    * - **Device → app (additive):** a contact favourited on the device/phone
-   *   that MeshMonitor doesn't know about gets `isFavorite` set locally.
+   *   that MeshRadar doesn't know about gets `isFavorite` set locally.
    * - **App → device (self-healing):** a local favourite the device is missing
    *   (e.g. a fresh advert re-added an evicted contact with `flags=0`) is
-   *   re-pushed so eviction protection is restored. MeshMonitor favourites are
-   *   authoritative; to remove one, un-favourite it in MeshMonitor.
+   *   re-pushed so eviction protection is restored. MeshRadar favourites are
+   *   authoritative; to remove one, un-favourite it in MeshRadar.
    *
    * Companion-only and best-effort. Called from `refreshContacts` after the
    * device flags are loaded (so on connect it backfills existing favourites).
@@ -9794,7 +9794,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
         const appFav = appFavByKey.get(contact.publicKey) === true;
         if (deviceFav === appFav) continue;
         if (deviceFav && !appFav) {
-          // Device/phone has it favourited but MeshMonitor doesn't → adopt the
+          // Device/phone has it favourited but MeshRadar doesn't → adopt the
           // device state locally (additive). The reverse — app un-favourite vs
           // device still favourited — is NOT reconciled here; un-favouriting is
           // authoritative only through setNodeFavorite (see the class doc).
@@ -9820,7 +9820,7 @@ class MeshCoreManager extends EventEmitter implements ISourceManager {
         logger.warn(
           autoAddOff
             ? `[MeshCore:${this.sourceId}] ${evictedFavCount} locally-favourited node(s) not in the device contact table. ` +
-              `Auto-add contacts is OFF on this radio, so nodes heard via advert are not saved to it, and MeshMonitor ` +
+              `Auto-add contacts is OFF on this radio, so nodes heard via advert are not saved to it, and MeshRadar ` +
               `cannot log in to or poll them. Turn auto-add on, or use "Push to radio" in MeshCore Settings.`
             : `[MeshCore:${this.sourceId}] ${evictedFavCount} locally-favourited node(s) not in the device contact table — eviction protection inactive until they re-advert (or use "Push to radio" in MeshCore Settings)`,
         );

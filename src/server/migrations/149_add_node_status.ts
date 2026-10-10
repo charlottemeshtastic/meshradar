@@ -5,7 +5,7 @@
  * The firmware `StatusMessageModule` (fw 2.7.20+/2.8.0) broadcasts each node's
  * self-set status on `PortNum.NODE_STATUS_APP` (36) as
  * `meshtastic.StatusMessage { string status }` (max 80 chars) — on change, and
- * otherwise ~every 12h. MeshMonitor now decodes and stores it as a per-node
+ * otherwise ~every 12h. MeshRadar now decodes and stores it as a per-node
  * attribute (one current value, cleared to NULL on an empty broadcast),
  * mirroring the official Android/Apple clients. Meshtastic-only.
  *

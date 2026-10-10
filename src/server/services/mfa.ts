@@ -13,7 +13,7 @@ import crypto from 'crypto';
 const BACKUP_CODE_COUNT = 10;
 const BACKUP_CODE_LENGTH = 8;
 const BCRYPT_ROUNDS = 10;
-const SERVICE_NAME = 'MeshMonitor';
+const SERVICE_NAME = 'MeshRadar';
 
 export class MfaService {
   /**

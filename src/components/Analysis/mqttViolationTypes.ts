@@ -298,7 +298,7 @@ export function brokerClassMeta(cls: BrokerAddressClass): BrokerClassMeta {
         labelFallback: 'Unverified — hostname broker',
         descriptionKey: 'analysis.mqtt_violations.broker_unknown_desc',
         descriptionFallback:
-          "At least one observing source is configured with a hostname (or another address MeshMonitor can't classify from the string alone). It may or may not resolve to a private address, so this relay is not proven either way.",
+          "At least one observing source is configured with a hostname (or another address MeshRadar can't classify from the string alone). It may or may not resolve to a private address, so this relay is not proven either way.",
       };
   }
 }

@@ -3,7 +3,7 @@
  * Supports SQLite, PostgreSQL, and MySQL.
  *
  * `privacy_documents` is GLOBAL by design (no sourceId). A privacy policy,
- * terms-of-service or contact page describes the MeshMonitor *deployment* —
+ * terms-of-service or contact page describes the MeshRadar *deployment* —
  * the legal entity serving the dashboard — not any one mesh source. An
  * operator running four sources publishes one policy, the same way they set
  * one `noIndexEnabled`. This mirrors the global-by-design tables

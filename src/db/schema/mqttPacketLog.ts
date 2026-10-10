@@ -48,7 +48,7 @@ export const mqttPacketLogSqlite = sqliteTable('mqtt_packet_log', {
    * query does `MAX(encrypted)`, and PostgreSQL has no MAX(boolean) aggregate.
    */
   encrypted: integer('encrypted').notNull().default(0),
-  /** 'server' when MeshMonitor decrypted an encrypted copy server-side, else null. */
+  /** 'server' when MeshRadar decrypted an encrypted copy server-side, else null. */
   decryptedBy: text('decryptedBy'),
   /** 'ingested' | 'encrypted' | 'ignored' | 'geo-ignored' | 'distance' | 'unsupported-portnum' | 'decode-error'. */
   ingestOutcome: text('ingestOutcome').notNull(),

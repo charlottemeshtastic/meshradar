@@ -151,7 +151,7 @@ describe('translationRoutes', () => {
       vi.mocked(translationService.testConfig).mockResolvedValue({
         translatedText: 'Hola',
         detectedSourceLanguage: 'en',
-        sourceText: 'MeshMonitor test message for radio translation.',
+        sourceText: 'MeshRadar test message for radio translation.',
         targetLanguage: 'es',
         provider: 'libretranslate',
       });

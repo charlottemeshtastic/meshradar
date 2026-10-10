@@ -1,5 +1,5 @@
 /**
- * Hop-limit override for MeshMonitor-originated automated sends (#5121).
+ * Hop-limit override for MeshRadar-originated automated sends (#5121).
  *
  * Automations, auto-announce and Auto-Acknowledge can pin their outbound text to
  * a hop count, most often 0 so a status message stays in the local RF

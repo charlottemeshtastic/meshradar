@@ -191,7 +191,7 @@ describe('NodeDetailsBlock position source badge (#4498)', () => {
   });
 
   it('still says "Override" for a manually placed pin, not the LocSource', () => {
-    // positionIsOverride is MeshMonitor's own concept and outranks whatever the
+    // positionIsOverride is MeshRadar's own concept and outranks whatever the
     // device last reported.
     render(
       <NodeDetailsBlock

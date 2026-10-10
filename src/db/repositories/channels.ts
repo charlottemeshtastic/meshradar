@@ -154,7 +154,7 @@ export class ChannelsRepository extends BaseRepository {
         downlinkEnabled: data.downlinkEnabled ?? existingChannel.downlinkEnabled,
         positionPrecision: data.positionPrecision ?? existingChannel.positionPrecision,
         useAead: data.useAead ?? existingChannel.useAead ?? false,
-        // Scope is MeshMonitor-owned and never reported by the device. Only
+        // Scope is MeshRadar-owned and never reported by the device. Only
         // overwrite when the caller explicitly supplies it (undefined = preserve,
         // empty string = clear). This keeps `syncChannelsFromDevice()` (which
         // omits scope) from wiping a user-configured region (#3667).
@@ -216,7 +216,7 @@ export class ChannelsRepository extends BaseRepository {
    * Set (or clear) a channel's MeshCore region/scope tag (#3667), scoped to a
    * source. Pass `null`/'' to clear. Stored without a leading '#'. This is a
    * targeted update so it never touches name/psk — the device write happens
-   * separately and scope lives only in MeshMonitor's DB.
+   * separately and scope lives only in MeshRadar's DB.
    */
   async updateChannelScope(id: number, scope: string | null, sourceId?: string): Promise<void> {
     const { channels } = this.tables;

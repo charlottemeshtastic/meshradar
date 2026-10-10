@@ -410,7 +410,7 @@ const MESHTASTIC_TCP: Spec<MeshtasticSourceConfig & { autoConnect?: boolean }> =
   heartbeatIntervalSeconds: withheld,
   virtualNode: nested<NonNullable<MeshtasticSourceConfig['virtualNode']>>({
     enabled: open(),
-    // The port MeshMonitor listens on for Virtual Node clients.
+    // The port MeshRadar listens on for Virtual Node clients.
     port: granted(),
     allowAdminCommands: withheld,
   }),

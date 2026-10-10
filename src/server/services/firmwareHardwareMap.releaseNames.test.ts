@@ -290,7 +290,7 @@ describe('firmwareHardwareMap vs. Meshtastic release file names', () => {
       const err = caught as OtaPreflightError;
       expect(err.code).toBe('OTA_AMBIGUOUS_BOARD');
       expect(err.message).toContain(`is shared by several firmware builds (${builds.join(', ')})`);
-      expect(err.message).toContain("MeshMonitor can't tell which one this node runs");
+      expect(err.message).toContain("MeshRadar can't tell which one this node runs");
       expect(err.message).toMatch(/Flash it manually/);
       expect(svc.getStatus().state).toBe('idle');
     });

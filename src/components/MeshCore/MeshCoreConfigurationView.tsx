@@ -612,7 +612,7 @@ export const MeshCoreConfigurationView: React.FC<MeshCoreConfigurationViewProps>
         />
       )}
 
-      {/* Radio contact list vs MeshMonitor (#5502). Gates itself: the auto-add
+      {/* Radio contact list vs MeshRadar (#5502). Gates itself: the auto-add
           switch on configuration:write, the push on nodes:write. */}
       {isCompanion && baseUrl !== undefined && sourceId && (
         <MeshCoreContactSyncSection

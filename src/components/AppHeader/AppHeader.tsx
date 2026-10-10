@@ -159,12 +159,12 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
         )}
         <div className="header-title">
           {/* On a per-source page the back-to-sources button already anchors the
-              header, so the MeshMonitor logo + wordmark are redundant between it
+              header, so the MeshRadar logo + wordmark are redundant between it
               and the source name — show them only on the source-list/root view. */}
           {!onBackToSources && (
             <>
-              <img src={`${baseUrl}/logo.png`} alt="MeshMonitor Logo" className="header-logo" />
-              <h1>MeshMonitor</h1>
+              <img src={`${baseUrl}/logo.png`} alt="MeshRadar Logo" className="header-logo" />
+              <h1>MeshRadar</h1>
             </>
           )}
           {/* Show only the source name (#4908) — clickable to open the node-info

@@ -50,7 +50,7 @@ describe('SidebarFooter', () => {
     expect(screen.queryByText(`v${packageJson.version}`)).toBeNull();
   });
 
-  it('links Discord to the MeshMonitor invite in a new tab', () => {
+  it('links Discord to the MeshRadar invite in a new tab', () => {
     render(<SidebarFooter {...baseProps} />);
     const discord = screen.getByTitle('source.sidebar.discord');
     expect(discord).toHaveAttribute('href', 'https://discord.gg/JVR3VBETQE');

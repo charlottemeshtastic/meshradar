@@ -1,5 +1,5 @@
 /**
- * TransportSeriesChart - Dashboard card for a favorited MeshMonitor-computed
+ * TransportSeriesChart - Dashboard card for a favorited MeshRadar-computed
  * per-transport series (#5101 Phase 3): "Nodes Heard by Transport" or
  * "Packets RX by Transport", selected by the favorite's pseudo telemetryType
  * (`TRANSPORT_NODES_HEARD_TYPE` / `TRANSPORT_PACKETS_RX_TYPE`).

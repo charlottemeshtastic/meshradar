@@ -1,7 +1,7 @@
 /**
  * Connect-timeout lifetime + teardown observability (#5122).
  *
- * A reporter's packet capture showed MeshMonitor sending the first FIN on a
+ * A reporter's packet capture showed MeshRadar sending the first FIN on a
  * healthy, mid-sync connection with nothing in the application log — no stale
  * connection warning, no error, just a clean client-initiated close followed by
  * a reconnect. Two properties of the old code made that shape possible:

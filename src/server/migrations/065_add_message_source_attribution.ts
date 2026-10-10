@@ -2,7 +2,7 @@
  * Migration 065: Add source_ip and source_path columns to messages table.
  *
  * Adds two nullable text columns so operators can trace WHICH client/API caller
- * injected a given message via MeshMonitor's send endpoint:
+ * injected a given message via MeshRadar's send endpoint:
  *
  *   - source_ip   TEXT NULL   — client IP for HTTP-injected sends (honors
  *                               X-Forwarded-For when trust proxy is configured);

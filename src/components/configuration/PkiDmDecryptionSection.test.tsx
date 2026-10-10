@@ -1,7 +1,7 @@
 /**
  * @vitest-environment jsdom
  *
- * PkiDmDecryptionSection: a MeshMonitor-side switch that moved from Device
+ * PkiDmDecryptionSection: a MeshRadar-side switch that moved from Device
  * Configuration to the source's Settings page (#5683 follow-up).
  *
  * The move changes neither what it calls nor what it needs: it reads

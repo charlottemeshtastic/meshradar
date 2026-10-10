@@ -19,7 +19,7 @@
  */
 
 /**
- * How MeshMonitor authenticates to a broker (#4595).
+ * How MeshRadar authenticates to a broker (#4595).
  * - `token`: Ed25519-signed token, username `v1_{PUBLIC_KEY}`.
  * - `password`: static MQTT username/password. The password is NOT part of
  *   this form — it is stored through PUT /api/sources/:id/observer/credentials

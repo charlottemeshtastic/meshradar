@@ -1,7 +1,7 @@
 /**
  * Redaction for anything a log line might carry (#5122 follow-up).
  *
- * MeshMonitor logs decoded protobufs liberally at debug level, and several of
+ * MeshRadar logs decoded protobufs liberally at debug level, and several of
  * those messages carry credentials in the clear:
  *
  *   - `config.security.private_key` / `admin_key` — the node's identity

@@ -532,7 +532,7 @@
 
 /*
  * `@` mention chips (#5276). A mention is plain text on the wire — the chip is
- * only how MeshMonitor shows it, the same way the official apps do.
+ * only how MeshRadar shows it, the same way the official apps do.
  */
 .message-mention {
   padding: 0 0.2rem;

@@ -76,7 +76,7 @@ export const WELL_KNOWN_CHANNEL_NAMES: readonly string[] = [
  * name. An empty name reads as the current preset's name when the radio uses a
  * preset (`Channels::getName`), and as "Custom" when it does not.
  *
- * MeshMonitor stores an unnamed secondary channel as `Channel <index>`; that
+ * MeshRadar stores an unnamed secondary channel as `Channel <index>`; that
  * placeholder is treated as the empty name it stands for.
  */
 export function isWellKnownChannel(channel: {
@@ -93,7 +93,7 @@ export function isWellKnownChannel(channel: {
 
 // --- Replay policy (ours, not firmware) --------------------------------------
 /**
- * The node's tick clocks run on uptime, so MeshMonitor cannot know where a
+ * The node's tick clocks run on uptime, so MeshRadar cannot know where a
  * tick boundary fell. Both clocks repeat together every lcm(6, 5) = 30 min, so
  * the replay tries boot offsets across that span, one every 30 s.
  */
@@ -117,7 +117,7 @@ export interface ReplaySettings {
 }
 
 export interface ReplayPacket {
-  /** When MeshMonitor logged it, ms. Rows must be in ascending order. */
+  /** When MeshRadar logged it, ms. Rows must be in ascending order. */
   timestampMs: number;
   from: number;
   to: number | null;
@@ -126,11 +126,11 @@ export interface ReplayPacket {
   portnum: number;
   /**
    * True only when the NODE decoded the packet. An encrypted row, or one
-   * MeshMonitor decrypted itself (`decrypted_by = 'server'`), was undecoded on
+   * MeshRadar decrypted itself (`decrypted_by = 'server'`), was undecoded on
    * the node: `handleReceived` returns before either rule, so neither counts it.
    */
   decodedByNode: boolean;
-  /** MeshMonitor decrypted it (reported, never simulated). */
+  /** MeshRadar decrypted it (reported, never simulated). */
   serverDecrypted?: boolean;
   /** Logged as our own transmission. */
   isTx?: boolean;
@@ -161,7 +161,7 @@ export interface ReplayInput {
   proposed: ReplaySettings;
   localNodeNum: number;
   channels: ReadonlyMap<number, ReplayChannel>;
-  /** Device role per sender, as MeshMonitor last heard it. Missing = CLIENT. */
+  /** Device role per sender, as MeshRadar last heard it. Missing = CLIENT. */
   senderRoles: ReadonlyMap<number, number>;
 }
 
@@ -185,9 +185,9 @@ export type ReplayCaveat =
   | 'RELAYED_UNICAST_INVISIBLE'
   /** A packet the node drops today could pass under the new setting. */
   | 'NET_CHANGE_MAY_BE_SMALLER'
-  /** Dedup: role caps use the role MeshMonitor last heard. */
+  /** Dedup: role caps use the role MeshRadar last heard. */
   | 'SENDER_ROLE_FROM_MESHMONITOR'
-  /** Rows MeshMonitor decrypted were undecoded on the node and not counted. */
+  /** Rows MeshRadar decrypted were undecoded on the node and not counted. */
   | 'SERVER_DECRYPTED_NOT_COUNTED'
   /** The scan hit its cap; older history was not read. */
   | 'SCAN_TRUNCATED'

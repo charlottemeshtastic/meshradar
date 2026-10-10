@@ -89,7 +89,7 @@ export function describeMeshCoreDelivery(
       {
         labelKey: 'delivery_details.field.round_trip',
         value: msg.roundTripMs !== undefined ? `${msg.roundTripMs} ms` : null,
-        // We timed the request → confirm ourselves (MeshMonitor observation),
+        // We timed the request → confirm ourselves (MeshRadar observation),
         // not a value the protocol reports on the wire.
         provenance: 'observed',
       },
@@ -101,7 +101,7 @@ export function describeMeshCoreDelivery(
     fields: [
       {
         labelKey: 'delivery_details.field.message_id',
-        // Our own row id — MeshMonitor's bookkeeping, not a protocol value.
+        // Our own row id — MeshRadar's bookkeeping, not a protocol value.
         // Coerce to string: some backends hand back a numeric id, and a falsy
         // id (0 / '') should read as Unknown rather than an empty value.
         value: msg.id ? String(msg.id) : null,
@@ -204,7 +204,7 @@ export function describeMeshCoreDelivery(
     tone,
     meaningKey,
     sections,
-    // Observed by MeshMonitor through repeater re-flood correlation (#3700).
+    // Observed by MeshRadar through repeater re-flood correlation (#3700).
     // Passed through verbatim — the modal (WP2) decides whether to render it
     // (omit for DMs, show "no re-flood observed" for channel sends).
     heardBy: msg.heardBy,

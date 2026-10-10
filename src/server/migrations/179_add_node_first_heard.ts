@@ -15,7 +15,7 @@
  *
  * Backfill (existing rows only, rows with firstHeard still NULL): a node that
  * has a `lastHeard` has been heard. Its first reception is no later than the
- * earlier of `createdAt` (when MeshMonitor first stored it) and `lastHeard`,
+ * earlier of `createdAt` (when MeshRadar first stored it) and `lastHeard`,
  * so we take the earlier of the two, ignoring either value when it is
  * implausible (before 2020, or more than a day in the future — MeshCore RTC
  * drift, #5339). Rows never heard (`lastHeard` NULL/0) stay NULL = "unknown".

@@ -191,9 +191,9 @@ describe('DashboardPage', () => {
     vi.clearAllMocks();
   });
 
-  it('renders top bar with "MeshMonitor" text', () => {
+  it('renders top bar with "MeshRadar" text', () => {
     renderPage();
-    expect(screen.getByText('MeshMonitor')).toBeInTheDocument();
+    expect(screen.getByText('MeshRadar')).toBeInTheDocument();
   });
 
   it('renders the sidebar', () => {

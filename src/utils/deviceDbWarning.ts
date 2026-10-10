@@ -4,7 +4,7 @@ import type { DeviceInfo } from '../types/device.js';
  * Decides whether the DM-view "not in device DB" warning is *mitigatable*
  * (issue #3853).
  *
- * Since PR #3227, MeshMonitor pre-populates the radio's NodeDB via add_contact
+ * Since PR #3227, MeshRadar pre-populates the radio's NodeDB via add_contact
  * immediately before sending a PKI DM, so the DM succeeds even when the node was
  * evicted from the radio's NodeDB — as long as the public key is known and there
  * is no active key mismatch. In that case the warning is mitigatable: show a

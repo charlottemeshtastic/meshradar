@@ -56,7 +56,7 @@ describe('moduleAvailabilityFromMask (#5065)', () => {
     expect(Object.values(availability).every(Boolean)).toBe(true);
   });
 
-  it('covers the 16 bits MeshMonitor has a section for', () => {
+  it('covers the 16 bits MeshRadar has a section for', () => {
     // The first 15 enum bits plus TAK_CONFIG (#5613). The enum also has
     // STATUSMESSAGE (0x8000), TRAFFICMANAGEMENT (0x10000) and MESHBEACON
     // (0x40000); those sections are still gated on firmware version alone.

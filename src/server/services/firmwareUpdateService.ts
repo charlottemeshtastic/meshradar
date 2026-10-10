@@ -304,7 +304,7 @@ export class FirmwareUpdateService {
     try {
       const headers: Record<string, string> = {
         'Accept': 'application/vnd.github.v3+json',
-        'User-Agent': 'MeshMonitor',
+        'User-Agent': 'MeshRadar',
       };
 
       if (this.etag) {
@@ -381,7 +381,7 @@ export class FirmwareUpdateService {
   async fetchNightly(): Promise<FirmwareRelease | null> {
     try {
       const response = await fetch(NIGHTLY_INDEX_URL, {
-        headers: { 'User-Agent': 'MeshMonitor' },
+        headers: { 'User-Agent': 'MeshRadar' },
       });
       if (!response.ok) {
         // 404 before the first nightly of a cycle is published — no section.
@@ -616,7 +616,7 @@ export class FirmwareUpdateService {
   /** Reconnect the update's source after a failed step. Never throws. */
   private async reconnectAfterFailure(mgr: MeshtasticManager | null, step: string): Promise<void> {
     if (!mgr) return;
-    logger.debug(`[FirmwareUpdateService] Reconnecting MeshMonitor after ${step} failure`);
+    logger.debug(`[FirmwareUpdateService] Reconnecting MeshRadar after ${step} failure`);
     try {
       await mgr.userReconnect();
     } catch (reconnectError) {
@@ -660,7 +660,7 @@ export class FirmwareUpdateService {
       logger.info('[FirmwareUpdateService] Update cancelled by user');
 
       if (wasDisconnected && mgr) {
-        logger.debug('[FirmwareUpdateService] Reconnecting MeshMonitor after cancel');
+        logger.debug('[FirmwareUpdateService] Reconnecting MeshRadar after cancel');
         try {
           await mgr.userReconnect();
         } catch (reconnectError) {
@@ -973,7 +973,7 @@ export class FirmwareUpdateService {
    * Stage a `.bin` the user uploaded from disk, ready for the next wizard run
    * (#5249).
    *
-   * MeshMonitor does NOT verify that this binary belongs to the connected
+   * MeshRadar does NOT verify that this binary belongs to the connected
    * board. Every OTA-capable board is ESP32, so a legitimate upload is always
    * an ESP-IDF app image and the header could be parsed — but a local
    * PlatformIO build is the whole point of this feature, and those are named
@@ -1111,12 +1111,12 @@ export class FirmwareUpdateService {
       throw new OtaPreflightError(
         'OTA_AMBIGUOUS_BOARD',
         `${getHardwareDisplayName(params.hwModel)} is shared by several firmware builds ` +
-          `(${ambiguous.builds.join(', ')}); MeshMonitor can't tell which one this node runs. ` +
+          `(${ambiguous.builds.join(', ')}); MeshRadar can't tell which one this node runs. ` +
           `Flash it manually, or choose the build yourself with a custom firmware URL or an uploaded .bin.`
       );
     }
 
-    // #5677: hardware MeshMonitor cannot update is refused with a machine
+    // #5677: hardware MeshRadar cannot update is refused with a machine
     // code (400), not a bare 500. These are the same steps as
     // firmwareUpdateSupport(), which the Firmware Updates pane uses to show a
     // card instead of the update UI; hardwareRefusal.test.ts holds them equal.
@@ -1255,7 +1255,7 @@ export class FirmwareUpdateService {
    * Returns the path to the backup file.
    */
   /**
-   * Disconnect MeshMonitor from the node so the CLI can use the TCP connection.
+   * Disconnect MeshRadar from the node so the CLI can use the TCP connection.
    * This is called before backup and stays disconnected through the entire flash process.
    */
   async disconnectFromNode(): Promise<void> {
@@ -1265,7 +1265,7 @@ export class FirmwareUpdateService {
       step: 'backup',
       message: 'Disconnecting from node for firmware update...',
     });
-    logger.debug('[FirmwareUpdateService] Disconnecting MeshMonitor from node for CLI access');
+    logger.debug('[FirmwareUpdateService] Disconnecting MeshRadar from node for CLI access');
     const mgr = this.resolveUpdateManager();
     if (!mgr) {
       // The source vanished between preflight and confirm. Stop here: going on
@@ -1276,7 +1276,7 @@ export class FirmwareUpdateService {
     }
     await mgr.userDisconnect();
     this.appendLog('Disconnected from node.');
-    logger.debug('[FirmwareUpdateService] MeshMonitor disconnected from node');
+    logger.debug('[FirmwareUpdateService] MeshRadar disconnected from node');
   }
 
   async executeBackup(gatewayIp: string, nodeId: string): Promise<string> {
@@ -1295,7 +1295,7 @@ export class FirmwareUpdateService {
       this.ensureBackupDir();
 
       // Wait for the firmware to release its TCP slot from the prior
-      // MeshMonitor connection — otherwise the CLI silently hangs on connect.
+      // MeshRadar connection — otherwise the CLI silently hangs on connect.
       // Probe the parsed host/port — `gatewayIp` may carry the source's custom
       // TCP port as `host:port` (#5424), which is not a valid socket host.
       const gw = parseOtaGateway(gatewayIp);
@@ -1344,7 +1344,7 @@ export class FirmwareUpdateService {
         message: `Backup failed: ${message}`,
         error: message,
       });
-      // Reconnect on failure so MeshMonitor isn't left disconnected
+      // Reconnect on failure so MeshRadar isn't left disconnected
       await this.reconnectAfterFailure(this.resolveUpdateManager(), 'backup');
       throw error;
     }
@@ -1441,7 +1441,7 @@ export class FirmwareUpdateService {
           throw new Error(
             `That URL returned a web page (${contentType.split(';')[0].trim()}), not a firmware binary. ` +
             `If you copied it from the GitHub file view, use the "Raw" link — or paste the page URL and ` +
-            `MeshMonitor will convert it for you.`,
+            `MeshRadar will convert it for you.`,
           );
         }
       }
@@ -1508,7 +1508,7 @@ export class FirmwareUpdateService {
         message: `Download failed: ${message}`,
         error: message,
       });
-      // Reconnect on failure so MeshMonitor isn't left disconnected. Backup
+      // Reconnect on failure so MeshRadar isn't left disconnected. Backup
       // already disconnected the node — without this, the user has to wait
       // for the 60s auto-reconnect timer or manually reconnect.
       await this.reconnectAfterFailure(this.resolveUpdateManager(), 'download');
@@ -1660,7 +1660,7 @@ export class FirmwareUpdateService {
         error: message,
       });
       logger.error(`[FirmwareUpdateService] Readiness check failed before OTA: ${message}`);
-      logger.debug('[FirmwareUpdateService] Reconnecting MeshMonitor after readiness failure');
+      logger.debug('[FirmwareUpdateService] Reconnecting MeshRadar after readiness failure');
       await mgr?.userReconnect();
       throw new Error(`Node readiness check failed: ${message}`);
     }
@@ -1856,7 +1856,7 @@ export class FirmwareUpdateService {
       logger.debug('[FirmwareUpdateService] OTA flash completed — waiting for node to finish reboot before reconnecting');
       try {
         await this.waitForNodeReady(host, port, 120_000);
-        this.appendLog('Node is back online. Reconnecting MeshMonitor...');
+        this.appendLog('Node is back online. Reconnecting MeshRadar...');
       } catch (err) {
         const m = err instanceof Error ? err.message : String(err);
         this.appendLog(`Node did not come back within 2 minutes (${m}). Reconnect will continue in the background.`);
@@ -1884,11 +1884,11 @@ export class FirmwareUpdateService {
         message: `Flash failed: ${message}`,
         error: message,
       });
-      // Reconnect on failure so MeshMonitor isn't left disconnected. Wait for
+      // Reconnect on failure so MeshRadar isn't left disconnected. Wait for
       // the node first — it may have been mid-reboot when the flash errored
       // out, and reconnecting into an ECONNREFUSED kicks off the auto-retry
       // race we're explicitly trying to avoid.
-      logger.debug('[FirmwareUpdateService] Reconnecting MeshMonitor after flash failure');
+      logger.debug('[FirmwareUpdateService] Reconnecting MeshRadar after flash failure');
       try {
         await this.waitForNodeReady(host, port, 30_000);
       } catch {
@@ -1935,7 +1935,7 @@ export class FirmwareUpdateService {
       if (v && v !== stale) return v;
       await new Promise((r) => setTimeout(r, intervalMs));
     }
-    // MeshMonitor's transport never repopulated MyNodeInfo (typically because
+    // MeshRadar's transport never repopulated MyNodeInfo (typically because
     // of the post-OTA `@meshtastic/js` reconnect flap). Fall back to the
     // meshtastic CLI to read the version straight from the node — this is the
     // same path we use elsewhere and is independent of MM's transport state.
@@ -1944,7 +1944,7 @@ export class FirmwareUpdateService {
     if (!opts?.gatewayIp) return fallback;
     if (!mgr) {
       // resolveUpdateManager already warned. The CLI read below still works;
-      // there is just no MeshMonitor connection to release or restore.
+      // there is just no MeshRadar connection to release or restore.
       logger.debug('[FirmwareUpdateService] Verify CLI fallback runs without a manager for the update source');
     }
     try {
@@ -2175,7 +2175,7 @@ export class FirmwareUpdateService {
 
   /**
    * Block until the node's API port accepts a new TCP connection, or throw.
-   * Used before OTA to confirm MeshMonitor has fully released its socket and
+   * Used before OTA to confirm MeshRadar has fully released its socket and
    * the device is ready for the CLI to connect.
    */
   private async waitForNodeReady(host: string, port: number, timeoutMs: number = 15000): Promise<void> {

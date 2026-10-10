@@ -4,7 +4,7 @@
  * Two tables, both per-source and per-target:
  *
  *  - auto_favorite_targets: one config row per remote target node a user has
- *    asked MeshMonitor to keep favorites up to date on (via Remote Admin).
+ *    asked MeshRadar to keep favorites up to date on (via Remote Admin).
  *    Discovery can use the target's NeighborInfo, its passing traceroutes, or
  *    both. Each cycle favorites up to `maxNewPerCycle` newly discovered eligible
  *    neighbors and re-sends up to `maxRefavoritePerCycle` previously assigned

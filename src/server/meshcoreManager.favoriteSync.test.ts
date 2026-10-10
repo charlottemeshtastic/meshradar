@@ -1,7 +1,7 @@
 /**
  * Tests for MeshCore favourite ↔ device synchronisation (#4838/#4840 follow-up).
  *
- * MeshMonitor's ⭐ used to be a local-only `meshcore_nodes.isFavorite` column
+ * MeshRadar's ⭐ used to be a local-only `meshcore_nodes.isFavorite` column
  * that never touched the device, so a favourited contact was NOT protected from
  * the companion firmware's contact-table eviction (the firmware only skips
  * contacts whose `ContactInfo.flags` bit 0 is set). These tests cover the sync

@@ -240,7 +240,7 @@ export interface AutoResponderParsed {
  * body as a single response when the input either fails to parse OR
  * parses to a JSON object that doesn't carry `response`/`responses`
  * — preserves pre-PR behaviour for third-party endpoints that happen
- * to return JSON shaped differently from MeshMonitor's convention.
+ * to return JSON shaped differently from MeshRadar's convention.
  *
  * Exported so unit tests can exercise the matrix of inputs without
  * standing up a MeshtasticManager.
@@ -589,7 +589,7 @@ interface AutoPingSession {
 
 /**
  * Bidirectional bridge config between this Meshtastic source and an embedded
- * mqtt_broker source (issue #3003 follow-up). When `enabled`, MeshMonitor
+ * mqtt_broker source (issue #3003 follow-up). When `enabled`, MeshRadar
  * forwards FromRadio.mqttClientProxyMessage payloads to the linked broker and
  * injects broker messages back as ToRadio.mqttClientProxyMessage. Works for
  * devices that have `mqtt.proxy_to_client_enabled = true` set in firmware.
@@ -1408,7 +1408,7 @@ class MeshtasticManager implements ISourceManager {
 
   /**
    * The device is in client-proxy mode and this source has no MQTT link, so
-   * MeshMonitor carries none of its MQTT traffic: publishes stop here and no
+   * MeshRadar carries none of its MQTT traffic: publishes stop here and no
    * broker traffic goes back to the node. This is the cause behind #5013, so
    * say it in the log — once per connection, since the device sends a proxy
    * frame for every packet it uplinks.
@@ -1422,9 +1422,9 @@ class MeshtasticManager implements ISourceManager {
       : 'no MQTT source is linked';
     if (vnClients > 0) {
       // processIncomingData hands the frame to the newest Virtual Node client.
-      // If that is the MQTT Proxy sidecar, all is well; MeshMonitor cannot tell.
+      // If that is the MQTT Proxy sidecar, all is well; MeshRadar cannot tell.
       logger.info(
-        `[${this.sourceId}] MQTT client proxy: ${configured}; MeshMonitor is not carrying this node's MQTT traffic. ` +
+        `[${this.sourceId}] MQTT client proxy: ${configured}; MeshRadar is not carrying this node's MQTT traffic. ` +
         `Proxy frames go to the newest of ${vnClients} Virtual Node client(s) instead (first topic=${topic}). ` +
         `Logged once per connection. ${MQTT_TRAFFIC_DOCS_URL}`,
       );
@@ -1676,7 +1676,7 @@ class MeshtasticManager implements ISourceManager {
    *
    * Meshtastic firmware treats an incoming Heartbeat in `ToRadio` as a
    * no-op "client is still alive" marker — the device does not generate a
-   * response. MeshMonitor sends this periodically to keep quiet nodes
+   * response. MeshRadar sends this periodically to keep quiet nodes
    * (CLIENT_MUTE) from getting reconnected by the stale-data health check.
    * The transport resets `lastDataReceived` on a successful write, so the
    * heartbeat also doubles as the liveness signal for that detector.
@@ -1727,7 +1727,7 @@ class MeshtasticManager implements ISourceManager {
    * Get connection config for scripts. When Virtual Node is enabled, returns
    * localhost + virtual node port so scripts connect through the Virtual Node
    * instead of opening a second TCP connection to the physical node (which would
-   * kill MeshMonitor's connection). Falls back to getConfig() when Virtual Node
+   * kill MeshRadar's connection). Falls back to getConfig() when Virtual Node
    * is disabled.
    */
   private async getScriptConnectionConfig(): Promise<MeshtasticConfig> {
@@ -1820,7 +1820,7 @@ class MeshtasticManager implements ISourceManager {
   /**
    * Detect an unexpected reboot from an incoming `uptimeSeconds` reading
    * (Device Health #4558 Phase B). Compares the new value against the node's
-   * latest stored uptime — read from the DB, so a MeshMonitor restart can never
+   * latest stored uptime — read from the DB, so a MeshRadar restart can never
    * spuriously fire (the baseline is the durable row, not in-memory state). The
    * first-ever reading has no prior and never fires. On a genuine reset (a real
    * decrease beyond {@link REBOOT_UPTIME_SLACK_SECONDS}), emit `node:rebooted`
@@ -1846,7 +1846,7 @@ class MeshtasticManager implements ISourceManager {
   /**
    * Detect an external-power transition from an incoming `batteryLevel` reading
    * (Device Health #4558 Phase C). Compares the new value against the node's
-   * latest stored batteryLevel — read from the DB, so a MeshMonitor restart can
+   * latest stored batteryLevel — read from the DB, so a MeshRadar restart can
    * never spuriously fire (the baseline is the durable row, not in-memory state).
    * The first-ever reading has no prior and never fires. Powered-state is the
    * firmware convention `batteryLevel > 100`; when the derived powered-state
@@ -2818,7 +2818,7 @@ class MeshtasticManager implements ISourceManager {
     const intervalMs = this.tracerouteIntervalMinutes * 60 * 1000;
 
     // Add random initial jitter (0 to min of interval or 5 minutes) to prevent network bursts
-    // when multiple MeshMonitor instances start at similar times with the same interval.
+    // when multiple MeshRadar instances start at similar times with the same interval.
     // Only the first execution is delayed; subsequent runs use the regular interval.
     const maxJitterMs = Math.min(intervalMs, 5 * 60 * 1000); // Cap at 5 minutes
     const initialJitterMs = Math.random() * maxJitterMs;
@@ -3731,7 +3731,7 @@ class MeshtasticManager implements ISourceManager {
       if (this.isConnected && this.localNodeInfo) {
         try {
           await this.requestLocalStats();
-          // Save MeshMonitor's system node metrics alongside LocalStats
+          // Save MeshRadar's system node metrics alongside LocalStats
           await this.saveSystemNodeMetrics();
         } catch (error) {
           logger.error('❌ Error in auto-LocalStats collection:', error);
@@ -3824,7 +3824,7 @@ class MeshtasticManager implements ISourceManager {
   }
 
   /**
-   * Save MeshMonitor's system node metrics as telemetry
+   * Save MeshRadar's system node metrics as telemetry
    * This allows graphing the system's active node count over time
    */
   private async saveSystemNodeMetrics(): Promise<void> {
@@ -4310,7 +4310,7 @@ class MeshtasticManager implements ISourceManager {
       if (node?.longName) scriptEnv.NODE_LONG_NAME = node.longName;
       if (node?.shortName) scriptEnv.NODE_SHORT_NAME = node.shortName;
 
-      // Add MeshMonitor node location
+      // Add MeshRadar node location
       const localNodeInfo = this.getLocalNodeInfo();
       if (localNodeInfo) {
         const mmNode = await databaseService.nodes.getNode(localNodeInfo.nodeNum, this.sourceId);
@@ -4564,7 +4564,7 @@ class MeshtasticManager implements ISourceManager {
         MESHTASTIC_PORT: String(config.tcpPort),
       };
 
-      // Add MeshMonitor node location if available
+      // Add MeshRadar node location if available
       const localNodeInfo = this.getLocalNodeInfo();
       if (localNodeInfo) {
         const mmNode = await databaseService.nodes.getNode(localNodeInfo.nodeNum, this.sourceId);
@@ -6404,7 +6404,7 @@ class MeshtasticManager implements ISourceManager {
     }
 
     // PKI direct-message decryption (#3441): if the packet is STILL encrypted and
-    // is a unicast addressed to a node whose private key MeshMonitor holds, decrypt
+    // is a unicast addressed to a node whose private key MeshRadar holds, decrypt
     // it server-side. This surfaces DMs that the receiving radio didn't decode —
     // primarily PKI DMs relayed (still encrypted) through MQTT bridge/broker
     // sources, addressed to one of our nodes connected on another source.
@@ -6444,7 +6444,7 @@ class MeshtasticManager implements ISourceManager {
         const portnumName = meshtasticProtobufService.getPortNumName(portnum);
 
         // Skip logging for local internal packets (ADMIN_APP and ROUTING_APP)
-        // These are management packets between MeshMonitor and the local node, not actual mesh traffic
+        // These are management packets between MeshRadar and the local node, not actual mesh traffic
         // Also skip "phantom" internal state updates from the device that aren't actual RF transmissions
         if (shouldExcludeFromPacketLog(fromNum, toNum, portnum, this.localNodeInfo?.nodeNum ?? null) ||
             isPhantomInternalPacket(fromNum, this.localNodeInfo?.nodeNum ?? null, meshPacket.transportMechanism, meshPacket.hopStart)) {
@@ -7033,7 +7033,7 @@ class MeshtasticManager implements ISourceManager {
         const toNum = meshPacket.to ? Number(meshPacket.to) : 0;
         const localNodeNum = this.localNodeInfo?.nodeNum;
         
-        // Skip only when this is MeshMonitor's own auto-traceroute —
+        // Skip only when this is MeshRadar's own auto-traceroute —
         // sendTraceroute() already called recordTracerouteRequestAsync() internally.
         // VN-client packets also have fromNum === localNodeNum but were never
         // pre-recorded; they arrive as incoming packets with a virtualNodeRequestId.
@@ -7947,7 +7947,7 @@ class MeshtasticManager implements ISourceManager {
 
         // precision_bits is set by the sending node's firmware to reflect ITS own channel
         // precision setting. We must NOT fall back to the local channel's positionPrecision —
-        // that record reflects this MeshMonitor instance's channel config, not the remote
+        // that record reflects this MeshRadar instance's channel config, not the remote
         // node's, and using it caused accuracy boxes to all match the local node (issue #3030).
         // It is read here (before validation) so the Null Island check can back out the
         // firmware's precision re-centering offset for obscured (0,0) fixes (issue #3763).
@@ -9524,7 +9524,7 @@ class MeshtasticManager implements ISourceManager {
           if (isPkiError(errorReason) && fromNodeId === localNodeId && toNodeId !== localNodeId) {
             const errorDescription = errorReason === RoutingError.PKI_FAILED
               ? 'PKI encryption failed — your radio\'s stored key for this node may be outdated. Click "Exchange Node Info" to re-sync keys with the radio.'
-              : 'Your radio does not have this node\'s public key (even though MeshMonitor does). Click "Exchange Node Info" to push the key to your radio, or purge the node to force a fresh key exchange.';
+              : 'Your radio does not have this node\'s public key (even though MeshRadar does). Click "Exchange Node Info" to push the key to your radio, or purge the node to force a fresh key exchange.';
 
             logger.warn(`🔐 PKI error on request for node ${toNodeId}: ${errorDescription}`);
 
@@ -9578,7 +9578,7 @@ class MeshtasticManager implements ISourceManager {
 
           const errorDescription = errorReason === RoutingError.PKI_FAILED
             ? 'PKI encryption failed — your radio\'s stored key for this node may be outdated. Click "Exchange Node Info" to re-sync keys with the radio.'
-            : 'Your radio does not have this node\'s public key (even though MeshMonitor does). Click "Exchange Node Info" to push the key to your radio, or purge the node to force a fresh key exchange.';
+            : 'Your radio does not have this node\'s public key (even though MeshRadar does). Click "Exchange Node Info" to push the key to your radio, or purge the node to force a fresh key exchange.';
 
           logger.warn(`🔐 PKI error detected for node ${targetNodeId}: ${errorDescription}`);
 
@@ -10152,7 +10152,7 @@ class MeshtasticManager implements ISourceManager {
         // The protobuf decoder normalizes a missing precision_bits field to 0, so we
         // treat 0 as "absent" here and leave any existing positionPrecisionBits intact.
         // We must NOT fall back to the local channel's positionPrecision — that record
-        // reflects this MeshMonitor instance's channel config, not the remote node's,
+        // reflects this MeshRadar instance's channel config, not the remote node's,
         // and was causing every node's accuracy box to track the local node (issue #3030).
         // Read before validation so the Null Island check can back out the firmware's
         // precision re-centering offset for an obscured (0,0) fix (issue #3763), matching
@@ -10266,7 +10266,7 @@ class MeshtasticManager implements ISourceManager {
 
       // If this is the local node, always update localNodeInfo with names from NodeInfo.
       // NodeInfo is the authoritative source for node identity — names may have been changed
-      // outside MeshMonitor (e.g., via Meshtastic app), so we must accept the device's truth
+      // outside MeshRadar (e.g., via Meshtastic app), so we must accept the device's truth
       // regardless of isLocked state. isLocked only prevents processMyNodeInfo (which doesn't
       // carry names) from overwriting with incomplete data.
       if (this.localNodeInfo && this.localNodeInfo.nodeNum === Number(nodeInfo.num)) {
@@ -10541,7 +10541,7 @@ class MeshtasticManager implements ISourceManager {
   }
 
   /**
-   * `sendTextMessage` for a send MeshMonitor makes on its own (auto-ping
+   * `sendTextMessage` for a send MeshRadar makes on its own (auto-ping
    * replies, ...). Tags the packet as automation-originated (#5414).
    */
   private sendAutomationText(text: string, channel: number, destination?: number, replyId?: number, emoji?: number): Promise<number> {
@@ -10549,7 +10549,7 @@ class MeshtasticManager implements ISourceManager {
   }
 
   /**
-   * `messageQueue.enqueue` for a send MeshMonitor makes on its own
+   * `messageQueue.enqueue` for a send MeshRadar makes on its own
    * (auto-ack, auto-responder, timers, geofences, auto-welcome, ...). Every
    * queue send inside this class is an automation; tags it (#5414).
    */
@@ -10932,7 +10932,7 @@ class MeshtasticManager implements ISourceManager {
     try {
       // Get local node's user info from database for exchange
       // NOTE: We intentionally do NOT include publicKey here. The device's own firmware
-      // handles key distribution via its native NodeInfo broadcasts. If MeshMonitor's
+      // handles key distribution via its native NodeInfo broadcasts. If MeshRadar's
       // database has a stale key (e.g. after firmware update or NVS corruption), broadcasting
       // it would cause other mesh nodes to store the wrong key, making the node appear as
       // a new/untrusted identity. See issue #2275.
@@ -12721,7 +12721,7 @@ class MeshtasticManager implements ISourceManager {
               const response = await fetch(url, {
                 signal: controller.signal,
                 headers: {
-                  'User-Agent': 'MeshMonitor/2.0',
+                  'User-Agent': 'MeshRadar/2.0',
                 }
               });
 
@@ -13204,7 +13204,7 @@ class MeshtasticManager implements ISourceManager {
    * - MESHTASTIC_PORT: TCP port of the connected Meshtastic node
    * - FROM_SHORT_NAME, FROM_LONG_NAME: Sender's node names
    * - FROM_LAT, FROM_LON: Sender's location (if available)
-   * - MM_LAT, MM_LON: MeshMonitor node location (if available)
+   * - MM_LAT, MM_LON: MeshRadar node location (if available)
    * - MSG_*: All message fields (e.g., MSG_rxSnr, MSG_rxRssi, MSG_hopStart, MSG_hopLimit, MSG_viaMqtt, etc.)
    * - PARAM_*: Extracted parameters from trigger pattern
    */
@@ -13271,7 +13271,7 @@ class MeshtasticManager implements ISourceManager {
     const activeNodeCount = await databaseService.nodes.getActiveNodeCount(this.sourceId, ACTIVE_NODE_TOKEN_WINDOW_SECONDS);
     scriptEnv.NODECOUNT = String(activeNodeCount);
 
-    // Add location environment variables for the MeshMonitor node (MM_LAT, MM_LON)
+    // Add location environment variables for the MeshRadar node (MM_LAT, MM_LON)
     const localNodeInfo = this.getLocalNodeInfo();
     if (localNodeInfo) {
       const mmNode = await databaseService.nodes.getNode(localNodeInfo.nodeNum, this.sourceId);
@@ -13913,7 +13913,7 @@ class MeshtasticManager implements ISourceManager {
     let result: string = typeof message === 'string' ? message : String(message);
     const encode = (v: string) => urlEncode ? encodeURIComponent(v) : v;
 
-    // {VERSION} - MeshMonitor version
+    // {VERSION} - MeshRadar version
     if (result.includes('{VERSION}')) {
       result = result.replace(/{VERSION}/g, encode(packageJson.version));
     }

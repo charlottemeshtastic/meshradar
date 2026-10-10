@@ -11,7 +11,7 @@
  * function of whether its latest battery_level reading crossed the 100 mark. We
  * detect that transition at the telemetry-save seam by comparing each new
  * reading against the node's PRIOR stored batteryLevel (read from the DB, so a
- * MeshMonitor restart can never spuriously fire — the baseline is the durable
+ * MeshRadar restart can never spuriously fire — the baseline is the durable
  * row, not in-memory state; CLAUDE.md mesh-impact checklist §3). Detection reads
  * the DB only and sends no packets, so it costs zero airtime.
  *
@@ -46,7 +46,7 @@ export function isPowered(batteryLevel: number | null | undefined): boolean {
  *                   OR the new reading is non-finite.
  *
  * The null-prior guard is the restart-safety mechanism: with no baseline there
- * is no transition to detect, so the first reading after a MeshMonitor restart
+ * is no transition to detect, so the first reading after a MeshRadar restart
  * (or the first reading ever) never fires.
  */
 export function detectPowerTransition(

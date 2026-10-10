@@ -14,7 +14,7 @@
  * per-second bucketing needed.
  *
  * Ties (identical `timestamp`, e.g. a reflected/duplicate delivery) fall
- * back to `receivedAt` — MeshMonitor's own monotonic ingestion clock — then
+ * back to `receivedAt` — MeshRadar's own monotonic ingestion clock — then
  * to `id`, so the order is always total and stable regardless of input
  * sequence.
  */

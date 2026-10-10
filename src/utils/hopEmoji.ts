@@ -33,7 +33,7 @@ export function hopCountEmoji(hops: number | null | undefined): string | undefin
 }
 
 /**
- * Glyph for a message that reached MeshMonitor through an MQTT source
+ * Glyph for a message that reached MeshRadar through an MQTT source
  * (`mqtt_broker` / `mqtt_bridge`) rather than over our own RF link (#4594).
  *
  * Keycap style so it sits visually with `*️⃣`–`7️⃣` rather than beside them; the

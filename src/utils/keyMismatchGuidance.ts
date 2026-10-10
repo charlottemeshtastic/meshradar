@@ -1,7 +1,7 @@
 /**
  * Public-key mismatch guidance (#4738).
  *
- * MeshMonitor showed a bare "This node is a security risk" with no explanation
+ * MeshRadar showed a bare "This node is a security risk" with no explanation
  * of what changed, what it means, or what to do. That is the worst shape a
  * security warning can take: alarming enough to worry about, too vague to act
  * on, and identical whether the user has anything actually at stake.
@@ -31,7 +31,7 @@ export interface KeyMismatchContext {
    * Whether the user has administered this node remotely. Admin traffic is
    * PKI-encrypted like a DM, so it carries the same exposure.
    *
-   * NOT CURRENTLY SUPPLIED by any caller: MeshMonitor stores no per-node
+   * NOT CURRENTLY SUPPLIED by any caller: MeshRadar stores no per-node
    * remote-admin history (admin traffic is not persisted as messages), so
    * there is nothing honest to pass. Modelled here because the exposure is
    * real, and left for whenever that history exists. Until then the low-risk

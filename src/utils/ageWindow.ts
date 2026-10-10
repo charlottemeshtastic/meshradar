@@ -1,7 +1,7 @@
 /**
  * Shared wording for node-age windows (#5344).
  *
- * Three controls describe "how far back" MeshMonitor looks: the Settings
+ * Three controls describe "how far back" MeshRadar looks: the Settings
  * node window (`maxNodeAgeHours`), the Map Features age filter, and the fixed
  * 2h sidebar activity stat. They all render durations through
  * {@link formatAgeDuration} so the Nodes header, the map slider, and its

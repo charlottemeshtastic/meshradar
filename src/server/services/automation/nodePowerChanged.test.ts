@@ -177,7 +177,7 @@ describe('power-change detection via getLatestTelemetryForType (#4558 Phase C)',
   });
 
   it('is restart-safe: the prior comes from the DB, not memory', async () => {
-    // Simulate a MeshMonitor restart by using a brand-new repository instance
+    // Simulate a MeshRadar restart by using a brand-new repository instance
     // (no carried-over in-memory baseline) against the same DB.
     await insertBattery('!node', 111, 101, 1_000, 'default');
     const freshTelem = new TelemetryRepository(drizzleDb, 'sqlite');
@@ -277,7 +277,7 @@ describe('detectMeshCorePowerChange seam (#4558 MeshCore parity)', () => {
 
   it('is restart-safe: the prior comes from the DB, not memory', async () => {
     await insertMv('PUBKEY', POWERED_MV, 1_000, 'mc');
-    // A brand-new repository instance stands in for a MeshMonitor restart — the
+    // A brand-new repository instance stands in for a MeshRadar restart — the
     // durable row is the only baseline.
     const freshTelem = new TelemetryRepository(drizzleDb, 'sqlite');
     await detectMeshCorePowerChange(freshTelem, 'PUBKEY', 'mc_battery_mv', 1, BATTERY_MV, 'mc');

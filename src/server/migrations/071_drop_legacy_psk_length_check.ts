@@ -10,7 +10,7 @@
  *   MQTT source <uuid> channel_database bootstrap failed:
  *     CHECK constraint failed: psk_length IN (16, 32)
  *
- * and the channel row is never inserted, so MeshMonitor cannot decrypt
+ * and the channel row is never inserted, so MeshRadar cannot decrypt
  * default-key MQTT traffic. The constraint was removed from the v3.7 baseline
  * (migration 001), but `CREATE TABLE IF NOT EXISTS` leaves the existing
  * pre-v3.7 table — constraint and all — untouched.

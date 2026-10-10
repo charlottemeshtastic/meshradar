@@ -1,5 +1,5 @@
 /**
- * "Is this one of MeshMonitor's own nodes?" — cross-source self-identity.
+ * "Is this one of MeshRadar's own nodes?" — cross-source self-identity.
  *
  * The per-source self-origin guard (#3914) asks a single source's manager for
  * its local node (`getLocalNodeInfo()`). That works for a Meshtastic TCP or
@@ -11,7 +11,7 @@
  * send through a Meshtastic source travels the mesh, some third-party gateway
  * uplinks it to the broker, and the bridge downlinks it right back to us as an
  * ordinary inbound packet from our own nodeNum. Without a cross-source check an
- * automation would fire on MeshMonitor's own reply and answer itself forever
+ * automation would fire on MeshRadar's own reply and answer itself forever
  * (#4593).
  *
  * The set is read live from the registry — no caching — so a source that
@@ -25,7 +25,7 @@ import { sourceManagerRegistry } from '../sourceManagerRegistry.js';
 import { isMeshCoreManager, isReticulumManager } from '../sourceManagerTypes.js';
 
 /**
- * Every local node number MeshMonitor currently owns, across all registered
+ * Every local node number MeshRadar currently owns, across all registered
  * sources. Sources with no local identity (MQTT bridges) contribute nothing.
  */
 export function getOwnNodeNums(): number[] {
@@ -53,7 +53,7 @@ export function isOwnNodeNum(nodeNum: number | null | undefined): boolean {
 }
 
 /**
- * Every local MeshCore public key MeshMonitor currently owns, across all
+ * Every local MeshCore public key MeshRadar currently owns, across all
  * registered MeshCore sources. Meshtastic/MQTT managers contribute nothing.
  * Keys are lowercased for case-insensitive comparison, matching the #3914
  * per-source `getSelfPublicKey` convention.
@@ -82,7 +82,7 @@ export function isOwnPublicKey(pubkey: string | null | undefined): boolean {
 }
 
 /**
- * Every local LXMF destination hash MeshMonitor currently owns, across all
+ * Every local LXMF destination hash MeshRadar currently owns, across all
  * registered Reticulum sources (#3960 Phase 2 WP3). Mirrors
  * {@link getOwnPublicKeys}. Non-Reticulum managers contribute nothing.
  */

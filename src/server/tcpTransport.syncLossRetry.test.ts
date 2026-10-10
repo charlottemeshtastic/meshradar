@@ -2,7 +2,7 @@
  * Fast-retry ramp after a mid-config-sync disconnect (#5122).
  *
  * With #5130/#5138/#5140 in place the reporter's mesh recovers on its own, but
- * slowly: the link dies ~11s into a ~190-node NodeDB dump, MeshMonitor waits
+ * slowly: the link dies ~11s into a ~190-node NodeDB dump, MeshRadar waits
  * the full `MESHTASTIC_RECONNECT_INITIAL_DELAY_MS` (60s by default), and the
  * retry then completes the entire sync in about 2 seconds. Almost the whole
  * ~70s outage is the wait, not the fault.

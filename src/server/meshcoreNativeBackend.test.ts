@@ -371,7 +371,7 @@ describe('MeshCoreNativeBackend', () => {
     expect(resp.data?.name).toBe('TestNode');
     expect(resp.data?.public_key).toMatch(/^01020304/);
     // Library yields wire-format kHz/Hz; the backend must normalize to MHz/kHz
-    // so the rest of MeshMonitor (UI presets, validation) sees consistent units.
+    // so the rest of MeshRadar (UI presets, validation) sees consistent units.
     expect(resp.data?.radio_freq).toBe(915.525);
     expect(resp.data?.radio_bw).toBe(62.5);
     expect(resp.data?.latitude).toBeCloseTo(40, 4);

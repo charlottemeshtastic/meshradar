@@ -2,7 +2,7 @@
  * Auto-Acknowledge: random 5-30 s wait and "Maximum number of responses".
  *
  * A channel message that matches is held for a random 5-30 s. When the wait
- * ends MeshMonitor counts the other nodes that have replied to or tapbacked
+ * ends MeshRadar counts the other nodes that have replied to or tapbacked
  * that message (same rule the message views render with) and sends nothing if
  * the count has reached the cap. Everything here runs on fake timers against a
  * mocked queue: nothing can reach a radio.

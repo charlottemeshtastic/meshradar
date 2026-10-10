@@ -16,7 +16,7 @@ const indexHtml = `<!doctype html>
     <link rel="stylesheet" href="/assets/index-xyz.css" />
     <script src="/cors-detection.js"></script>
     <script src="/registerSW.js"></script>
-    <title>MeshMonitor</title>
+    <title>MeshRadar</title>
   </head>
   <body><div id="root"></div></body>
 </html>`;

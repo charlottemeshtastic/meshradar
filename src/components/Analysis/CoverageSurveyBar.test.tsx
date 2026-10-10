@@ -265,7 +265,7 @@ describe('CoverageSurveyBar', () => {
       const { onSelectSurvey } = renderBar({ senderId: '!bbbbbbbb', senderLabel: 'Car-01' });
 
       fireEvent.click(screen.getByRole('button', { name: /Start survey/ }));
-      expect(screen.getByText(/MeshMonitor sends nothing/)).toBeInTheDocument();
+      expect(screen.getByText(/MeshRadar sends nothing/)).toBeInTheDocument();
       const nameInput = screen.getByLabelText('Name') as HTMLInputElement;
       expect(nameInput.value.startsWith('Car-01 ')).toBe(true);
 
@@ -280,7 +280,7 @@ describe('CoverageSurveyBar', () => {
       act(() => h.createMutate.mock.calls[0][1].onSuccess(created));
       expect(onSelectSurvey).toHaveBeenCalledWith(created);
       // Modal closes after success.
-      expect(screen.queryByText(/MeshMonitor sends nothing/)).not.toBeInTheDocument();
+      expect(screen.queryByText(/MeshRadar sends nothing/)).not.toBeInTheDocument();
     });
 
     it('maps SURVEY_ALREADY_LIVE to a translated toast on error', () => {

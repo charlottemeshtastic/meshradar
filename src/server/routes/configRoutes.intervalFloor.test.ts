@@ -2,7 +2,7 @@
  * POST /device and POST /position: the two broadcast intervals.
  *
  * A stored 0 means "use the firmware default" and must reach the device as 0.
- * Any other value under MeshMonitor's floor (32 s position, 3600 s node-info)
+ * Any other value under MeshRadar's floor (32 s position, 3600 s node-info)
  * is refused before the device is touched.
  */
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';

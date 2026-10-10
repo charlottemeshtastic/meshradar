@@ -2,7 +2,7 @@
  * MeshCoreNotOnDeviceNotice (#5349).
  *
  * MeshCore companion radios log in to, query, and message a node only if it
- * is in the radio's OWN contact list. MeshMonitor can know about nodes the
+ * is in the radio's OWN contact list. MeshRadar can know about nodes the
  * radio does not hold (heard via an advert the radio chose not to store, or
  * evicted when its list filled up). For those, this notice explains why
  * login / status / CLI are unavailable and offers "Add to radio" — a local

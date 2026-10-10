@@ -1,7 +1,7 @@
 /**
  * Read-only gating for the Messages DM view.
  *
- * MeshMonitor distinguishes two *different* reasons a DM conversation can be
+ * MeshRadar distinguishes two *different* reasons a DM conversation can be
  * "read-only", and they gate different parts of the UI:
  *
  *  - **MQTT-bridge mirror** (`mqttReadOnly`): the selected source is a passive

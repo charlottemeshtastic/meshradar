@@ -14,9 +14,9 @@
  *
  * - `reported`  — the protocol/device told us this directly (an ACK field,
  *                 a wire value).
- * - `observed`  — MeshMonitor derived this from something it watched happen
+ * - `observed`  — MeshRadar derived this from something it watched happen
  *                 (ingress attribution, re-flood correlation, timing).
- * - `inferred`  — MeshMonitor computed this from other reported values
+ * - `inferred`  — MeshRadar computed this from other reported values
  *                 (e.g. hopsUsed = hopStart − hopLimit) rather than reading
  *                 it directly off the wire.
  * - `unknown`   — we do not have this data at all. Never guess; render the
@@ -96,7 +96,7 @@ export interface DeliveryDescription {
   sections: DeliverySection[];
   /**
    * MeshCore-only: repeaters observed to have re-flooded this outgoing
-   * channel message (Observed by MeshMonitor via re-flood correlation).
+   * channel message (Observed by MeshRadar via re-flood correlation).
    * Undefined for Meshtastic descriptions and for MeshCore DMs.
    */
   heardBy?: HeardByEntry[];

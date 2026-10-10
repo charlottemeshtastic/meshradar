@@ -184,7 +184,7 @@ export async function loadMeshCoreNodesBySource(sourceIds: string[]): Promise<Ma
  *  - **Presence** (display gate, applied to EVERYONE, admins included):
  *    `(sourceId, publicKey)` must have a `meshcore_nodes` row (compared
  *    lowercase). Mirrors the #4163 orphan rule — a coverage row for a
- *    public key MeshMonitor has never resolved a NodeInfo/advert for has no
+ *    public key MeshRadar has never resolved a NodeInfo/advert for has no
  *    marker anywhere else, so it contributes nothing here either.
  *  - **Permission** (non-admins only): `nodes:viewOnMap` on that row's
  *    source — the same per-source gate `maskContactPositionsForViewOnMap`

@@ -63,7 +63,7 @@ export function createChannelFromResponse(
     downlinkEnabled: ch.downlinkEnabled !== undefined ? ch.downlinkEnabled : false,
     positionPrecision: ch.positionPrecision !== undefined ? ch.positionPrecision : 32,
     // Carried so a remote edit can send it back (#5248): set_channel replaces
-    // the whole ChannelSettings and MeshMonitor stores no remote channel rows.
+    // the whole ChannelSettings and MeshRadar stores no remote channel rows.
     useAead: !!ch.useAead,
     createdAt: now,
     updatedAt: now

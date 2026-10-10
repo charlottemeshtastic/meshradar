@@ -3,7 +3,7 @@
  * from MeshtasticManager. The auto-responder calls it for:
  *
  *  - HTTP response bodies (`jsonExpected=false`) — must keep treating
- *    non-MeshMonitor-shaped responses as a single plain message so
+ *    non-MeshRadar-shaped responses as a single plain message so
  *    webhooks that return their own JSON shape don't silently drop.
  *  - Script stdout    (`jsonExpected=true`)  — strict; non-JSON or
  *    missing-field output is an error.

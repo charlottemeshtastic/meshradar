@@ -3,7 +3,7 @@
  *
  * A single global-singleton, settings-gated, plaintext TCP "SA-server" that
  * streams Cursor-on-Target (CoT) `<event>` XML to ATAK/WinTAK clients that
- * add MeshMonitor as a network input. RX-only: the server never ingests
+ * add MeshRadar as a network input. RX-only: the server never ingests
  * inbound bytes (mesh → TAK is one-way). Default OFF; enabled/port are read
  * from the `cotFeedEnabled` / `cotFeedPort` settings (wired in Phase 3 WP2).
  *
@@ -283,7 +283,7 @@ export function buildContactEvent(row: AtakContactRow, now: number): string | nu
     return null;
   }
 
-  // lastSeen is MeshMonitor-stamped (Date.now at ingest) so it can't
+  // lastSeen is MeshRadar-stamped (Date.now at ingest) so it can't
   // realistically be future, but clamp anyway for symmetry with the node
   // builders — no CoT event may outlive now + its window.
   const staleMs = Math.min(row.lastSeen, now) + ATAK_CONTACT_STALE_MS;

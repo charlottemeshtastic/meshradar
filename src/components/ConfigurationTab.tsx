@@ -89,7 +89,7 @@ const ConfigurationTab: React.FC<ConfigurationTabProps> = ({ baseUrl = '', nodes
   // OTA enabled. Shares TanStack's ['health', baseUrl] cache with App's poll.
   const { data: health } = useHealth({ baseUrl, refetchInterval: 60000 });
   const showFirmware = isAdmin && health?.firmwareOtaEnabled === true;
-  // PKI DM decryption is a MeshMonitor-side switch and moved to this source's
+  // PKI DM decryption is a MeshRadar-side switch and moved to this source's
   // Settings page. A viewer who cannot open that page keeps it here: its
   // routes check `configuration`, the grant this page already needs.
   const canViewSourceSettings = hasPermission('settings', 'read', { anySource: true });
@@ -118,7 +118,7 @@ const ConfigurationTab: React.FC<ConfigurationTabProps> = ({ baseUrl = '', nodes
   // the guard fails (#5028 class).
   const [usePreset, setUsePreset] = useState(false);
   const [modemPreset, setModemPreset] = useState<number>(0);
-  // Raw preset the radio reported when MeshMonitor cannot name it (#5547).
+  // Raw preset the radio reported when MeshRadar cannot name it (#5547).
   // While set, modemPreset holds UNKNOWN_MODEM_PRESET and the LoRa save path
   // refuses to invent a value for it.
   const [unknownModemPresetName, setUnknownModemPresetName] = useState<string | null>(null);
@@ -1045,7 +1045,7 @@ const ConfigurationTab: React.FC<ConfigurationTabProps> = ({ baseUrl = '', nodes
     setIsSaving(true);
     setStatusMessage('');
     try {
-      // Enforce MeshMonitor's 32-second floor; firmware itself does not clamp this field (#5055).
+      // Enforce MeshRadar's 32-second floor; firmware itself does not clamp this field (#5055).
       // A stored 0 goes back as 0 so the node keeps its firmware default.
       const validPositionBroadcastSecs = floorKeepingZero(positionBroadcastSecs, POSITION_BROADCAST_FLOOR_SECS);
       if (validPositionBroadcastSecs !== positionBroadcastSecs) {
@@ -2903,7 +2903,7 @@ const ConfigurationTab: React.FC<ConfigurationTabProps> = ({ baseUrl = '', nodes
           />
         </div>
 
-        {/* Backups are held by MeshMonitor, but they are backups OF this
+        {/* Backups are held by MeshRadar, but they are backups OF this
             device's configuration and restore to it, so the list and schedule
             stay on Device Configuration (#5683 follow-up decision). */}
         <div id="config-backup">

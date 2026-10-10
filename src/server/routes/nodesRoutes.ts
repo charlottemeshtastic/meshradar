@@ -1596,7 +1596,7 @@ router.post('/nodes/:nodeId/hide-from-map', requirePermission('nodes', 'write', 
   }
 });
 
-// Set the free-text per-node notes annotation (issue #3921). MeshMonitor-local
+// Set the free-text per-node notes annotation (issue #3921). MeshRadar-local
 // only — never synced to the mesh. An empty string clears the note.
 const MAX_NODE_NOTES_LENGTH = 2000;
 router.post('/nodes/:nodeId/notes', requirePermission('nodes', 'write', { sourceIdFrom: 'body' }), async (req, res) => {

@@ -300,7 +300,7 @@ export function createNodeIcon(options: CreateNodeIconOptions): L.DivIcon {
     });
   }
 
-  // MeshMonitor style: Pin/tower markers with zoom-based labels.
+  // MeshRadar style: Pin/tower markers with zoom-based labels.
   // A role glyph (when present) renders over a white background circle, the
   // same treatment the router tower already uses (issue #3546).
   const markerSvg = roleInner ? `

@@ -2,7 +2,7 @@
  * "Already applied?" checks must look at THIS database/schema only.
  *
  * Old migrations queried `information_schema` (and PG catalogs) by table name
- * alone. On a MySQL server hosting a second database (two MeshMonitor
+ * alone. On a MySQL server hosting a second database (two MeshRadar
  * instances, or parallel CI suites with isolated databases), a column that
  * exists in the OTHER database made the check skip the ALTER here. On
  * PostgreSQL the same happens across schemas in one database.

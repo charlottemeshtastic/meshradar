@@ -1998,7 +1998,7 @@ router.get('/:id/status', optionalAuth(), async (req: Request, res: Response) =>
 // These scope all queries to the given source, forming the backend for Phase 4 frontend.
 
 // ---- PKI direct-message decryption (issue #3441) ----
-// Per-source opt-in: when enabled, MeshMonitor stores the source's local-node
+// Per-source opt-in: when enabled, MeshRadar stores the source's local-node
 // X25519 private key (encrypted) and decrypts PKI DMs addressed to that node —
 // including ones relayed still-encrypted via MQTT — so they surface in the
 // unified view. Gated by per-source `configuration` permission.

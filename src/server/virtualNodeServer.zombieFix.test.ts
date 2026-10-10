@@ -14,7 +14,7 @@
  *      fabricated routing-ack with errorReason=NONE so its UI doesn't hang,
  *      and the command is NEVER queued out to the physical radio. This is
  *      enforced regardless of `allowAdminCommands`, because deletion is a
- *      MeshMonitor-only operation per the issue resolution.
+ *      MeshRadar-only operation per the issue resolution.
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';

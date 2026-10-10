@@ -80,7 +80,7 @@ import { MeshtasticManager } from './meshtasticManager.js';
 /**
  * Favorite write-back deferral during the initial config sync (#5122).
  *
- * A reporter packet-captured this: MeshMonitor sent a `SetFavoriteNode` admin
+ * A reporter packet-captured this: MeshRadar sent a `SetFavoriteNode` admin
  * packet WHILE the initial NodeDB sync was still streaming, the node stopped
  * ACKing that exact TCP segment, the OS retransmitted it 8 times over ~10-15s
  * with an unchanged sequence number, and the node then RST the connection. The

@@ -417,7 +417,7 @@ export const CoverageSurveyBar: React.FC<CoverageSurveyBarProps> = ({
         <p className={styles.modalNote}>
           {t(
             'analysis.coverage.survey_no_send_note',
-            'MeshMonitor sends nothing — set up the survey node per the guidance below the map.',
+            'MeshRadar sends nothing — set up the survey node per the guidance below the map.',
           )}
         </p>
         <label className={styles.formField}>

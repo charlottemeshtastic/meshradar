@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "name": "Voyager Dark (MeshMonitor)",
+  "name": "Voyager Dark (MeshRadar)",
   "metadata": {
     "meshmonitor:generator": "scripts/generate-carto-voyager-dark.mjs",
     "meshmonitor:source": "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",

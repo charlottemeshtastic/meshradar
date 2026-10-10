@@ -1,5 +1,5 @@
 /**
- * #5677: OTA preflight refuses hardware MeshMonitor cannot update, with a
+ * #5677: OTA preflight refuses hardware MeshRadar cannot update, with a
  * machine code, and never moves the update state off idle.
  *
  * The other firmwareUpdateService suites mock `./firmwareHardwareMap.js`.

@@ -527,7 +527,7 @@ export const CoverageReport: React.FC<CoverageReportProps> = ({ initialLink }) =
         <p className="reports-section__subtitle">
           {t(
             'analysis.coverage.description',
-            'Map RF receptions of position packets — how far your mesh actually reaches, and how well each receiver hears it. Built from a survey node driving your coverage area, not sent by MeshMonitor.',
+            'Map RF receptions of position packets — how far your mesh actually reaches, and how well each receiver hears it. Built from a survey node driving your coverage area, not sent by MeshRadar.',
           )}
         </p>
       </div>
@@ -893,7 +893,7 @@ export const CoverageReport: React.FC<CoverageReportProps> = ({ initialLink }) =
             <p>
               {t(
                 'analysis.coverage.meshcore_guidance_button_floods',
-                "MeshMonitor's own Send advert button floods. Don't use it for surveys.",
+                "MeshRadar's own Send advert button floods. Don't use it for surveys.",
               )}
             </p>
             <p>
@@ -931,14 +931,14 @@ export const CoverageReport: React.FC<CoverageReportProps> = ({ initialLink }) =
             <p className={styles.guidanceFooter}>
               {t(
                 'analysis.coverage.meshcore_guidance_repeaters_auto',
-                "Repeaters' own adverts are recorded automatically. MeshMonitor never sends adverts for you.",
+                "Repeaters' own adverts are recorded automatically. MeshRadar never sends adverts for you.",
               )}
             </p>
 
             <p className={styles.guidanceFooter}>
               {t(
                 'analysis.coverage.guidance_no_send',
-                'MeshMonitor sends nothing for this report and never changes the survey node — it only records position packets the node already received.',
+                'MeshRadar sends nothing for this report and never changes the survey node — it only records position packets the node already received.',
               )}
             </p>
           </div>

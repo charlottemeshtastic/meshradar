@@ -146,9 +146,9 @@ describe('MeshCoreSettingsView — receive-only button gating', () => {
     expect(screen.queryByText(/Paused — receive-only mode/)).toBeNull();
   });
 
-  it('says why receive-only is a MeshMonitor setting and not device configuration', () => {
+  it('says why receive-only is a MeshRadar setting and not device configuration', () => {
     renderView(false);
-    expect(screen.getByTestId('receive-only-why-here')).toHaveTextContent(/MeshMonitor setting/);
+    expect(screen.getByTestId('receive-only-why-here')).toHaveTextContent(/MeshRadar setting/);
   });
 });
 

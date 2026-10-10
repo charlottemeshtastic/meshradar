@@ -1,7 +1,7 @@
 /**
  * Migration 112: Add `notes` to `nodes`.
  *
- * Free-text per-node "notes" annotation (issue #3921) — a MeshMonitor-local
+ * Free-text per-node "notes" annotation (issue #3921) — a MeshRadar-local
  * label editable from the node detail view, mirroring the official Meshtastic
  * mobile clients' local notes field. Purely server-side state: there is no
  * protobuf/admin message involved, so it is never synced to or from the mesh.

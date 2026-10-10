@@ -1,7 +1,7 @@
 /**
  * Display order for the MeshCore Channels list (#5385, #5379).
  *
- * This is a MeshMonitor-side VIEW preference only. It never touches the
+ * This is a MeshRadar-side VIEW preference only. It never touches the
  * device: channel slot indices stay exactly where the firmware has them, so
  * message history (keyed `channel-<idx>`), channel sends, bridge rules and
  * automations that reference a slot index are unaffected. Zero packets.

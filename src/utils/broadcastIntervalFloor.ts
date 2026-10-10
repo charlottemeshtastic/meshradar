@@ -1,5 +1,5 @@
 /**
- * MeshMonitor's floors for the two broadcast intervals a node keeps in its
+ * MeshRadar's floors for the two broadcast intervals a node keeps in its
  * config, and the one rule every save path applies to them.
  *
  * A node reports 0 for an interval it has never been given: 0 is the
@@ -14,10 +14,10 @@
  * cannot drift apart.
  */
 
-/** Lowest non-zero `position.position_broadcast_secs` MeshMonitor will send (#5055). */
+/** Lowest non-zero `position.position_broadcast_secs` MeshRadar will send (#5055). */
 export const POSITION_BROADCAST_FLOOR_SECS = 32;
 
-/** Lowest non-zero `device.node_info_broadcast_secs` MeshMonitor will send. */
+/** Lowest non-zero `device.node_info_broadcast_secs` MeshRadar will send. */
 export const NODE_INFO_BROADCAST_FLOOR_SECS = 3600;
 
 /**

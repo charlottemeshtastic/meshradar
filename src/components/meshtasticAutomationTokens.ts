@@ -15,8 +15,8 @@ import type { AutomationTokenInfo, AutomationTokenGroup } from './AutomationToke
 
 /** Tokens that expand in every Meshtastic automation surface. */
 export const MESHTASTIC_GLOBAL_TOKENS: AutomationTokenInfo[] = [
-  { token: '{VERSION}', description: 'MeshMonitor version' },
-  { token: '{DURATION}', description: 'MeshMonitor uptime' },
+  { token: '{VERSION}', description: 'MeshRadar version' },
+  { token: '{DURATION}', description: 'MeshRadar uptime' },
   { token: '{FEATURES}', description: 'Enabled feature summary' },
   { token: '{NODECOUNT}', description: 'Nodes seen recently' },
   { token: '{DIRECTCOUNT}', description: 'Nodes heard directly (0 hops)' },

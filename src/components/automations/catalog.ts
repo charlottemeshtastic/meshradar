@@ -246,12 +246,12 @@ export const TRIGGERS: BlockDef[] = [
   {
     type: 'trigger.system',
     label: 'A system event',
-    description: 'Fires on a MeshMonitor system event.',
+    description: 'Fires on a MeshRadar system event.',
     fields: [
       {
         name: 'event', label: 'Event', kind: 'select',
         options: [
-          { value: 'bootup', label: 'System start (MeshMonitor started)' },
+          { value: 'bootup', label: 'System start (MeshRadar started)' },
           { value: 'source-connected', label: 'Source came online' },
           { value: 'source-disconnected', label: 'Source went offline' },
           { value: 'upgrade-available', label: 'Upgrade available (new release detected)' },
@@ -280,7 +280,7 @@ export const TRIGGERS: BlockDef[] = [
   {
     type: 'trigger.becameMobile',
     label: 'A watched node becomes mobile',
-    description: 'Fires when a hand-selected node flips from stationary to mobile (MeshMonitor’s >100 m position-history heuristic). Useful for tamper / theft alerts on fixed sites.',
+    description: 'Fires when a hand-selected node flips from stationary to mobile (MeshRadar’s >100 m position-history heuristic). Useful for tamper / theft alerts on fixed sites.',
     fields: [
       { name: 'nodeNums', label: 'Watch nodes', kind: 'nodeMulti', help: 'Pick the nodes to watch. Stationary nodes (mobile = 0) are listed first with a Stationary badge.' },
       COOLDOWN,
@@ -398,7 +398,7 @@ const EVENT_NUMERIC: Record<string, FieldOpt[]> = {
     // its own floored hop count, so a hopless packet (no hopStart) reads 1, not
     // NaN. See triggerContext.ts buildMessageContext for the derivation.
     { value: 'zeroHop', label: 'Direct RF, 0 hops (1 = yes; 0 = relayed or via MQTT)' },
-    // #4594: the TRANSPORT the message reached MeshMonitor by — whether its
+    // #4594: the TRANSPORT the message reached MeshRadar by — whether its
     // source is an MQTT Bridge / MQTT Broker rather than a radio. Distinct from
     // `viaMqtt` above, which is the packet's own upstream relay flag and is
     // routinely 1 on messages our radio did receive over RF.
@@ -899,7 +899,7 @@ export const ACTIONS: BlockDef[] = [
     label: 'Send a notification',
     description: 'Send an external notification (Apprise).',
     fields: [
-      { name: 'title', label: 'Title', kind: 'text', tokens: true, placeholder: 'MeshMonitor alert' },
+      { name: 'title', label: 'Title', kind: 'text', tokens: true, placeholder: 'MeshRadar alert' },
       {
         name: 'body', label: 'Body', kind: 'textarea', tokens: true,
         placeholder: 'Node {{ trigger.fromId }} said {{ trigger.text }}',

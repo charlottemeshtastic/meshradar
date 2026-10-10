@@ -207,7 +207,7 @@ export class AutoAnnounceService {
       const settings = databaseService.settings;
       const sourceId = this.mgr.sourceId;
 
-      const message = await settings.getSettingForSource(sourceId, 'autoAnnounceMessage') || 'MeshMonitor {VERSION} online for {DURATION} {FEATURES}';
+      const message = await settings.getSettingForSource(sourceId, 'autoAnnounceMessage') || 'MeshRadar {VERSION} online for {DURATION} {FEATURES}';
 
       // Multi-channel support: read JSON array, fall back to legacy single index
       let channelIndexes: number[];

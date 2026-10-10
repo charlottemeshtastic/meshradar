@@ -95,7 +95,7 @@ const AnalysisTab: React.FC = () => {
       title: t('analysis.coverage.title', 'Coverage Report'),
       description: t(
         'analysis.coverage.description',
-        'Map RF receptions of position packets — how far your mesh actually reaches, and how well each receiver hears it. Built from a survey node driving your coverage area, not sent by MeshMonitor.',
+        'Map RF receptions of position packets — how far your mesh actually reaches, and how well each receiver hears it. Built from a survey node driving your coverage area, not sent by MeshRadar.',
       ),
       icon: 'radioSignal',
     },

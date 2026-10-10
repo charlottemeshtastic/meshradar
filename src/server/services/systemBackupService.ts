@@ -153,7 +153,7 @@ class SystemBackupService {
       partialBackupPath = backupPath;
       logger.debug(`📁 Created backup directory: ${dirname}`);
 
-      // Get MeshMonitor version from package.json
+      // Get MeshRadar version from package.json
       const packageJson = JSON.parse(
         fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8')
       );

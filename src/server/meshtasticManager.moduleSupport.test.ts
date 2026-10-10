@@ -198,7 +198,7 @@ describe('MeshtasticManager — module support gating (firmware version, not con
 
     it('reports trafficManagement unsupported on 2.7.25 — the issue #3491 case', () => {
       // 2.7.25 decodes the admin message but has no firmware handler, so a save
-      // would silently not persist. MeshMonitor must NOT advertise it as editable.
+      // would silently not persist. MeshRadar must NOT advertise it as editable.
       const mgr = makeManager('2.7.25');
       (mgr as any).actualModuleConfig = {};
 

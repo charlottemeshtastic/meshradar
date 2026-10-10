@@ -129,7 +129,7 @@ describe('reboot detection via getLatestTelemetryForType (#4558 Phase B)', () =>
   });
 
   it('is restart-safe: the prior comes from the DB, not memory', async () => {
-    // Simulate a MeshMonitor restart by using a brand-new repository instance
+    // Simulate a MeshRadar restart by using a brand-new repository instance
     // (no carried-over in-memory baseline) against the same DB.
     await insertUptime('!node', 111, 10_000, 1_000, 'default');
     const freshTelem = new TelemetryRepository(drizzleDb, 'sqlite');

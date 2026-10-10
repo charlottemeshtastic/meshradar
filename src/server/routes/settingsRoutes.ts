@@ -1003,7 +1003,7 @@ router.post('/', requirePermission('settings', 'write', { sourceIdFrom: 'query' 
       filteredSettings.appriseApiServerUrl = raw;
     }
 
-    // External URL (#4437). The absolute origin this MeshMonitor install is
+    // External URL (#4437). The absolute origin this MeshRadar install is
     // reachable at, used to build the "View details" link in security digests
     // (securityDigestService.ts detailsLink()). Empty string clears it, which
     // keeps detailsLink() returning null exactly as it does today when unset.

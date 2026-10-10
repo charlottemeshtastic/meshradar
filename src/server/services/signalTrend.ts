@@ -2,7 +2,7 @@
  * Signal trend / link-attenuation computation (issue #4110).
  *
  * Derives an at-a-glance "is this link getting worse?" indicator per node from
- * the historical signal telemetry MeshMonitor already stores:
+ * the historical signal telemetry MeshRadar already stores:
  *   - `rssi`      — received signal strength of packets heard from the node (dBm)
  *   - `snr_local` — SNR of packets heard from the node (dB)
  *   - `noiseFloor`— the node's device-reported noise floor (dBm, since #3396)

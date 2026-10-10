@@ -26,7 +26,7 @@ export interface IdentityChangeNode {
 /**
  * One candidate "this new node is that old node" pairing.
  *
- * Advisory only. Nothing in MeshMonitor acts on a detection automatically; the
+ * Advisory only. Nothing in MeshRadar acts on a detection automatically; the
  * merge tool takes a node pair from an operator, never from this list.
  *
  * Only **key-verified** pairings are reported by default — `derivedNodeNum` and

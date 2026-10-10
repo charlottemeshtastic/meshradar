@@ -12,7 +12,7 @@ import { useNumberInputScope } from '../common/numberInputScopeContext';
  * Automated Remote Favorites Management (issue #2608).
  *
  * Per-target config UI shown on the Remote Admin tab. Lets the operator have
- * MeshMonitor keep the favorites list up to date on a remote infrastructure
+ * MeshRadar keep the favorites list up to date on a remote infrastructure
  * node — discovering its neighbors from NeighborInfo and/or passing traceroutes
  * and blindly pushing set-favorite admin commands over LoRa.
  */
@@ -236,7 +236,7 @@ const AutoFavoriteManagementSection: React.FC<AutoFavoriteManagementSectionProps
 
       <p style={{ color: 'var(--color-text-subtle)', marginBottom: '0.75rem' }}>
         {t('auto_favorite.description',
-          'Automatically keep the favorites list up to date on this remote node. MeshMonitor discovers the node’s neighbors (from NeighborInfo broadcasts and/or traceroutes that pass through it) and sends set-favorite commands via Remote Admin, preserving zero-hop routing as your mesh changes.')}
+          'Automatically keep the favorites list up to date on this remote node. MeshRadar discovers the node’s neighbors (from NeighborInfo broadcasts and/or traceroutes that pass through it) and sends set-favorite commands via Remote Admin, preserving zero-hop routing as your mesh changes.')}
       </p>
 
       <div style={{

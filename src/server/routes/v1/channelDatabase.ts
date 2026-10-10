@@ -2,7 +2,7 @@
  * v1 API - Channel Database Endpoint
  *
  * Provides CRUD operations for the server-side channel database.
- * This enables MeshMonitor to store channel configurations beyond the device's 8 slots
+ * This enables MeshRadar to store channel configurations beyond the device's 8 slots
  * and decrypt packets server-side using stored keys.
  *
  * This file is a THIN router — all handler logic lives in

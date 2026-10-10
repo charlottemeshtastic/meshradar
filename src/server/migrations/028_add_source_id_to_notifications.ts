@@ -1,7 +1,7 @@
 /**
  * Migration 028: Add sourceId to notification tables
  *
- * Phase A of the multi-source notifications refactor (MeshMonitor 4.0).
+ * Phase A of the multi-source notifications refactor (MeshRadar 4.0).
  * Makes push_subscriptions and user_notification_preferences per-source
  * so each source can have its own subscription set and preference row.
  *

@@ -10,7 +10,7 @@
  *
  * Tests for issue #3622 — fictitious direct-connection line from empty routeBack.
  *
- * When MeshMonitor is connected to the TARGET node (L) of a traceroute:
+ * When MeshRadar is connected to the TARGET node (L) of a traceroute:
  *  1. L receives an incoming REQUEST (from=A, to=L, requestId=0).
  *     - Old behaviour: saved as a traceroute record with routeBack='[]', snrBack='[]'.
  *     - New behaviour (meshtasticManager fix): REQUEST is skipped entirely.
@@ -32,7 +32,7 @@ import {
 
 // Node numbers: A (requester), L (responder / local / target), C (relay).
 const A = 0xaaaa0001; // requester
-const L = 0xbbbb0002; // responder (local node — MeshMonitor is on this node)
+const L = 0xbbbb0002; // responder (local node — MeshRadar is on this node)
 const C = 0xcccc0003; // relay between them
 
 function positions(...nums: number[]): Map<string, [number, number]> {

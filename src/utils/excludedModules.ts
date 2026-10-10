@@ -10,7 +10,7 @@
  * Bit values come from `enum ExcludedModules` in `protobufs/meshtastic/mesh.proto`.
  */
 
-/** Module config sections MeshMonitor shows, keyed by the bit that excludes them. */
+/** Module config sections MeshRadar shows, keyed by the bit that excludes them. */
 export const EXCLUDED_MODULE_BITS = {
   mqtt: 0x0001,
   serial: 0x0002,

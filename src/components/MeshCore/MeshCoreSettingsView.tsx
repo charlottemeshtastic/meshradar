@@ -16,8 +16,8 @@ import { MeshCoreMessageFiltersSection } from './MeshCoreMessageFiltersSection';
 import { MeshCoreContactSyncSection } from './MeshCoreContactSyncSection';
 
 /**
- * MeshCoreSettingsView — what MeshMonitor stores and does for this MeshCore
- * source: connect / disconnect, software receive-only, whether MeshMonitor
+ * MeshCoreSettingsView — what MeshRadar stores and does for this MeshCore
+ * source: connect / disconnect, software receive-only, whether MeshRadar
  * answers discovery requests, node display, ignore and filter lists, the
  * saved-regions catalogue, and purging stored messages.
  *
@@ -277,13 +277,13 @@ export const MeshCoreSettingsView: React.FC<MeshCoreSettingsViewProps> = ({
         <p className="hint">
           {t(
             'meshcore.receive_only.firmware_caveat',
-            'MeshCore firmware has no radio-level transmit switch, so MeshMonitor enforces this in software. Transmissions the node makes on its own — link-layer acknowledgements, and any advert schedule configured outside MeshMonitor — are not affected.',
+            'MeshCore firmware has no radio-level transmit switch, so MeshRadar enforces this in software. Transmissions the node makes on its own — link-layer acknowledgements, and any advert schedule configured outside MeshRadar — are not affected.',
           )}
         </p>
         <p className="hint" data-testid="receive-only-why-here">
           {t(
             'meshcore.receive_only.why_here',
-            'That makes this a MeshMonitor setting, so it is on Settings and not on Device Configuration.',
+            'That makes this a MeshRadar setting, so it is on Settings and not on Device Configuration.',
           )}
         </p>
       </div>

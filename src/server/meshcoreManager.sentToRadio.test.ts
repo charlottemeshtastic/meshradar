@@ -1,5 +1,5 @@
 /**
- * What MeshMonitor knows about one of our MeshCore channel sends (#5682).
+ * What MeshRadar knows about one of our MeshCore channel sends (#5682).
  *
  * The companion protocol gives exactly one signal for a channel send: the
  * `Ok` / `Err` answer to the command. `Ok` means the firmware built the packet

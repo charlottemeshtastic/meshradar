@@ -212,7 +212,7 @@ router.post('/system/restart', requireAdmin(), (_req: Request, res: Response) =>
     logger.info('🛑 Shutdown requested by admin');
     res.json({
       success: true,
-      message: 'MeshMonitor will shut down now',
+      message: 'MeshRadar will shut down now',
       action: 'shutdown',
     });
 

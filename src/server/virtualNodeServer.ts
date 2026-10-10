@@ -122,7 +122,7 @@ export class VirtualNodeServer extends EventEmitter {
 
   /**
    * Check if a connected client is from localhost (container-internal).
-   * Localhost clients are trusted (e.g. scripts executed by MeshMonitor itself).
+   * Localhost clients are trusted (e.g. scripts executed by MeshRadar itself).
    */
   private isLocalhostClient(client: ConnectedClient): boolean {
     const remoteAddress = client.socket.remoteAddress;
@@ -401,14 +401,14 @@ export class VirtualNodeServer extends EventEmitter {
         // to the physical node it either (a) succeeds and deletes a real
         // node from the device's NodeDB or (b) fails because the node never
         // lived on the device (which is the bug in #2602 — synthetic /
-        // restamped MeshMonitor entries that the app sees as "real").
+        // restamped MeshRadar entries that the app sees as "real").
         //
         // In either case the user wants the deletion to come from
-        // MeshMonitor's UI, not from the embedded Meshtastic app. Intercept
+        // MeshRadar's UI, not from the embedded Meshtastic app. Intercept
         // these requests at the boundary, ack them with errorReason=NONE so
         // the app doesn't hang, and drop them silently. This applies
         // *regardless* of allowAdminCommands — the global guidance from
-        // #2602 is "deletion is a MeshMonitor-only operation."
+        // #2602 is "deletion is a MeshRadar-only operation."
         if (normalizedPortNum === 6) { // ADMIN_APP
           const earlyAdminPayload = toRadio.packet.decoded?.payload;
           if (earlyAdminPayload) {
@@ -418,7 +418,7 @@ export class VirtualNodeServer extends EventEmitter {
               );
               if (adminMsg && adminMsg.removeByNodenum !== undefined && adminMsg.removeByNodenum !== null) {
                 const targetNodeNum = Number(adminMsg.removeByNodenum);
-                logger.warn(`🛡️  Virtual node: Intercepted removeByNodenum for node ${targetNodeNum} from ${clientId} — ack-and-drop (issue #2602; deletions must go through MeshMonitor UI)`);
+                logger.warn(`🛡️  Virtual node: Intercepted removeByNodenum for node ${targetNodeNum} from ${clientId} — ack-and-drop (issue #2602; deletions must go through MeshRadar UI)`);
 
                 // Fabricate a routing ACK so the requesting client doesn't
                 // wait forever. Only send it back to the originating
@@ -829,14 +829,14 @@ export class VirtualNodeServer extends EventEmitter {
    * zombies on its node list and map. Filter them here.
    *
    * We also scope the active-node query to this manager's sourceId so a
-   * multi-source MeshMonitor doesn't bleed nodes from one source into another
+   * multi-source MeshRadar doesn't bleed nodes from one source into another
    * source's virtual node clients.
    */
   private async sendNodeInfosFromDb(clientId: string): Promise<{ sent: number; disconnected: boolean }> {
     const sourceId = this.config.meshtasticManager.sourceId;
     const maxNodeAgeHours = await getMaxNodeAgeHours(databaseService.settings, sourceId);
     // maxNodeAgeHours 0 = "unlimited" (#4947, #5376): replay every node,
-    // matching what the MeshMonitor Nodes list shows.
+    // matching what the MeshRadar Nodes list shows.
     const allNodes = maxNodeAgeHours > 0
       ? await databaseService.nodes.getActiveNodes(maxNodeAgeHours / 24, sourceId)
       : await databaseService.nodes.getHeardNodes(sourceId);
@@ -1232,7 +1232,7 @@ export class VirtualNodeServer extends EventEmitter {
    */
   /**
    * True when a connected client has injected MQTT proxy traffic on its
-   * current connection (#5013). It is the only sign MeshMonitor has of the
+   * current connection (#5013). It is the only sign MeshRadar has of the
    * MQTT Proxy sidecar: nothing in the TCP handshake names a client. False
    * does not mean "no sidecar" — one attached to a quiet broker has sent
    * nothing yet.

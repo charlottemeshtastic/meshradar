@@ -1078,7 +1078,7 @@ describe('MeshtasticManager - Configuration Polling', () => {
     }
 
     it('should update local node name from NodeInfo even when isLocked is true', () => {
-      // Scenario: name changed outside MeshMonitor (e.g., via Meshtastic app)
+      // Scenario: name changed outside MeshRadar (e.g., via Meshtastic app)
       const localNodeInfo = {
         nodeNum: 1000,
         longName: 'Old Name',

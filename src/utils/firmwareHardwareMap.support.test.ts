@@ -1,5 +1,5 @@
 /**
- * #5677: one list decides which hardware MeshMonitor can update. The Firmware
+ * #5677: one list decides which hardware MeshRadar can update. The Firmware
  * Updates pane reads `firmwareUpdateSupport`; OTA preflight walks the same
  * steps. This file pins the verdict for EVERY hardware model, so a model
  * added to `HARDWARE_MODELS` without a decision fails here.

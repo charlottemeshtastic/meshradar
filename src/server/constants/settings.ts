@@ -273,7 +273,7 @@ export const VALID_SETTINGS_KEYS = [
   // crawlers from indexing a publicly-exposed dashboard. See robotsConfig.ts.
   'noIndexEnabled',
   // Global privacy disclosure links (issue #5156). A publicly-reachable
-  // MeshMonitor re-serves mesh data to anonymous visitors and to tokenless
+  // MeshRadar re-serves mesh data to anonymous visitors and to tokenless
   // embed viewers; these let the operator disclose the policy that applies.
   // Empty string = no link rendered. An operator-hosted document in
   // `privacy_documents` takes precedence over the matching URL here.

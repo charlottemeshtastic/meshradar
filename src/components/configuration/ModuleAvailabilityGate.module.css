@@ -1,7 +1,7 @@
 /*
  * Shared "this firmware build excludes the module" treatment (#5065).
  * Mirrors the Range Test removal notice from #5031: the section stays visible
- * and explains itself, because a section that vanishes reads as a MeshMonitor
+ * and explains itself, because a section that vanishes reads as a MeshRadar
  * bug.
  */
 

@@ -2,7 +2,7 @@
  * Login Page Component
  *
  * Full-page login screen displayed when DISABLE_ANONYMOUS is enabled
- * Shows MeshMonitor logo, login form, version, and GitHub link
+ * Shows MeshRadar logo, login form, version, and GitHub link
  * Supports two-step login when MFA is enabled
  */
 
@@ -34,8 +34,8 @@ const LoginPage: React.FC = () => {
 
   // Optional login-page branding from CUSTOM_TITLE / CUSTOM_LOGO_URL env vars.
   // The server already trims/validates these and sends null when unset, so we
-  // just fall back to the default MeshMonitor title and inline SVG here.
-  const customTitle = authStatus?.customTitle || 'MeshMonitor';
+  // just fall back to the default MeshRadar title and inline SVG here.
+  const customTitle = authStatus?.customTitle || 'MeshRadar';
   const customLogoUrl = authStatus?.customLogoUrl || null;
 
   const handleLocalLogin = async (e: React.FormEvent) => {

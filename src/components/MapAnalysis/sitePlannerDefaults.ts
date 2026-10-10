@@ -36,7 +36,7 @@ export interface SitePlannerDefaults {
   /** Field names genuinely taken from the device, for UI disclosure. */
   seededFrom: string[];
   /**
-   * Set when the radio reported a region MeshMonitor has no frequency band
+   * Set when the radio reported a region MeshRadar has no frequency band
    * for, so the UI can say which one rather than showing a generic "assumed".
    *
    * `REGION_FREQ_INFO` is transcribed from firmware and currently stops short

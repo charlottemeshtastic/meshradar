@@ -5,9 +5,9 @@
  * Supports JWT decoding and generic header extraction.
  *
  * SECURITY MODEL:
- * - Assumes proxy is trusted and upstream from MeshMonitor
+ * - Assumes proxy is trusted and upstream from MeshRadar
  * - Requires TRUST_PROXY to be configured
- * - MeshMonitor should NOT be directly accessible (use Docker networks, firewall, etc.)
+ * - MeshRadar should NOT be directly accessible (use Docker networks, firewall, etc.)
  * - No JWT signature validation (proxy already validated)
  */
 

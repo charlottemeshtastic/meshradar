@@ -3,7 +3,7 @@
  *
  * Deliberate limits, decided with the maintainer:
  * - **Scripts only.** Community Add-ons (Docker sidecars) are out of scope.
- * - **Never automatic.** MeshMonitor reports that a newer version exists; an
+ * - **Never automatic.** MeshRadar reports that a newer version exists; an
  *   admin with `settings:write` decides to install it. Nothing here runs on a
  *   timer, so no third-party code changes under an operator without a click.
  * - **One backup.** The replaced file is kept so the update can be rolled back.
@@ -156,7 +156,7 @@ export async function setManualScriptSource(filename: string, value: string | nu
  */
 export async function fetchSourceContents(source: ScriptSource): Promise<string> {
   const response = await safeFetch(scriptSourceApiUrl(source), {
-    headers: { Accept: 'application/vnd.github.v3+json', 'User-Agent': 'MeshMonitor' },
+    headers: { Accept: 'application/vnd.github.v3+json', 'User-Agent': 'MeshRadar' },
     signal: AbortSignal.timeout(15000),
   });
 

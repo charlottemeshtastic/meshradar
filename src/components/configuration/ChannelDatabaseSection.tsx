@@ -892,7 +892,7 @@ const ChannelDatabaseSection: React.FC<ChannelDatabaseSectionProps> = ({ isAdmin
               </strong>
               <span>
                 {t('channel_database.rebroadcast_warning_message',
-                  'Your node\'s Rebroadcast Mode is set to "{{mode}}". For the Channel Database to decrypt packets from other nodes, Rebroadcast Mode should be set to "ALL". Otherwise, encrypted packets from distant nodes may not be forwarded to MeshMonitor for analysis.',
+                  'Your node\'s Rebroadcast Mode is set to "{{mode}}". For the Channel Database to decrypt packets from other nodes, Rebroadcast Mode should be set to "ALL". Otherwise, encrypted packets from distant nodes may not be forwarded to MeshRadar for analysis.',
                   { mode: rebroadcastModeName }
                 )}
               </span>

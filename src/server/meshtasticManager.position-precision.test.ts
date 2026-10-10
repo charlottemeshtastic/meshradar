@@ -57,7 +57,7 @@ describe('MeshtasticManager - Position Precision Tracking', () => {
 
   describe('Channel-precision fallback removed (issue #3030)', () => {
     // The handler previously fell back to the LOCAL channel's positionPrecision
-    // when a packet had no precision_bits. That record reflects the MeshMonitor
+    // when a packet had no precision_bits. That record reflects the MeshRadar
     // instance's own config, not the remote node's, and produced incorrect boxes.
 
     it('Position handler: uses precisionBits from the packet verbatim', () => {

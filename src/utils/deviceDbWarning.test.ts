@@ -5,10 +5,10 @@ import { isDeviceDbWarningMitigatable } from './deviceDbWarning';
  * Regression coverage for issue #3853.
  *
  * The "not in device DB" warning in the DM view shows one of two messages
- * (and box colors) depending on whether MeshMonitor can pre-populate the
+ * (and box colors) depending on whether MeshRadar can pre-populate the
  * radio's NodeDB via add_contact before sending a PKI DM (PR #3227):
  *
- *   - Key known AND no key mismatch -> mitigatable: MeshMonitor will push the
+ *   - Key known AND no key mismatch -> mitigatable: MeshRadar will push the
  *     contact (incl. public key) before the DM, so the DM succeeds.
  *   - Key unknown, OR a key mismatch is active (stored key can't be trusted,
  *     so add_contact is skipped) -> the DM truly will fail.

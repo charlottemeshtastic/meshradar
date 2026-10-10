@@ -18,7 +18,7 @@ import type { SourceRadioSummary } from '../types/elevation';
 import { isAnyMeshCoreSourceType } from '../utils/nodeTypeCategory';
 
 /**
- * A data source configured in MeshMonitor
+ * A data source configured in MeshRadar
  */
 export interface DashboardSource {
   id: string;
@@ -94,7 +94,7 @@ export interface SourceStatus {
   forwarding?: SourceForwardingStatus;
   /**
    * Meshtastic node sources only: the device has MQTT "Proxy to Client" on and
-   * no usable MQTT link, so MeshMonitor carries none of its MQTT traffic
+   * no usable MQTT link, so MeshRadar carries none of its MQTT traffic
    * (#5013). Present (always `true`) only when that holds and the caller has
    * per-source `configuration` read.
    */
@@ -324,7 +324,7 @@ export function useDashboardSourceData(sourceId: string | null): DashboardSource
  * whole-record merge below should look at the next source instead of letting
  * it win just for being newest (#5231).
  *
- * The case that put this here: MeshMonitor inserts a stub row named
+ * The case that put this here: MeshRadar inserts a stub row named
  * `Node !9e80e848` / `e848` the first time a node shows up as a traceroute hop
  * or a neighbour entry. Those are non-empty strings, so a source that has only
  * ever seen the node that way — often a busy MQTT source with the freshest

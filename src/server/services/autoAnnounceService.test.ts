@@ -91,7 +91,7 @@ function stubSettings(overrides: Record<string, string | null> = {}) {
     autoAnnounceUseSchedule: null,
     autoAnnounceIntervalHours: '6',
     autoAnnounceOnStart: null,
-    autoAnnounceMessage: 'MeshMonitor {VERSION} online',
+    autoAnnounceMessage: 'MeshRadar {VERSION} online',
     autoAnnounceChannelIndexes: '[0]',
     autoAnnounceNodeInfoEnabled: null,
     lastAnnouncementTime: null,
@@ -419,10 +419,10 @@ describe('AutoAnnounceService', () => {
 
       await svc.sendAutoAnnouncement(true);
 
-      expect(mgr.replaceAnnouncementTokens).toHaveBeenCalledWith('MeshMonitor {VERSION} online');
+      expect(mgr.replaceAnnouncementTokens).toHaveBeenCalledWith('MeshRadar {VERSION} online');
       expect(mgr.messageQueue.enqueue).toHaveBeenCalledTimes(2);
       const [msg0, dest0, , , , chan0] = (mgr.messageQueue.enqueue as ReturnType<typeof vi.fn>).mock.calls[0];
-      expect(msg0).toBe('MeshMonitor 9.9.9 online');
+      expect(msg0).toBe('MeshRadar 9.9.9 online');
       expect(dest0).toBe(0);
       expect(chan0).toBe(0);
       const chan1 = (mgr.messageQueue.enqueue as ReturnType<typeof vi.fn>).mock.calls[1][5];

@@ -1,7 +1,7 @@
 /**
  * @vitest-environment jsdom
  *
- * #5677: when the selected source's node has hardware MeshMonitor cannot
+ * #5677: when the selected source's node has hardware MeshRadar cannot
  * update (meshtasticd / PORTDUINO, a simulator, an unmapped or non-OTA
  * board), the pane shows an explanatory card in place of the update UI. The
  * card follows the CURRENT source, never flashes while a normal node's
@@ -141,7 +141,7 @@ describe('FirmwareUpdateSection — hardware that cannot be updated (#5677)', ()
   it.each([
     ['UNSET, once the node has finished reporting', 0, 'unset', 'This node reports no hardware model', true],
     ['ANDROID_SIM', 38, 'simulator', 'This node is a simulator', false],
-    ['a model number with no name', 200, 'unknown-model', 'MeshMonitor does not know hardware model 200', true],
+    ['a model number with no name', 200, 'unknown-model', 'MeshRadar does not know hardware model 200', true],
     ['PRIVATE_HW (no build mapped)', 255, 'unmapped-board', 'No firmware build is mapped for PRIVATE_HW', true],
     ['RAK4631 (nRF52840)', 9, 'platform-not-ota', 'RAK4631 cannot be updated over Wi-Fi', true],
   ])('%s: its own card', (_label, hwModel, reason, title, hasFlasherLink) => {
@@ -272,7 +272,7 @@ describe('FirmwareUpdateSection — the card follows the selected source (#5677)
     expect(card()).toBeNull();
     expect(
       screen.getByText(
-        'OTA firmware update is only available for TCP sources. The active source (meshcore) cannot be flashed from MeshMonitor.',
+        'OTA firmware update is only available for TCP sources. The active source (meshcore) cannot be flashed from MeshRadar.',
       ),
     ).toBeTruthy();
     expect((screen.getByText('Install') as HTMLButtonElement).disabled).toBe(true);

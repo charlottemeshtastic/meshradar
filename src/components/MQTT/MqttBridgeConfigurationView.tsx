@@ -4,7 +4,7 @@
  *
  * It was a page of its own under a satellite "Configuration" nav entry until
  * the #5683 follow-up. Nothing here is sent to a device: every field is
- * MeshMonitor's own connection and filter setup, stored in the source row. So
+ * MeshRadar's own connection and filter setup, stored in the source row. So
  * it belongs with the source's Settings, and the satellite keeps one meaning.
  *
  * Loads the source config via GET /api/sources/:id, presents the full set of
@@ -279,7 +279,7 @@ export const MqttBridgeConfigurationView: React.FC<MqttBridgeConfigurationViewPr
       <p className="setting-description">
         {t(
           'mqtt_bridge_config.section_description',
-          "MeshMonitor's own connection and filter setup for this bridge. It is stored with the source; nothing here is sent to a device.",
+          "MeshRadar's own connection and filter setup for this bridge. It is stored with the source; nothing here is sent to a device.",
         )}
       </p>
     </>
@@ -462,12 +462,12 @@ export const MqttBridgeConfigurationView: React.FC<MqttBridgeConfigurationViewPr
           />
           <span>
             <span className="dashboard-form-label" style={{ display: 'block' }}>
-              {t('source.form.mqtt_bridge_drop_automation_uplinks', "Don't uplink MeshMonitor automation traffic")}
+              {t('source.form.mqtt_bridge_drop_automation_uplinks', "Don't uplink MeshRadar automation traffic")}
             </span>
             <span style={labelStyle}>
               {t(
                 'source.form.mqtt_bridge_drop_automation_uplinks_help',
-                'Keeps packets sent by MeshMonitor automations (auto-acknowledge tapbacks, auto-responder, auto-announce, auto-welcome, timers, geofences, Automation Engine actions, auto-ping, scheduled requests) off the upstream broker. They still go out over LoRa and to the local broker; messages you send by hand are not affected. Only covers this bridge: a node whose own MQTT module publishes straight to the upstream broker still uplinks them (firmware behaviour by design, meshtastic/firmware#11994).',
+                'Keeps packets sent by MeshRadar automations (auto-acknowledge tapbacks, auto-responder, auto-announce, auto-welcome, timers, geofences, Automation Engine actions, auto-ping, scheduled requests) off the upstream broker. They still go out over LoRa and to the local broker; messages you send by hand are not affected. Only covers this bridge: a node whose own MQTT module publishes straight to the upstream broker still uplinks them (firmware behaviour by design, meshtastic/firmware#11994).',
               )}
             </span>
             <span style={{ ...labelStyle, display: 'block' }}>

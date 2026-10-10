@@ -3,7 +3,7 @@
  *
  * Issue #3187: messages from nodes with bad/uninitialized RTC carry a wildly
  * wrong `timestamp`, which used to sort them to the top or bottom of channel
- * and DM lists even when MeshMonitor had received them at a normal time.
+ * and DM lists even when MeshRadar had received them at a normal time.
  * The server now exposes its ingest time as `receivedAt`; UI sort sites
  * should use this helper so the fallback to `timestamp` is consistent
  * (pre-migration rows from older server builds may not carry `receivedAt`).

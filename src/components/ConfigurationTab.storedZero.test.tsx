@@ -4,7 +4,7 @@
  * Local Device Configuration: what Save sends for the two broadcast intervals.
  *
  * A node reports 0 for an interval left at the firmware default. Save used to
- * raise that 0 to MeshMonitor's floor first (32 s position, 3600 s node-info),
+ * raise that 0 to MeshRadar's floor first (32 s position, 3600 s node-info),
  * so saving any other field in the Position section set a 32-second position
  * broadcast. Pinned here: a stored 0 is sent as 0, an in-range value is sent
  * as typed, and any other value under the floor is still held back.

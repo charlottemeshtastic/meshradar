@@ -115,7 +115,7 @@ export function NodeIdentityChangeNotice({ nodeNum, sourceId }: NodeIdentityChan
               )
             : t(
                 'nodes.identity_change_history',
-                'Telemetry, positions and packet history recorded before the change stay under {{oldNodeId}}. MeshMonitor does not move them: the two entries remain separate.',
+                'Telemetry, positions and packet history recorded before the change stay under {{oldNodeId}}. MeshRadar does not move them: the two entries remain separate.',
                 { oldNodeId: detection.predecessor.nodeId },
               )}
         </p>

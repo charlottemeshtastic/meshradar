@@ -1,5 +1,5 @@
 /**
- * TransportSeriesPlot - shared recharts body for the two MeshMonitor-computed
+ * TransportSeriesPlot - shared recharts body for the two MeshRadar-computed
  * per-transport series (#5101 Phase 3, D5).
  *
  * Used by both TransportSeriesGraphs (Info tab) and TransportSeriesChart

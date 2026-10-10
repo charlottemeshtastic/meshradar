@@ -425,7 +425,7 @@ describe('AppriseNotificationService', () => {
   describe('Notification Payload Structure', () => {
     it('should construct valid Apprise notification payload', () => {
       const payload = {
-        title: 'MeshMonitor',
+        title: 'MeshRadar',
         body: 'New message received',
         type: 'info' as const,
         tag: undefined

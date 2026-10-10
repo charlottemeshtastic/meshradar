@@ -12,7 +12,7 @@
  *      own broker connection and publishes the same envelope again.
  *
  * The fix: when the mqttLink is active, the proxy frame must NOT reach VN
- * clients at all (MeshMonitor is the proxy). When it is not active, the frame
+ * clients at all (MeshRadar is the proxy). When it is not active, the frame
  * goes to exactly ONE delegate client via broadcastToProxyDelegate (a
  * physical node never double-publishes because BLE is single-client).
  */

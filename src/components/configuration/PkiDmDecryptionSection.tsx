@@ -1,6 +1,6 @@
 /**
  * PkiDmDecryptionSection — per-source opt-in for server-side PKI direct-message
- * decryption (issue #3441). When enabled, MeshMonitor extracts the source's
+ * decryption (issue #3441). When enabled, MeshRadar extracts the source's
  * local-node X25519 private key from the device and stores it encrypted, then
  * decrypts PKI DMs addressed to that node (including ones relayed still-encrypted
  * via MQTT) so they appear in the unified Messages view.
@@ -8,7 +8,7 @@
  * Gated server-side by the per-source `configuration` permission. Talks to
  * GET /api/sources/:id/pki-dm/status and POST /api/sources/:id/pki-dm.
  *
- * It is a MeshMonitor-side switch, so it sits on the source's Settings page
+ * It is a MeshRadar-side switch, so it sits on the source's Settings page
  * (#5683 follow-up; it was on Device Configuration). The grant did not move
  * with it: the status route needs `configuration:read` and the switch needs
  * `configuration:write`, so the host passes `canWrite` and a viewer without it
@@ -100,7 +100,7 @@ const PkiDmDecryptionSection: React.FC<PkiDmDecryptionSectionProps> = ({
       <p className="config-description">
         {t(
           'config.pki_dm.description',
-          'Decrypt PKI-encrypted direct messages addressed to this node — including ones relayed still-encrypted via MQTT — so they appear in the unified Messages view. MeshMonitor stores this node\'s private key, encrypted at rest. Only enable on sources you trust this server with.',
+          'Decrypt PKI-encrypted direct messages addressed to this node — including ones relayed still-encrypted via MQTT — so they appear in the unified Messages view. MeshRadar stores this node\'s private key, encrypted at rest. Only enable on sources you trust this server with.',
         )}
       </p>
 

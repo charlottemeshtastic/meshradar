@@ -2,8 +2,8 @@
  * DeliveryDetailsModal — per-protocol "Delivery Details" diagnostics popup
  * (#4816 Phase 1, WP2).
  *
- * Renders ONLY data MeshMonitor already has, with every field carrying an
- * honest provenance label (Reported by protocol / Observed by MeshMonitor /
+ * Renders ONLY data MeshRadar already has, with every field carrying an
+ * honest provenance label (Reported by protocol / Observed by MeshRadar /
  * Inferred / Unknown). Never fabricates a value: an absent field always shows
  * the Unknown placeholder rather than a guess.
  *
@@ -60,7 +60,7 @@ const TONE_CLASS: Record<DeliveryTone, string> = {
 
 const PROVENANCE_LABEL: Record<Provenance, { key: string; fallback: string }> = {
   reported: { key: 'delivery_details.provenance.reported', fallback: 'Reported by protocol' },
-  observed: { key: 'delivery_details.provenance.observed', fallback: 'Observed by MeshMonitor' },
+  observed: { key: 'delivery_details.provenance.observed', fallback: 'Observed by MeshRadar' },
   inferred: { key: 'delivery_details.provenance.inferred', fallback: 'Inferred' },
   unknown: { key: 'delivery_details.provenance.unknown', fallback: 'Unknown' },
 };
@@ -264,7 +264,7 @@ const MessageDetailsModal: React.FC<Props> = ({
   // A Meshtastic channel message has a numeric channel >= 0; a DM is -1. Guard
   // an undefined channel so "unknown" is not treated as a channel message.
   // Heard-By/propagation is a SENT-message concept (our own channel send's
-  // re-flood, correlated by MeshMonitor) — never shown for received messages.
+  // re-flood, correlated by MeshRadar) — never shown for received messages.
   const isMeshtasticChannelMessage =
     isSent && mtMessage !== null && typeof mtMessage.channel === 'number' && mtMessage.channel !== -1;
   const showMeshCorePropagation = isSent && protocol === 'meshcore' && !isMeshCoreDirectMessage;
@@ -351,7 +351,7 @@ const MessageDetailsModal: React.FC<Props> = ({
               <p className={styles.propagationSubtitle}>
                 {t(
                   'delivery_details.heard_by.subtitle',
-                  'Observed by MeshMonitor through repeater re-flood correlation. This confirms the packet propagated through parts of the mesh — it is NOT recipient-specific proof of delivery.',
+                  'Observed by MeshRadar through repeater re-flood correlation. This confirms the packet propagated through parts of the mesh — it is NOT recipient-specific proof of delivery.',
                 )}
               </p>
               {isMeshtasticChannelMessage ? (

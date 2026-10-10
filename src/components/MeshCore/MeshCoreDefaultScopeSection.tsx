@@ -2,7 +2,7 @@
  * MeshCoreDefaultScopeSection — default region / scope (#3667), on Device
  * Configuration.
  *
- * The scope is the flood scope MeshMonitor sets on the device for outgoing
+ * The scope is the flood scope MeshRadar sets on the device for outgoing
  * traffic that has no channel scope, so it is device configuration. It sat on
  * the Settings tab until the #5683 follow-up. Reads and writes are the ones it
  * always used:
@@ -15,7 +15,7 @@
  * pressed, is held in receive-only mode, and is gated on its own grant
  * (`nodes:write`), not on the grant that opened the page.
  *
- * The saved-regions catalogue itself is a list MeshMonitor keeps, so it stays
+ * The saved-regions catalogue itself is a list MeshRadar keeps, so it stays
  * on the Settings tab. This section only reads it, to mark a discovered region
  * that is already saved and to offer saving one that is not.
  */

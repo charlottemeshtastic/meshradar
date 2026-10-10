@@ -125,7 +125,7 @@ router.get('/link-preview', optionalAuth(), async (req, res) => {
         {
           signal: controller.signal,
           headers: {
-            'User-Agent': 'MeshMonitor-LinkPreview/1.0',
+            'User-Agent': 'MeshRadar-LinkPreview/1.0',
           },
           // Only fetch the first 50KB to avoid large downloads
           // @ts-ignore - TypeError is expected for size limit

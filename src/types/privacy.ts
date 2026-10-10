@@ -19,7 +19,7 @@ export function isPrivacyDocumentSlug(value: unknown): value is PrivacyDocumentS
 /**
  * One resolved disclosure link.
  *
- * `kind: 'hosted'` means the operator wrote the document inside MeshMonitor;
+ * `kind: 'hosted'` means the operator wrote the document inside MeshRadar;
  * the client links to `/privacy/:slug` under its own basename. `kind: 'url'`
  * means they pointed at an external page and `href` is an http(s) URL the
  * server has already validated.

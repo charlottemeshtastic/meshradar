@@ -62,7 +62,7 @@ describe('replaceMeshCoreAnnounceTokens', () => {
       null,
       { version: '1.2.3', uptimeMs: 0 },
     );
-    expect(out).toBe('MeshMonitor 0 v1.2.3');
+    expect(out).toBe('MeshRadar 0 v1.2.3');
   });
 
   it('leaves unknown tokens untouched (visible authoring error)', async () => {

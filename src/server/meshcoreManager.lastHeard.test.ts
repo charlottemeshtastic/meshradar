@@ -3,7 +3,7 @@
  * reconnect instead of stamping the reconnect wall-clock (#3645).
  *
  * #5339: Last Heard comes from the companion's `last_mod` — stamped by the
- * COMPANION's own clock (which MeshMonitor keeps synced) whenever it hears the
+ * COMPANION's own clock (which MeshRadar keeps synced) whenever it hears the
  * contact — and never from `last_advert`, which is the SENDER's clock. A node
  * with no RTC boots at the firmware's fixed 2024 default and one that drifted
  * can read years off either way, so trusting `last_advert` wrecked Last Heard

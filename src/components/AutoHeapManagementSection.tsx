@@ -177,7 +177,7 @@ const AutoHeapManagementSection: React.FC<AutoHeapManagementSectionProps> = ({ b
           lineHeight: '1.5',
         }}>
           {t('automation.auto_heap.warning',
-            'When triggered, MeshMonitor will remove the 10 least-recently-heard nodes from the device database and reboot the node. This may cause a brief disconnection.')}
+            'When triggered, MeshRadar will remove the 10 least-recently-heard nodes from the device database and reboot the node. This may cause a brief disconnection.')}
         </div>
 
         {/* Heap status */}

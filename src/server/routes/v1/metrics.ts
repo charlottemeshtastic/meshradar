@@ -88,7 +88,7 @@ router.get('/', async (req: Request, res: Response) => {
 
     const info = new Gauge({
       name: 'meshmonitor_info',
-      help: 'MeshMonitor build info (value is always 1)',
+      help: 'MeshRadar build info (value is always 1)',
       labelNames: ['version'],
       registers: [registry],
     });

@@ -85,7 +85,7 @@ const NAVS: Record<string, { render: () => RenderResult; deviceConfigId: string 
     settingsId: 'settings',
   },
   // An MQTT bridge has no device and no satellite entry. Its bridge setup
-  // (MeshMonitor's own connection and filter settings) is a section of its
+  // (MeshRadar's own connection and filter settings) is a section of its
   // Settings page (#5683 follow-up).
   mqtt_bridge: {
     render: () => render(<Sidebar {...sidebarProps} mqttReadOnly />),
@@ -184,7 +184,7 @@ describe('per-source nav convention (#5683)', () => {
   });
 
   it('gives an MQTT bridge no satellite entry: its setup is under Settings', () => {
-    // The bridge's old "Configuration" page held MeshMonitor's connection and
+    // The bridge's old "Configuration" page held MeshRadar's connection and
     // filter settings; no device is configured there. It is a section of the
     // source's Settings page now, so the satellite means one thing everywhere.
     const { container } = NAVS.mqtt_bridge.render();

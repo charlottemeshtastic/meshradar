@@ -2,7 +2,7 @@
  * Channel Decryption Service
  *
  * Provides server-side decryption of Meshtastic packets using channel keys
- * stored in the channel database. This enables MeshMonitor to decrypt packets
+ * stored in the channel database. This enables MeshRadar to decrypt packets
  * for channels not configured on the connected device.
  *
  * Meshtastic Encryption Spec:

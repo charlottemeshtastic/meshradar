@@ -189,7 +189,7 @@ export function isDuplicatePacketLog(
  * reception, so it should stay out of the Packet Monitor entirely (#5426).
  *
  * The dedup map above only catches a replay whose ORIGINAL reception this
- * manager already logged. It lives in memory, so after a MeshMonitor restart —
+ * manager already logged. It lives in memory, so after a MeshRadar restart —
  * or for any packet the node heard while we were disconnected — the
  * reconnect-time `want_config_id` burst logged ~50 "LoRa" rows inside half a
  * second, all with SNR, no RSSI and no hop data.

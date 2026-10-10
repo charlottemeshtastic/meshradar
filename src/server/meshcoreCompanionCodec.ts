@@ -4,7 +4,7 @@
  * `@liamcottle/meshcore.js` implements the *app/companion* end: it ENCODES the
  * `0x3c` command frames an app sends to a node, and DECODES the `0x3e` response
  * /push frames a node sends back. To act as a virtual MeshCore node (issue
- * #3535) MeshMonitor needs the inverse — DECODE the app's commands and ENCODE
+ * #3535) MeshRadar needs the inverse — DECODE the app's commands and ENCODE
  * the node's responses/pushes.
  *
  * This module is pure protocol: it takes/produces wire-native values (no unit
@@ -677,7 +677,7 @@ export function encodeEndOfContacts(mostRecentLastmod: number): Buffer {
 /**
  * Turn a contact's stored route into the two wire fields of a contact record.
  *
- * MeshMonitor stores a route as `pathLen` (hop COUNT, null = no route) and
+ * MeshRadar stores a route as `pathLen` (hop COUNT, null = no route) and
  * `outPath` (comma-separated hop hashes, each token one hop: "a3,7f" for
  * 1-byte hashes, "a3f2,7f01" for 2-byte, "a3f201,7f0102" for 3-byte). The
  * hash width is not stored on its own; it is the width of the tokens.

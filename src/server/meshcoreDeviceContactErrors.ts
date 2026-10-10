@@ -5,7 +5,7 @@
  * CMD_SEND_STATUS_REQ and CMD_SEND_TXT_MSG against its OWN saved contact table
  * (examples/companion_radio/MyMesh.cpp `lookupContactByPubKey`). A target
  * that is not in that table fails at once with ERR_CODE_NOT_FOUND — nothing
- * is transmitted. MeshMonitor can show such contacts (heard via a 0x8A
+ * is transmitted. MeshRadar can show such contacts (heard via a 0x8A
  * NewAdvert the firmware chose not to store, evicted by the firmware, or
  * known only from the DB), so these errors let callers say so plainly
  * instead of a generic "login failed".

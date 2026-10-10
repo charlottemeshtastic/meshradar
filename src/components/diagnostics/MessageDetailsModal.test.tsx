@@ -226,7 +226,7 @@ describe('DeliveryDetailsModal', () => {
     expect(screen.getByText('a3f2')).toBeTruthy();
     // Resolved relay: name wins over hash.
     expect(screen.getByText('Repeater-1')).toBeTruthy();
-    expect(screen.getByText(/Observed by MeshMonitor through repeater re-flood correlation/)).toBeTruthy();
+    expect(screen.getByText(/Observed by MeshRadar through repeater re-flood correlation/)).toBeTruthy();
     expect(screen.getByText(/NOT recipient-specific proof of delivery/)).toBeTruthy();
   });
 
@@ -284,7 +284,7 @@ describe('DeliveryDetailsModal', () => {
       expect(screen.getByText('0x99')).toBeTruthy();
 
       // Every row carries the Observed provenance badge.
-      expect(screen.getAllByText('Observed by MeshMonitor').length).toBeGreaterThanOrEqual(3);
+      expect(screen.getAllByText('Observed by MeshRadar').length).toBeGreaterThanOrEqual(3);
 
       expect(mockGetMeshtasticHeardBy).toHaveBeenCalledWith('source-a', 'mt1');
     });
@@ -465,7 +465,7 @@ describe('DeliveryDetailsModal', () => {
 
       // Provenance badges reuse the Phase 1 badge labels (also present on the
       // description-section field rows, so assert presence, not uniqueness).
-      expect(screen.getAllByText('Observed by MeshMonitor').length).toBeGreaterThan(0);
+      expect(screen.getAllByText('Observed by MeshRadar').length).toBeGreaterThan(0);
       expect(screen.getAllByText('Reported by protocol').length).toBeGreaterThan(0);
 
       expect(mockGetMessageEvents).toHaveBeenCalledWith('source-a', 'mt1');

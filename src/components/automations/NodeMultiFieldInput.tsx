@@ -13,7 +13,7 @@ export interface NodeMultiOption {
   longName?: string;
   shortName?: string;
   nodeId?: string;
-  /** MeshMonitor mobility flag: 0/false = stationary, 1/true = mobile. */
+  /** MeshRadar mobility flag: 0/false = stationary, 1/true = mobile. */
   mobile?: number | boolean;
   isMobile?: boolean;
   /** Tracked asset (#5354); forces the node into the Mobile chip. */
@@ -115,8 +115,8 @@ export default function NodeMultiFieldInput({ value, onChange, nodes }: Props) {
               <span style={{ fontWeight: 600 }}>{labelOf(n)}</span>
               {secondary ? <span className="ae-chip">{secondary}</span> : null}
               {stationary
-                ? <span className="ae-chip" title="MeshMonitor marks this node stationary (mobile = 0)">Stationary</span>
-                : <span className="ae-chip" title="MeshMonitor marks this node mobile">Mobile</span>}
+                ? <span className="ae-chip" title="MeshRadar marks this node stationary (mobile = 0)">Stationary</span>
+                : <span className="ae-chip" title="MeshRadar marks this node mobile">Mobile</span>}
             </label>
           );
         })}

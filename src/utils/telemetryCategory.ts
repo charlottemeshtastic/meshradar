@@ -137,7 +137,7 @@ const TYPE_CATEGORY: Record<string, TelemetryCategory> = {
   tmRouterHopsPreserved: 'network',
   systemNodeCount: 'network',
   systemDirectNodeCount: 'network',
-  // #5101 P3: MeshMonitor-computed per-transport series (transportSeries.ts).
+  // #5101 P3: MeshRadar-computed per-transport series (transportSeries.ts).
   systemNodesHeardRf: 'network',
   systemNodesHeardUdp: 'network',
   systemNodesHeardMqtt: 'network',

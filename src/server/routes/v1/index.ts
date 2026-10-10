@@ -56,7 +56,7 @@ router.use(requireAPIToken());
 router.get('/', (_req, res) => {
   res.json({
     version: 'v1',
-    description: 'MeshMonitor REST API v1 (multi-source shape)',
+    description: 'MeshRadar REST API v1 (multi-source shape)',
     documentation: '/api/v1/docs',
     endpoints: {
       sources: '/api/v1/sources',

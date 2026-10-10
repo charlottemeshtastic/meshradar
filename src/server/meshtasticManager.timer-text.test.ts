@@ -133,7 +133,7 @@ describe('Timer Triggers - Text Message Support', () => {
         name: 'Valid Text Timer',
         cronExpression: '0 */6 * * *',
         responseType: 'text' as const,
-        response: 'MeshMonitor {VERSION} - {NODECOUNT} nodes online',
+        response: 'MeshRadar {VERSION} - {NODECOUNT} nodes online',
         channel: 0,
         enabled: true,
       };
@@ -154,7 +154,7 @@ describe('Timer Triggers - Text Message Support', () => {
     });
 
     it('should handle message without tokens', () => {
-      const message = 'Hello from MeshMonitor!';
+      const message = 'Hello from MeshRadar!';
       const hasTokens = message.includes('{');
       expect(hasTokens).toBe(false);
     });

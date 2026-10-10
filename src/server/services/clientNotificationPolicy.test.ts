@@ -109,7 +109,7 @@ describe('parseProtectedCapRefusal', () => {
     });
   });
 
-  it('ignores the verify verb (not MeshMonitor-actionable)', () => {
+  it('ignores the verify verb (not MeshRadar-actionable)', () => {
     expect(parseProtectedCapRefusal("Can't verify 0xdeadbeef: protected-node limit (118) reached")).toBeNull();
   });
 

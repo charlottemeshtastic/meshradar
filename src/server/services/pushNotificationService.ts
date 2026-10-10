@@ -469,7 +469,7 @@ class PushNotificationService {
    * Design Note: Anonymous users receive all notifications by default because:
    * 1. They haven't configured preferences yet (can't know what they want)
    * 2. They've explicitly subscribed to push notifications (opt-in consent)
-   * 3. MeshMonitor is typically for private mesh networks (trusted environment)
+   * 3. MeshRadar is typically for private mesh networks (trusted environment)
    * 4. Users can unsubscribe at any time or set up authentication + preferences
    */
   private async shouldFilterNotificationAsync(

@@ -15,7 +15,7 @@ interface MeshCoreIgnoreBlockControlsProps {
 
 /**
  * Node Details: Ignore / Block this node (#5408), or take it off the list.
- * MeshCore firmware has no block, so this only changes what MeshMonitor
+ * MeshCore firmware has no block, so this only changes what MeshRadar
  * stores and shows — the node still transmits.
  */
 export const MeshCoreIgnoreBlockControls: React.FC<MeshCoreIgnoreBlockControlsProps> = ({

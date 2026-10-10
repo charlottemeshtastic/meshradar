@@ -8,7 +8,7 @@
  * the leading '#'); NULL means "inherit the source's default scope / unscoped".
  *
  * Important: MeshCore's companion protocol has no per-channel scope field, so
- * this value is owned entirely by MeshMonitor and is never reported back by the
+ * this value is owned entirely by MeshRadar and is never reported back by the
  * device. `syncChannelsFromDevice()` must preserve it across re-syncs.
  *
  * Idempotent across SQLite / PostgreSQL / MySQL.

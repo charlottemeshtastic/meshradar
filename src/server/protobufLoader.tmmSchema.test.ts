@@ -5,7 +5,7 @@
  * Meshtastic protobufs commit d4f7ddb1 removed the nine TrafficManagementConfig
  * bool toggles plus `position_precision_bits` and reserved their tags, moving
  * the module to a "non-zero implies enabled" convention on the remaining uint32
- * knobs. MeshMonitor used to patch those fields back in at load time; that shim
+ * knobs. MeshRadar used to patch those fields back in at load time; that shim
  * is gone, because the Traffic Management UI is gated on
  * `supportsTrafficManagement()` (firmware 2.8.0+) — the exact firmware that
  * reserved the tags — so re-adding them could only ever put reserved bytes on
@@ -16,7 +16,7 @@
  *  2. the five retained knobs keep their upstream tags and uint32 type,
  *  3. a representative config encodes to the v2.8 wire bytes with nothing
  *     from a reserved tag,
- *  4. the 2.8-preview surface MeshMonitor is waiting on is actually present
+ *  4. the 2.8-preview surface MeshRadar is waiting on is actually present
  *     (MESH_BEACON_APP portnum, MeshBeacon message, MeshPacket.xeddsa_signed).
  */
 import { describe, it, expect, beforeAll } from 'vitest';

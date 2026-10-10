@@ -1,5 +1,5 @@
 /**
- * The catalogue of configurable sections MeshMonitor ships (#5182).
+ * The catalogue of configurable sections MeshRadar ships (#5182).
  *
  * Every settings-ish tab already rendered a `SectionNav` from an inline array
  * of `{ id, label }`. Those arrays are lifted here so there is ONE list per
@@ -82,13 +82,13 @@ export const GLOBAL_SETTINGS_SECTIONS = new Set([
 
 /** Settings sections that belong to a source's own Settings tab. */
 export const SOURCE_SETTINGS_SECTIONS = new Set([
-  // MQTT bridge setup (#5683 follow-up): MeshMonitor's own connection and
+  // MQTT bridge setup (#5683 follow-up): MeshRadar's own connection and
   // filter settings for the bridge, saved to the source row. It used to be a
   // page of its own under a satellite "Configuration" entry, though nothing
   // on it is sent to a device.
   'settings-mqtt-bridge',
   'settings-node-display', 'settings-telemetry',
-  // PKI DM decryption (#5683 follow-up): a MeshMonitor-side switch, moved
+  // PKI DM decryption (#5683 follow-up): a MeshRadar-side switch, moved
   // here from Device Configuration.
   'settings-pki-dm',
   'settings-notifications', 'settings-packet-monitor', 'settings-solar',

@@ -176,7 +176,7 @@ router.get('/script-content', optionalAuth(), async (req, res) => {
       const response = await fetch(safeRequestUrl, {
         signal: controller.signal,
         headers: {
-          'User-Agent': 'MeshMonitor-ScriptContent/1.0',
+          'User-Agent': 'MeshRadar-ScriptContent/1.0',
         },
       });
 

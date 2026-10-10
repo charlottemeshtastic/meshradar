@@ -9,7 +9,7 @@
  *
  * Channel messaging on the wire is index-keyed (no per-sender pubkey for
  * channel traffic — the firmware embeds the sender's name in the text body).
- * MeshMonitor synthesises `fromPublicKey = 'channel-${idx}'` on receive
+ * MeshRadar synthesises `fromPublicKey = 'channel-${idx}'` on receive
  * (meshcoreManager.ts:561) and `toPublicKey = 'channel-${idx}'` on local
  * send (meshcoreManager.ts:sendMessage, phase 2 addition). The per-channel
  * filter therefore matches either direction.
@@ -797,7 +797,7 @@ export const MeshCoreChannelsView: React.FC<MeshCoreChannelsViewProps> = ({
               className={`${styles.reorderButton} ${reordering ? styles.active : ''}`}
               onClick={() => setReorderingFor(prev => (prev === channelIdsKey ? null : channelIdsKey))}
               aria-pressed={reordering}
-              title={t('meshcore.channels.order.reorder_title', 'Set a custom channel order (MeshMonitor display only)')}
+              title={t('meshcore.channels.order.reorder_title', 'Set a custom channel order (MeshRadar display only)')}
             >
               <UiIcon name="dragHandle" size={14} /> {t('meshcore.channels.order.reorder', 'Reorder')}
             </button>

@@ -1,7 +1,7 @@
 /**
  * externalUrl setting (#4437, WP2).
  *
- * A new global, admin-only setting: the absolute origin this MeshMonitor
+ * A new global, admin-only setting: the absolute origin this MeshRadar
  * install is reachable at, used by securityDigestService's detailsLink()
  * to build the "View details" link in security digests. See
  * docs/internal/dev-notes/EPIC_FOLLOWUP_FIXES_SPEC.md §3.

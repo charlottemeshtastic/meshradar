@@ -76,7 +76,7 @@ export async function replaceMeshCoreAnnounceTokens(
   let companionCount = 0;
   let repeaterCount = 0;
   let roomCount = 0;
-  let nodeName = 'MeshMonitor';
+  let nodeName = 'MeshRadar';
   let nodeId = '';
 
   if (manager) {

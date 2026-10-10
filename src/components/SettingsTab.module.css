@@ -18,7 +18,7 @@
 
 /*
  * Inline mesh-impact warning under a setting's description (#5376): the
- * TX-target window next to the node window limits which nodes MeshMonitor
+ * TX-target window next to the node window limits which nodes MeshRadar
  * transmits to.
  */
 .txWarning {

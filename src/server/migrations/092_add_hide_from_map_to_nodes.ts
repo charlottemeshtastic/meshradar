@@ -1,7 +1,7 @@
 /**
  * Migration 092: Add `hideFromMap` to `nodes`.
  *
- * Per-node "Hide from Map" toggle (issue #3549) — when true, MeshMonitor
+ * Per-node "Hide from Map" toggle (issue #3549) — when true, MeshRadar
  * suppresses the node's marker on every map (source-scoped and unified) while
  * leaving the node fully visible in node lists, packet monitor, DMs, etc. This
  * is distinct from the ignore flag (which hides the node almost everywhere) and

@@ -6,7 +6,7 @@
  * `ok_to_mqtt` drop in `MQTT::onSend` on whether the configured broker is a
  * private IPv4. When it is, uplinking a packet whose originator's
  * `ok_to_mqtt` bit is clear is EXPECTED BY DESIGN — the drop only applies to
- * public brokers. MeshMonitor's violation detector (`okToMqtt.ts`) has no
+ * public brokers. MeshRadar's violation detector (`okToMqtt.ts`) has no
  * way to know the gateway's broker, so it flags every relayed
  * `ok_to_mqtt = 0` packet the same way; this module lets callers annotate
  * those flags with what can actually be known about the observing source's
@@ -33,7 +33,7 @@
  *     `fromString` fail, so firmware evaluates it as NOT-private at config
  *     time. Direct-TCP gateways later re-check against the resolved peer
  *     IP (which could turn out private), but MQTT-client-proxy gateways
- *     never re-check. Since MeshMonitor can't tell which gateway type
+ *     never re-check. Since MeshRadar can't tell which gateway type
  *     produced a given reception, a hostname is reported as `'unknown'`
  *     rather than guessed either way.
  *   - IPv6 literals aren't handled by firmware's parser either → `'unknown'`.
@@ -111,7 +111,7 @@ function isPrivateIPv4(host: string): boolean {
 }
 
 /**
- * Extract the "broker address" (host, or host:port) a MeshMonitor MQTT
+ * Extract the "broker address" (host, or host:port) a MeshRadar MQTT
  * source is configured with, from its `sources.config` JSON. Returns `null`
  * when the type isn't an MQTT source, or no usable address is on record —
  * `classifyBrokerAddress(null)` maps that to `'unknown'`, distinct from an
@@ -124,7 +124,7 @@ function isPrivateIPv4(host: string): boolean {
  *   publish into. The scheme is stripped; `URL.hostname` already strips
  *   brackets from an IPv6 host, and firmware never handles those anyway
  *   (see module doc), so no scheme leaks into the returned value.
- * - `mqtt_broker`: MeshMonitor itself hosts the broker, so there's no
+ * - `mqtt_broker`: MeshRadar itself hosts the broker, so there's no
  *   upstream URL — devices connect directly. The only address on record is
  *   the listener's OWN bind host, which is not what a device was configured
  *   with, but if an operator has explicitly bound it to a specific literal
@@ -161,7 +161,7 @@ export function resolveSourceBrokerAddress(
 }
 
 /**
- * Classify the broker a MeshMonitor MQTT source is configured against.
+ * Classify the broker a MeshRadar MQTT source is configured against.
  * Convenience wrapper composing {@link resolveSourceBrokerAddress} and
  * {@link classifyBrokerAddress} — see both for the rules.
  */

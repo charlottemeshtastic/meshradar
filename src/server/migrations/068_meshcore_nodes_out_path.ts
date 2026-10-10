@@ -5,7 +5,7 @@
  * MeshCore stores a forwarding hop chain alongside each contact: when the
  * sender has a known `out_path` the firmware uses ROUTE_TYPE_DIRECT, otherwise
  * it falls back to ROUTE_TYPE_FLOOD and lets the destination return a path on
- * the next round-trip. Capturing the bytes lets MeshMonitor render hop counts
+ * the next round-trip. Capturing the bytes lets MeshRadar render hop counts
  * and offer a "Reset Path" action without re-querying the device on every
  * page load.
  *

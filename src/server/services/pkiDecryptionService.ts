@@ -2,7 +2,7 @@
  * PKI Direct Message decryption (Meshtastic Curve25519 PKC).
  *
  * Meshtastic encrypts unicast DMs to a node with the recipient's public key.
- * MeshMonitor can decrypt them server-side when it holds the recipient (local
+ * MeshRadar can decrypt them server-side when it holds the recipient (local
  * node)'s private key — extracted from the device's SecurityConfig — so that a
  * DM that arrived on one radio source can be surfaced in the unified view.
  *

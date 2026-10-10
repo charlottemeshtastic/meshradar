@@ -4,7 +4,7 @@
  * Solar detection infers a panel from charge/discharge patterns in battery and
  * voltage telemetry. A node with a panel and battery bank far larger than its
  * load never shows that pattern — it sits near full all day — so the detector
- * misses it, and there is no way to tell MeshMonitor what the operator already
+ * misses it, and there is no way to tell MeshRadar what the operator already
  * knows. This table records that knowledge: one row per node the operator has
  * explicitly classified.
  *

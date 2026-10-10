@@ -4,7 +4,7 @@
  * Meshtastic channel (broadcast) messages carry NO cryptographic sender
  * authentication — anyone holding the channel PSK can transmit a packet with a
  * forged `from` field. The most damaging case for a monitor is a packet that
- * spoofs OUR locally-connected node's number: without a guard, MeshMonitor
+ * spoofs OUR locally-connected node's number: without a guard, MeshRadar
  * treats it as one of our own *outgoing* messages.
  *
  * The discriminators are purely structural (see meshtastic-expert brief for

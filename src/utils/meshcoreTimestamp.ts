@@ -8,7 +8,7 @@
  * value its RTC currently holds. Issue #5339 observed a single mesh's "last
  * heard" values spread from year 2000 to year 2087 purely from this.
  *
- * MeshMonitor already receives every one of these events in real time, so
+ * MeshRadar already receives every one of these events in real time, so
  * its own receipt clock (`Date.now()`) is always available as a fallback.
  * This module is the single gate between "trust the device's stated time"
  * and "the device's clock cannot be trusted right now" — callers pass a raw
@@ -27,7 +27,7 @@
 const MIN_PLAUSIBLE_MESHCORE_TIME_MS = 1_577_836_800_000;
 
 /**
- * How far ahead of MeshMonitor's own clock a device-reported time may sit
+ * How far ahead of MeshRadar's own clock a device-reported time may sit
  * before it's treated as drift rather than ordinary clock skew. Generous on
  * purpose — this only needs to reject multi-year drift, not nudge out
  * legitimately-unsynced-but-close clocks.
@@ -43,12 +43,12 @@ export function isPlausibleMeshCoreTimeMs(ms: number, nowMs: number = Date.now()
 }
 
 /**
- * How far BEFORE MeshMonitor received a message its sender's stated time may
+ * How far BEFORE MeshRadar received a message its sender's stated time may
  * sit (#5339). The floor above only rejects clocks from before MeshCore
  * existed, which lets through the most common bad value: a node with no RTC
  * boots at the firmware's fixed default (2024) and stamps every message with
  * it. A day covers the companion's offline queue draining after a short
- * MeshMonitor outage; anything older is a broken clock, not a delayed message.
+ * MeshRadar outage; anything older is a broken clock, not a delayed message.
  */
 const MAX_MESSAGE_PAST_SKEW_MS = 24 * 60 * 60 * 1000; // 1 day
 
@@ -74,7 +74,7 @@ export function isFutureDriftedMeshCoreTimeMs(ms: number, nowMs: number = Date.n
 
 /**
  * Resolve a MeshCore device-reported epoch-SECONDS timestamp (e.g. the wire
- * `sender_timestamp`) to epoch ms, falling back to `nowMs` (MeshMonitor's own
+ * `sender_timestamp`) to epoch ms, falling back to `nowMs` (MeshRadar's own
  * receipt clock; injectable for tests) when the value is missing,
  * non-positive, or implausible per {@link isPlausibleMeshCoreTimeMs}. `nowMs`
  * doubles as both the fallback value and the reference point for the

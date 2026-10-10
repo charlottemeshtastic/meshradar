@@ -12,7 +12,7 @@
  * The dictionaries are consumed as runtime data files from the
  * `takpacket-sdk/` git submodule (meshtastic/TAKPacket-SDK, GPL-3.0) — the
  * same posture as the GPL-3.0 `protobufs/` submodule whose .proto files are
- * loaded at runtime. No SDK code is compiled into MeshMonitor; this decoder
+ * loaded at runtime. No SDK code is compiled into MeshRadar; this decoder
  * is written against the public wire spec.
  *
  * Firmware never touches V2 (no transcode, no zstd) — the raw wire payload
