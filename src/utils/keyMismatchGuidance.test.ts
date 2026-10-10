@@ -58,7 +58,7 @@ describe('assessKeyMismatch', () => {
   });
 
   it('still models administered exposure, for when that history exists', () => {
-    // No caller supplies this yet — MeshMonitor stores no per-node remote-admin
+    // No caller supplies this yet — MeshRadar stores no per-node remote-admin
     // history — but the exposure is real, so the model keeps it and the
     // low-risk copy states the omission instead of implying certainty.
     expect(assessKeyMismatch({ sentDirectMessageCount: 0, hasAdministered: true }).severity).toBe('high');

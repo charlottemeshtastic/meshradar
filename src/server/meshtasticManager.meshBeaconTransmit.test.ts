@@ -8,7 +8,7 @@ import { describe, it, expect, beforeAll, vi } from 'vitest';
  * `actualModuleConfig`, and `GET /api/config/current` serves that cache
  * verbatim. Every *other* module config hid the staleness because the firmware
  * reboots the node after `set_module_config`, which drops the TCP link and
- * makes MeshMonitor re-download the whole config. MeshBeacon is on the
+ * makes MeshRadar re-download the whole config. MeshBeacon is on the
  * firmware's no-reboot allowlist (`shouldReboot = false` in AdminModule's
  * `mesh_beacon` case, alongside statusmessage/mqtt/serial), so nothing ever
  * refreshed the cache and the pre-save values were served indefinitely.

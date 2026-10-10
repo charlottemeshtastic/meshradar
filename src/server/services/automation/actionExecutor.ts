@@ -729,7 +729,7 @@ export async function executeAction(node: AutomationNode, ctx: EngineEvalContext
     }
 
     case 'action.notify': {
-      const title = await interpolateAsync(String(p.title ?? 'MeshMonitor automation'), ctx);
+      const title = await interpolateAsync(String(p.title ?? 'MeshRadar automation'), ctx);
       const body = await interpolateAsync(String(p.body ?? ''), ctx);
       // Empty-send rule (#5636): a notification with neither a title nor a body
       // says nothing, so it is not dispatched. A title on its own still goes.

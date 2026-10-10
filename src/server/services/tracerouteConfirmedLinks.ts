@@ -50,7 +50,7 @@
  *
  * ## Limits
  *
- * Computed on read; nothing is stored. MeshMonitor keeps only
+ * Computed on read; nothing is stored. MeshRadar keeps only
  * `TRACEROUTE_HISTORY_LIMIT` runs per node pair, so counts are capped by that
  * and an old confirmation can age out however long the window is.
  *

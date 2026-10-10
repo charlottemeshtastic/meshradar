@@ -176,7 +176,7 @@ export interface DuplicateGroupNode {
  *
  * The 2.8 firmware bug (unmerged fix meshtastic/firmware#10820) renumbers a
  * node to `crc32(publicKey)` on first 2.8 boot while keeping its key, orphaning
- * the old MAC-derived NodeNum — so MeshMonitor sees ONE physical node under two
+ * the old MAC-derived NodeNum — so MeshRadar sees ONE physical node under two
  * NodeNums sharing a key. The **benign** fingerprint requires:
  *   1. exactly two NodeNums in the group,
  *   2. exactly one of them equals `crc32(publicKey)` (the live new identity),

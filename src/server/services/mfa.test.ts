@@ -41,7 +41,7 @@ describe('MfaService', () => {
       const result = service.generateSecret('testuser');
 
       expect(result.otpauthUrl).toMatch(/^otpauth:\/\/totp\//);
-      expect(result.otpauthUrl).toContain('MeshMonitor');
+      expect(result.otpauthUrl).toContain('MeshRadar');
       expect(result.otpauthUrl).toContain('testuser');
       expect(result.otpauthUrl).toContain('secret=');
       expect(result.otpauthUrl).toContain('issuer=');
@@ -56,9 +56,9 @@ describe('MfaService', () => {
     it('should not produce a double-issuer in the label', () => {
       const result = service.generateSecret('testuser');
 
-      // The URI should NOT contain MeshMonitor:MeshMonitor (double issuer)
-      expect(result.otpauthUrl).not.toContain('MeshMonitor%3AMeshMonitor');
-      expect(result.otpauthUrl).not.toContain('MeshMonitor:MeshMonitor');
+      // The URI should NOT contain MeshRadar:MeshRadar (double issuer)
+      expect(result.otpauthUrl).not.toContain('MeshRadar%3AMeshRadar');
+      expect(result.otpauthUrl).not.toContain('MeshRadar:MeshRadar');
     });
 
     it('should return a non-empty secret', () => {
@@ -70,14 +70,14 @@ describe('MfaService', () => {
 
   describe('generateQrCode', () => {
     it('should generate a data URL starting with data:image/png', async () => {
-      const otpauthUrl = 'otpauth://totp/MeshMonitor:testuser?secret=JBSWY3DPEHPK3PXP&issuer=MeshMonitor';
+      const otpauthUrl = 'otpauth://totp/MeshRadar:testuser?secret=JBSWY3DPEHPK3PXP&issuer=MeshRadar';
       const dataUrl = await service.generateQrCode(otpauthUrl);
 
       expect(dataUrl).toMatch(/^data:image\/png;base64,/);
     });
 
     it('should return a non-empty data URL', async () => {
-      const otpauthUrl = 'otpauth://totp/MeshMonitor:testuser?secret=JBSWY3DPEHPK3PXP&issuer=MeshMonitor';
+      const otpauthUrl = 'otpauth://totp/MeshRadar:testuser?secret=JBSWY3DPEHPK3PXP&issuer=MeshRadar';
       const dataUrl = await service.generateQrCode(otpauthUrl);
 
       expect(dataUrl.length).toBeGreaterThan('data:image/png;base64,'.length);

@@ -54,23 +54,23 @@ const range = (min: number, max: number): string => (min === max ? String(min) :
 function caveatText(caveat: ReplayCaveat, result: TrafficReplayResponse, t: TFunction): string {
   switch (caveat) {
     case 'ALREADY_FILTERED_ABSENT':
-      return t('trafficmanagement_replay.caveat_already_filtered', 'Packets the node already drops never reach MeshMonitor, so they are not counted here. A low number, or zero, does not mean the node drops little.');
+      return t('trafficmanagement_replay.caveat_already_filtered', 'Packets the node already drops never reach MeshRadar, so they are not counted here. A low number, or zero, does not mean the node drops little.');
     case 'EMPTY_CACHE_AT_START':
       return t('trafficmanagement_replay.caveat_empty_cache', 'The replay starts with an empty cache, so the first packets in the log always pass. This undercounts.');
     case 'TICK_PHASE_UNKNOWN':
-      return t('trafficmanagement_replay.caveat_tick_phase', 'The node counts time in ticks from its boot. MeshMonitor cannot see where a tick starts, so it tried {{count}} starting points and shows the lowest and highest result.', { count: result.phasesSampled });
+      return t('trafficmanagement_replay.caveat_tick_phase', 'The node counts time in ticks from its boot. MeshRadar cannot see where a tick starts, so it tried {{count}} starting points and shows the lowest and highest result.', { count: result.phasesSampled });
     case 'CACHE_LOSS_NOT_MODELLED':
       return t('trafficmanagement_replay.caveat_cache_loss', 'A reboot or a full cache makes the node forget a sender. The replay assumes neither happened.');
     case 'LOCAL_NODE_ONLY':
       return t('trafficmanagement_replay.caveat_local_only', 'This covers packets this one node heard. It is not a figure for the whole mesh, and it is not a count of real drops.');
     case 'RELAYED_UNICAST_INVISIBLE':
-      return t('trafficmanagement_replay.caveat_relayed_unicast', 'The node also counts direct messages it relays for others. MeshMonitor never sees those, so real drops are likely higher.');
+      return t('trafficmanagement_replay.caveat_relayed_unicast', 'The node also counts direct messages it relays for others. MeshRadar never sees those, so real drops are likely higher.');
     case 'NET_CHANGE_MAY_BE_SMALLER':
       return t('trafficmanagement_replay.caveat_net_change', 'Some packets the node drops today could pass under the new value. They are not in the log, so the net change may be smaller than shown.');
     case 'SENDER_ROLE_FROM_MESHMONITOR':
-      return t('trafficmanagement_replay.caveat_sender_role', 'The firmware lets a tracker repeat a position after 1 hour and a lost-and-found node after 15 minutes, whatever the interval. The replay uses the role MeshMonitor last heard for each sender.');
+      return t('trafficmanagement_replay.caveat_sender_role', 'The firmware lets a tracker repeat a position after 1 hour and a lost-and-found node after 15 minutes, whatever the interval. The replay uses the role MeshRadar last heard for each sender.');
     case 'SERVER_DECRYPTED_NOT_COUNTED':
-      return t('trafficmanagement_replay.caveat_server_decrypted', '{{count}} packets were decrypted by MeshMonitor, not by the node. The node could not read them, so neither rule counts them.', { count: result.skipped.serverDecrypted });
+      return t('trafficmanagement_replay.caveat_server_decrypted', '{{count}} packets were decrypted by MeshRadar, not by the node. The node could not read them, so neither rule counts them.', { count: result.skipped.serverDecrypted });
     case 'SCAN_TRUNCATED':
       return t('trafficmanagement_replay.caveat_truncated', 'The log holds more than {{cap}} rows for this source. Only the newest {{cap}} were read.', { cap: result.scanCap });
     case 'OTHER_RULE_HELD_AT_CURRENT':
@@ -246,7 +246,7 @@ const TrafficManagementReplayPanel: React.FC<TrafficManagementReplayPanelProps> 
     <div className={styles.panel} data-testid="tm-replay-panel">
       <div className={styles.title}>{t('trafficmanagement_replay.title', 'Estimate impact')}</div>
       <p className={styles.note}>
-        {t('trafficmanagement_replay.intro', 'Replays this node\'s packet log against the Position Deduplication and Rate Limiting values in the form above, saved or not. It reads MeshMonitor\'s own database: nothing is sent to the node and nothing is saved. NodeInfo Direct Response and Drop Unknown Packets are not estimated.')}
+        {t('trafficmanagement_replay.intro', 'Replays this node\'s packet log against the Position Deduplication and Rate Limiting values in the form above, saved or not. It reads MeshRadar\'s own database: nothing is sent to the node and nothing is saved. NodeInfo Direct Response and Drop Unknown Packets are not estimated.')}
       </p>
 
       <button

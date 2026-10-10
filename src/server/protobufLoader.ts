@@ -46,7 +46,7 @@ export async function loadProtobufDefinitions(): Promise<protobuf.Root> {
 
     await root.load(protoPath);
 
-    // NOTE: MeshMonitor used to patch the removed v2.7 TrafficManagementConfig
+    // NOTE: MeshRadar used to patch the removed v2.7 TrafficManagementConfig
     // bool toggles back into the schema here. That shim is gone (#5123): the
     // Traffic Management UI is gated on `supportsTrafficManagement()` —
     // firmware 2.8.0+ — which is exactly the firmware that reserved those tags,

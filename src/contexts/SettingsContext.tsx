@@ -95,6 +95,7 @@ export type ActiveAppearanceMode = 'dark' | 'light';
 
 // Built-in theme types
 export type BuiltInTheme =
+  | 'miami-vice'
   | 'mocha' | 'macchiato' | 'frappe' | 'latte'
   | 'nord' | 'dracula'
   | 'solarized-dark' | 'solarized-light'
@@ -339,9 +340,14 @@ const detectBaseUrlFromLocation = (): string => {
   return baseSegments.length > 0 ? '/' + baseSegments.join('/') : '';
 };
 
-const DEFAULT_DARK_THEME: Theme = 'mocha';
+const DEFAULT_DARK_THEME: Theme = 'miami-vice';
 const DEFAULT_LIGHT_THEME: Theme = 'latte';
+// The single-key `theme` preference predates the MeshRadar rebrand, when
+// 'mocha' was the default. A stored 'mocha' there means "never chose", not
+// "chose mocha for both light and dark".
+const isDefaultDarkTheme = (theme: string): boolean => theme === DEFAULT_DARK_THEME || theme === 'mocha';
 const BUILT_IN_THEMES: BuiltInTheme[] = [
+  'miami-vice',
   'mocha', 'macchiato', 'frappe', 'latte',
   'nord', 'dracula',
   'solarized-dark', 'solarized-light',
@@ -463,10 +469,10 @@ const getInitialThemePreferences = (): ThemePreferences => {
 
   const hasNewPreferences = isAppearanceMode(storedMode) || storedDarkTheme || storedLightTheme;
   const darkTheme = storedDarkTheme || (hasNewPreferences ? DEFAULT_DARK_THEME : legacyTheme || DEFAULT_DARK_THEME);
-  const lightTheme = storedLightTheme || (hasNewPreferences ? DEFAULT_LIGHT_THEME : legacyTheme && legacyTheme !== DEFAULT_DARK_THEME ? legacyTheme : DEFAULT_LIGHT_THEME);
+  const lightTheme = storedLightTheme || (hasNewPreferences ? DEFAULT_LIGHT_THEME : legacyTheme && !isDefaultDarkTheme(legacyTheme) ? legacyTheme : DEFAULT_LIGHT_THEME);
   const appearanceMode = isAppearanceMode(storedMode)
     ? storedMode
-    : legacyTheme && legacyTheme !== DEFAULT_DARK_THEME
+    : legacyTheme && !isDefaultDarkTheme(legacyTheme)
       ? 'dark'
       : 'system';
   const effectiveTheme = getEffectiveTheme(appearanceMode, darkTheme, lightTheme, prefersDarkMode());

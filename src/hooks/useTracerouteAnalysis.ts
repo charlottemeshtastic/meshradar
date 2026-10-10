@@ -165,7 +165,7 @@ function segmentsForTraceroute(tr: TracerouteAnalysisInput): RawSegment[] {
 
   // Response leg: responder -> ...routeBack -> requester.
   // When routeBack AND snrBack are both empty the return path has not been
-  // recorded yet (e.g. MeshMonitor sees its own outgoing response before relay
+  // recorded yet (e.g. MeshRadar sees its own outgoing response before relay
   // nodes populate routeBack). Skip rather than drawing a fictitious direct
   // responder→requester line. (Issues #1140, #3622, #2051 — shared guard.)
   if (hasReturnPath(routeBack, snrBack)) {

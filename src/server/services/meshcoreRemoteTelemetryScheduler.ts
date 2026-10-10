@@ -98,7 +98,7 @@ export function resolveTickMs(envValue: string | undefined): number {
 
 /**
  * Map Cayenne-LPP type ids → `telemetry.telemetryType` strings the rest
- * of MeshMonitor already knows how to graph. Anything missing falls
+ * of MeshRadar already knows how to graph. Anything missing falls
  * back to `mc_lpp_<type>` so the row still lands in the DB rather than
  * being silently dropped.
  *

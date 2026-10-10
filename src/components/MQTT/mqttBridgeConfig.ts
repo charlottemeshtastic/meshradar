@@ -57,7 +57,7 @@ export interface BridgeConfigForm {
   mode: BridgeMode;
   forwardingMode: BridgeForwardingMode;
   ignoreOkToMqtt: boolean;
-  /** Keep MeshMonitor's own automation sends off the upstream broker (#5414). */
+  /** Keep MeshRadar's own automation sends off the upstream broker (#5414). */
   dropAutomationUplinks: boolean;
   // Subscribe-side (downlink) filtering.
   useTopicBlock: boolean;

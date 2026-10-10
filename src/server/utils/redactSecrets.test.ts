@@ -1,7 +1,7 @@
 /**
  * Credential redaction on logging paths (#5122 follow-up).
  *
- * MeshMonitor logs decoded protobufs liberally at debug level, and several of
+ * MeshRadar logs decoded protobufs liberally at debug level, and several of
  * those carry credentials in the clear — the node's private and admin keys, the
  * operator's WiFi PSK, MQTT broker passwords, channel PSKs, the Bluetooth PIN.
  * A reporter found them written on every poll cycle during a config sync, so on

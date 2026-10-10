@@ -1,7 +1,7 @@
 /**
  * Migration 001: v3.7 Baseline Schema
  *
- * Creates the complete MeshMonitor v3.7 schema (35+ tables) for all 3 backends.
+ * Creates the complete MeshRadar v3.7 schema (35+ tables) for all 3 backends.
  * Replaces the old 77-migration chain (001-077) with a single baseline.
  *
  * For existing v3.7+ databases: idempotent (CREATE TABLE IF NOT EXISTS).

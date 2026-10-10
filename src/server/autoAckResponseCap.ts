@@ -4,7 +4,7 @@
  * A channel message that matches Auto-Acknowledge is often matched by several
  * nodes at once, and each one tapbacks or replies. After the first couple the
  * extra answers tell the sender nothing and only cost airtime. So for a
- * CHANNEL message MeshMonitor waits a random 5-30 seconds, counts the nodes
+ * CHANNEL message MeshRadar waits a random 5-30 seconds, counts the nodes
  * that answered that message in the meantime, and sends nothing when the count
  * has reached `autoAckMaxResponses`.
  *

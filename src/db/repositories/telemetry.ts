@@ -1474,7 +1474,7 @@ export class TelemetryRepository extends BaseRepository {
     'numPacketsTx', 'numPacketsRx', 'numPacketsRxBad',
     'numRxDupe', 'numTxRelay', 'numTxRelayCanceled', 'numTxDropped',
     'systemNodeCount', 'systemDirectNodeCount',
-    // #5101 P3: MeshMonitor-computed per-transport series. Integer counters
+    // #5101 P3: MeshRadar-computed per-transport series. Integer counters
     // per 5-minute bin — averaging them is as meaningless as the device
     // counters above. See src/utils/transportSeries.ts.
     'systemNodesHeardRf', 'systemNodesHeardUdp', 'systemNodesHeardMqtt',

@@ -34,7 +34,7 @@ export const channelsSqlite = sqliteTable('channels', {
   sourceId: text('sourceId'),
   // MeshCore region/scope tag for this channel (#3667). Plain region name
   // (no leading '#'); NULL = inherit the source default scope / unscoped.
-  // MeshMonitor-owned — never reported by the device.
+  // MeshRadar-owned — never reported by the device.
   scope: text('scope'),
   // ChannelSettings.use_aead (#5248): AES-CCM authenticated encryption.
   // Device-reported; kept so a channel edit sends it back unchanged.

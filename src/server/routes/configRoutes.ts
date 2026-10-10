@@ -199,7 +199,7 @@ router.post('/lora', requireDeviceSourcePermission('configuration', 'write', 'bo
     };
     // Same hazard for modemPreset (#5547): an omitted enum encodes as 0, which
     // is LONG_FAST. The Config tab omits it on purpose when the radio reports a
-    // preset MeshMonitor cannot name, so keep the radio's current value.
+    // preset MeshRadar cannot name, so keep the radio's current value.
     if (loraConfigToSet.modemPreset === undefined) {
       const currentPreset = cfgLoraManager.getConfiguredModemPreset();
       if (currentPreset !== undefined) {

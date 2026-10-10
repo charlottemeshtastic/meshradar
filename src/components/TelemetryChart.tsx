@@ -120,18 +120,18 @@ const TELEMETRY_LABELS: Record<string, string> = {
   tmUnknownPacketDrops: 'Traffic Mgmt: Unknown Packet Drops',
   tmHopExhaustedPackets: 'Traffic Mgmt: Hop-Exhausted Packets',
   tmRouterHopsPreserved: 'Traffic Mgmt: Router Hops Preserved',
-  // MeshMonitor system metrics (calculated by MeshMonitor)
-  systemNodeCount: 'Active Nodes (MeshMonitor)',
-  systemDirectNodeCount: 'Direct Nodes (MeshMonitor)',
-  // MeshMonitor-computed per-transport traffic series (#5101 Phase 3)
-  transportNodesHeard: 'Nodes Heard by Transport (MeshMonitor)',
-  transportPacketsRx: 'Packets RX by Transport (MeshMonitor)',
-  systemNodesHeardRf: 'Nodes Heard RF (MeshMonitor)',
-  systemNodesHeardUdp: 'Nodes Heard UDP (MeshMonitor)',
-  systemNodesHeardMqtt: 'Nodes Heard MQTT (MeshMonitor)',
-  systemPacketsRxRf: 'Packets RX RF (MeshMonitor)',
-  systemPacketsRxUdp: 'Packets RX UDP (MeshMonitor)',
-  systemPacketsRxMqtt: 'Packets RX MQTT (MeshMonitor)',
+  // MeshRadar system metrics (calculated by MeshRadar)
+  systemNodeCount: 'Active Nodes (MeshRadar)',
+  systemDirectNodeCount: 'Direct Nodes (MeshRadar)',
+  // MeshRadar-computed per-transport traffic series (#5101 Phase 3)
+  transportNodesHeard: 'Nodes Heard by Transport (MeshRadar)',
+  transportPacketsRx: 'Packets RX by Transport (MeshRadar)',
+  systemNodesHeardRf: 'Nodes Heard RF (MeshRadar)',
+  systemNodesHeardUdp: 'Nodes Heard UDP (MeshRadar)',
+  systemNodesHeardMqtt: 'Nodes Heard MQTT (MeshRadar)',
+  systemPacketsRxRf: 'Packets RX RF (MeshRadar)',
+  systemPacketsRxUdp: 'Packets RX UDP (MeshRadar)',
+  systemPacketsRxMqtt: 'Packets RX MQTT (MeshRadar)',
   // Signal quality
   snr: 'Signal-to-Noise Ratio (SNR)',
   snr_local: 'SNR - Local (Our Measurements)',
@@ -322,7 +322,7 @@ const TELEMETRY_COLORS: Record<string, string> = {
   paxcounterWifi: '#ff9500',
   paxcounterBle: '#17c0fa',
   paxcounterUptime: '#9c88ff',
-  // MeshMonitor system metrics
+  // MeshRadar system metrics
   systemNodeCount: '#89b4fa',
   systemDirectNodeCount: '#a6e3a1',
 };

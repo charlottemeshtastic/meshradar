@@ -2,13 +2,13 @@
  * MeshCoreContactSyncSection (#5502).
  *
  * A MeshCore companion keeps its OWN contact list, separate from the nodes
- * MeshMonitor tracks. The radio can only log in to, poll, or message nodes in
+ * MeshRadar tracks. The radio can only log in to, poll, or message nodes in
  * that list. Two things put them out of step: auto-add turned off on the radio
  * (it then stores no node it hears), and eviction when the list fills up.
  *
  * This section shows the radio's auto-add state with a toggle, warns when
- * MeshMonitor favourites are missing from the radio, and offers "Push to
- * radio": fill the radio's free slots with MeshMonitor's nodes, favourites
+ * MeshRadar favourites are missing from the radio, and offers "Push to
+ * radio": fill the radio's free slots with MeshRadar's nodes, favourites
  * first. Both are local writes over the serial/TCP link; nothing is sent over
  * the air. The push never replaces a contact already on the radio.
  *
@@ -141,7 +141,7 @@ export const MeshCoreContactSyncSection: React.FC<MeshCoreContactSyncSectionProp
       <p className="hint">
         {t(
           'meshcore.contact_sync.hint',
-          'The radio keeps its own contact list, separate from the nodes MeshMonitor tracks. It can only log in to, poll, or message nodes in that list.',
+          'The radio keeps its own contact list, separate from the nodes MeshRadar tracks. It can only log in to, poll, or message nodes in that list.',
         )}
       </p>
 
@@ -171,7 +171,7 @@ export const MeshCoreContactSyncSection: React.FC<MeshCoreContactSyncSectionProp
       <p className="hint">
         {t(
           'meshcore.contact_sync.auto_add_hint',
-          'On: the radio saves every node it hears advertising. Off: it keeps only contacts added by hand, and MeshMonitor cannot log in to or poll nodes missing from the radio. Changing this writes a setting to the radio; nothing is transmitted.',
+          'On: the radio saves every node it hears advertising. Off: it keeps only contacts added by hand, and MeshRadar cannot log in to or poll nodes missing from the radio. Changing this writes a setting to the radio; nothing is transmitted.',
         )}
       </p>
 
@@ -179,7 +179,7 @@ export const MeshCoreContactSyncSection: React.FC<MeshCoreContactSyncSectionProp
         <p className="hint" data-testid="meshcore-device-contacts-unknown">
           {t(
             'meshcore.contact_sync.device_list_unknown',
-            "The radio's contact list hasn't been read since it connected, so MeshMonitor can't tell yet which nodes it holds. Push to radio still checks the radio first.",
+            "The radio's contact list hasn't been read since it connected, so MeshRadar can't tell yet which nodes it holds. Push to radio still checks the radio first.",
           )}
         </p>
       )}
@@ -197,7 +197,7 @@ export const MeshCoreContactSyncSection: React.FC<MeshCoreContactSyncSectionProp
             <p className={styles.bannerBody}>
               {t(
                 'meshcore.contact_sync.auto_add_off_explain',
-                'Auto-add contacts is off on this radio, so nodes heard via advert are not saved to it. MeshMonitor cannot log in to or poll contacts the radio does not hold. Turn auto-add on, or push MeshMonitor contacts to the radio.',
+                'Auto-add contacts is off on this radio, so nodes heard via advert are not saved to it. MeshRadar cannot log in to or poll contacts the radio does not hold. Turn auto-add on, or push MeshRadar contacts to the radio.',
               )}
             </p>
           )}
@@ -211,7 +211,7 @@ export const MeshCoreContactSyncSection: React.FC<MeshCoreContactSyncSectionProp
             className="btn-primary"
             onClick={() => void handlePush()}
             disabled={!connected || pushing}
-            title={t('meshcore.contact_sync.push_tooltip', 'Store MeshMonitor nodes in the radio (no radio transmission)')}
+            title={t('meshcore.contact_sync.push_tooltip', 'Store MeshRadar nodes in the radio (no radio transmission)')}
           >
             <UiIcon name="uploadData" size={14} />{' '}
             {pushing

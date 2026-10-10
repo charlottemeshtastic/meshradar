@@ -30,7 +30,7 @@ const AdvType = { None: 0, Chat: 1, Repeater: 2, Room: 3 };
 const TxtTypes = { Plain: 0, CliData: 1, SignedPlain: 2 };
 
 const HELD = '5708aa' + '11'.repeat(29); // in the radio's table
-const MISSING = '5708bb' + '22'.repeat(29); // known to MeshMonitor only
+const MISSING = '5708bb' + '22'.repeat(29); // known to MeshRadar only
 
 const bytes = (hex: string) => Uint8Array.from(Buffer.from(hex, 'hex'));
 

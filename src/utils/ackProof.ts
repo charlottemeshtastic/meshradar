@@ -4,7 +4,7 @@
  *
  * Firmware 2.8.1+ reports `MeshPacket.ack_proof_status` (field 23) on the
  * phone-bound copy of the ack or nak that settles a unicast this node sent.
- * MeshMonitor never computes or checks the proof itself; it records the
+ * MeshRadar never computes or checks the proof itself; it records the
  * verdict the radio gives. Always stored and compared as the enum NUMBER —
  * protobufjs `toJSON` emits enum NAMES, so a name is mapped back here and
  * never persisted.

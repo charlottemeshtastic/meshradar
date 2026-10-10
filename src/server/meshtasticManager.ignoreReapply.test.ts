@@ -5,7 +5,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
  *
  * A Meshtastic device's on-board ignore list is small; when its node database
  * fills up it drops ignores and reports the node as un-ignored on the next
- * NodeInfo. MeshMonitor's per-source ignore list is authoritative, so
+ * NodeInfo. MeshRadar's per-source ignore list is authoritative, so
  * processNodeInfoProtobuf must (a) keep the flag ignored in our DB and (b)
  * re-push the ignore to the locally-connected node — a local admin command with
  * no destination, so it never touches the mesh. A cooldown coalesces bursts when

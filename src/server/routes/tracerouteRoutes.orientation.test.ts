@@ -3,7 +3,7 @@
  * through the REAL write path in both stored orientations.
  *
  * One logical run is stored two ways (src/utils/tracerouteOrientation.ts):
- *   - sent from MeshMonitor: a pending row, then the reply fills it in.
+ *   - sent from MeshRadar: a pending row, then the reply fills it in.
  *     On disk: { from: requester, to: responder }.
  *   - a reply with no pending row (sent from a phone app, or the pending row
  *     timed out). On disk: { from: responder, to: requester }.

@@ -172,12 +172,12 @@ export const REGION_OPTIONS: RegionOption[] = [
 // NOTE (issue #3924 Part 1, #5547 — preset legality filtering): see the
 // "Region -> modem-preset legality" block below. Firmware 2.8 also sends a
 // region -> preset map on the wire (`FromRadio.region_presets`,
-// `LoRaRegionPresetMap` in mesh.proto); MeshMonitor does not consume it yet and
+// `LoRaRegionPresetMap` in mesh.proto); MeshRadar does not consume it yet and
 // mirrors the firmware tables instead.
 export const AMATEUR_RADIO_REGIONS: Record<number, string> = {
   27: 'ITU1_2M',
   // Upstream names 28 ITU2_2M and 33 ITU3_2M separately; the old combined
-  // `ITU23_2M` spelling was MeshMonitor's own and matched neither.
+  // `ITU23_2M` spelling was MeshRadar's own and matched neither.
   28: 'ITU2_2M',
   33: 'ITU3_2M',
   34: 'ITU1_70CM',
@@ -321,7 +321,7 @@ const PRESETS_TINY = [14, 15];
  *
  * EU_868 / EU_866 / EU_N_868 note: firmware advertises the union of the three
  * lists to its own apps and, when a preset owned by a sibling is chosen, swaps
- * the REGION to that sibling. MeshMonitor deliberately offers only each
+ * the REGION to that sibling. MeshRadar deliberately offers only each
  * region's own list, so picking a preset can never change the region behind
  * the user's back; to use LITE_* choose EU_866, for NARROW_* choose EU_N_868.
  */
@@ -622,7 +622,7 @@ export const PRESET_MAP: Record<string, number> = {
  * Wire value of a modem preset as it arrives from `/api/config`, which carries
  * either the enum number or (via protobufjs `toJSON`) the enum NAME.
  *
- * Returns `null` for a name MeshMonitor does not recognise. Callers MUST NOT
+ * Returns `null` for a name MeshRadar does not recognise. Callers MUST NOT
  * coerce that to 0: `setLoRaConfig` is a whole-struct replace, so an unknown
  * preset silently read as LONG_FAST would be pushed back to the radio on the
  * next unrelated LoRa save (#5547 — TINY_FAST did exactly this).
@@ -670,7 +670,7 @@ export const REGION_MAP: Record<string, number> = {
   'ITU2_2M': 28, 'EU_866': 29, 'EU_874': 30, 'EU_917': 31,
   'EU_N_868': 32, 'ITU3_2M': 33, 'ITU1_70CM': 34, 'ITU2_70CM': 35,
   'ITU3_70CM': 36, 'ITU2_125CM': 37,
-  // Legacy alias: MeshMonitor previously called value 28 `ITU23_2M`, conflating
+  // Legacy alias: MeshRadar previously called value 28 `ITU23_2M`, conflating
   // ITU regions 2 and 3 — which are separate codes upstream (28 and 33). Kept
   // so any stored/exported config using the old spelling still resolves.
   'ITU23_2M': 28

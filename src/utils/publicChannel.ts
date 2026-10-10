@@ -45,7 +45,7 @@ export function isKnownPublicChannel(psk: string | null | undefined): boolean {
 /**
  * True when this precision setting will be silently reduced by 2.8+ firmware.
  *
- * Deliberately NOT firmware-version-gated: MeshMonitor generally cannot know
+ * Deliberately NOT firmware-version-gated: MeshRadar generally cannot know
  * the target node's firmware version when configuring a remote channel, and the
  * warning is useful in both directions — it tells 2.7 users the constraint is
  * coming, and explains to 2.8 users why their setting reduced itself.

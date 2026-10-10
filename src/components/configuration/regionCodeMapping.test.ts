@@ -76,7 +76,7 @@ describe('REGION_MAP stays in step with the protobuf', () => {
   });
 
   it('keeps the legacy ITU23_2M spelling resolvable', () => {
-    // MeshMonitor's own former name for 28, which conflated ITU regions 2 and
+    // MeshRadar's own former name for 28, which conflated ITU regions 2 and
     // 3 (separate codes upstream). Stored or exported configs may still use it.
     expect(REGION_MAP['ITU23_2M']).toBe(28);
     expect(REGION_MAP['ITU2_2M']).toBe(28);

@@ -625,7 +625,7 @@ const MeshIssuesSection: React.FC<MeshIssuesSectionProps> = ({ baseUrl }) => {
         <div className="setting-item" style={{ marginTop: '1rem' }}>
           <label>
             {t('automation.mesh_issues.mobile_span', 'Mobile span (metres)')}
-            <span style={badgeStyle('ours')}>{t('automation.mesh_issues.badge_meshmonitor', '[MeshMonitor]')}</span>
+            <span style={badgeStyle('ours')}>{t('automation.mesh_issues.badge_meshmonitor', '[MeshRadar]')}</span>
           </label>
           <NumberInput
             min={50}
@@ -645,7 +645,7 @@ const MeshIssuesSection: React.FC<MeshIssuesSectionProps> = ({ baseUrl }) => {
         <div className="setting-item" style={{ marginTop: '1rem' }}>
           <label>
             {t('automation.mesh_issues.snr_asymmetry', 'Link SNR asymmetry (dB)')}
-            <span style={badgeStyle('ours')}>{t('automation.mesh_issues.badge_meshmonitor', '[MeshMonitor]')}</span>
+            <span style={badgeStyle('ours')}>{t('automation.mesh_issues.badge_meshmonitor', '[MeshRadar]')}</span>
           </label>
           <NumberInput
             min={1}
@@ -658,14 +658,14 @@ const MeshIssuesSection: React.FC<MeshIssuesSectionProps> = ({ baseUrl }) => {
           />
           <p style={{ fontSize: '12px', color: 'var(--color-text-subtle)', margin: '0.35rem 0 0 0' }}>
             {t('automation.mesh_issues.snr_asymmetry_help',
-              'Directional mean-SNR delta above which a link is flagged as asymmetric. MeshMonitor\'s own judgement, not an official figure.')}
+              'Directional mean-SNR delta above which a link is flagged as asymmetric. MeshRadar\'s own judgement, not an official figure.')}
           </p>
         </div>
 
         <div className="setting-item" style={{ marginTop: '1rem' }}>
           <label>
             {t('automation.mesh_issues.over_broadcast', 'Broadcast interval floor (seconds)')}
-            <span style={badgeStyle('ours')}>{t('automation.mesh_issues.badge_meshmonitor', '[MeshMonitor]')}</span>
+            <span style={badgeStyle('ours')}>{t('automation.mesh_issues.badge_meshmonitor', '[MeshRadar]')}</span>
           </label>
           <NumberInput
             min={30}
@@ -678,14 +678,14 @@ const MeshIssuesSection: React.FC<MeshIssuesSectionProps> = ({ baseUrl }) => {
           />
           <p style={{ fontSize: '12px', color: 'var(--color-text-subtle)', margin: '0.35rem 0 0 0' }}>
             {t('automation.mesh_issues.over_broadcast_help',
-              'Median position/telemetry inter-arrival below which a non-tracker node counts as over-broadcasting. MeshMonitor\'s own judgement, not an official figure.')}
+              'Median position/telemetry inter-arrival below which a non-tracker node counts as over-broadcasting. MeshRadar\'s own judgement, not an official figure.')}
           </p>
         </div>
 
         <div className="setting-item" style={{ marginTop: '1rem' }}>
           <label>
             {t('automation.mesh_issues.auto_close_runs', 'Auto-close after')}
-            <span style={badgeStyle('ours')}>{t('automation.mesh_issues.badge_meshmonitor', '[MeshMonitor]')}</span>
+            <span style={badgeStyle('ours')}>{t('automation.mesh_issues.badge_meshmonitor', '[MeshRadar]')}</span>
           </label>
           <NumberInput
             min={1}
@@ -705,7 +705,7 @@ const MeshIssuesSection: React.FC<MeshIssuesSectionProps> = ({ baseUrl }) => {
         <div className="setting-item" style={{ marginTop: '1rem' }}>
           <label>
             {t('automation.mesh_issues.cluster_max_link_km', 'Router cluster max link (km)')}
-            <span style={badgeStyle('ours')}>{t('automation.mesh_issues.badge_meshmonitor', '[MeshMonitor]')}</span>
+            <span style={badgeStyle('ours')}>{t('automation.mesh_issues.badge_meshmonitor', '[MeshRadar]')}</span>
           </label>
           <NumberInput
             min={1}

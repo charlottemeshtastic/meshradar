@@ -25,7 +25,7 @@ export const GATEWAY_CSV_COLUMNS: ReadonlyArray<{ key: string; label: string }> 
   // See ViolationGatewayRow.brokerClass (#4982) — 'private' means every
   // observing source's broker is private (expected relay, not a proven
   // violation); 'public' means at least one is public (confirmed); 'unknown'
-  // means at least one is a hostname MeshMonitor can't classify.
+  // means at least one is a hostname MeshRadar can't classify.
   { key: 'brokerClass', label: 'Broker Class' },
   { key: 'firstSeen', label: 'First Seen' },
   { key: 'lastSeen', label: 'Last Seen' },

@@ -2,7 +2,7 @@
  * Drizzle schema definition for the channel_database tables
  * Supports SQLite, PostgreSQL, and MySQL
  *
- * This enables MeshMonitor to store additional channel configurations beyond
+ * This enables MeshRadar to store additional channel configurations beyond
  * the device's 8 slots and decrypt packets server-side using stored keys.
  */
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';

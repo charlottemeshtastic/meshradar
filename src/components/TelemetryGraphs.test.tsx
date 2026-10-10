@@ -1149,9 +1149,9 @@ describe('TelemetryGraphs Component', () => {
       await screen.findByText('Battery Level');
       // Component types feed the combined TransportSeriesGraphs charts
       // elsewhere; they must not also appear as single-metric graphs here.
-      expect(screen.queryByText('Nodes Heard RF (MeshMonitor)')).not.toBeInTheDocument();
-      expect(screen.queryByText('Nodes Heard UDP (MeshMonitor)')).not.toBeInTheDocument();
-      expect(screen.queryByText('Packets RX MQTT (MeshMonitor)')).not.toBeInTheDocument();
+      expect(screen.queryByText('Nodes Heard RF (MeshRadar)')).not.toBeInTheDocument();
+      expect(screen.queryByText('Nodes Heard UDP (MeshRadar)')).not.toBeInTheDocument();
+      expect(screen.queryByText('Packets RX MQTT (MeshRadar)')).not.toBeInTheDocument();
       // batteryLevel and the device-counter numPacketsRx graph are unaffected.
       expect(screen.getByText('Battery Level')).toBeInTheDocument();
       expect(screen.getByText('Packets RX (Device)')).toBeInTheDocument();

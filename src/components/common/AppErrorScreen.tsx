@@ -26,7 +26,7 @@ export function AppErrorScreen({ error, onRetry }: AppErrorScreenProps) {
       <div className={styles.content}>
         <h1 className={styles.title}>{t('app_error.title', 'Something went wrong')}</h1>
         <p className={styles.body}>
-          {t('app_error.body', 'MeshMonitor hit an error it could not recover from. Try again, or reload the page.')}
+          {t('app_error.body', 'MeshRadar hit an error it could not recover from. Try again, or reload the page.')}
         </p>
         {error != null && (
           <details className={styles.details}>

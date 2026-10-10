@@ -6,7 +6,7 @@
  *
  * A "bridged" node is a serial/BLE-only radio fronted by a TCP proxy
  * (meshtasticd, mesh-bridge, …): it reports no native WiFi and no Ethernet,
- * yet MeshMonitor reaches it over TCP. Such a node cannot serve an OTA HTTP
+ * yet MeshRadar reaches it over TCP. Such a node cannot serve an OTA HTTP
  * endpoint, so OTA firmware update must be disabled for it.
  */
 

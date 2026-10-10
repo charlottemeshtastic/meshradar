@@ -341,7 +341,7 @@ describe('GET /api/packets/traffic-management/replay', () => {
       expect(res.body.data.rateLimit.bySender.map((r: { key: number | null }) => r.key)).toEqual([null]);
     });
 
-    it('does not count rows MeshMonitor decrypted itself', async () => {
+    it('does not count rows MeshRadar decrypted itself', async () => {
       await seedTraffic();
       const end = Date.now() - 500;
       for (let i = 0; i < 50; i++) {

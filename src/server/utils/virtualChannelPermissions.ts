@@ -1,7 +1,7 @@
 /**
  * Virtual channel (Channel Database) read-permission helpers.
  *
- * Virtual channels are MeshMonitor server-side PSKs stored in `channel_database`
+ * Virtual channels are MeshRadar server-side PSKs stored in `channel_database`
  * and surfaced on the synthetic channel number `CHANNEL_DB_OFFSET + id`. Unlike
  * physical channels (`channel_0..7`, gated by the generic resource/action RBAC),
  * their read access lives in a parallel per-entry table

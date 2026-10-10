@@ -814,7 +814,7 @@ class DataEventEmitter extends EventEmitter {
    * `ReticulumManager.handleLxmfMessage` for INBOUND (non-self) messages only
    * — the manager's cross-source self-origin guard (mirrors `utils/ownNodes.ts`
    * #3914) skips this call entirely for a row whose `fromHash` is one of
-   * MeshMonitor's own LXMF destinations, so this event doubles as both the UI
+   * MeshRadar's own LXMF destinations, so this event doubles as both the UI
    * update AND the automation `trigger.message` source for genuinely received
    * messages. Our own outbound sends get their UI update via
    * `emitReticulumDeliveryStateUpdated` instead (driven by `sendMessage`/

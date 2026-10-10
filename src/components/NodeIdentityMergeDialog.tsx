@@ -179,7 +179,7 @@ export function NodeIdentityMergeDialog({
                   </div>
                   {t(
                     'nodes.merge_unverified_body',
-                    "No public-key evidence links these two entries, so MeshMonitor cannot confirm they are the same physical node. Merging on a guess splices two nodes' histories together. Only proceed if you know from outside the app that this is correct.",
+                    "No public-key evidence links these two entries, so MeshRadar cannot confirm they are the same physical node. Merging on a guess splices two nodes' histories together. Only proceed if you know from outside the app that this is correct.",
                   )}
                 </div>
               )}
@@ -287,7 +287,7 @@ export function NodeIdentityMergeDialog({
                 <p>
                   {t(
                     'nodes.merge_undo_available',
-                    'This merge can be undone afterwards: MeshMonitor records what it moved so it can be put back.',
+                    'This merge can be undone afterwards: MeshRadar records what it moved so it can be put back.',
                   )}
                 </p>
               )}

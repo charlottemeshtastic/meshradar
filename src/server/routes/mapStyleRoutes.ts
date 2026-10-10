@@ -90,7 +90,7 @@ export function createMapStyleRouter(service: MapStyleService): Router {
         try {
           const response = await safeFetch(url, {
             signal: controller.signal,
-            headers: { 'User-Agent': 'MeshMonitor/1.0' },
+            headers: { 'User-Agent': 'MeshRadar/1.0' },
           });
           clearTimeout(timeoutId);
           if (!response.ok) {
@@ -229,7 +229,7 @@ export function createMapStyleRouter(service: MapStyleService): Router {
         try {
           const response = await safeFetch(tileJsonUrl, {
             signal: controller.signal,
-            headers: { 'User-Agent': 'MeshMonitor/1.0' },
+            headers: { 'User-Agent': 'MeshRadar/1.0' },
           });
           clearTimeout(timeoutId);
           if (!response.ok) {

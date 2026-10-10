@@ -190,7 +190,7 @@ export interface MqttIngestionInput {
   /** Raw MQTT topic this envelope arrived on. Diagnostic; persisted on the packet log (#4114). */
   topic?: string;
   /**
-   * This source's OWN gateway node number, used by the self-echo guard so MeshMonitor can
+   * This source's OWN gateway node number, used by the self-echo guard so MeshRadar can
    * never flag itself as a violating gateway (#4114, §2(f.1)). `null`/omitted when the
    * source has no local identity yet — the guard then simply does not apply.
    */

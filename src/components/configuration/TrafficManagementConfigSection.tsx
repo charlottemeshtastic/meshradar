@@ -153,7 +153,7 @@ const TrafficManagementConfigSection: React.FC<TrafficManagementConfigSectionPro
         <div className={replayStyles.dropWarning} data-testid="tm-drop-warning">
           <UiIcon name="alert" className={replayStyles.icon} />
           <div>
-            {t('trafficmanagement_config.drop_warning', 'These settings make this node drop other people\'s packets. A dropped packet is not relayed and is not delivered to MeshMonitor, so you will not see what was dropped. On a router this cuts traffic for every node that relies on it. Change one value at a time.')}
+            {t('trafficmanagement_config.drop_warning', 'These settings make this node drop other people\'s packets. A dropped packet is not relayed and is not delivered to MeshRadar, so you will not see what was dropped. On a router this cuts traffic for every node that relies on it. Change one value at a time.')}
           </div>
         </div>
 

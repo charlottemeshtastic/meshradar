@@ -2045,7 +2045,7 @@ describe('MeshCoreVirtualNodeServer — receive-only mode (#4547)', () => {
 // ── Per-client message attribution (#4535) ──
 //
 // The manager stamps every outbound message with our own identity, so before
-// this the server dropped ALL self-originated messages and nothing MeshMonitor
+// this the server dropped ALL self-originated messages and nothing MeshRadar
 // sent ever reached a connected app. Delivery is now per-client: everyone gets
 // the message except whichever client asked us to transmit it.
 //
@@ -2068,7 +2068,7 @@ describe('MeshCoreVirtualNodeServer — per-client message delivery (#4535)', ()
   /** Resolve on the next frame this client receives (push or response). */
   const nextFrame = (c: TestClient): Promise<Buffer> => c.next();
 
-  /** A message as the manager emits it when MeshMonitor transmits on a channel. */
+  /** A message as the manager emits it when MeshRadar transmits on a channel. */
   const selfChannelMessage = (
     text: string,
     id = `ui-${text}`,
@@ -2162,8 +2162,8 @@ describe('MeshCoreVirtualNodeServer — per-client message delivery (#4535)', ()
     }
   });
 
-  // The headline bug: MeshMonitor's own web-UI send reached nobody.
-  it('delivers a channel message MeshMonitor originated to every connected client', async () => {
+  // The headline bug: MeshRadar's own web-UI send reached nobody.
+  it('delivers a channel message MeshRadar originated to every connected client', async () => {
     const pushA = nextFrame(clientA);
     const pushB = nextFrame(clientB);
     manager.emitMessage(selfChannelMessage('from the web UI'));
@@ -2208,7 +2208,7 @@ describe('MeshCoreVirtualNodeServer — per-client message delivery (#4535)', ()
 
   // The companion protocol has no outbound-DM frame (ContactMsgRecv means
   // "received FROM"), so a self-sent DM stays undeliverable by design.
-  it('does not deliver a DM MeshMonitor sent (no representable companion frame)', async () => {
+  it('does not deliver a DM MeshRadar sent (no representable companion frame)', async () => {
     manager.emitMessage({
       id: 'ui-dm',
       fromPublicKey: LOCAL_NODE.publicKey,
@@ -2507,7 +2507,7 @@ describe('MeshCoreVirtualNodeServer — contact / device commands (#5350)', () =
       expect(manager.resetContactPathMock).not.toHaveBeenCalled();
     });
 
-    it('routes a favourite toggle through setNodeFavorite (MeshMonitor owns favourites)', async () => {
+    it('routes a favourite toggle through setNodeFavorite (MeshRadar owns favourites)', async () => {
       await startWith();
       const res = await client.request(await addUpdateFrame({ flags: 0x01 }));
       expect(res[0]).toBe(ResponseCodes.Ok);
@@ -2611,7 +2611,7 @@ describe('MeshCoreVirtualNodeServer — contact / device commands (#5350)', () =
 
     /**
      * Read the frame the way a real client does: meshcore.js parses it, then
-     * MeshMonitor's own read side (decodeOutPathLen + formatOutPath, as
+     * MeshRadar's own read side (decodeOutPathLen + formatOutPath, as
      * get_contacts uses them) turns it back into the stored form.
      */
     async function readBack(frame: Buffer) {

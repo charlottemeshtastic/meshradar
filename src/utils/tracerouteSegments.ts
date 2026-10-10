@@ -183,7 +183,7 @@ export function buildLiveNodePositionMap<T>(
 /**
  * True only when a return path genuinely exists — i.e. either `routeBack`
  * has intermediate hops, or `snrBack` carries actual data. When
- * MeshMonitor is connected to the traceroute's target node, it can observe
+ * MeshRadar is connected to the traceroute's target node, it can observe
  * its own outgoing RESPONSE before relay nodes have populated `routeBack`;
  * naively building `[to, ...routeBack, from]` in that window draws a
  * fictitious direct return line. (Issues #1140, #3622, #2051.)

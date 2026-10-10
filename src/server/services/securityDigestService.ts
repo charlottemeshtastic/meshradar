@@ -87,7 +87,7 @@ export function formatDigestSummary(
     if (suppressEmpty) return null;
     if (md) {
       return [
-        `# MeshMonitor Security Digest — ${date}`,
+        `# MeshRadar Security Digest — ${date}`,
         '',
         '> No security issues detected.',
         '',
@@ -95,7 +95,7 @@ export function formatDigestSummary(
       ].filter((l): l is string => l !== null).join('\n');
     }
     return [
-      `MeshMonitor Security Digest — ${date}`,
+      `MeshRadar Security Digest — ${date}`,
       '',
       'No security issues detected.',
       '',
@@ -105,7 +105,7 @@ export function formatDigestSummary(
 
   if (md) {
     return [
-      `# MeshMonitor Security Digest — ${date}`,
+      `# MeshRadar Security Digest — ${date}`,
       '',
       `> **${issueTypeCount} issue type${issueTypeCount !== 1 ? 's' : ''}** detected across **${issues.total} nodes**`,
       '',
@@ -121,7 +121,7 @@ export function formatDigestSummary(
   }
 
   return [
-    `MeshMonitor Security Digest — ${date}`,
+    `MeshRadar Security Digest — ${date}`,
     '',
     `${issueTypeCount} issue type${issueTypeCount !== 1 ? 's' : ''} detected across ${issues.total} nodes`,
     '',
@@ -153,7 +153,7 @@ export function formatDigestDetailed(
     if (suppressEmpty) return null;
     if (md) {
       return [
-        `# MeshMonitor Security Digest — ${date}`,
+        `# MeshRadar Security Digest — ${date}`,
         '',
         '> No security issues detected.',
         '',
@@ -161,7 +161,7 @@ export function formatDigestDetailed(
       ].filter((l): l is string => l !== null).join('\n');
     }
     return [
-      `MeshMonitor Security Digest — ${date}`,
+      `MeshRadar Security Digest — ${date}`,
       '',
       'No security issues detected.',
       '',
@@ -173,13 +173,13 @@ export function formatDigestDetailed(
 
   if (md) {
     lines.push(
-      `# MeshMonitor Security Digest — ${date}`,
+      `# MeshRadar Security Digest — ${date}`,
       '',
       `> **${issueTypeCount} issue type${issueTypeCount !== 1 ? 's' : ''}** detected across **${issues.total} nodes**`,
     );
   } else {
     lines.push(
-      `MeshMonitor Security Digest — ${date}`,
+      `MeshRadar Security Digest — ${date}`,
       '',
       `${issueTypeCount} issue type${issueTypeCount !== 1 ? 's' : ''} detected across ${issues.total} nodes`,
     );
@@ -435,7 +435,7 @@ class SecurityDigestService {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           urls: [appriseUrl],
-          title: `[${sourceName}] MeshMonitor Security Digest`,
+          title: `[${sourceName}] MeshRadar Security Digest`,
           body,
           type: issues.total > 0 ? 'warning' : 'info',
           format: format === 'markdown' ? 'markdown' : 'text',

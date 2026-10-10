@@ -1,7 +1,7 @@
 /**
  * #5231 — the unified map rendered `e848` for a node five sources knew by name.
  *
- * MeshMonitor inserts a stub row named `Node !9e80e848` / `e848` the first time
+ * MeshRadar inserts a stub row named `Node !9e80e848` / `e848` the first time
  * a node turns up as a traceroute hop or a neighbour entry. Those are non-empty
  * strings, so the cross-source merge — which takes each field from the newest
  * record that has "a value" — let a busy MQTT source's stub eclipse the real

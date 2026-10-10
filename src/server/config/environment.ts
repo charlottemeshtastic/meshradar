@@ -719,7 +719,7 @@ export function loadEnvironmentConfig(): EnvironmentConfig {
   const logLevel = parseEnum('LOG_LEVEL', process.env.LOG_LEVEL?.toLowerCase(), ['trace', 'debug', 'info', 'warn', 'error'] as const, logLevelDefault);
 
   // Branding (login page customization)
-  // CUSTOM_TITLE overrides the "MeshMonitor" heading on the login page.
+  // CUSTOM_TITLE overrides the "MeshRadar" heading on the login page.
   // CUSTOM_LOGO_URL overrides the inline SVG logo with an external/relative image.
   const customTitleRaw = process.env.CUSTOM_TITLE?.trim();
   const customTitle = {

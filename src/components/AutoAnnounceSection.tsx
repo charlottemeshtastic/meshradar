@@ -44,7 +44,7 @@ interface AutoAnnounceSectionProps {
   onNodeInfoDelayChange?: (seconds: number) => void;
 }
 
-const DEFAULT_MESSAGE = 'MeshMonitor {VERSION} online for {DURATION} {FEATURES}';
+const DEFAULT_MESSAGE = 'MeshRadar {VERSION} online for {DURATION} {FEATURES}';
 
 // Stable default for `nodeInfoChannels`. An inline `= []` default is a new
 // array every render; the re-seed effect below depends on it and sets state,

@@ -639,7 +639,7 @@ export function EmbedMap({ profileId }: EmbedMapProps) {
 }
 
 /**
- * Inline CSS for embed popups — matches the MeshMonitor Catppuccin theme.
+ * Inline CSS for embed popups — matches the MeshRadar Catppuccin theme.
  * Uses hardcoded values since the embed doesn't load the main app's CSS variables.
  */
 const embedPopupCss = `

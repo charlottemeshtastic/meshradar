@@ -148,7 +148,7 @@ describe('LoRaConfigSection', () => {
 
     it('keeps the amateur region set in sync with REGION_MAP values', () => {
       expect(AMATEUR_RADIO_REGIONS[27]).toBe('ITU1_2M');
-      // 28 is `ITU2_2M` upstream. MeshMonitor previously called it `ITU23_2M`,
+      // 28 is `ITU2_2M` upstream. MeshRadar previously called it `ITU23_2M`,
       // conflating ITU regions 2 and 3 — which are separate codes (28 and 33).
       expect(AMATEUR_RADIO_REGIONS[28]).toBe('ITU2_2M');
       expect(REGION_MAP['ITU1_2M']).toBe(27);

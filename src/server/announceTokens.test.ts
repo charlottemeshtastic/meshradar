@@ -25,8 +25,8 @@ describe('Auto-Announce Token Replacement', () => {
 
   describe('{VERSION} token', () => {
     it('should replace {VERSION} with package version', () => {
-      const message = 'MeshMonitor {VERSION} is running';
-      const expected = 'MeshMonitor 1.18.0 is running';
+      const message = 'MeshRadar {VERSION} is running';
+      const expected = 'MeshRadar 1.18.0 is running';
 
       // Simple string replacement test
       const result = message.replace(/{VERSION}/g, '1.18.0');
@@ -273,7 +273,7 @@ describe('Auto-Announce Token Replacement', () => {
         { nodeId: '!abcdef12', hopsAway: 0 }
       ]);
 
-      let message = 'MeshMonitor {VERSION} online for {DURATION} {FEATURES}';
+      let message = 'MeshRadar {VERSION} online for {DURATION} {FEATURES}';
 
       // Replace VERSION
       message = message.replace(/{VERSION}/g, '1.18.0');
@@ -301,7 +301,7 @@ describe('Auto-Announce Token Replacement', () => {
       }
       message = message.replace(/{FEATURES}/g, features.join(' '));
 
-      expect(message).toBe('MeshMonitor 1.18.0 online for 2d 5h 🗺️ 🤖 📢 👋');
+      expect(message).toBe('MeshRadar 1.18.0 online for 2d 5h 🗺️ 🤖 📢 👋');
     });
 
     it('should replace NODECOUNT and DIRECTCOUNT tokens', () => {

@@ -47,7 +47,7 @@ const SECRET_BUFFER_SIZE = 32;
  * The well-known secret of MeshCore's slot-0 "Public" channel. Companion
  * firmware seeds slot 0 with it on every boot (`MyMesh::begin` →
  * `addChannel("Public", PUBLIC_GROUP_PSK)`, base64 `izOH6cXN6mrJ5e26oRXNcg==`)
- * but reports that slot like an empty one, so MeshMonitor stores no PSK for it.
+ * but reports that slot like an empty one, so MeshRadar stores no PSK for it.
  * Callers use this as the slot-0 fallback when no stored secret exists.
  */
 export const MESHCORE_PUBLIC_CHANNEL_SECRET: Uint8Array = new Uint8Array(
@@ -78,7 +78,7 @@ export function groupTextBodyMatchesRecv(decodedBody: string, recvText: unknown)
 
 /**
  * Derive the 1-byte MeshCore channel hash from a channel secret: the first byte
- * of SHA-256 over the secret (`BaseChatMesh::addChannel`). For MeshMonitor's
+ * of SHA-256 over the secret (`BaseChatMesh::addChannel`). For MeshRadar's
  * 16-byte AES-128 PSKs this hashes the 16 stored bytes.
  */
 export function deriveMeshCoreChannelHash(secret: Uint8Array): number {

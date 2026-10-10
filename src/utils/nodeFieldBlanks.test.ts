@@ -32,7 +32,7 @@ describe('isBlankMacAddr (#5231)', () => {
 });
 
 describe('isPlaceholderLongName (#5231)', () => {
-  it('matches MeshMonitor stub rows', () => {
+  it('matches MeshRadar stub rows', () => {
     expect(isPlaceholderLongName('Node !9e80e848')).toBe(true);
     expect(isPlaceholderLongName('Node !9E80E848')).toBe(true);
   });

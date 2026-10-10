@@ -237,7 +237,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       ? [sharedNavItem('configuration', deviceConfigurationNav(t))]
       : []),
     /* An MQTT bridge has no satellite entry (#5683 follow-up). Its old
-       "Configuration" page held only MeshMonitor's own connection and filter
+       "Configuration" page held only MeshRadar's own connection and filter
        settings, so it is a section of the Settings page above. */
     ...(isAuthenticated ? [navItem('notifications', t('nav.notifications'), 'notifications')] : []),
   ];
@@ -270,10 +270,10 @@ const Sidebar: React.FC<SidebarProps> = ({
       ariaLabel={t('nav.section_main')}
       header={
         <div className="sidebar-header">
-          <img src={`${baseUrl}/logo.png`} alt="MeshMonitor Logo" className="sidebar-logo" />
+          <img src={`${baseUrl}/logo.png`} alt="MeshRadar Logo" className="sidebar-logo" />
           {!isCollapsed && (
             <div className="sidebar-header-text">
-              <div className="sidebar-app-name">MeshMonitor</div>
+              <div className="sidebar-app-name">MeshRadar</div>
               {connectedNodeName && (
                 <div className="sidebar-node-name">{connectedNodeName}</div>
               )}

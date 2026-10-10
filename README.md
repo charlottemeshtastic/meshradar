@@ -1,16 +1,17 @@
-# MeshMonitor
+<p align="center"><img src="brand/meshradar-logo.svg" width="128" alt="MeshRadar logo"></p>
 
-[![CI](https://github.com/Yeraze/meshmonitor/actions/workflows/ci.yml/badge.svg)](https://github.com/Yeraze/meshmonitor/actions/workflows/ci.yml)
-[![Docker Image](https://ghcr-badge.egpl.dev/yeraze/meshmonitor/latest_tag?color=%235b4566&ignore=latest,main,dev&label=version&trim=)](https://github.com/Yeraze/meshmonitor/pkgs/container/meshmonitor)
-[![Docker Pulls](https://ghcr-badge.egpl.dev/yeraze/meshmonitor/size?color=%235b4566&tag=latest&label=image%20size&trim=)](https://github.com/Yeraze/meshmonitor/pkgs/container/meshmonitor)
-[![License](https://img.shields.io/github/license/Yeraze/meshmonitor)](https://github.com/Yeraze/meshmonitor/blob/main/LICENSE)
-[![Translation Status](https://hosted.weblate.org/widgets/meshmonitor/-/svg-badge.svg)](https://hosted.weblate.org/engage/meshmonitor/)
+# MeshRadar
 
-A comprehensive web application for monitoring off-grid mesh networks — Meshtastic, MeshCore, and MQTT — from a single dashboard. Built with React, TypeScript, and Node.js, featuring a beautiful Catppuccin Mocha dark theme and multi-database support (SQLite, PostgreSQL, MySQL).
+[![CI](https://github.com/charlottemeshtastic/meshradar/actions/workflows/ci.yml/badge.svg)](https://github.com/charlottemeshtastic/meshradar/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/charlottemeshtastic/meshradar)](https://github.com/charlottemeshtastic/meshradar/blob/main/LICENSE)
 
-![MeshMonitor Interface](docs/images/main.png)
+A comprehensive web application for monitoring off-grid mesh networks — Meshtastic, MeshCore, and MQTT — from a single dashboard. Built with React, TypeScript, and Node.js, featuring a neon **Miami Vice** dark theme and multi-database support (SQLite, PostgreSQL, MySQL).
 
-![MeshMonitor Interface](docs/images/channels.png)
+> MeshRadar is a fork of [MeshMonitor](https://github.com/Yeraze/meshmonitor) by Yeraze, released under the same license. Links below to meshmonitor.org and the upstream Docker images point at the original project.
+
+![MeshRadar Interface](docs/images/main.png)
+
+![MeshRadar Interface](docs/images/channels.png)
 
 ## Documentation
 
@@ -23,7 +24,7 @@ For complete documentation, visit **[meshmonitor.org](https://meshmonitor.org/)*
 
 ## Quick Start
 
-Get MeshMonitor running in **60 seconds**:
+Get MeshRadar running in **60 seconds**:
 
 ```bash
 # 1. Create docker-compose.yml
@@ -43,7 +44,7 @@ volumes:
   meshmonitor-data:
 EOF
 
-# 2. Start MeshMonitor
+# 2. Start MeshRadar
 docker compose up -d
 
 # 3. Open http://localhost:8080
@@ -55,7 +56,7 @@ For detailed installation instructions, configuration options, and deployment sc
 
 ### Kubernetes / Helm
 
-Running on Kubernetes? Add the MeshMonitor Helm repository and install — no checkout required:
+Running on Kubernetes? Add the MeshRadar Helm repository and install — no checkout required:
 
 ```bash
 helm repo add meshmonitor https://meshmonitor.org/charts
@@ -77,7 +78,7 @@ See the [Helm Chart README](helm/README.md) for ingress, TLS, persistence, and t
 
 ## Proxy Authentication
 
-MeshMonitor supports authentication via reverse proxy headers for seamless single sign-on (SSO) integration with Cloudflare Access, oauth2-proxy, Authelia, Traefik ForwardAuth, and similar solutions.
+MeshRadar supports authentication via reverse proxy headers for seamless single sign-on (SSO) integration with Cloudflare Access, oauth2-proxy, Authelia, Traefik ForwardAuth, and similar solutions.
 
 ### Supported Proxies
 
@@ -110,11 +111,11 @@ services:
 ### Security Requirements
 
 ⚠️ **IMPORTANT:** Proxy authentication requires:
-1. MeshMonitor is **NOT directly accessible** (use Docker networks, firewall rules, or VPN)
+1. MeshRadar is **NOT directly accessible** (use Docker networks, firewall rules, or VPN)
 2. `TRUST_PROXY` is configured to trust your reverse proxy
 3. Your proxy validates authentication before forwarding requests
 
-As of v4.13, `TRUST_PROXY` defaults to `false`; you MUST set `TRUST_PROXY=1` (or the appropriate hop count/subnet) whenever MeshMonitor runs behind any reverse proxy, or client IP resolution, rate limiting, and audit logs will all show the proxy's IP.
+As of v4.13, `TRUST_PROXY` defaults to `false`; you MUST set `TRUST_PROXY=1` (or the appropriate hop count/subnet) whenever MeshRadar runs behind any reverse proxy, or client IP resolution, rate limiting, and audit logs will all show the proxy's IP.
 
 ### Email Uniqueness Caveat
 
@@ -150,17 +151,17 @@ PROXY_AUTH_AUDIT_LOGGING=true         # Log auth events (default: true)
 
 ### Cloudflare Access JWT Subset Tokens
 
-Cloudflare Access application JWTs contain a **subset** of the full identity — typically `email`, `aud`, `iss`, `sub`. Custom OIDC claims (e.g. Auth0 role claims) are only present when the IdP integration is configured to include them. If your `PROXY_AUTH_JWT_GROUPS_CLAIM` (e.g. `https://your-domain/roles`) is **missing** from the `Cf-Access-Jwt-Assertion` header, MeshMonitor will see empty groups and group-based admin will never trigger.
+Cloudflare Access application JWTs contain a **subset** of the full identity — typically `email`, `aud`, `iss`, `sub`. Custom OIDC claims (e.g. Auth0 role claims) are only present when the IdP integration is configured to include them. If your `PROXY_AUTH_JWT_GROUPS_CLAIM` (e.g. `https://your-domain/roles`) is **missing** from the `Cf-Access-Jwt-Assertion` header, MeshRadar will see empty groups and group-based admin will never trigger.
 
 **To verify:** Decode a real request JWT at [jwt.io](https://jwt.io/) using the `Cf-Access-Jwt-Assertion` header from browser DevTools, and confirm the groups claim exists and its shape. Cloudflare often places IdP custom claims under a `custom` object (e.g. `custom["https://your-domain/roles"]`); official examples may show a flatter layout — your decoded token is the ground truth for your tenant.
 
-**Fallback:** Set `PROXY_AUTH_ADMIN_EMAILS` to an operator email allowlist. MeshMonitor matches emails case-insensitively, so admin works even when the app JWT omits custom IdP claims.
+**Fallback:** Set `PROXY_AUTH_ADMIN_EMAILS` to an operator email allowlist. MeshRadar matches emails case-insensitively, so admin works even when the app JWT omits custom IdP claims.
 
 See: [Cloudflare Application Token](https://developers.cloudflare.com/cloudflare-one/identity/authorization-cookie/application-token/)
 
 ### JWT Groups Normalization
 
-MeshMonitor normalizes groups claims from the JWT to handle different IdP formats:
+MeshRadar normalizes groups claims from the JWT to handle different IdP formats:
 
 - **String arrays** (`["admin", "user"]`) — used as-is
 - **Single strings** (`"admin"`) — wrapped into an array
@@ -213,7 +214,7 @@ When proxy authentication is enabled, existing local users are **automatically m
 
 ## Deployment Options
 
-MeshMonitor supports multiple deployment methods:
+MeshRadar supports multiple deployment methods:
 
 - **🐳 Docker** (Recommended) - Pre-built multi-architecture images with auto-upgrade support
   - [Docker Compose Guide](docs/deployment/DEPLOYMENT_GUIDE.md)
@@ -357,7 +358,7 @@ This project is licensed under the BSD-3-Clause License - see the [LICENSE](LICE
 ## Third-Party Clients
 
 - **[meshmonitor-chat.el](https://git.andros.dev/andros/meshmonitor-chat.el)** - Emacs chat client using the REST API v1. Channel and DM support, delivery confirmation, emoji reactions, polling.
-- **[MeshMonitor Chat for iOS](https://apps.apple.com/app/meshmonitor-chat/id6766212933)** - Native iOS chat client using the REST API v1. Channel and DM support over your MeshMonitor server.
+- **[MeshRadar Chat for iOS](https://apps.apple.com/app/meshmonitor-chat/id6766212933)** - Native iOS chat client using the REST API v1. Channel and DM support over your MeshRadar server.
 
 ## Acknowledgments
 
@@ -378,6 +379,6 @@ This project is licensed under the BSD-3-Clause License - see the [LICENSE](LICE
 </a>
 ---
 
-**MeshMonitor** - Monitor your mesh, beautifully. 🌐✨
+**MeshRadar** - Monitor your mesh, beautifully. 🌐✨
 
 _This application is brought to you with help from [Claude Code](https://claude.ai/code)._

@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  *
  * TransportSeriesGraphs (#5101 Phase 3, WP4) - Info tab section rendering the
- * two MeshMonitor-computed per-transport charts (nodes heard / packets RX).
+ * two MeshRadar-computed per-transport charts (nodes heard / packets RX).
  *
  * recharts is mocked so Line/Area/Legend props are inspectable directly,
  * rather than depending on jsdom's (nonexistent) SVG layout — matching the

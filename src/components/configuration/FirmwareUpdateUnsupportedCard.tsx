@@ -30,7 +30,7 @@ const ICONS: Record<FirmwareUpdateUnsupportedReason, UiIconName> = {
 
 /**
  * Shown in place of the firmware update UI when the selected source's node
- * has hardware MeshMonitor cannot update (#5677). It only explains: it has no
+ * has hardware MeshRadar cannot update (#5677). It only explains: it has no
  * action that starts, schedules or checks for an update.
  */
 const FirmwareUpdateUnsupportedCard: React.FC<FirmwareUpdateUnsupportedCardProps> = ({ support, hwModel }) => {
@@ -50,7 +50,7 @@ const FirmwareUpdateUnsupportedCard: React.FC<FirmwareUpdateUnsupportedCardProps
       title = t('firmware.unsupported_linux_title', 'This node is updated on its Linux host');
       body = t(
         'firmware.unsupported_linux_body',
-        'This node runs meshtasticd, the Linux build of Meshtastic, so MeshMonitor cannot flash it. Update the meshtasticd package with your system package manager, or pull a newer container image.'
+        'This node runs meshtasticd, the Linux build of Meshtastic, so MeshRadar cannot flash it. Update the meshtasticd package with your system package manager, or pull a newer container image.'
       );
       link = {
         href: MESHTASTICD_DOCS_URL,
@@ -61,7 +61,7 @@ const FirmwareUpdateUnsupportedCard: React.FC<FirmwareUpdateUnsupportedCardProps
       title = t('firmware.unsupported_unset_title', 'This node reports no hardware model');
       body = t(
         'firmware.unsupported_unset_body',
-        'MeshMonitor picks the firmware build from the hardware model, and this node reports none (UNSET). Update it over USB instead.'
+        'MeshRadar picks the firmware build from the hardware model, and this node reports none (UNSET). Update it over USB instead.'
       );
       break;
     case 'simulator':
@@ -74,12 +74,12 @@ const FirmwareUpdateUnsupportedCard: React.FC<FirmwareUpdateUnsupportedCardProps
       break;
     case 'unknown-model':
       title = t('firmware.unsupported_unknown_title', {
-        defaultValue: 'MeshMonitor does not know hardware model {{model}}',
+        defaultValue: 'MeshRadar does not know hardware model {{model}}',
         model,
       });
       body = t(
         'firmware.unsupported_unknown_body',
-        'This MeshMonitor version has no firmware build for it, so it cannot update this node. Update it over USB instead. A newer MeshMonitor may add this board.'
+        'This MeshRadar version has no firmware build for it, so it cannot update this node. Update it over USB instead. A newer MeshRadar may add this board.'
       );
       break;
     case 'unmapped-board':
@@ -89,7 +89,7 @@ const FirmwareUpdateUnsupportedCard: React.FC<FirmwareUpdateUnsupportedCardProps
       });
       body = t(
         'firmware.unsupported_unmapped_body',
-        'This MeshMonitor version has no firmware build for this board, so it cannot update this node. Update it over USB instead. A newer MeshMonitor may add it.'
+        'This MeshRadar version has no firmware build for this board, so it cannot update this node. Update it over USB instead. A newer MeshRadar may add it.'
       );
       break;
     case 'platform-not-ota':
@@ -99,7 +99,7 @@ const FirmwareUpdateUnsupportedCard: React.FC<FirmwareUpdateUnsupportedCardProps
       });
       body = t('firmware.unsupported_platform_body', {
         defaultValue:
-          'Its platform ({{platform}}) has no Wi-Fi OTA update, so MeshMonitor cannot flash it. Update it over USB instead.',
+          'Its platform ({{platform}}) has no Wi-Fi OTA update, so MeshRadar cannot flash it. Update it over USB instead.',
         platform,
       });
       break;

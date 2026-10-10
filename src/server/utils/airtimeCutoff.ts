@@ -33,7 +33,7 @@ export const NEIGHBOR_UTIL_SAMPLE_COUNT = 3;
  * a neighbour candidate. 0 means "directly heard only" — the strict behaviour
  * that shipped originally. Raise via settings to include routers reached
  * through a relay (issue #4801, Scenario A: a CLIENT_BASE node relays to
- * routers, so at the MeshMonitor-connected node they arrive as hopsAway=1).
+ * routers, so at the MeshRadar-connected node they arrive as hopsAway=1).
  */
 export const DEFAULT_NEIGHBOR_UTIL_MAX_HOPS = 0;
 

@@ -1,5 +1,5 @@
 /* Card shown in place of the firmware update UI when the node's hardware
-   cannot be updated through MeshMonitor (#5677). */
+   cannot be updated through MeshRadar (#5677). */
 .card {
   display: flex;
   gap: 0.75rem;

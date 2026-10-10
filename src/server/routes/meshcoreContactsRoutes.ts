@@ -232,7 +232,7 @@ router.post('/contacts/refresh', meshcoreDeviceLimiter, requireAuth(), requirePe
 /**
  * GET /api/sources/:id/meshcore/contacts/device-sync
  *
- * How MeshMonitor's node list lines up with the companion's own contact
+ * How MeshRadar's node list lines up with the companion's own contact
  * table (#5502): the auto-add state and the favourites the radio lacks.
  * In-memory + DB only; no device IO.
  */
@@ -253,7 +253,7 @@ router.get(
 /**
  * POST /api/sources/:id/meshcore/contacts/push-to-device
  *
- * Bulk "Push to radio" (#5502): add MeshMonitor-tracked nodes the radio's
+ * Bulk "Push to radio" (#5502): add MeshRadar-tracked nodes the radio's
  * contact table lacks — favourites first, then the most recently heard — into
  * its FREE slots only. Never evicts. Body: optional `{ limit?: number }`.
  *
@@ -309,7 +309,7 @@ router.post(
  * device, so the next send re-discovers the route via flooding. Wraps
  * the firmware's CMD_RESET_PATH (companion protocol opcode 13).
  *
- * On success, MeshMonitor mirrors the device state by clearing the row's
+ * On success, MeshRadar mirrors the device state by clearing the row's
  * out_path / path_len columns so the UI reflects the change immediately.
  */
 router.post(
@@ -750,7 +750,7 @@ router.delete(
       // connected Companion). If that can't apply — the key isn't a real device
       // contact (malformed/ghost), the source is disconnected, or it's not a
       // Companion — fall back to forgetting the row locally so the stale entry
-      // can still be cleaned up from MeshMonitor.
+      // can still be cleaned up from MeshRadar.
       let ok = await manager.removeContact(publicKey);
       if (!ok) {
         ok = await manager.forgetLocalContact(publicKey);
@@ -772,7 +772,7 @@ router.delete(
 /**
  * POST /api/sources/:id/meshcore/contacts/:publicKey/add-to-device
  *
- * Add a node MeshMonitor knows about to the companion radio's own contact
+ * Add a node MeshRadar knows about to the companion radio's own contact
  * table, so the radio can log in to / query / message it (#5349). Local
  * serial write (CMD_ADD_UPDATE_CONTACT) — nothing is transmitted, so no
  * receive-only gate. Same `nodes:write` scoping as the other contact-table

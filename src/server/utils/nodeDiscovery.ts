@@ -13,7 +13,7 @@
  *  - MeshCore: see MeshCoreManager — the contact-list sync never calls the
  *    discovery path, and adverts racing the sync are suppressed.
  *
- * There is no "ever seen" memory: a node deleted from MeshMonitor and then
+ * There is no "ever seen" memory: a node deleted from MeshRadar and then
  * heard again has no row, so it is discovered again.
  */
 import { isLiveReception } from './replayGuard.js';

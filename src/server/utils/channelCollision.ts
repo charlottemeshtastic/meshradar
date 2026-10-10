@@ -3,7 +3,7 @@
  *
  * A "collision" is when a server-side decryption entry (`channel_database`)
  * shares a PSK with a configured device channel but carries a DIFFERENT display
- * name. When that happens, MeshMonitor server-decrypts matching packets and
+ * name. When that happens, MeshRadar server-decrypts matching packets and
  * files them under the channel_database entry's synthetic tab
  * (`CHANNEL_DB_OFFSET + id`) instead of the device channel — so the device
  * channel's own tab looks empty while its messages appear under the other name.

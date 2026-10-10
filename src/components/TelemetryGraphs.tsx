@@ -968,7 +968,7 @@ const TelemetryGraphs: React.FC<TelemetryGraphsProps> = React.memo(
         paxcounterWifi: '#ff9500', // Orange
         paxcounterBle: '#17c0fa', // Cyan
         paxcounterUptime: '#9c88ff', // Purple
-        // MeshMonitor system metrics
+        // MeshRadar system metrics
         systemNodeCount: '#89b4fa', // Blue - system active nodes
         systemDirectNodeCount: '#a6e3a1', // Green - system direct nodes
         timeOffset: '#f2cdcd', // Catppuccin flamingo - clock offset
@@ -1096,7 +1096,7 @@ const TelemetryGraphs: React.FC<TelemetryGraphsProps> = React.memo(
         return false;
       }
 
-      // MeshMonitor-computed transport series component types are the raw
+      // MeshRadar-computed transport series component types are the raw
       // per-class rows behind the combined TransportSeriesGraphs charts
       // (#5101 Phase 3); only the local node ever has them, so they'd
       // otherwise clutter its graph list as six single-line charts.

@@ -60,7 +60,7 @@ export interface MeshCoreSourceConfig {
 /**
  * MeshCore Analyzer Observer output (#4457). When enabled, Phase 2's publisher
  * relays every OTA packet this companion hears to a MeshCore-Analyzer-compatible
- * MQTT broker. Observation-only: MeshMonitor publishes, never subscribes.
+ * MQTT broker. Observation-only: MeshRadar publishes, never subscribes.
  *
  * NOTE: the Ed25519 signing key is deliberately NOT part of this block. It lives
  * encrypted in `meshcore_observer_keys` (see meshcoreObserverKeyStore) so it never
@@ -69,7 +69,7 @@ export interface MeshCoreSourceConfig {
 export interface MeshCoreObserverConfig {
   enabled?: boolean;
   /**
-   * How MeshMonitor authenticates to the broker (issue #4595).
+   * How MeshRadar authenticates to the broker (issue #4595).
    * - `token` (default, and the value assumed when absent): mint an
    *   Ed25519-signed token with the companion's own signing key; username is
    *   `v1_{PUBLIC_KEY}`. FL Mesh / LetsMesh-backbone brokers.

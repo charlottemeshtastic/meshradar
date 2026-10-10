@@ -1,7 +1,7 @@
 /**
  * Version Check Service
  *
- * Single server-side poller that detects new MeshMonitor releases. Replaces the
+ * Single server-side poller that detects new MeshRadar releases. Replaces the
  * browser-driven GitHub fetch that used to live in the `/version/check` route
  * and the duplicated scheduled fetch in server.ts (Auto-Upgrade Retirement, 4.13).
  *

@@ -11,7 +11,7 @@
  * signature check, the clock-free replay guard, the receiver-position
  * lookup and the actual `recordReception` write, all wrapped so a failure
  * anywhere in this path NEVER breaks the OTA or MQTT stream and NEVER emits
- * on `dataEventEmitter` (mesh-impact checklist §0 — MeshMonitor sends
+ * on `dataEventEmitter` (mesh-impact checklist §0 — MeshRadar sends
  * nothing for this feature).
  *
  * See docs/internal/dev-notes/COVERAGE_P3_SPEC.md §2.2 and §5 (Decisions
@@ -104,7 +104,7 @@ export interface EvaluateMeshCoreCoverageReceptionInput {
   /** Observer feed only (D4). The observer's own claimed capture time, ms. */
   observerTimestampMs?: number | null;
   nowMs: number;
-  /** True when `k` is one of MeshMonitor's own registered MeshCore companions (D5). */
+  /** True when `k` is one of MeshRadar's own registered MeshCore companions (D5). */
   isOwnPublicKey: (k: string) => boolean;
   discardNullIsland: boolean;
 }

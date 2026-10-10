@@ -28,7 +28,7 @@ export function getAutomationEngine(): AutomationEngineService | null {
 }
 
 /**
- * Raise the `upgrade-available` system event when a newer MeshMonitor release is
+ * Raise the `upgrade-available` system event when a newer MeshRadar release is
  * detected. Called from the version-check route. Deduped by version so repeated
  * polls (the route caches ~5 min) only fire automations once per new version.
  */

@@ -1,6 +1,6 @@
 /**
  * Device Configuration number fields (#5649), through one mesh interval:
- * the Position broadcast interval (MeshMonitor floor: 32 seconds).
+ * the Position broadcast interval (MeshRadar floor: 32 seconds).
  *
  * The section is rendered inside the real SaveBarProvider + SaveBar, with a
  * parent that holds the number state the way ConfigurationTab does. What must

@@ -2,7 +2,7 @@
  * @vitest-environment jsdom
  *
  * TransportSeriesChart (#5101 Phase 3, WP4) - Dashboard card for a favorited
- * MeshMonitor-computed per-transport series.
+ * MeshRadar-computed per-transport series.
  */
 import React from 'react';
 import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest';

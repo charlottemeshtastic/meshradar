@@ -655,7 +655,7 @@ export class MeshCoreRepository extends BaseRepository {
    * fresher one and call sites need no ordering discipline of their own.
    *
    * This is what the inactive-node notifier reads, so a new receive path that
-   * forgets to call this makes MeshMonitor claim a live node is gone (#5131).
+   * forgets to call this makes MeshRadar claim a live node is gone (#5131).
    */
   async markHeard(sourceId: string, publicKey: string, heardAtMs: number): Promise<void> {
     if (!Number.isFinite(heardAtMs) || heardAtMs <= 0) return;

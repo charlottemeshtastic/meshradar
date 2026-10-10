@@ -210,7 +210,7 @@ export interface MeshCoreVirtualNodeManager {
   resetContactPath(publicKey: string): Promise<boolean>;
   /** Rename a contact in the device's saved contact table. */
   setContactName(publicKey: string, name: string): Promise<boolean>;
-  /** Set/clear MeshMonitor's favourite (authoritative) and push it to the device bit. */
+  /** Set/clear MeshRadar's favourite (authoritative) and push it to the device bit. */
   setNodeFavorite(publicKey: string, isFavorite: boolean): Promise<void>;
   /** Re-broadcast a contact's advert as one zero-hop packet (transmits). */
   shareContact(publicKey: string): Promise<ShareContactResult>;
@@ -342,8 +342,8 @@ interface ConnectedClient {
  * MeshCore Virtual Node Server — Phase 0 (handshake).
  *
  * Acts as the *device end* of the MeshCore companion protocol over TCP, letting
- * the MeshCore mobile app connect to MeshMonitor over WiFi and see the real
- * node (which MeshMonitor already holds the companion slot on) as if it were
+ * the MeshCore mobile app connect to MeshRadar over WiFi and see the real
+ * node (which MeshRadar already holds the companion slot on) as if it were
  * local. See docs/internal/dev-notes/MESHCORE_VIRTUAL_NODE_DESIGN.md.
  *
  * Phase 0 brings the app to "connected, identity shown, empty mailbox":
@@ -388,7 +388,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
    * to its originator (#4535).
    *
    * The manager stamps EVERY outbound message with our own identity, whether it
-   * came from MeshMonitor's web UI or was relayed here from a companion. That
+   * came from MeshRadar's web UI or was relayed here from a companion. That
    * makes "the app's own send, echoed back" and "a message the app has never
    * seen" byte-identical at the event boundary — which is why the old blanket
    * self-origin skip silently dropped UI-originated messages.
@@ -758,7 +758,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
           void this.handleConfigCommand(clientId, command, () => {
             const { idx, name, secretHex } = parseSetChannel(command.payload);
             // No scope in the wire frame — pass undefined so the DB scope the
-            // user set in MeshMonitor is left untouched (see MESHCORE scope trap).
+            // user set in MeshRadar is left untouched (see MESHCORE scope trap).
             return this.options.manager.setChannel(idx, name, secretHex);
           });
           break;
@@ -768,7 +768,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
           );
           break;
         // Contact-table mutations (#5350). These edit the companion's saved
-        // contact list, which MeshMonitor shares with every user of this
+        // contact list, which MeshRadar shares with every user of this
         // source (RemoveContact also deletes the meshcore_nodes row). The VN
         // port has no per-client auth, so they sit behind allowAdminCommands
         // with the Set* commands above.
@@ -794,7 +794,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
           void this.handleConfigCommand(clientId, command, () => this.applyAddUpdateContact(command));
           break;
         case CommandCodes.Reboot:
-          // Restarts the physical node, which drops MeshMonitor's own link and
+          // Restarts the physical node, which drops MeshRadar's own link and
           // every other VN client until it reconnects. Same gate as the other
           // device-level admin commands. Firmware sends nothing on success, so
           // we reply only on refusal / failure (see handleReboot).
@@ -820,7 +820,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
           break;
         case CommandCodes.SendRawData:
           // Arbitrary raw-packet injection onto the mesh. No manager path exists
-          // and MeshMonitor has no way to vet the payload, so it is refused
+          // and MeshRadar has no way to vet the payload, so it is refused
           // explicitly (#5350) rather than falling through to the default.
           logger.debug(`[MeshCore VN ${this.sourceId}] SendRawData refused from ${clientId} (not offered over VN)`);
           this.send(clientId, encodeErr(ErrorCodes.UnsupportedCmd));
@@ -1118,7 +1118,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
   /**
    * AddUpdateContact(9) apply step, run inside handleConfigCommand (so it is
    * already behind allowAdminCommands). A real node overwrites the whole
-   * contact record from the frame. We cannot relay it verbatim: MeshMonitor
+   * contact record from the frame. We cannot relay it verbatim: MeshRadar
    * owns the favourite bit (reconcileDeviceFavorites), and the route the app
    * echoes back is our mirror of the device's path, which can lag the device.
    * Writing the frame as-is could silently corrupt the route or drop a
@@ -1128,7 +1128,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
    * only the edits the app UI actually makes are applied, each through the
    * manager method that already handles it safely:
    *   - name changed              → setContactName (rename)
-   *   - favourite bit changed     → setNodeFavorite (MeshMonitor + device bit)
+   *   - favourite bit changed     → setNodeFavorite (MeshRadar + device bit)
    *   - route set to UNKNOWN (0xFF) → resetContactPath
    * type / coords / advert time are app echoes and are ignored. A manual route
    * or a telemetry-permission change is not relayed: if that is the ONLY
@@ -1137,7 +1137,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
    *
    * Unknown contacts get Err(NotFound). Adding a brand-new contact from the
    * app is not relayed here; ImportContact (signed advert) is the supported
-   * add path, and MeshMonitor's own "Add to radio" owns the table-full policy.
+   * add path, and MeshRadar's own "Add to radio" owns the table-full policy.
    *
    * Parsing and the diff run synchronously so a malformed frame throws before
    * any await (→ IllegalArg) and a refusal throws a VnCommandError.
@@ -1224,7 +1224,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
         this.send(clientId, encodeErr(ErrorCodes.BadState));
         return;
       }
-      // Operator-visible: this drops MeshMonitor's link to the node.
+      // Operator-visible: this drops MeshRadar's link to the node.
       this.auditVnAction(clientId, 'meshcore_vn_reboot');
       logger.info(`[MeshCore VN ${this.sourceId}] Reboot requested by VN client ${clientId} (allowAdminCommands on)`);
     } catch (err) {
@@ -1667,7 +1667,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
     this.send(clientId, encodeDeviceInfo({
       firmwareVer: SUPPORTED_COMPANION_PROTOCOL_VERSION,
       firmwareBuildDate: localNode?.firmwareBuild ?? '',
-      manufacturerModel: localNode?.model || 'MeshMonitor Virtual Node',
+      manufacturerModel: localNode?.model || 'MeshRadar Virtual Node',
     }));
   }
 
@@ -1857,7 +1857,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
    * the app has already logged into, and push its text reply back (issue
    * #4106). Gated on `allowAdminCommands` like the local Set* config commands
    * (issue #3904) — a CLI string can mutate remote config (`set name`,
-   * `reboot`, `setperm`, …), and MeshMonitor's admin toggle is the single
+   * `reboot`, `setperm`, …), and MeshRadar's admin toggle is the single
    * point of control over whether Virtual Node clients can issue ANY
    * mutating command through this instance, independent of what the remote's
    * own ACL would otherwise allow.
@@ -1907,7 +1907,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
    * companion that originated it (matched by ack CRC) so the app marks the
    * message delivered instead of retrying to failure (#3869). The manager's
    * `send_confirmed` is source-global, so we act only on a CRC we recorded for a
-   * client send; an unknown CRC (e.g. a DM MeshMonitor itself sent, or one whose
+   * client send; an unknown CRC (e.g. a DM MeshRadar itself sent, or one whose
    * client has disconnected) is ignored.
    */
   private handleSendConfirmed(data: { ackCode: number; roundTripMs: number }): void {
@@ -1991,7 +1991,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
 
   /**
    * Consume the attribution for a self-originated channel message and return the
-   * originating client id, or undefined when MeshMonitor itself originated it
+   * originating client id, or undefined when MeshRadar itself originated it
    * (web UI, automation, auto-responder — nothing on the VN port sent it).
    *
    * Consuming on match keeps repeats honest: sending the same text twice
@@ -2009,10 +2009,10 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
    * Fan a newly-arrived mesh message out to connected app clients: enqueue it
    * and nudge the app with a MsgWaiting push so it drains via SyncNextMessage.
    *
-   * "Newly-arrived" covers both directions. A message MeshMonitor sent is just
+   * "Newly-arrived" covers both directions. A message MeshRadar sent is just
    * as new to a companion that didn't send it as one that arrived over RF — the
    * app has no other way to learn about it, since the physical node's companion
-   * slot is held by MeshMonitor. Delivery is therefore per-client: everyone gets
+   * slot is held by MeshRadar. Delivery is therefore per-client: everyone gets
    * it except the one client that asked us to transmit it (which already shows
    * it optimistically and would otherwise render it twice) — issue #4535.
    *
@@ -2055,7 +2055,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
       // tell "correctly suppressed for the sender" from "wrongly dropped".
       logger.debug(
         `[MeshCore VN ${this.sourceId}] ◀ self-originated channel msg → ${delivered} client(s)` +
-          `${skipClientId ? `, skipped originator ${skipClientId}` : ' (originated in MeshMonitor)'}`,
+          `${skipClientId ? `, skipped originator ${skipClientId}` : ' (originated in MeshRadar)'}`,
       );
     }
   }
@@ -2081,7 +2081,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
     // Forward the real packed path_len byte (0xff = direct) so the companion
     // shows the actual hop count instead of always "direct" (#3871). The value
     // is the raw byte the device reported; the app decodes the hop count the
-    // same way MeshMonitor does. Falls back to 0xff (direct) when unknown.
+    // same way MeshRadar does. Falls back to 0xff (direct) when unknown.
     const wirePathLen = msg.pathLen ?? 0xff;
     // The `channel-N` marker lands in toPublicKey for messages we sent and in
     // fromPublicKey for messages we received — check both.
@@ -2111,7 +2111,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
     });
   }
 
-  /** Map MeshMonitor's local-node record to the SelfInfo wire structure. */
+  /** Map MeshRadar's local-node record to the SelfInfo wire structure. */
   private buildSelfInfo(node: MeshCoreNode): Parameters<typeof encodeSelfInfo>[0] {
     return {
       type: node.advType ?? 1,
@@ -2136,7 +2136,7 @@ export class MeshCoreVirtualNodeServer extends EventEmitter {
     };
   }
 
-  /** Map MeshMonitor's string telemetry mode back to the wire's 2-bit value. */
+  /** Map MeshRadar's string telemetry mode back to the wire's 2-bit value. */
   private telemetryModeToWire(mode?: TelemetryMode): number {
     switch (mode) {
       case 'device': return 1;

@@ -30,6 +30,7 @@ const themes = [
   // Popular
   { id: 'nord', name: 'Nord' },
   { id: 'dracula', name: 'Dracula' },
+  { id: 'miami-vice', name: 'Miami Vice' },
   { id: 'solarized-dark', name: 'Solarized Dark' },
   { id: 'solarized-light', name: 'Solarized Light' },
   { id: 'gruvbox-dark', name: 'Gruvbox Dark' },

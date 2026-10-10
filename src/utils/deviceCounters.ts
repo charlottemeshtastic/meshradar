@@ -3,7 +3,7 @@
  *
  * The firmware keeps one counter per metric across every transport (RF, UDP
  * and MQTT combined), so these can never be split by transport the way the
- * MeshMonitor-computed `system*Rf/Udp/Mqtt` series can. The UI surfaces this
+ * MeshRadar-computed `system*Rf/Udp/Mqtt` series can. The UI surfaces this
  * with a visible `DeviceCounterNote` caption wherever one of these types is
  * charted, rather than a tooltip (phones cannot hover) — see
  * `docs/internal/dev-notes/TRANSPORT_BREAKDOWN_P3_SPEC.md` §2 (D4).

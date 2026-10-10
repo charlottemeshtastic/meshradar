@@ -85,7 +85,7 @@ export function getMeshCoreDeliveryState(
  *   and the firmware's `logTx` / `logTxFail` hooks are not wired to the host.
  *   So this state does NOT say the radio transmitted, and says nothing about
  *   who heard it.
- * - `relayed`: MeshMonitor heard at least one repeater re-flood the message
+ * - `relayed`: MeshRadar heard at least one repeater re-flood the message
  *   (`heardBy`, #3700). That does prove it went out.
  *
  * Derived from fields the row already carries, so a message reads the same

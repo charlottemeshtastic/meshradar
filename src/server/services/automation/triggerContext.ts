@@ -312,7 +312,7 @@ export function buildMeshCoreMessageContext(
  * The event only ever reaches the automation engine for genuinely INBOUND
  * messages — `ReticulumManager`'s self-origin guard (mirrors `utils/ownNodes.ts`
  * #3914) skips emitting `reticulum:message` entirely for a row whose
- * `fromHash` is one of MeshMonitor's own LXMF destinations, so there is no
+ * `fromHash` is one of MeshRadar's own LXMF destinations, so there is no
  * separate self-check to perform here (unlike the Meshtastic/MeshCore
  * builders, whose engine call sites re-check self-origin at consumption
  * time — Reticulum's guard already ran upstream, before this event was ever

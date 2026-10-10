@@ -66,7 +66,7 @@ const PrivacyDocumentPage: React.FC = () => {
 
   useEffect(() => {
     if (state.status === 'ready') {
-      document.title = `${state.doc.title} — MeshMonitor`;
+      document.title = `${state.doc.title} — MeshRadar`;
     }
   }, [state]);
 
@@ -86,7 +86,7 @@ const PrivacyDocumentPage: React.FC = () => {
           <p className={styles.muted}>
             {t(
               'privacy.not_found_body',
-              'This MeshMonitor instance has not published that document.',
+              'This MeshRadar instance has not published that document.',
             )}
           </p>
         </div>

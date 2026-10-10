@@ -5,7 +5,7 @@
  * the clients agreed on (meshtastic/design#21), and iOS and Android already
  * ship it. The token on the wire is `@!` plus the node's 8 hex digits, e.g.
  * `@!ffccee11` — never a display name, so a rename does not break an old
- * message. MeshMonitor must emit exactly that, or its mentions will not
+ * message. MeshRadar must emit exactly that, or its mentions will not
  * highlight in the official apps.
  *
  * Differences between the two apps, and what we do about them:

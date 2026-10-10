@@ -133,7 +133,7 @@ export interface OkToMqttViolationEval {
   /**
    * `true` when the publishing gateway is THIS source's own local gateway
    * (`localGatewayNodeNum`). See Phase 1 spec §2(f.1): this is a
-   * belt-and-braces guard against MeshMonitor flagging its own operator,
+   * belt-and-braces guard against MeshRadar flagging its own operator,
    * independent of — and not a replacement for — the bridge's echo
    * suppression, which is not airtight (exact topic-string match + a
    * 60s-TTL, 256-entry ring buffer; missable on topic rewrite, delayed

@@ -86,7 +86,7 @@ describe.skip('AutoAnnounceSection Component', () => {
   const defaultProps = {
     enabled: true,
     intervalHours: 6,
-    message: 'MeshMonitor {VERSION} online for {DURATION} {FEATURES}',
+    message: 'MeshRadar {VERSION} online for {DURATION} {FEATURES}',
     channelIndexes: [0],
     announceOnStart: false,
     useSchedule: false,
@@ -193,11 +193,11 @@ describe.skip('AutoAnnounceSection Component', () => {
 
     it('should substitute all tokens in default message', () => {
       render(<AutoAnnounceSection {...defaultProps}
-        message="MeshMonitor {VERSION} online for {DURATION} {FEATURES}"
+        message="MeshRadar {VERSION} online for {DURATION} {FEATURES}"
       />);
 
       // Check that the preview contains the substituted values
-      const previewSection = screen.getByText(/MeshMonitor 2\.9\.1 online for 3d 12h/);
+      const previewSection = screen.getByText(/MeshRadar 2\.9\.1 online for 3d 12h/);
       expect(previewSection).toBeInTheDocument();
     });
 
@@ -830,7 +830,7 @@ describe.skip('AutoAnnounceSection Component', () => {
           body: JSON.stringify({
             autoAnnounceEnabled: 'true',
             autoAnnounceIntervalHours: 6,
-            autoAnnounceMessage: 'MeshMonitor {VERSION} online for {DURATION} {FEATURES}',
+            autoAnnounceMessage: 'MeshRadar {VERSION} online for {DURATION} {FEATURES}',
             autoAnnounceChannelIndexes: JSON.stringify([0]),
             autoAnnounceOnStart: 'false',
             autoAnnounceUseSchedule: 'true',

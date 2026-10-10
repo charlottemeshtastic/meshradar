@@ -25,7 +25,7 @@ describe('MessagesRepository — createdAt ordering (#3122)', () => {
   const PEER_ID = '!87654321';
 
   // Far-future device timestamp — would dominate an rxTime sort but should
-  // lose a createdAt sort because the row arrived in MeshMonitor first.
+  // lose a createdAt sort because the row arrived in MeshRadar first.
   const FAR_FUTURE = 4_000_000_000_000; // ~2096
 
   beforeEach(() => {

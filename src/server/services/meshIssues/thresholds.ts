@@ -6,7 +6,7 @@
  * Each constant's JSDoc ends in one of:
  *   - `[official]` — sourced from the Meshtastic ROUTER_LATE blog post /
  *     firmware documentation.
- *   - `[ours]` — a MeshMonitor-chosen value, tunable (settings UI is Phase 3).
+ *   - `[ours]` — a MeshRadar-chosen value, tunable (settings UI is Phase 3).
  *     These are explicit veto candidates — see the Phase 1 spec §5.
  *
  * Pure, dependency-free except for `DeviceRole` (a plain constant object, no

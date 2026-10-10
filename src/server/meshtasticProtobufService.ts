@@ -1534,14 +1534,14 @@ export class MeshtasticProtobufService {
 
   /**
    * Fabricate a routing-ack FromRadio response for a request that we
-   * intentionally swallowed inside MeshMonitor. The Meshtastic client
+   * intentionally swallowed inside MeshRadar. The Meshtastic client
    * sees this as if the physical radio acknowledged the request with
    * `errorReason=NONE`, so its UI doesn't hang waiting for an ACK.
    *
    * Used by virtualNodeServer to ack-and-drop admin commands that we
    * deliberately don't forward to the device — see issue #2602
    * (`removeByNodenum` from a connected app must not delete nodes from
-   *  MeshMonitor's view of the mesh).
+   *  MeshRadar's view of the mesh).
    *
    * @param requestId - the `id` field of the original request packet that
    *                    the client used as `wantAck` correlation

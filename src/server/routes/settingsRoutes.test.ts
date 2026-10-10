@@ -983,7 +983,7 @@ describe('settingsRoutes', () => {
     });
 
     // (a1) #5376: TX-target window used when maxNodeAgeHours is 0. It bounds
-    // which nodes MeshMonitor transmits to, so 0 ("no bound") is rejected.
+    // which nodes MeshRadar transmits to, so 0 ("no bound") is rejected.
     describe('(a1) txTargetMaxAgeHoursWhenUnlimited range validation (#5376)', () => {
       it.each([0, -1, 721, 1.5, 'abc', ''])('rejects %s with 400 INVALID_TX_TARGET_MAX_AGE_HOURS', async (value) => {
         const app = createApp(adminUser);

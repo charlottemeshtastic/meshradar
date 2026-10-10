@@ -369,7 +369,7 @@ function fixedToDegrees(v: number | undefined): number | undefined {
 }
 
 // MeshCore wire protocol uses integer-scaled radio units, but the rest of
-// MeshMonitor (UI presets, validation, API contract) speaks MHz / kHz floats.
+// MeshRadar (UI presets, validation, API contract) speaks MHz / kHz floats.
 // Centralize the conversion here so cachedSelfInfo and outbound set_radio
 // frames each side of the boundary use their own native units.
 //
@@ -559,7 +559,7 @@ export class MeshCoreNativeBackend extends EventEmitter {
       const selfInfo = await this.connection.getSelfInfo(10_000);
       this.cachedSelfInfo = {
         ...selfInfo,
-        // Normalize wire kHz/Hz to MeshMonitor MHz/kHz so every downstream
+        // Normalize wire kHz/Hz to MeshRadar MHz/kHz so every downstream
         // consumer (selfInfoToBridgeShape → manager → UI) sees consistent units.
         radioFreq: libFreqToMhz(selfInfo?.radioFreq),
         radioBw: libBwToKhz(selfInfo?.radioBw),
@@ -1168,7 +1168,7 @@ export class MeshCoreNativeBackend extends EventEmitter {
 
         // Auto-add a GENUINELY NEW node to the DEVICE contact store so it's
         // actually message-able and survives the next refreshContacts() (a
-        // MeshMonitor-only mirror would be clobbered by the device's list). A
+        // MeshRadar-only mirror would be clobbered by the device's list). A
         // discovery response carries no name/position/path, so a new contact is
         // added with an empty name + flood path (outPathLen 0xFF) and the device
         // learns the route later.
@@ -1176,7 +1176,7 @@ export class MeshCoreNativeBackend extends EventEmitter {
         // CRITICAL: we must NOT re-add an EXISTING contact. addOrUpdateContact
         // overwrites ALL of a contact's fields, so re-adding a known node with an
         // empty name wipes its stored name on the device — and a later
-        // refreshContacts() mirrors the nameless entry into MeshMonitor (bug:
+        // refreshContacts() mirrors the nameless entry into MeshRadar (bug:
         // "Discover Repeaters erased the node name"). An existing contact is
         // already message-able and survives a refresh, so we simply skip it.
         // Best-effort + async so rx parsing isn't blocked.
@@ -2105,7 +2105,7 @@ export class MeshCoreNativeBackend extends EventEmitter {
         // mask 0x01) on an existing device contact via CMD_ADD_UPDATE_CONTACT
         // (opcode 9). The firmware's contact-table eviction skips favourited
         // contacts (BaseChatMesh.cpp), so this is what actually protects a
-        // node from being dropped when the table fills — MeshMonitor's local
+        // node from being dropped when the table fills — MeshRadar's local
         // meshcore_nodes.isFavorite column alone never did (#4838).
         //
         // Read-modify-write: bit 0 is the favourite flag, bits 1..7 are the

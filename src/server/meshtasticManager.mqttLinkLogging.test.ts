@@ -2,7 +2,7 @@
  * Log lines on the mqttLink proxy path (#5013).
  *
  * "MQTT traffic never reaches my node" was hard to diagnose because the two
- * facts that settle it left no trace: whether MeshMonitor injected a broker
+ * facts that settle it left no trace: whether MeshRadar injected a broker
  * packet into the device, and whether the device's proxy traffic was being
  * dropped for want of a link. Pinned here:
  *   - a debug line per injected packet: source, topic, channel, packet id —

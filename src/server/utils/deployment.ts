@@ -15,7 +15,7 @@ export type DeploymentMethod = 'docker' | 'lxc' | 'kubernetes' | 'manual';
 let cached: DeploymentMethod | null = null;
 
 /**
- * Detect how MeshMonitor is deployed.
+ * Detect how MeshRadar is deployed.
  *
  * - Kubernetes: `KUBERNETES_SERVICE_HOST` env var is injected into every pod.
  * - Docker: `/.dockerenv` exists.

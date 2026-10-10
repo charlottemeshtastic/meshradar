@@ -753,7 +753,7 @@ export class ReticulumManager extends EventEmitter implements ISourceManager {
    * UI/automation-trigger event for genuinely INBOUND messages only.
    *
    * Self-origin guard (mirrors `utils/ownNodes.ts` #3914): when `msg.from` is
-   * one of MeshMonitor's own LXMF destinations (a self-addressed message —
+   * one of MeshRadar's own LXMF destinations (a self-addressed message —
    * we sent a message to our own identity, or a multi-source setup owns both
    * ends), the row is still persisted, but `dataEventEmitter.emitReticulumMessage`
    * is NOT called — that call is what both updates the UI and feeds the

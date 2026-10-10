@@ -83,7 +83,7 @@ const ERROR_CODE_MAP: Record<string, { key: string; fallback: string }> = {
   },
   CREDENTIAL_PERSISTENCE_DISABLED: {
     key: 'meshcore.observer.err_no_persistence',
-    fallback: 'MeshMonitor cannot store credentials — set a fixed SESSION_SECRET and restart.',
+    fallback: 'MeshRadar cannot store credentials — set a fixed SESSION_SECRET and restart.',
   },
   INVALID_PARAMETER_TYPE: {
     key: 'meshcore.observer.err_bad_request',
@@ -99,7 +99,7 @@ const ERROR_CODE_MAP: Record<string, { key: string; fallback: string }> = {
   },
   INTERNAL_ERROR: {
     key: 'meshcore.observer.err_internal',
-    fallback: 'Something went wrong on the server. Check the MeshMonitor logs.',
+    fallback: 'Something went wrong on the server. Check the MeshRadar logs.',
   },
 };
 
@@ -126,13 +126,13 @@ type TFunc = (key: string, fallback: string, opts?: Record<string, unknown>) => 
 function describeObserverError(t: TFunc, error: ObserverKeyError, action: ObserverKeyAction | null): string {
   if (error.code === null) {
     if (error.message) return error.message;
-    return t('meshcore.observer.err_network', 'Could not reach MeshMonitor. Check your connection and retry.');
+    return t('meshcore.observer.err_network', 'Could not reach MeshRadar. Check your connection and retry.');
   }
   const mapped = ERROR_CODE_MAP[error.code];
   if (!mapped) {
     return (
       error.message ??
-      t('meshcore.observer.err_internal', 'Something went wrong on the server. Check the MeshMonitor logs.')
+      t('meshcore.observer.err_internal', 'Something went wrong on the server. Check the MeshRadar logs.')
     );
   }
   const text = t(mapped.key, mapped.fallback);
@@ -398,7 +398,7 @@ export const MeshCoreObserverSection: React.FC<MeshCoreObserverSectionProps> = (
         {!loading && !loadError && status?.canStore === false && (
           <div className={styles.warning} role="alert">
             <p>
-              {t('meshcore.observer.cannot_store', 'MeshMonitor cannot store the signing key: {{reason}}', {
+              {t('meshcore.observer.cannot_store', 'MeshRadar cannot store the signing key: {{reason}}', {
                 reason: status.reason ?? '',
               })}
             </p>
@@ -582,7 +582,7 @@ export const MeshCoreObserverSection: React.FC<MeshCoreObserverSectionProps> = (
           {!creds.loading && !creds.loadError && creds.status?.canStore === false && (
             <div className={styles.warning} role="alert">
               <p>
-                {t('meshcore.observer.credentials_cannot_store', 'MeshMonitor cannot store the broker password: {{reason}}', {
+                {t('meshcore.observer.credentials_cannot_store', 'MeshRadar cannot store the broker password: {{reason}}', {
                   reason: creds.status.reason ?? '',
                 })}
               </p>

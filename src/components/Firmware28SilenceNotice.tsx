@@ -78,7 +78,7 @@ export function Firmware28SilenceNotice({ node, nowMs }: Firmware28SilenceNotice
           {detail}{' '}
           {t(
             'node_details.firmware28_silence_hint',
-            'Meshtastic 2.8 turned these broadcasts off by default, so they may need to be re-enabled on the device itself. This is a firmware setting — MeshMonitor cannot turn it back on for you.',
+            'Meshtastic 2.8 turned these broadcasts off by default, so they may need to be re-enabled on the device itself. This is a firmware setting — MeshRadar cannot turn it back on for you.',
           )}
         </span>
         <span className={styles.links}>

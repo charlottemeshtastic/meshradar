@@ -2,7 +2,7 @@
  * Drizzle schema for the `asset_nodes` table (issue #5354, Asset Tracking).
  *
  * An operator marks a node as a tracked **asset** (for example a GPS node on a
- * vehicle). For an asset, MeshMonitor keeps all of its telemetry for
+ * vehicle). For an asset, MeshRadar keeps all of its telemetry for
  * `retentionDays` instead of the regular 7-day window, always draws its trail,
  * and automated cleanups skip it.
  *

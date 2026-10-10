@@ -546,7 +546,7 @@ export const MeshCoreNodesView: React.FC<MeshCoreNodesViewProps> = ({
                 : isRepeaterSource
                   ? t(
                     'meshcore.no_nodes_repeater',
-                    'No nodes yet. A repeater reports its direct (zero-hop) repeater neighbours, read from its neighbors table every 5 minutes. Other nodes appear only when the firmware is built with MESH_PACKET_LOGGING, which lets MeshMonitor read the adverts the repeater hears.',
+                    'No nodes yet. A repeater reports its direct (zero-hop) repeater neighbours, read from its neighbors table every 5 minutes. Other nodes appear only when the firmware is built with MESH_PACKET_LOGGING, which lets MeshRadar read the adverts the repeater hears.',
                   )
                   : t('meshcore.no_nodes', 'No nodes seen yet')}
             </div>

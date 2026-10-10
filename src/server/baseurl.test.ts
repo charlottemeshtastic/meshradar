@@ -261,8 +261,8 @@ describe('BASE_URL Validation and Normalization', () => {
     });
 
     it('should handle mixed case', () => {
-      const result = validateBaseUrl('/MeshMonitor');
-      expect(result).toBe('/MeshMonitor');
+      const result = validateBaseUrl('/MeshRadar');
+      expect(result).toBe('/MeshRadar');
     });
 
     it('should handle numbers only', () => {

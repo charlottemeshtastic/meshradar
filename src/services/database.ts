@@ -187,7 +187,7 @@ export interface DbNode {
   altitudeOverride?: number; // Override altitude
   positionOverrideIsPrivate?: boolean; // Override privacy (false = public, true = private)
   hideFromMap?: boolean; // #3549: suppress this node's marker on maps only
-  notes?: string; // #3921: free-text per-node MeshMonitor-local annotation
+  notes?: string; // #3921: free-text per-node MeshRadar-local annotation
   isUnmessagable?: boolean; // #3684: User.is_unmessagable — node won't receive DMs
   /** #5317: set when the row came from an imported contact URL and the node has not been heard yet. */
   importedAt?: number | null;
@@ -1316,7 +1316,7 @@ class DatabaseService {
         "SELECT value FROM settings WHERE key IN ('migration_077_ignored_nodes_nodenum_bigint', 'migration_078_create_embed_profiles')"
       ).get();
       if (!v37Key) {
-        logger.error('This version requires MeshMonitor v3.7 or later.');
+        logger.error('This version requires MeshRadar v3.7 or later.');
         logger.error('Please upgrade to v3.7 first, then upgrade to this version.');
         throw new Error('Database is pre-v3.7. Please upgrade to v3.7 first.');
       }
@@ -1360,7 +1360,7 @@ class DatabaseService {
             'To recover:\n' +
             `  1. Back up:  cp "${dbPath}" "${dbPath}.bak"\n` +
             `  2. Delete:   rm "${dbPath}"\n` +
-            '  3. Restart MeshMonitor — a fresh database will be created.\n\n' +
+            '  3. Restart MeshRadar — a fresh database will be created.\n\n' +
             'Historical data will be lost. Keep the .bak file if you\n' +
             'want to attempt manual recovery with the sqlite3 tool.\n' +
             '════════════════════════════════════════════════════════',
@@ -1409,7 +1409,7 @@ class DatabaseService {
         autoAckMultihopReplyEnabled: 'true',
         autoAnnounceEnabled: 'false',
         autoAnnounceIntervalHours: '6',
-        autoAnnounceMessage: 'MeshMonitor {VERSION} online for {DURATION} {FEATURES}',
+        autoAnnounceMessage: 'MeshRadar {VERSION} online for {DURATION} {FEATURES}',
         autoAnnounceChannelIndexes: '[0]',
         autoAnnounceOnStart: 'false',
         autoAnnounceUseSchedule: 'false',
@@ -4343,7 +4343,7 @@ class DatabaseService {
 
 
   /**
-   * Set the free-text per-node notes field (issue #3921). MeshMonitor-local
+   * Set the free-text per-node notes field (issue #3921). MeshRadar-local
    * annotation — never synced to the mesh. An empty string clears the note.
    * Uses the Drizzle-based repository setter for every backend (no raw SQL).
    */

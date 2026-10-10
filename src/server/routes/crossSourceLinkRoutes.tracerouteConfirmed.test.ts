@@ -114,7 +114,7 @@ describe('Traceroute-confirmed link route (#5580)', () => {
       await databaseService.traceroutes.deleteAllTraceroutes(ALL_SOURCES);
     });
 
-    it('a traceroute sent from MeshMonitor: the reply fills the pending row, our radio stays in fromNodeNum, and the link is drawn', async () => {
+    it('a traceroute sent from MeshRadar: the reply fills the pending row, our radio stays in fromNodeNum, and the link is drawn', async () => {
       await databaseService.recordTracerouteRequestAsync(LOCAL_A, REMOTE_A, harness.sourceA);
       await databaseService.insertTracerouteAsync(reply() as any, harness.sourceA);
 

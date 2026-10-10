@@ -1,5 +1,5 @@
 /**
- * Public ADS-B feeds MeshMonitor can ask "which aircraft is at this spot?"
+ * Public ADS-B feeds MeshRadar can ask "which aircraft is at this spot?"
  * (#5374). Shared by the server client (`adsbFeedClient.ts`), the flight-match
  * route (flight link + credit) and the Settings UI (select + terms line).
  *

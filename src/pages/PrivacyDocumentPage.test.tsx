@@ -155,6 +155,6 @@ describe('PrivacyDocumentPage', () => {
     vi.mocked(apiService.getPrivacyDocument).mockResolvedValue(doc('body', 'Our Rules'));
     renderAt('/privacy/privacy');
 
-    await waitFor(() => expect(document.title).toBe('Our Rules — MeshMonitor'));
+    await waitFor(() => expect(document.title).toBe('Our Rules — MeshRadar'));
   });
 });

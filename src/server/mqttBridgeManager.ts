@@ -142,7 +142,7 @@ export interface MqttBridgeSourceConfig {
    */
   ignoreOkToMqtt?: boolean;
   /**
-   * When true, do not uplink packets MeshMonitor's own automations sent
+   * When true, do not uplink packets MeshRadar's own automations sent
    * (auto-ack, auto-responder, auto-announce, timers, geofences, Automation
    * Engine actions, ...) — #5414. Manual sends still follow the normal rules.
    * Default false (unchanged behaviour on upgrade).
@@ -234,7 +234,7 @@ export interface MqttBridgeStatus extends SourceStatus {
    */
   uplinkOkToMqttDrops: number;
   /**
-   * Count of uplink packets dropped because MeshMonitor's own automation sent
+   * Count of uplink packets dropped because MeshRadar's own automation sent
    * them and `dropAutomationUplinks` is on (#5414).
    */
   uplinkAutomationDrops: number;
@@ -943,7 +943,7 @@ export class MqttBridgeManager extends EventEmitter implements ISourceManager {
 
     if (!this.uplinkFilter.preFilter(p.topic, p.envelope)) return;
 
-    // Drop packets MeshMonitor's own automations sent (#5414). The firmware
+    // Drop packets MeshRadar's own automations sent (#5414). The firmware
     // sets ok_to_mqtt on every phone-API packet from the node config, by
     // design (declined in meshtastic/firmware#11994), so this is the only
     // place we can keep automation traffic off the upstream broker. Matched on

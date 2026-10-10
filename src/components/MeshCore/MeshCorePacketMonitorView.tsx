@@ -441,7 +441,7 @@ export const MeshCorePacketMonitorView: React.FC<MeshCorePacketMonitorViewProps>
               <p className={styles.repeaterNote} data-testid="mcpm-repeater-note">
                 {t(
                   'meshcore.packets.repeaterNoStream',
-                  'Stock MeshCore repeater firmware does not stream packets over serial. A repeater build with -D MESH_PACKET_LOGGING=1 prints each received frame, and MeshMonitor logs those here.',
+                  'Stock MeshCore repeater firmware does not stream packets over serial. A repeater build with -D MESH_PACKET_LOGGING=1 prints each received frame, and MeshRadar logs those here.',
                 )}
               </p>
             )}

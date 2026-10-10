@@ -1,5 +1,5 @@
 /**
- * Regression test for issue #4194: messages MeshMonitor itself sends to a
+ * Regression test for issue #4194: messages MeshRadar itself sends to a
  * MeshCore channel (or as a DM/room post) were stored with `fromName`
  * undefined. The Unified Messages feed's `senderLabel` falls back to
  * `fromNodeId` (the raw local public key) when no name is present, so our own

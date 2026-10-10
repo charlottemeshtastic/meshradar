@@ -46,7 +46,7 @@ interface MeshCoreChannelRow {
   name: string;
 }
 
-const DEFAULT_MESSAGE = 'MeshMonitor {VERSION} online for {DURATION} — {CONTACTCOUNT} contacts';
+const DEFAULT_MESSAGE = 'MeshRadar {VERSION} online for {DURATION} — {CONTACTCOUNT} contacts';
 const DEFAULT_SCHEDULE = '0 */6 * * *';
 
 const DEFAULTS: AutoAnnounceSettings = {

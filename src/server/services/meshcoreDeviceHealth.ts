@@ -6,7 +6,7 @@
  * telemetry-save method — uptime is written from TWO services (the local-node
  * poller and the remote-telemetry scheduler) — so this shared helper is called
  * from both. It mirrors the Meshtastic logic exactly: read the PRIOR stored
- * uptime for the node from the DB (a durable baseline, so a MeshMonitor restart
+ * uptime for the node from the DB (a durable baseline, so a MeshRadar restart
  * can never spuriously fire), compare via the same {@link isUptimeReboot} helper,
  * and on a genuine reset emit `node:rebooted` for the automation engine.
  *
@@ -101,7 +101,7 @@ export interface PowerChangeDetectionTelemetry {
  * "power lost". See {@link MESHCORE_POWERED_MV_THRESHOLD} for the full caveat.
  *
  * Mirrors {@link detectMeshCoreReboot}: reads the node's PRIOR battery voltage
- * from the DB (a durable baseline, so a MeshMonitor restart can never spuriously
+ * from the DB (a durable baseline, so a MeshRadar restart can never spuriously
  * fire), derives prior/next powered-states via {@link isPoweredMv}, and emits on
  * a genuine transition with `nodeNum: null` + the pubkey. DB read only — no
  * packet, zero airtime. Must run BEFORE the new battery row is inserted so the

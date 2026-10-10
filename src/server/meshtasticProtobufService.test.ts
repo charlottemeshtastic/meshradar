@@ -400,9 +400,9 @@ describe('MeshtasticProtobufService', () => {
 
   // Regression guard for firmware 2.8 (issue #3548). The 2.8 NodeDB stores SNR
   // as Q4 (dB×4, integer) in the ON-DISK deviceonly.proto NodeInfoLite, but the
-  // OVER-THE-AIR mesh.proto NodeInfo that MeshMonitor decodes keeps `float snr`.
+  // OVER-THE-AIR mesh.proto NodeInfo that MeshRadar decodes keeps `float snr`.
   // If a future protobufs bump ever leaked snr_q4 / integer quantization into the
-  // OTA path, this test would catch it. MeshMonitor must keep reading snr as a
+  // OTA path, this test would catch it. MeshRadar must keep reading snr as a
   // float in dB — do NOT add an snr_q4 conversion to the TCP decode path.
   describe('OTA NodeInfo.snr stays a float (2.8 snr_q4 guard, #3548)', () => {
     it('round-trips a fractional SNR that integer quantization would mangle', async () => {

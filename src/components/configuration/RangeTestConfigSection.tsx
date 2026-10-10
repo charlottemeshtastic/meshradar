@@ -20,7 +20,7 @@ interface RangeTestConfigSectionProps {
    * True when the connected node's firmware no longer carries the Range Test
    * module — it was removed in Meshtastic 2.8 (#5031). The section stays
    * visible with an explanatory notice rather than disappearing, so users don't
-   * conclude MeshMonitor broke. Defaults to false, which is also what an
+   * conclude MeshRadar broke. Defaults to false, which is also what an
    * unknown firmware version resolves to: fail open to the old behaviour.
    */
   isDisabled?: boolean;

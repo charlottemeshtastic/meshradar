@@ -550,7 +550,7 @@ export class MeshCoreMqttManager extends EventEmitter implements ISourceManager 
    * The observer's own receiver position comes from THIS source's
    * `meshcore_nodes` row for its pubkey (written by `ingestAdvert` above
    * when the feed carries the observer's own advert) — an observer
-   * MeshMonitor has never seen a NodeInfo/advert for gets no marker, same as
+   * MeshRadar has never seen a NodeInfo/advert for gets no marker, same as
    * a Meshtastic gateway lacking a NodeInfo in P2.
    *
    * Never throws into the ingest path; never emits on `dataEventEmitter`.

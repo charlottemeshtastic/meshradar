@@ -68,7 +68,7 @@ function replyRecord(spec: TracerouteRunSpec) {
 }
 
 /**
- * A run sent from MeshMonitor: a pending row, then the reply fills it in.
+ * A run sent from MeshRadar: a pending row, then the reply fills it in.
  * Stored `{ from: requester, to: responder }`. The source's local node must
  * be the requester (see {@link setSourceLocalNode}), as it is in the app.
  */

@@ -2,7 +2,7 @@
  * Replay / stale-packet guard for node `lastHeard`.
  *
  * Problem (observed in the field): a node that has been physically powered off
- * for weeks keeps appearing "recently heard" in MeshMonitor. The cause is a
+ * for weeks keeps appearing "recently heard" in MeshRadar. The cause is a
  * replayed packet — typically a retained MQTT telemetry frame, or an MQTT→LoRa
  * bridge re-injecting an offline node's cached reading onto the mesh with a fresh
  * packet id. The payload is byte-frozen (same internal `time` / `uptimeSeconds`)
@@ -28,7 +28,7 @@
  *
  * Known limitation: if the *receiving* node's own clock is wrong by more than the
  * threshold, its packets would be misread as stale. In practice the locally
- * connected node is time-synced (MeshMonitor itself pushes time to it), and the
+ * connected node is time-synced (MeshRadar itself pushes time to it), and the
  * 2020 floor catches the common "clock reads ~0" failure mode.
  */
 
@@ -91,7 +91,7 @@ export function resolveLastHeardSec(
  * per reconnect (observed: 67 -> 134 packets across two restarts).
  *
  * 120s comfortably covers ordinary delivery jitter (MQTT/broker latency,
- * local processing, the receiving node's own small clock skew — MeshMonitor
+ * local processing, the receiving node's own small clock skew — MeshRadar
  * time-syncs the local node, so this is not the multi-hour drift
  * {@link STALE_REPLAY_THRESHOLD_SEC} guards against) while staying two orders
  * of magnitude below the replay's ~hourly cadence, so a genuine replay of a

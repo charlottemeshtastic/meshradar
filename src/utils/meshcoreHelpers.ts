@@ -101,7 +101,7 @@ export function isHashtagChannelName(name: string | null | undefined): boolean {
 // --- SHA-256 fallback (FIPS 180-4) -----------------------------------------
 //
 // `crypto.subtle` is only available in secure contexts (HTTPS or localhost).
-// When MeshMonitor is served over plain HTTP via an IP address — the typical
+// When MeshRadar is served over plain HTTP via an IP address — the typical
 // Docker-on-a-separate-host deployment — `crypto.subtle` is undefined and
 // calling `.digest()` on it throws a TypeError that the caller catches and
 // silently discards, leaving the random seed in place (issue #3606).

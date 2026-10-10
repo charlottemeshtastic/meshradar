@@ -1,7 +1,7 @@
 import type { Response } from 'express';
 
 /**
- * Standard MeshMonitor success envelope: `{ success: true, data? }`.
+ * Standard MeshRadar success envelope: `{ success: true, data? }`.
  *
  * IMPORTANT: the frontend `ApiService.request()` returns the raw JSON body and
  * does NOT unwrap `data`. Only use `ok()` on a handler that already emits
@@ -17,7 +17,7 @@ export function ok<T>(res: Response, data?: T): Response {
 }
 
 /**
- * Standard MeshMonitor error envelope: `{ success: false, error, code, ...extra }`.
+ * Standard MeshRadar error envelope: `{ success: false, error, code, ...extra }`.
  * Matches what `ApiService` parses: `error` (message), `code` (machine code),
  * plus optional fields it forwards such as `retryAfterSeconds`.
  *

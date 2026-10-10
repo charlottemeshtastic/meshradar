@@ -2,7 +2,7 @@
  * Config-sync stall watchdog (#5122, Bug B).
  *
  * A reporter watched a node go silent part-way through the initial NodeDB sync
- * and stay that way: no data, no error, no FIN. MeshMonitor's own state kept
+ * and stay that way: no data, no error, no FIN. MeshRadar's own state kept
  * reporting `isConnected=true, nodeResponsive=true, configuring=true` for 70+
  * seconds with zero reconnect attempts, until the container was killed by hand.
  *

@@ -3,7 +3,7 @@
  *
  * Pure, testable helpers for handling `FromRadio.ClientNotification` (mesh.proto
  * field 16) messages emitted by the connected Meshtastic node about its OWN
- * operation. MeshMonitor historically decoded and dropped these; we now surface
+ * operation. MeshRadar historically decoded and dropped these; we now surface
  * them as toasts.
  *
  * `ClientNotification` is NOT new in firmware 2.8 — 2.7.x already emits several,
@@ -16,7 +16,7 @@
  *
  * Firmware 2.8 additionally emits a protected-node-cap refusal when a favorite /
  * ignore would exceed `MAX_NUM_NODES - 2`; `parseProtectedCapRefusal` extracts
- * the verb + node so the caller can revert MeshMonitor's optimistic local flag.
+ * the verb + node so the caller can revert MeshRadar's optimistic local flag.
  */
 
 /** LogRecord.Level numeric values (mesh.proto). */
@@ -38,7 +38,7 @@ export interface ParsedClientNotification {
   /**
    * True when the notification carries a key-verification `payload_variant`
    * (inform / request / final). These are part of an interactive handshake
-   * MeshMonitor does not implement, so they are never toasted.
+   * MeshRadar does not implement, so they are never toasted.
    */
   isKeyVerification?: boolean;
 }
@@ -97,7 +97,7 @@ export interface ProtectedCapRefusal {
 /**
  * Firmware 2.8 protected-node-cap refusal:
  *   "Can't <favorite|ignore|verify> 0x%08x: protected-node limit (%d) reached"
- * Only favorite/ignore are MeshMonitor-actionable. Returns null on no match.
+ * Only favorite/ignore are MeshRadar-actionable. Returns null on no match.
  *
  * Firmware zero-pads the node id to 8 hex digits (`%08x`), but accept 1–8 so a
  * future/short id (e.g. `0x1`) still reconciles.

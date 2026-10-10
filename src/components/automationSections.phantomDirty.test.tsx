@@ -167,7 +167,7 @@ describe('Automation sections do not report phantom unsaved changes', () => {
     const props = {
       enabled: false,
       intervalHours: 6,
-      message: 'MeshMonitor {VERSION} online for {DURATION} {FEATURES}',
+      message: 'MeshRadar {VERSION} online for {DURATION} {FEATURES}',
       channelIndexes: [0],
       announceOnStart: false,
       useSchedule: false,

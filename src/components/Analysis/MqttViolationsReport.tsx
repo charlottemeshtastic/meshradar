@@ -448,7 +448,7 @@ const MqttViolationsReport: React.FC = () => {
   );
   const suspectedColTitle = t(
     'analysis.mqtt_violations.col_suspected_title',
-    'Receptions where the ok_to_mqtt bit could not be read — usually because MeshMonitor has no key for the channel. Not proven, and not sortable.',
+    'Receptions where the ok_to_mqtt bit could not be read — usually because MeshRadar has no key for the channel. Not proven, and not sortable.',
   );
 
   // Drill-down cap honesty (§2(c) rule 5 — same treatment as the summary

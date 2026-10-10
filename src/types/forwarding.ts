@@ -30,7 +30,7 @@ export function parseForwardingEnabled(raw: string | null | undefined): boolean 
 /**
  * Every forwarded message starts with this marker. The engine never forwards
  * a message that starts with it, which breaks A→B→A loops between two
- * MeshMonitor instances (or two rules) even when the other safeguards miss.
+ * MeshRadar instances (or two rules) even when the other safeguards miss.
  */
 export const FORWARDED_MARKER = '[fwd] ';
 

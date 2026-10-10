@@ -1,5 +1,5 @@
 /**
- * Centralized logging utility for MeshMonitor
+ * Centralized logging utility for MeshRadar
  *
  * Log level can be controlled via the LOG_LEVEL environment variable.
  * Valid values: trace, debug, info, warn, error

@@ -17,13 +17,13 @@
 import { HARDWARE_MODELS } from './hardwareModel.js';
 
 /**
- * Why a node's hardware cannot be updated through MeshMonitor.
+ * Why a node's hardware cannot be updated through MeshRadar.
  *
  * - `unset`: the node reports hw model UNSET (0).
  * - `simulator`: a simulated node; there is nothing to flash.
  * - `linux-native`: meshtasticd on Linux (PORTDUINO); the host's package
  *   manager or container image owns the update.
- * - `unknown-model`: a model number this MeshMonitor build has no name for.
+ * - `unknown-model`: a model number this MeshRadar build has no name for.
  * - `unmapped-board`: a named model with no known firmware build.
  * - `platform-not-ota`: a known board whose platform has no WiFi OTA
  *   (nRF52840, RP2040, STM32).
@@ -299,7 +299,7 @@ const BOARD_PLATFORM_MAP: Record<string, string> = {
 
 /**
  * hw models that more than one release build reports (#5423). The node only
- * tells us its hw model, so MeshMonitor cannot know which build it runs, and
+ * tells us its hw model, so MeshRadar cannot know which build it runs, and
  * flashing the wrong one can leave the node without a working display or
  * radio. OTA preflight refuses these for release and nightly updates; a
  * custom URL or uploaded .bin (where the operator picks the build) still
@@ -403,7 +403,7 @@ export const OTA_SIBLING_BUILDS: Readonly<
 
 export interface OtaSiblingWarning {
   code: 'OTA_SIBLING_BUILD';
-  /** Board MeshMonitor will flash, e.g. `heltec-v4`. */
+  /** Board MeshRadar will flash, e.g. `heltec-v4`. */
   board: string;
   /** Board plus its variant note, e.g. `heltec-v4 (OLED)`. */
   boardLabel: string;
@@ -584,7 +584,7 @@ export function noBoardReason(
 }
 
 /**
- * Can MeshMonitor update a node with this hardware model at all?
+ * Can MeshRadar update a node with this hardware model at all?
  *
  * Pure and browser-safe. It answers for the hardware only: the source type,
  * a bridged node and a missing host are separate gates. OTA preflight walks
@@ -628,12 +628,12 @@ export function firmwareUpdateRefusalMessage(
 ): string {
   switch (reason) {
     case 'unset':
-      return 'The node has not reported its hardware model (UNSET), so MeshMonitor cannot pick a firmware build for it.';
+      return 'The node has not reported its hardware model (UNSET), so MeshRadar cannot pick a firmware build for it.';
     case 'simulator':
       return 'This node is a simulator (ANDROID_SIM). It has no firmware to update.';
     case 'linux-native':
       return (
-        'This node runs meshtasticd on Linux (PORTDUINO) and cannot be flashed from MeshMonitor. ' +
+        'This node runs meshtasticd on Linux (PORTDUINO) and cannot be flashed from MeshRadar. ' +
         `Update the meshtasticd package or container image on its host. See ${MESHTASTICD_DOCS_URL}`
       );
     case 'unknown-model':

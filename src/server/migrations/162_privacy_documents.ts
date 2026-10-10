@@ -1,7 +1,7 @@
 /**
  * Migration 162: the `privacy_documents` table (issue #5156).
  *
- * A publicly-reachable MeshMonitor re-serves mesh data to anonymous visitors
+ * A publicly-reachable MeshRadar re-serves mesh data to anonymous visitors
  * and to tokenless embed viewers. The operator running it needs somewhere to
  * publish a privacy policy, terms and a contact page. They can point at an
  * external URL (three global settings), or host the document here.

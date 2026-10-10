@@ -5,7 +5,7 @@
  *
  * The Range Test module was removed outright in Meshtastic firmware 2.8. On a
  * 2.8+ node the section must stay visible and explain itself — hiding it makes
- * users think MeshMonitor broke — with every control switched off so a save
+ * users think MeshRadar broke — with every control switched off so a save
  * that the firmware would silently drop can't be attempted.
  *
  * The gate fails OPEN: `isDisabled` is only ever true when the backend

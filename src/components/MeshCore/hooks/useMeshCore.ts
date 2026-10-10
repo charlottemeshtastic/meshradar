@@ -209,7 +209,7 @@ export interface MeshCoreMessage {
    */
   filtered?: 'ignore' | 'block';
   /**
-   * MeshMonitor's own wall clock (ms) at the moment this message was created or
+   * MeshRadar's own wall clock (ms) at the moment this message was created or
    * observed — NOT the sender's clock.
    *
    * `timestamp` cannot order messages reliably: a received message takes its

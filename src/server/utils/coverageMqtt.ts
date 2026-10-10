@@ -73,7 +73,7 @@ export interface EvaluateMqttCoverageReceptionInput {
   /** This source's own gateway node number, or null/undefined when not yet known. */
   localGatewayNodeNum: number | null | undefined;
   nowMs: number;
-  /** True when `n` is one of MeshMonitor's own registered radio sources' nodes (D3). */
+  /** True when `n` is one of MeshRadar's own registered radio sources' nodes (D3). */
   isOwnNodeNum: (n: number) => boolean;
   /** True when `n` is on this source's ignore list. */
   isIgnored: (n: number) => boolean;

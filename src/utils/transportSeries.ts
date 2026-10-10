@@ -1,7 +1,7 @@
 /**
  * Contract between the transport-traffic writer and the charts (#5101 Phase 3).
  *
- * MeshMonitor computes two per-transport time series — "nodes heard" and
+ * MeshRadar computes two per-transport time series — "nodes heard" and
  * "packets RX" — from data it already has (node transport stamps, migration
  * 126, and a receive-seam counter), in fixed 5-minute bins. This module is
  * pure (no DB, no React) so both the server writer

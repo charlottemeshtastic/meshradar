@@ -3,7 +3,7 @@
  *
  * With `mqtt.proxy_to_client_enabled` the node opens no broker connection of
  * its own; it hands every publish to its client and expects the client to feed
- * broker traffic back. MeshMonitor does that only through the source's
+ * broker traffic back. MeshRadar does that only through the source's
  * `mqttLink`. With no usable link the node hears MQTT traffic only when some
  * other node repeats it over LoRa.
  *

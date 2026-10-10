@@ -251,7 +251,7 @@ export const ForwardingSection: React.FC<ForwardingSectionProps> = ({
         <p className={styles.limits}>
           {t(
             'forwarding.limits',
-            'Fixed limits: each rule forwards at most {{max}} messages per minute (extra matches are dropped), forwarded text is cut to {{chars}} characters and starts with "{{marker}}", and MeshMonitor never forwards its own messages or a message that was already forwarded.',
+            'Fixed limits: each rule forwards at most {{max}} messages per minute (extra matches are dropped), forwarded text is cut to {{chars}} characters and starts with "{{marker}}", and MeshRadar never forwards its own messages or a message that was already forwarded.',
             { max: FORWARDING_MAX_PER_WINDOW, chars: FORWARDING_MAX_TEXT_CHARS, marker: FORWARDED_MARKER.trim() },
           )}
         </p>

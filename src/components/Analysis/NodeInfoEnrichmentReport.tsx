@@ -119,7 +119,7 @@ const NodeInfoEnrichmentReport: React.FC = () => {
         showToast(
           t(
             'analysis.enrichment.apply_nothing_copied',
-            'No fields were copied — the donor values are ones MeshMonitor cannot store. Check the server log.',
+            'No fields were copied — the donor values are ones MeshRadar cannot store. Check the server log.',
           ),
           'warning',
         );

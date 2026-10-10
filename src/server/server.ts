@@ -97,7 +97,7 @@ if (env.trustProxyProvided) {
   app.set('trust proxy', false);
   if (env.isProduction) {
     logger.warn('⚠️  TRUST_PROXY not set — using the direct socket IP for rate limiting and audit logs.');
-    logger.warn('   If MeshMonitor is behind a reverse proxy (nginx, Traefik, Caddy, Cloudflare), set TRUST_PROXY=1 (or the hop count / subnet) so client IPs resolve correctly.');
+    logger.warn('   If MeshRadar is behind a reverse proxy (nginx, Traefik, Caddy, Cloudflare), set TRUST_PROXY=1 (or the hop count / subnet) so client IPs resolve correctly.');
     logger.warn('   See: https://expressjs.com/en/guide/behind-proxies.html');
   }
 }
@@ -1355,7 +1355,7 @@ void (async () => {
   refreshEmbedOriginsCache();
 
   server = app.listen(PORT, () => {
-    logger.debug(`MeshMonitor server running on port ${PORT}`);
+    logger.debug(`MeshRadar server running on port ${PORT}`);
     logger.debug(`Environment: ${env.nodeEnv}`);
 
     // Initialize WebSocket server for real-time updates

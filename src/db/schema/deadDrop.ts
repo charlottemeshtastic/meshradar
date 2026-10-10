@@ -1,7 +1,7 @@
 /**
  * Drizzle schema for the Dead Drop / Mailbox feature.
  *
- * An async message store: a node DMs the MeshMonitor radio `msg <name> <text>`
+ * An async message store: a node DMs the MeshRadar radio `msg <name> <text>`
  * and the message is held until the named recipient retrieves it with `inbox`
  * / `inbox play`. Think mesh voicemail — the recipient need not be online when
  * the message is sent.

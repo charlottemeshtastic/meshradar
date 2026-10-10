@@ -1,5 +1,5 @@
 /**
- * #5414 — `dropAutomationUplinks` keeps MeshMonitor's own automation sends off
+ * #5414 — `dropAutomationUplinks` keeps MeshRadar's own automation sends off
  * the upstream broker. Drives the private `handleUplink` directly with a fake
  * upstream client, so no real broker is needed.
  */

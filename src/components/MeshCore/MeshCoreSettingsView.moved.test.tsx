@@ -127,7 +127,7 @@ describe('MeshCoreSettingsView: controls that moved to Device Configuration', ()
     }
   });
 
-  it('keeps what MeshMonitor stores: connection, receive-only, saved regions, purge', () => {
+  it('keeps what MeshRadar stores: connection, receive-only, saved regions, purge', () => {
     renderView();
     for (const name of ['Connection', 'Receive-only mode', 'Saved regions', 'Message data']) {
       expect(screen.getByRole('heading', { name })).toBeInTheDocument();

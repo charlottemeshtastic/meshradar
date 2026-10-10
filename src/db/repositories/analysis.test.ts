@@ -167,7 +167,7 @@ describe('AnalysisRepository.getTraceroutes', () => {
 
   it('serves a run we sent and a reply-only run the same way round (requester first)', async () => {
     const now = Date.now();
-    // src-b owns node 100. Run A: sent from MeshMonitor, stored { from: us,
+    // src-b owns node 100. Run A: sent from MeshRadar, stored { from: us,
     // to: 200 }. Run B: the same path asked from a phone app, stored as the
     // reply arrived, { from: 200, to: us }.
     sqlite.prepare('INSERT INTO settings (key, value, createdAt, updatedAt) VALUES (?,?,?,?)')

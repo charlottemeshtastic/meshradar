@@ -10,7 +10,7 @@
  *
  * The motivating use case is community brokers (e.g. `mqtt.areyoumeshingwith.us`)
  * that gate CONNECT on a Client ID regex like `^!\[0-9a-f]{8,}$` and
- * return CONNACK 4 to MeshMonitor's legacy `mm-bridge-<sourceId>-…`
+ * return CONNACK 4 to MeshRadar's legacy `mm-bridge-<sourceId>-…`
  * prefix regardless of credentials. With per-gateway identities the
  * bridge looks indistinguishable from N firmware MQTT clients.
  *

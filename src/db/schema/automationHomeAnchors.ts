@@ -2,7 +2,7 @@
  * Drizzle schema for Automation Engine home anchors (left-home / tamper triggers).
  *
  * One row per (automationId, nodeNum): the lat/lon captured on first sighting so
- * `trigger.leftHome` survives MeshMonitor restarts without silently re-homing a
+ * `trigger.leftHome` survives MeshRadar restarts without silently re-homing a
  * stolen node on the next GPS fix. GLOBAL — no sourceId (automations are global).
  */
 import { sqliteTable, text, integer, real, uniqueIndex } from 'drizzle-orm/sqlite-core';

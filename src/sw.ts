@@ -37,7 +37,7 @@ setCatchHandler(async ({ request }) => {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MeshMonitor</title>
+  <title>MeshRadar</title>
   <style>
     body { background: #1a1a1a; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
            display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
@@ -50,7 +50,7 @@ setCatchHandler(async ({ request }) => {
 </head>
 <body>
   <div class="offline">
-    <h1>MeshMonitor</h1>
+    <h1>MeshRadar</h1>
     <p>Unable to connect. Check your network and try again.</p>
     <button onclick="location.reload()">Retry</button>
   </div>
@@ -117,7 +117,7 @@ self.addEventListener('push', event => {
   const defaultIcon = new URL('logo.png', self.registration.scope).href;
 
   let notificationData = {
-    title: 'MeshMonitor',
+    title: 'MeshRadar',
     body: 'You have a new notification',
     icon: defaultIcon,
     badge: defaultIcon,
@@ -177,7 +177,7 @@ self.addEventListener('notificationclick', event => {
 
   event.notification.close();
 
-  // Open or focus the MeshMonitor app and send navigation data
+  // Open or focus the MeshRadar app and send navigation data
   event.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(async clientList => {
       // Check if app is already open
@@ -258,7 +258,7 @@ function arrayBufferToBase64(buffer: ArrayBuffer): string {
   return btoa(binary);
 }
 
-console.log('[Service Worker] MeshMonitor service worker with push notifications loaded');
+console.log('[Service Worker] MeshRadar service worker with push notifications loaded');
 
 // Skip waiting on install to activate new service worker immediately
 self.addEventListener('install', event => {

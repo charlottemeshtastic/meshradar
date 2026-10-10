@@ -154,7 +154,7 @@ describe('MFA Routes', () => {
 
     it('returns QR code, secret, and backup codes on success', async () => {
       const secret = 'JBSWY3DPEHPK3PXP';
-      const otpauthUrl = 'otpauth://totp/MeshMonitor:mfa-tester?secret=JBSWY3DPEHPK3PXP&issuer=MeshMonitor';
+      const otpauthUrl = 'otpauth://totp/MeshRadar:mfa-tester?secret=JBSWY3DPEHPK3PXP&issuer=MeshRadar';
       const qrCodeDataUrl = 'data:image/png;base64,abc123';
       const backupCodes = ['CODE0001', 'CODE0002', 'CODE0003'];
       const hashedBackupCodes = ['$2b$hash1', '$2b$hash2', '$2b$hash3'];

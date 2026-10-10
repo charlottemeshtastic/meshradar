@@ -62,7 +62,7 @@ const TYPE_LABELS: Record<string, string> = {
   numTxDropped: 'TX Drop',
   heapTotalBytes: 'Heap Total',
   heapFreeBytes: 'Heap Free',
-  // MeshMonitor-computed per-transport traffic series (#5101 Phase 3)
+  // MeshRadar-computed per-transport traffic series (#5101 Phase 3)
   systemNodesHeardRf: 'Heard RF',
   systemNodesHeardUdp: 'Heard UDP',
   systemNodesHeardMqtt: 'Heard MQTT',
@@ -141,7 +141,7 @@ const TYPE_LABELS: Record<string, string> = {
   hostLoad1: 'Load 1m',
   hostLoad5: 'Load 5m',
   hostLoad15: 'Load 15m',
-  // MeshMonitor system
+  // MeshRadar system
   systemNodeCount: 'Active Nodes',
   systemDirectNodeCount: 'Direct Nodes',
   timeOffset: 'Clock Δ',

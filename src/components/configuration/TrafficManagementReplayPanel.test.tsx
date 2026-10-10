@@ -182,7 +182,7 @@ describe('TrafficManagementReplayPanel', () => {
     const caveats = within(screen.getByTestId('tm-replay-rate-caveats')).getAllByRole('listitem');
     expect(caveats).toHaveLength(6);
     const text = screen.getByTestId('tm-replay-rate-caveats').textContent ?? '';
-    expect(text).toContain('Packets the node already drops never reach MeshMonitor');
+    expect(text).toContain('Packets the node already drops never reach MeshRadar');
     expect(text).toContain('A low number, or zero, does not mean the node drops little');
     expect(text).toContain('tried 60 starting points');
     expect(text).toContain('real drops are likely higher');

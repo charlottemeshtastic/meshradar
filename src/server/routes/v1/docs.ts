@@ -22,7 +22,7 @@ const swaggerDocument = YAML.load(openapiPath);
 // Swagger UI options
 const options = {
   customCss: '.swagger-ui .topbar { display: none }',
-  customSiteTitle: 'MeshMonitor API Documentation',
+  customSiteTitle: 'MeshRadar API Documentation',
   customfavIcon: '/favicon.ico',
   swaggerOptions: {
     persistAuthorization: true,

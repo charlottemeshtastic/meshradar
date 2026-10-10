@@ -112,7 +112,7 @@ const MQTTConfigSection: React.FC<MQTTConfigSectionProps> = ({
 
       setMqttEnabled(true);
       // Flip on the firmware's MQTT proxy mode so traffic flows through
-      // MeshMonitor's TCP API rather than directly to the broker. The
+      // MeshRadar's TCP API rather than directly to the broker. The
       // mqttLink stamp below is what actually relays the proxy traffic.
       setProxyToClientEnabled(true);
       // Device-payload encryption is sane on either target.
@@ -126,7 +126,7 @@ const MQTTConfigSection: React.FC<MQTTConfigSectionProps> = ({
               rootTopic?: string;
             }
           | undefined;
-        // Address: use the hostname the operator is using to reach MeshMonitor
+        // Address: use the hostname the operator is using to reach MeshRadar
         // as a best-guess LAN address for the broker. Operator can edit if it's
         // wrong (e.g. when running behind a reverse proxy).
         const host = window.location.hostname || 'localhost';
@@ -168,7 +168,7 @@ const MQTTConfigSection: React.FC<MQTTConfigSectionProps> = ({
         }
       }
 
-      // Stamp the parent Meshtastic source's mqttLink so MeshMonitor
+      // Stamp the parent Meshtastic source's mqttLink so MeshRadar
       // relays this device's proxy traffic to the selected target. The
       // PUT triggers reconfigureMqttLink server-side without restarting
       // the transport. Best-effort — failure is logged, not surfaced.
@@ -332,7 +332,7 @@ const MQTTConfigSection: React.FC<MQTTConfigSectionProps> = ({
           <div style={{ marginTop: 4 }}>
             {t(
               'mqtt_config.bridged_recommend_body',
-              'This node has no native WiFi or Ethernet — it is reached through a serial/BLE-to-TCP bridge, so it cannot open its own MQTT connection. We strongly recommend enabling "MQTT Client Proxy" below and linking this source to an MQTT broker, so MeshMonitor relays MQTT on the node’s behalf. Without Client Proxy, MQTT will not work on this node.'
+              'This node has no native WiFi or Ethernet — it is reached through a serial/BLE-to-TCP bridge, so it cannot open its own MQTT connection. We strongly recommend enabling "MQTT Client Proxy" below and linking this source to an MQTT broker, so MeshRadar relays MQTT on the node’s behalf. Without Client Proxy, MQTT will not work on this node.'
             )}
           </div>
         </div>
@@ -382,7 +382,7 @@ const MQTTConfigSection: React.FC<MQTTConfigSectionProps> = ({
           <div style={{ marginTop: 6 }}>
             {t(
               'mqtt_config.proxy_warning_body',
-              'With "Proxy to Client" on, the device sends its MQTT traffic to MeshMonitor instead of opening its own connection, and gets broker traffic only from MeshMonitor. MeshMonitor will silently drop those messages unless one of:',
+              'With "Proxy to Client" on, the device sends its MQTT traffic to MeshRadar instead of opening its own connection, and gets broker traffic only from MeshRadar. MeshRadar will silently drop those messages unless one of:',
             )}
           </div>
           <ul style={{ margin: '6px 0 0 18px', padding: 0 }}>
@@ -414,11 +414,11 @@ const MQTTConfigSection: React.FC<MQTTConfigSectionProps> = ({
       {proxyTargets.length > 0 && (
         <div className="setting-item">
           <label htmlFor="mqttQuickConfig">
-            {t('mqtt_config.quick_configure', 'Quick configure from a MeshMonitor MQTT source')}
+            {t('mqtt_config.quick_configure', 'Quick configure from a MeshRadar MQTT source')}
             <span className="setting-description">
               {t(
                 'mqtt_config.quick_configure_description',
-                'Auto-fill these fields to point the device at an MQTT source configured in MeshMonitor. Brokers receive device traffic locally; bridges forward it straight upstream.',
+                'Auto-fill these fields to point the device at an MQTT source configured in MeshRadar. Brokers receive device traffic locally; bridges forward it straight upstream.',
               )}
             </span>
           </label>

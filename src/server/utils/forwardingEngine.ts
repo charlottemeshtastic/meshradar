@@ -37,7 +37,7 @@ export interface ForwardingMessage {
   channel?: number | null;
   /** Sender id — Meshtastic `!abcd1234`, MeshCore public key (or prefix). */
   fromNodeId: string;
-  /** True when the sender is one of MeshMonitor's own nodes. */
+  /** True when the sender is one of MeshRadar's own nodes. */
   isSelf: boolean;
   /** Display name for the `{from}` token; falls back to `fromNodeId`. */
   fromName?: string;

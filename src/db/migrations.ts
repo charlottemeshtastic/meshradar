@@ -1688,7 +1688,7 @@ registry.register({
 
 // ---------------------------------------------------------------------------
 // Migration 100: add channels.scope (#3667). MeshCore region/scope tag per
-// channel; MeshMonitor-owned (never reported by the device), NULL = inherit
+// channel; MeshRadar-owned (never reported by the device), NULL = inherit
 // the source default scope / unscoped.
 // ---------------------------------------------------------------------------
 
@@ -1858,7 +1858,7 @@ registry.register({
 
 // ---------------------------------------------------------------------------
 // Migration 112: free-text `notes` on `nodes` (#3921)
-// Per-node MeshMonitor-local annotation editable from the node detail view,
+// Per-node MeshRadar-local annotation editable from the node detail view,
 // mirroring the official mobile clients' local notes field. Never synced to
 // the mesh. Nullable; existing rows keep NULL.
 // ---------------------------------------------------------------------------

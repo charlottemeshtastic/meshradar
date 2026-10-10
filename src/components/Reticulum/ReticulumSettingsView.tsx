@@ -1,7 +1,7 @@
 /**
  * ReticulumSettingsView — the per-source Settings tab of a Reticulum source.
  *
- * MeshMonitor keeps no per-source setting for a Reticulum source yet. The one
+ * MeshRadar keeps no per-source setting for a Reticulum source yet. The one
  * control this tab used to hold, the destination retention cap, applies to
  * every Reticulum source, so it moved to Global Settings (#5683 follow-up; see
  * `settings/ReticulumRetentionSection.tsx`). What is left is a pointer to it.
@@ -31,7 +31,7 @@ export const ReticulumSettingsView: React.FC<ReticulumSettingsViewProps> = ({ so
       <p className={styles.empty}>
         {t(
           'reticulum.settings.none_per_source',
-          'MeshMonitor has no settings of its own for this Reticulum source yet.',
+          'MeshRadar has no settings of its own for this Reticulum source yet.',
         )}
       </p>
       <MovedSettingNote

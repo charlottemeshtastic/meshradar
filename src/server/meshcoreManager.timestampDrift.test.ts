@@ -7,7 +7,7 @@
  * drifted-clock node gets pinned at a bogus position (e.g. the very bottom,
  * behind a "2038" timestamp) indefinitely.
  *
- * `timestamp` must fall back to MeshMonitor's own receipt clock whenever the
+ * `timestamp` must fall back to MeshRadar's own receipt clock whenever the
  * device's stated time is missing or implausible, mirroring the fix already
  * applied to the Meshtastic ingestion paths (`utils/messageTime.ts`, #4206).
  */

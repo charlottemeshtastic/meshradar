@@ -64,7 +64,7 @@ export const CustomThemeManagement: React.FC = () => {
     }
 
     if (darkTheme === themeSlug) {
-      setDarkTheme('mocha');
+      setDarkTheme('miami-vice');
     }
     if (lightTheme === themeSlug) {
       setLightTheme('latte');

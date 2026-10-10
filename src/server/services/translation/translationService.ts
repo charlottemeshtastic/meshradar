@@ -300,7 +300,7 @@ export class TranslationService {
    * Bypasses enablement checks and caching.
    */
   async testConfig(config: TestTranslationConfig): Promise<TranslationResult> {
-    const defaultSampleText = 'MeshMonitor test message for radio translation.';
+    const defaultSampleText = 'MeshRadar test message for radio translation.';
     const testText = config.text && config.text.trim() && config.text.length <= 5000
       ? config.text
       : defaultSampleText;

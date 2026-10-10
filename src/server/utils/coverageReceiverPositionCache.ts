@@ -72,7 +72,7 @@ const DEFAULT_MAX_ENTRIES = 2000;
  * Resolve a node row into the position Coverage should snapshot for it:
  * the manual lat/lon override when enabled and fully populated, otherwise
  * the node's live position. Pure. `null`/undefined node (no row, e.g. a
- * gateway MeshMonitor has never seen a NodeInfo for) yields
+ * gateway MeshRadar has never seen a NodeInfo for) yields
  * `{lat: null, lon: null}`.
  */
 export function nodeCoveragePosition(node: DbNode | null | undefined): ReceiverPos {

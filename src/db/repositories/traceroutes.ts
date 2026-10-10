@@ -26,7 +26,7 @@ import { transportClassCondition } from './transportSql.js';
  * It used to be spelled out per writer, and the copies drifted: the SQLite
  * upsert and the pending-row update both left out `routePositions` (the #1862
  * position snapshot) and `channel`, so every SQLite row, and every run sent
- * from MeshMonitor on any backend, was stored without them. Add a column here
+ * from MeshRadar on any backend, was stored without them. Add a column here
  * and all four writers carry it.
  *
  * `from`/`to` are NOT here on purpose: a reply that fills a pending row must

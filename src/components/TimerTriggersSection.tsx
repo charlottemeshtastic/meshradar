@@ -25,7 +25,7 @@ const formatScriptDisplay = (script: ScriptMetadata): string => {
 
 // Available tokens for text message expansion (same as auto-announce)
 const AVAILABLE_TOKENS = [
-  { token: '{VERSION}', description: 'MeshMonitor version' },
+  { token: '{VERSION}', description: 'MeshRadar version' },
   { token: '{DURATION}', description: 'Server uptime' },
   { token: '{FEATURES}', description: 'Enabled features as emojis' },
   { token: '{NODECOUNT}', description: 'Active nodes (heard in last 2h, matches Sources panel)' },
@@ -423,7 +423,7 @@ const TimerTriggersSection: React.FC<TimerTriggersSectionProps> = ({
                     onChange={(e) => setNewResponse(e.target.value)}
                     className="setting-input"
                     style={{ width: '100%', minHeight: '60px', resize: 'vertical' }}
-                    placeholder={t('automation.timer_triggers.message_placeholder', 'e.g., MeshMonitor {VERSION} - {NODECOUNT} nodes online')}
+                    placeholder={t('automation.timer_triggers.message_placeholder', 'e.g., MeshRadar {VERSION} - {NODECOUNT} nodes online')}
                   />
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: '0.25rem' }}>
                     <div style={{ fontSize: '0.75rem', color: 'var(--color-text-subtle)', flex: 1 }}>

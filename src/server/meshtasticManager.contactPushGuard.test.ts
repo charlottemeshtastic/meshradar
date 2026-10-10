@@ -1,12 +1,12 @@
 /**
  * Regression tests for issue #4368 — `add_contact` re-sent before every PKI DM.
  *
- * MeshMonitor pushed a contact to the radio ahead of EVERY PKI-encrypted DM.
+ * MeshRadar pushed a contact to the radio ahead of EVERY PKI-encrypted DM.
  * That is not a free no-op: the firmware's `NodeDB::addFromContact()` sets
  * `is_favorite = true` to shield the entry from NodeDB eviction, so every DM —
  * including every automated Auto-Ack reply — re-favorited its recipient. The
  * favorite then came back down through the NodeInfo sync, making it look like
- * foreign state was leaking in when MeshMonitor had caused it.
+ * foreign state was leaking in when MeshRadar had caused it.
  *
  * The fix pushes only when we lack evidence the radio already holds the node's
  * public key. These tests drive the REAL `sendTextMessage` and the REAL

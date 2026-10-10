@@ -102,7 +102,7 @@ class NewsService {
       const response = await fetch(url, {
         headers: {
           'Accept': 'application/json',
-          'User-Agent': 'MeshMonitor News Service'
+          'User-Agent': 'MeshRadar News Service'
         },
         signal: AbortSignal.timeout(30000) // 30 second timeout
       });

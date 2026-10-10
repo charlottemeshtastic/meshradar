@@ -1,7 +1,7 @@
 /**
- * TransportSeriesGraphs - Info tab section for the two MeshMonitor-computed
+ * TransportSeriesGraphs - Info tab section for the two MeshRadar-computed
  * per-transport series (#5101 Phase 3): nodes heard and packets received,
- * each split by transport class (RF/UDP/MQTT) and computed by MeshMonitor
+ * each split by transport class (RF/UDP/MQTT) and computed by MeshRadar
  * itself in 5-minute bins (see `src/utils/transportSeries.ts` and
  * `src/server/services/transportTrafficService.ts`).
  *

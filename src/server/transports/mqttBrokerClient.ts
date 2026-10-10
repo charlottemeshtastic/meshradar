@@ -539,7 +539,7 @@ export class MqttBrokerClient extends EventEmitter {
         `📡 MQTT connection to ${where} has been evicted ${this.shortSessionStreak} times ` +
           `within seconds of connecting, with no client-side error. This is the classic ` +
           `duplicate Client ID signature (MQTT 3.1.1 §3.1.4): another client — a second ` +
-          `MeshMonitor, or the gateway node itself — is connected to this broker using the ` +
+          `MeshRadar, or the gateway node itself — is connected to this broker using the ` +
           `same Client ID, and the broker kicks whichever session is older. Give this ` +
           `connection a unique Client ID, or stop the other publisher.`,
       );

@@ -12,7 +12,7 @@
  *
  * #5237 (open Q1 resolved: DROP): the S4 env-IP fallback is gone, and the
  * fresh-install auto-create now requires an explicitly-set MESHTASTIC_NODE_IP.
- * Both changes exist to stop MeshMonitor connecting to a node the operator
+ * Both changes exist to stop MeshRadar connecting to a node the operator
  * never configured. See "Why no env-IP fallback" at the bottom of this file.
  *
  * Behavior table:

@@ -17,7 +17,7 @@ export interface MeshMessage {
   timestamp: Date;
   /**
    * Server-side ingest time (`messages.createdAt`). Always reflects when
-   * MeshMonitor actually received the message, independent of the sender
+   * MeshRadar actually received the message, independent of the sender
    * node's clock. Prefer this over `timestamp` for sorting / "last
    * message" comparisons — `timestamp` may be wildly wrong when the
    * sending node has bad/uninitialized RTC (issue #3187).

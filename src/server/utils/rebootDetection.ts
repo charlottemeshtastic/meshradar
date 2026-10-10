@@ -8,7 +8,7 @@
  *
  * The prior value is read from the telemetry table (persistent), NOT an
  * in-memory baseline — that is the restart-safety mechanism (CLAUDE.md mesh
- * -impact checklist §3): a MeshMonitor process restart cannot spuriously fire a
+ * -impact checklist §3): a MeshRadar process restart cannot spuriously fire a
  * reboot, because the baseline is the durable DB row rather than lost state.
  * Detection reads the DB only; it sends no packets, so it costs zero airtime.
  */

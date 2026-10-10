@@ -2,7 +2,7 @@
  * SourcePkiKeyStore
  *
  * Encrypts and persists a Meshtastic source's local-node X25519 PRIVATE key
- * (one per source) so MeshMonitor can decrypt PKI direct messages server-side
+ * (one per source) so MeshRadar can decrypt PKI direct messages server-side
  * and surface them in the unified view (issue #3441). Mirrors the
  * MeshCoreCredentialStore design: AES-256-GCM with an HKDF-derived key from
  * `SESSION_SECRET`, with an envelope `kid` so a rotated secret is detected

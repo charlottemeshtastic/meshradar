@@ -1,5 +1,5 @@
 /**
- * DashboardPage — MeshMonitor 4.0 landing page.
+ * DashboardPage — MeshRadar 4.0 landing page.
  *
  * Wraps the inner dashboard in a SettingsProvider so map tile preferences
  * are available, then wires together DashboardSidebar + DashboardMap with
@@ -902,7 +902,7 @@ function DashboardInner() {
           cfg.passiveResyncStaleMs = Math.round(hours * 60 * 60 * 1000);
         }
       }
-      // MQTT proxy bridge — if set, MeshMonitor relays
+      // MQTT proxy bridge — if set, MeshRadar relays
       // FromRadio.mqttClientProxyMessage to/from the selected embedded
       // broker. Empty selection clears the link.
       if (formMtMqttLinkBrokerId) {
@@ -1293,7 +1293,7 @@ function DashboardInner() {
         </button>
         <div className="dashboard-topbar-logo">
           <img src={`${appBasename}/logo.png`} alt={t('source.topbar.logo_alt')} className="dashboard-topbar-logo-img" />
-          <span className="dashboard-topbar-title">MeshMonitor</span>
+          <span className="dashboard-topbar-title">MeshRadar</span>
         </div>
         <div className="dashboard-topbar-actions">
           {isAuthenticated ? (
@@ -1489,7 +1489,7 @@ function DashboardInner() {
                     placeholder="1883"
                   />
                   <p style={{ fontSize: 11, color: 'var(--color-text-subtle)', margin: '4px 0 0' }}>
-                    {t('source.form.mqtt_listen_port_help', 'Devices configure their MQTT module to point at this port on the MeshMonitor host.')}
+                    {t('source.form.mqtt_listen_port_help', 'Devices configure their MQTT module to point at this port on the MeshRadar host.')}
                   </p>
                 </label>
                 <label className="dashboard-form-field">
@@ -1921,7 +1921,7 @@ function DashboardInner() {
                     <input type="checkbox" checked={formObserver.enabled} disabled={formMcDeviceType === 'repeater'} onChange={(e) => setFormObserver({ ...formObserver, enabled: e.target.checked })} />
                     {t('meshcore.form.observer_enable', 'Publish heard packets to a MeshCore Analyzer broker')}
                   </label>
-                  <p style={{ fontSize: 11, color: 'var(--color-text-subtle)', margin: '4px 0 0' }}>{t('meshcore.form.observer_help', 'Relays every packet this Companion hears to a MeshCore Analyzer MQTT broker so your node counts as an observer. MeshMonitor only publishes — it never receives from the broker or transmits on the mesh. Companion devices only.')}</p>
+                  <p style={{ fontSize: 11, color: 'var(--color-text-subtle)', margin: '4px 0 0' }}>{t('meshcore.form.observer_help', 'Relays every packet this Companion hears to a MeshCore Analyzer MQTT broker so your node counts as an observer. MeshRadar only publishes — it never receives from the broker or transmits on the mesh. Companion devices only.')}</p>
                   {formMcDeviceType === 'repeater' ? (
                     <p role="alert" style={{ fontSize: 11, color: 'var(--color-warning)', margin: '4px 0 0' }}>{t('meshcore.form.observer_repeater_note', 'The Analyzer Observer requires a Companion device — a repeater cannot export the signing key it needs.')}</p>
                   ) : formObserver.enabled && (
@@ -2004,7 +2004,7 @@ function DashboardInner() {
                                   <p style={{ fontSize: 11, color: 'var(--color-text-subtle)', margin: '4px 0 0' }}>
                                     {row.authMode === 'password'
                                       ? t('meshcore.form.observer_auth_mode_password_help', 'For regional brokers that use a fixed MQTT login (e.g. meshcoretel.ru). Set the username and password below — they are stored encrypted, never in the source config.')
-                                      : t('meshcore.form.observer_auth_mode_token_help', 'MeshMonitor signs a token with the node\'s own key and connects as v1_{PUBLIC_KEY}. The default, and what FL Mesh / LetsMesh brokers expect.')}
+                                      : t('meshcore.form.observer_auth_mode_token_help', 'MeshRadar signs a token with the node\'s own key and connects as v1_{PUBLIC_KEY}. The default, and what FL Mesh / LetsMesh brokers expect.')}
                                   </p>
                                 </label>
                                 {row.authMode === 'password' && (
@@ -2448,7 +2448,7 @@ function DashboardInner() {
                 <p style={{ fontSize: 11, color: 'var(--color-text-subtle)', margin: '4px 0 0' }}>
                   {t(
                     'source.form.mqtt_proxy_link_help',
-                    'When set, MeshMonitor relays the device’s mqttClientProxyMessage traffic to the selected embedded broker. Requires the device’s MQTT module to have proxy_to_client_enabled = true.',
+                    'When set, MeshRadar relays the device’s mqttClientProxyMessage traffic to the selected embedded broker. Requires the device’s MQTT module to have proxy_to_client_enabled = true.',
                   )}
                 </p>
               </label>

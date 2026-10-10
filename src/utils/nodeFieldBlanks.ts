@@ -7,7 +7,7 @@
  *    2.1.x ("not populated by the phone"), so plenty of nodes broadcast six
  *    zero bytes. Hex-encoded that is `'000000000000'` — a non-empty string the
  *    nodes repository happily stores over a real MAC another source learned.
- * 2. **MeshMonitor's own derived name placeholders.** When a node is first seen
+ * 2. **MeshRadar's own derived name placeholders.** When a node is first seen
  *    as a traceroute hop or a neighbour entry we insert a stub row named
  *    `Node !aabbccdd` with short name `ccdd`. Those are non-empty strings too,
  *    so a "fill only what is blank" copy skips them forever and the unified map
@@ -46,7 +46,7 @@ export function isBlankMacAddr(value: unknown): boolean {
 }
 
 /**
- * True for a longName that is MeshMonitor's own `Node !aabbccdd` stub rather
+ * True for a longName that is MeshRadar's own `Node !aabbccdd` stub rather
  * than a name the node broadcast.
  */
 export function isPlaceholderLongName(value: unknown): boolean {
@@ -54,7 +54,7 @@ export function isPlaceholderLongName(value: unknown): boolean {
 }
 
 /**
- * True for a shortName that is MeshMonitor's derived last-4-hex stub for this
+ * True for a shortName that is MeshRadar's derived last-4-hex stub for this
  * node id. Needs the node id: `e848` is only a placeholder for `!9e80e848`.
  *
  * Note this also matches the firmware's own default short name, which is

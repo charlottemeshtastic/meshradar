@@ -88,7 +88,7 @@ if (!env.trustProxyProvided && env.isProduction) {
 // Configurable via RATE_LIMIT_API environment variable
 // Default: 1000 requests per 15 minutes (~1 req/sec) in production, 10000 in development
 // Private network IPs (RFC 1918 + loopback) are always exempt — a single active
-// MeshMonitor browser session generates ~900+ API requests per 15 minutes via its
+// MeshRadar browser session generates ~900+ API requests per 15 minutes via its
 // polling hooks, and local-network deployments have no security need for rate limiting.
 export const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes

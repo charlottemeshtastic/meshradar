@@ -846,7 +846,7 @@ export class AutomationEngineService {
   // ─── self-origin guard (#3914) ──────────────────────────────────────────
   //
   // Drop events that originated from our OWN node so an automation never fires
-  // on MeshMonitor's own traffic — most importantly so an `action.sendMessage`
+  // on MeshRadar's own traffic — most importantly so an `action.sendMessage`
   // reply can't re-trigger the very rule that sent it (an infinite mesh loop),
   // and so our own periodic telemetry / node-info doesn't spuriously fire rules.
   // Mirrors the legacy MeshCore auto-responder guard. Identity is resolved per
@@ -854,7 +854,7 @@ export class AutomationEngineService {
   // unit test that doesn't wire them) nothing is dropped — existing behavior.
 
   /**
-   * True if `fromNodeNum` is one of MeshMonitor's own nodes.
+   * True if `fromNodeNum` is one of MeshRadar's own nodes.
    *
    * Checks the event's own source first (the #3914 behaviour), then falls back
    * to the cross-source owned-node set. The fallback exists for sources that
@@ -876,7 +876,7 @@ export class AutomationEngineService {
   }
 
   /**
-   * True if `fromPublicKey` is one of MeshMonitor's own MeshCore nodes.
+   * True if `fromPublicKey` is one of MeshRadar's own MeshCore nodes.
    *
    * Checks the event's own source first (the #3914 behaviour), then falls back
    * to the cross-source owned-pubkey set. The fallback exists for multi-MeshCore

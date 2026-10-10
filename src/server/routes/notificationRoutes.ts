@@ -217,7 +217,7 @@ pushRouter.post('/test', requireAdmin(), async (req: Request, res: Response) => 
     const localNodeName = localNodeInfo?.longName || null;
 
     // Apply prefix if user has it enabled
-    const baseBody = 'This is a test push notification from MeshMonitor';
+    const baseBody = 'This is a test push notification from MeshRadar';
     const body = await applyNodeNamePrefixAsync(userId, baseBody, localNodeName);
 
     const result = await pushNotificationService.sendToUser(userId, {
@@ -590,7 +590,7 @@ appriseRouter.post(
     const localNodeName = localNodeInfo?.longName || null;
 
     // Apply prefix if user has it enabled
-    const baseBody = 'This is a test notification from MeshMonitor via Apprise';
+    const baseBody = 'This is a test notification from MeshRadar via Apprise';
     const body = await applyNodeNamePrefixAsync(userId, baseBody, localNodeName, sourceId);
 
     // Send to user's configured URLs

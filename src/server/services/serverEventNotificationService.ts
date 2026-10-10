@@ -54,7 +54,7 @@ class ServerEventNotificationService {
 
       const payload = {
         // Source once (#5593): the title is short, so it carries the source.
-        title: `MeshMonitor Started (v${info.version}) · ${sourceName}`,
+        title: `MeshRadar Started (v${info.version}) · ${sourceName}`,
         body: featuresText,
         type: 'info' as const,
         sourceId,

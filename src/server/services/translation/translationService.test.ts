@@ -664,7 +664,7 @@ describe('translationService', () => {
       expect(global.fetch).toHaveBeenCalledWith(
         'http://libretranslate:5000/translate',
         expect.objectContaining({
-          body: expect.stringContaining('MeshMonitor test message for radio translation.'),
+          body: expect.stringContaining('MeshRadar test message for radio translation.'),
         })
       );
     });
@@ -690,7 +690,7 @@ describe('translationService', () => {
       expect(global.fetch).toHaveBeenCalledWith(
         'http://libretranslate:5000/translate',
         expect.objectContaining({
-          body: expect.stringContaining('MeshMonitor test message for radio translation.'),
+          body: expect.stringContaining('MeshRadar test message for radio translation.'),
         })
       );
     });

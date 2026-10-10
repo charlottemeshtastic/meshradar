@@ -407,7 +407,7 @@ describe('TracerouteBody', () => {
   };
 
   // One run is stored two ways (src/utils/tracerouteOrientation.ts): with our
-  // radio in `from` when MeshMonitor sent it, and with the answering node in
+  // radio in `from` when MeshRadar sent it, and with the answering node in
   // `from` when the reply had no pending row. The server orients both with
   // `orientTracerouteRow` before the panel sees them; the panel must then show
   // the same forward and return path for either.
@@ -423,7 +423,7 @@ describe('TracerouteBody', () => {
       timestamp: Date.now(), createdAt: Date.now(),
     };
     const stored: Record<string, DbTraceroute> = {
-      'sent from MeshMonitor': { fromNodeNum: LOCAL, toNodeNum: REMOTE, fromNodeId: '!7b000001', toNodeId: '!7b000004', ...arrays },
+      'sent from MeshRadar': { fromNodeNum: LOCAL, toNodeNum: REMOTE, fromNodeId: '!7b000001', toNodeId: '!7b000004', ...arrays },
       'reply with no pending row': { fromNodeNum: REMOTE, toNodeNum: LOCAL, fromNodeId: '!7b000004', toNodeId: '!7b000001', ...arrays },
     };
 

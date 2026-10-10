@@ -6,7 +6,7 @@
  * routes, and drawn by the reader the map, the dashboard and the widget share.
  *
  * Before the fix the SQLite upsert and the pending-row update dropped both
- * columns, so a run sent from MeshMonitor reached the map with no snapshot and
+ * columns, so a run sent from MeshRadar reached the map with no snapshot and
  * drew at the nodes' CURRENT positions.
  */
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';

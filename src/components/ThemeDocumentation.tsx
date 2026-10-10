@@ -35,10 +35,16 @@ const themes: ThemeInfo[] = [
   {
     id: 'mocha',
     name: 'Catppuccin Mocha',
-    description: 'Deep dark theme (default)',
+    description: 'Deep dark theme',
     category: 'catppuccin'
   },
   // Popular
+  {
+    id: 'miami-vice',
+    name: 'Miami Vice',
+    description: 'Neon pink and electric turquoise on a midnight-violet night (default)',
+    category: 'popular'
+  },
   {
     id: 'nord',
     name: 'Nord',

@@ -697,7 +697,7 @@ export const MeshCoreMessageStream: React.FC<MeshCoreMessageStreamProps> = ({
                       data-testid="mc-sent-to-radio"
                       title={t(
                         'meshcore.sent_to_radio.tooltip',
-                        'Your radio accepted this message for sending. MeshCore radios do not report when they transmit, and no repeater has been heard relaying it yet, so MeshMonitor cannot tell whether it went out or whether anyone heard it.',
+                        'Your radio accepted this message for sending. MeshCore radios do not report when they transmit, and no repeater has been heard relaying it yet, so MeshRadar cannot tell whether it went out or whether anyone heard it.',
                       )}
                       onClick={() => setDeliveryDetailsMsg(m)}
                     >

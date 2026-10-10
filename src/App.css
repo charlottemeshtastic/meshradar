@@ -370,6 +370,44 @@
   --chart-8: #f5e0dc;
 }
 
+/* Miami Vice - MeshRadar default: neon pink, electric turquoise, sunset orange on a midnight-violet night */
+:root[data-theme='miami-vice'] {
+  --color-success: #76c9bf;
+  --color-error: #fe5734;
+  --color-warning: #ffd166;
+  --color-caution: #ff9a5c;
+  --color-info: #16e3f9;
+  --color-danger: #ff4f7b;
+  --color-accent: #16e3f9;
+  --color-accent-hover: #fe6dc6;
+  --color-accent-alt: #fe6dc6;
+  --color-accent-muted: #d77bff;
+  --color-bg: #170b2e;
+  --color-bg-raised: #120824;
+  --color-bg-sunken: #0b0518;
+  --color-surface: #251448;
+  --color-surface-hover: #341e5e;
+  --color-surface-active: #452878;
+  --color-text: #f6ecff;
+  --color-text-muted: #e2d2f7;
+  --color-text-subtle: #c6b2e4;
+  --color-text-disabled: #8b76b0;
+  --color-text-faint: #725d97;
+  --color-border: #341e5e;
+  --color-border-strong: #452878;
+  --color-border-subtle: #725d97;
+  --color-surface-inactive: #725d97;
+
+  --chart-1: #16e3f9;
+  --chart-2: #fe6dc6;
+  --chart-3: #76c9bf;
+  --chart-4: #fe5734;
+  --chart-5: #be00fe;
+  --chart-6: #007f7f;
+  --chart-7: #ffd166;
+  --chart-8: #f6ecff;
+}
+
 /* Nord - Cool blue-gray theme */
 :root[data-theme='nord'] {
   --color-success: #a3be8c;

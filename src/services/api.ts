@@ -1844,7 +1844,7 @@ class ApiService {
   }
 
   /**
-   * Set the free-text per-node notes annotation (#3921). MeshMonitor-local
+   * Set the free-text per-node notes annotation (#3921). MeshRadar-local
    * only — never synced to the mesh. An empty string clears the note.
    */
   async setNodeNotes(nodeId: string, notes: string, sourceId?: string | null) {

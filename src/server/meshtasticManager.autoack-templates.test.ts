@@ -95,12 +95,12 @@ describe('MeshtasticManager - Auto-Acknowledge Message Template Token Replacemen
     });
 
     it('should replace {VERSION} with app version', () => {
-      const template = 'MeshMonitor {VERSION}';
+      const template = 'MeshRadar {VERSION}';
       const version = '2.10.0';
 
       const result = template.replace(/{VERSION}/g, version);
 
-      expect(result).toBe('MeshMonitor 2.10.0');
+      expect(result).toBe('MeshRadar 2.10.0');
     });
   });
 

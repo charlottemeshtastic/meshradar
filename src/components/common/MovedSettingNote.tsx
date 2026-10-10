@@ -3,7 +3,7 @@
  *
  * That change sorted the per-source pages by what a control acts on: Device
  * Configuration for what is written to or done on the radio, Settings for what
- * MeshMonitor stores and does for the source, Global Settings for the whole
+ * MeshRadar stores and does for the source, Global Settings for the whole
  * install. A user who looks in the old place finds one line and a link to the
  * new one.
  *

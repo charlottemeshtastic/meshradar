@@ -1,5 +1,5 @@
 /**
- * Hop-limit policy for MQTT packets MeshMonitor hands to a radio
+ * Hop-limit policy for MQTT packets MeshRadar hands to a radio
  * (issues #5188 and #5190).
  *
  * Two independent operator knobs, evaluated in a fixed order:

@@ -2,7 +2,7 @@
  * Pins the set of server-side Meshtastic send call sites outside the HTTP
  * routes (#5414).
  *
- * A send made by MeshMonitor on its own (a scheduler, an automation, a
+ * A send made by MeshRadar on its own (a scheduler, an automation, a
  * reactive reply) must be tagged `origin: 'automation'` so an MQTT bridge with
  * `dropAutomationUplinks` can keep it off the upstream broker. An untagged send
  * counts as manual, so a new automation that forgets the tag leaks upstream
@@ -111,7 +111,7 @@ describe('automation send callers are pinned (#5414)', () => {
     expect(
       actual,
       'A Meshtastic send call site was added or removed outside src/server/routes. ' +
-        "Tag it { origin: 'automation' } if MeshMonitor sends it on its own, then update EXPECTED " +
+        "Tag it { origin: 'automation' } if MeshRadar sends it on its own, then update EXPECTED " +
         '(see the header of this file).',
     ).toEqual(EXPECTED);
   });

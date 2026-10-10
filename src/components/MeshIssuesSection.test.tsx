@@ -100,12 +100,12 @@ describe('MeshIssuesSection', () => {
     expect(screen.getByDisplayValue('300')).toBeInTheDocument(); // overBroadcastSeconds
 
     // 12 finding(s) shown, and every threshold field carries an [official] or
-    // [MeshMonitor] provenance tag (spec §9 WP5 hard acceptance).
+    // [MeshRadar] provenance tag (spec §9 WP5 hard acceptance).
     expect(screen.getByText(/12 finding/)).toBeInTheDocument();
     expect(screen.getAllByText('[official]').length).toBe(2);
-    // 3 pre-existing MeshMonitor-judgement thresholds + auto-close (#4964
+    // 3 pre-existing MeshRadar-judgement thresholds + auto-close (#4964
     // post-epic follow-ups) + router-cluster max link km (#4976).
-    expect(screen.getAllByText('[MeshMonitor]').length).toBe(5);
+    expect(screen.getAllByText('[MeshRadar]').length).toBe(5);
   });
 
   it('defaults auto-close runs to 3 when the field is absent from status (older server, #4964 post-epic follow-ups)', async () => {

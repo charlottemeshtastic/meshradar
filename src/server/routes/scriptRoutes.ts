@@ -833,7 +833,7 @@ router.post('/http/test', requirePermission('settings', 'read'), async (req: Req
         method: 'GET',
         headers: {
           Accept: 'text/plain, text/*, application/json',
-          'User-Agent': 'MeshMonitor/AutoResponder-Test',
+          'User-Agent': 'MeshRadar/AutoResponder-Test',
         },
         signal: controller.signal,
       });

@@ -1647,7 +1647,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
       updateField('mapPinColorMode', 'node');
       updateField('nodeListStyle', 'monochrome');
       updateField('appearanceMode', 'system');
-      updateField('darkTheme', 'mocha');
+      updateField('darkTheme', 'miami-vice');
       updateField('lightTheme', 'latte');
       updateField('nodeHopsCalculation', NODE_DISPLAY_STRING_DEFAULTS.nodeHopsCalculation);
       updateField('preferredDashboardSortOption', 'custom');
@@ -1680,7 +1680,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
       onMapPinColorModeChange('node');
       onNodeListStyleChange('monochrome');
       setAppearanceMode('system');
-      setDarkTheme('mocha');
+      setDarkTheme('miami-vice');
       setLightTheme('latte');
       setNodeHopsCalculation(NODE_DISPLAY_STRING_DEFAULTS.nodeHopsCalculation);
       setPreferredDashboardSortOption('custom');
@@ -1830,6 +1830,9 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
 
   const renderThemeOptions = () => (
     <>
+      <optgroup label="MeshRadar">
+        <option value="miami-vice">{t('settings.theme_miami_vice')}</option>
+      </optgroup>
       <optgroup label={t('settings.theme_catppuccin')}>
         <option value="mocha">{t('settings.theme_mocha')}</option>
         <option value="macchiato">{t('settings.theme_macchiato')}</option>
@@ -1869,9 +1872,9 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
     <NumberInputScope scope={numberScope}>
     <div className="tab-content">
       <div className="settings-header-card">
-        <img src={`${baseUrl}/logo.png`} alt="MeshMonitor Logo" className="settings-logo" />
+        <img src={`${baseUrl}/logo.png`} alt="MeshRadar Logo" className="settings-logo" />
         <div className="settings-title-section">
-          <h1 className="settings-app-name">MeshMonitor</h1>
+          <h1 className="settings-app-name">MeshRadar</h1>
           <p className="settings-version">Version {version}</p>
         </div>
         <a
@@ -1935,7 +1938,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
         })}
       />
       <div className="settings-content settings-multi-column">
-        {/* MQTT bridge setup (#5683 follow-up): MeshMonitor's own connection and
+        {/* MQTT bridge setup (#5683 follow-up): MeshRadar's own connection and
             filter settings for the bridge. First, because on a bridge it is the
             setup the rest depends on. It loads and saves through
             /api/sources/:id and gates itself on `sources`. */}
@@ -2162,7 +2165,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
                 <span className="setting-description">
                   {t(
                     'settings.map_pin_color_description',
-                    'What the official pin\'s color means. Node Identity gives every node the same color the Android/iOS apps use, derived from its node ID. Hop Count colors it by hop distance instead, the same scale the MeshMonitor teardrop pin uses — pick this to keep hop distance readable at a glance.',
+                    'What the official pin\'s color means. Node Identity gives every node the same color the Android/iOS apps use, derived from its node ID. Hop Count colors it by hop distance instead, the same scale the MeshRadar teardrop pin uses — pick this to keep hop distance readable at a glance.',
                   )}
                 </span>
               </label>
@@ -2261,7 +2264,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
             </label>
           </h3>
           <p className="setting-description">
-            {t('settings.link_previews_description', 'When enabled, MeshMonitor fetches and displays a preview card (title, description, image) for the first URL in a message. The fetch is performed server-side. Disable this to stop all outbound requests to link targets — URLs still render as clickable text.')}
+            {t('settings.link_previews_description', 'When enabled, MeshRadar fetches and displays a preview card (title, description, image) for the first URL in a message. The fetch is performed server-side. Disable this to stop all outbound requests to link targets — URLs still render as clickable text.')}
           </p>
         </div>}
 
@@ -2278,10 +2281,10 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
             </label>
           </h3>
           <p className="setting-description">
-            {t('settings.no_index_description', 'When enabled, MeshMonitor adds an "X-Robots-Tag: noindex, nofollow" header to every response and serves a disallow-all /robots.txt, asking search engines and LLM crawlers not to index this dashboard. Both are advisory — a crawler must choose to honor them. The robots.txt body is served in addition to the header because some reverse proxies (e.g. Cloudflare tunnels) strip custom headers at the edge.')}
+            {t('settings.no_index_description', 'When enabled, MeshRadar adds an "X-Robots-Tag: noindex, nofollow" header to every response and serves a disallow-all /robots.txt, asking search engines and LLM crawlers not to index this dashboard. Both are advisory — a crawler must choose to honor them. The robots.txt body is served in addition to the header because some reverse proxies (e.g. Cloudflare tunnels) strip custom headers at the edge.')}
           </p>
 
-          {/* Disclosure links (#5156). A publicly-reachable MeshMonitor re-serves
+          {/* Disclosure links (#5156). A publicly-reachable MeshRadar re-serves
               mesh data to anonymous visitors and to tokenless embed viewers; these
               give the operator somewhere to state the policy that applies. All
               optional — with none set, no footer link is rendered anywhere. */}
@@ -2346,7 +2349,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
           <p className="setting-description">
             {t(
               'settings.privacy_hosted_documents_description',
-              'Write or upload a document and MeshMonitor serves it at /privacy/<name>, so you do not need somewhere else to host it. Saved in the database, so it is included in system backups.',
+              'Write or upload a document and MeshRadar serves it at /privacy/<name>, so you do not need somewhere else to host it. Saved in the database, so it is included in system backups.',
             )}
           </p>
           <PrivacyDocumentsSection canEdit={canWriteSettings} />
@@ -2960,7 +2963,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
           </div>
         </div>}
 
-        {/* PKI DM decryption (#5683 follow-up): a MeshMonitor-side switch, moved
+        {/* PKI DM decryption (#5683 follow-up): a MeshRadar-side switch, moved
             here from Device Configuration. Its routes still check this source's
             `configuration` grant, so the section does too. */}
         {mode === 'source' && hasDeviceConfigurationPage(sourceType) && canReadConfiguration && (
@@ -3194,13 +3197,13 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
         {show('settings-apprise-server') && isAdmin && <div id="settings-apprise-server" className="settings-section">
           <h3>{t('settings.apprise_server_section', 'Apprise API Server')}</h3>
           <p className="setting-description">
-            {t('settings.apprise_server_description', 'MeshMonitor delivers Apprise notifications through an Apprise API server, which fans out to the per-user notification service URLs (Discord, email, etc.) configured elsewhere. Override the server location below if you are running it outside the bundled container.')}
+            {t('settings.apprise_server_description', 'MeshRadar delivers Apprise notifications through an Apprise API server, which fans out to the per-user notification service URLs (Discord, email, etc.) configured elsewhere. Override the server location below if you are running it outside the bundled container.')}
           </p>
           <div className="setting-item">
             <label htmlFor="appriseApiServerUrl">
               {t('settings.apprise_server_url_label', 'Apprise API Server URL')}
               <span className="setting-description">
-                {t('settings.apprise_server_url_description', 'Leave empty if MeshMonitor\'s bundled Apprise API server is running (default for Docker installs).')}
+                {t('settings.apprise_server_url_description', 'Leave empty if MeshRadar\'s bundled Apprise API server is running (default for Docker installs).')}
               </span>
             </label>
             <input
@@ -3242,7 +3245,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
             <label htmlFor="externalUrl">
               {t('settings.external_url_label', 'External URL')}
               <span className="setting-description">
-                {t('settings.external_url_description', 'The absolute address this MeshMonitor is reachable at, used for links in notifications (e.g. the "View details" link in security digests). Include your base path if you run under one, e.g. https://mesh.example.com/meshmonitor. Leave empty to omit the link.')}
+                {t('settings.external_url_description', 'The absolute address this MeshRadar is reachable at, used for links in notifications (e.g. the "View details" link in security digests). Include your base path if you run under one, e.g. https://mesh.example.com/meshmonitor. Leave empty to omit the link.')}
               </span>
             </label>
             <input
@@ -3330,7 +3333,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
           <p className="setting-description">
             {t(
               'settings.adsb_section_description',
-              'When a node becomes a likely aircraft, MeshMonitor asks the selected public ADS-B feed which aircraft is at that spot. At most two lookups per flagging. Nothing is sent over the mesh.'
+              'When a node becomes a likely aircraft, MeshRadar asks the selected public ADS-B feed which aircraft is at that spot. At most two lookups per flagging. Nothing is sent over the mesh.'
             )}
           </p>
           <div className="setting-item">
@@ -3345,7 +3348,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
               <span>{t('settings.adsb_enabled_label', 'Look up likely aircraft on a public ADS-B feed')}</span>
             </label>
             <span className="setting-description">
-              {t('settings.adsb_enabled_description', 'Off by default. When on, MeshMonitor sends the flagged node\'s approximate position to the feed over HTTPS. A match only confirms; no match never clears the likely-aircraft flag.')}
+              {t('settings.adsb_enabled_description', 'Off by default. When on, MeshRadar sends the flagged node\'s approximate position to the feed over HTTPS. A match only confirms; no match never clears the likely-aircraft flag.')}
             </span>
           </div>
           <div className="setting-item">
@@ -3409,7 +3412,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
           <p className="setting-description">
             {t(
               'settings.atak_cot_section_description',
-              'Streams mesh node positions and ATAK contacts to ATAK/WinTAK clients over a plaintext TCP Cursor-on-Target feed (add MeshMonitor as a network input in ATAK).'
+              'Streams mesh node positions and ATAK contacts to ATAK/WinTAK clients over a plaintext TCP Cursor-on-Target feed (add MeshRadar as a network input in ATAK).'
             )}
           </p>
           <div className="setting-item">
@@ -3770,7 +3773,7 @@ const SettingsTab: React.FC<SettingsTabProps> = ({
                 className="danger-button"
                 onClick={handleRestartContainer}
                 disabled={isRestarting || !isAdmin}
-                title={isAdmin ? undefined : t('settings.restart_admin_only', 'Only an administrator can restart or shut down MeshMonitor. It affects every source.')}
+                title={isAdmin ? undefined : t('settings.restart_admin_only', 'Only an administrator can restart or shut down MeshRadar. It affects every source.')}
               >
                 {isRestarting
                   ? (isDocker ? t('settings.restarting') : t('settings.shutting_down'))

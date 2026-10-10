@@ -56,7 +56,7 @@ export interface NodeIdentityRow {
   /** Unix **seconds**. */
   lastHeard: number | null;
   /**
-   * When MeshMonitor first created this row, in **milliseconds** — `upsertNode`
+   * When MeshRadar first created this row, in **milliseconds** — `upsertNode`
    * writes `Date.now()`. Note the unit mismatch with `lastHeard` above; the
    * consumer normalises before comparing them.
    */
@@ -607,7 +607,7 @@ export class NodesRepository extends BaseRepository {
    * Powers the per-source "node activity" badge in the dashboard sidebar so
    * users can tell at a glance whether a source is hearing live mesh traffic
    * even when the gateway link itself is up (issue #2883). The link-state
-   * badge only reflects MeshMonitor↔gateway TCP/serial; this complements it
+   * badge only reflects MeshRadar↔gateway TCP/serial; this complements it
    * with mesh-level liveness.
    *
    * `lastHeard` is stored in seconds (Unix epoch). Returns 0 for a source
@@ -1380,7 +1380,7 @@ export class NodesRepository extends BaseRepository {
 
   /**
    * Set the free-text per-node notes field (issue #3921), scoped to sourceId.
-   * MeshMonitor-local annotation — never synced to the mesh. An empty string
+   * MeshRadar-local annotation — never synced to the mesh. An empty string
    * clears the note.
    */
   async setNodeNotes(nodeNum: number, notes: string, sourceId: string): Promise<void> {

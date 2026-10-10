@@ -1,7 +1,7 @@
 /**
  * Privacy disclosure routes (#5156).
  *
- * A publicly-reachable MeshMonitor re-serves mesh data to anonymous visitors
+ * A publicly-reachable MeshRadar re-serves mesh data to anonymous visitors
  * and, through `embedPublicRoutes`, to viewers with no session at all. The
  * operator needs somewhere to disclose the privacy policy that applies. Each
  * of the three documents ('privacy' | 'terms' | 'contact') resolves one of
@@ -12,7 +12,7 @@
  *   3. else nothing — the client renders no link at all.
  *
  * Hosted wins over URL deliberately: an operator who bothered to write the
- * document in MeshMonitor meant it to be the canonical copy.
+ * document in MeshRadar meant it to be the canonical copy.
  *
  * ## Two routers, two audiences
  *

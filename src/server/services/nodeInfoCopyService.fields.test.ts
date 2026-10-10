@@ -5,7 +5,7 @@
  *
  *   if (donorVal != null && donorVal !== '' && (targetVal == null || targetVal === ''))
  *
- * which made the feature useless in its most common case. MeshMonitor
+ * which made the feature useless in its most common case. MeshRadar
  * auto-populates longName/shortName with a derived placeholder ("Node
  * !383c3519"), and a placeholder is a non-empty string — so real incoming
  * NodeInfo was blocked forever. Same for any field an earlier copy had already

@@ -880,7 +880,7 @@ router.post('/get-channel', extendRequestTimeout(GET_CHANNEL_TIMEOUT_MS), requir
                                  (moduleSettings.position_precision !== undefined ? moduleSettings.position_precision : 32);
         // ChannelSettings.use_aead (#5248). The UI carries this back in the
         // setChannel config, which is the only way a remote edit keeps it —
-        // MeshMonitor stores no channel rows for remote nodes.
+        // MeshRadar stores no channel rows for remote nodes.
         const useAead = !!(settings.useAead ?? settings.use_aead ?? false);
         
         logger.debug(`📡 Converting channel ${channelIndex} from remote node ${destinationNodeNum}`, {
@@ -1615,7 +1615,7 @@ const isOneShotDeviceAction = (command: string): boolean =>
   Object.prototype.hasOwnProperty.call(ONE_SHOT_DEVICE_ACTIONS, command);
 
 /**
- * Device actions MeshMonitor sends only to the node this source is wired to.
+ * Device actions MeshRadar sends only to the node this source is wired to.
  * The server enforces it; the UI gating is a courtesy. A remote node sent into
  * DFU or factory reset cannot be reached again over the mesh (a reset clears
  * its channels and admin keys), so nobody could undo it from here.
@@ -2056,7 +2056,7 @@ router.post('/commands', requireAdmin(), requireMeshtasticDeviceSource('body'), 
         // Read-modify-write for use_aead (#5248): set_channel replaces the
         // whole ChannelSettings, so an omitted flag would turn AES-CCM off.
         // Local node: fill it from this source's stored row. Remote node:
-        // MeshMonitor stores no channel rows, so the UI must carry the value
+        // MeshRadar stores no channel rows, so the UI must carry the value
         // it read via get-channel; if it did not, the flag is sent as false.
         if (isLocalNode && params.config.useAead === undefined) {
           const storedChannel = await databaseService.channels.getChannelById(

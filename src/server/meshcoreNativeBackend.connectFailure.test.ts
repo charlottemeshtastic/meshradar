@@ -11,7 +11,7 @@
  *
  * The library-level half of the fix (opening with lock:false + awaiting open)
  * lives in the pinned Yeraze/meshcore.js fork; this file proves the backend's
- * own teardown contract, which is what MeshMonitor controls directly.
+ * own teardown contract, which is what MeshRadar controls directly.
  */
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { EventEmitter } from 'events';

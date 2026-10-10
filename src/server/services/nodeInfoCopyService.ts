@@ -153,7 +153,7 @@ export type { NodeInfoField };
  * `fields` (#4244) selects exactly which fields to copy, and those fields
  * OVERWRITE the target even when it already holds a value. This exists because
  * the previous all-or-nothing rule — copy only when the target is null/empty —
- * made the feature useless in its most common case: MeshMonitor auto-populates
+ * made the feature useless in its most common case: MeshRadar auto-populates
  * longName/shortName with a derived placeholder ("Node !383c3519"), which is a
  * non-empty string, so real incoming NodeInfo was blocked forever. The same
  * applied to any field a prior copy had already filled (e.g. a role that has

@@ -172,7 +172,7 @@ interface Row {
  */
 const SHAPES: Record<string, { rows: Row[]; countsBefore: boolean; countsNow: boolean; what: string }> = {
   sentCompleted: {
-    what: 'sent from MeshMonitor, answered: { from: us, to: node }, both legs',
+    what: 'sent from MeshRadar, answered: { from: us, to: node }, both legs',
     rows: [{ from: 'local', to: 'node', sourceId: SRC, ...FULL }],
     countsBefore: true, countsNow: true,
   },

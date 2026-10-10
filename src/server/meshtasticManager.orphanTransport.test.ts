@@ -5,7 +5,7 @@
  * Symptoms in production: one of two configured TCP sources cycles
  * `Connection status: connected` → `disconnected` every 25–60s while the
  * other is rock-solid, with the daemon logging ~2 "Force close previous TCP
- * connection" events per MeshMonitor disconnect and NO want_config_id /
+ * connection" events per MeshRadar disconnect and NO want_config_id /
  * connect-race errors.
  *
  * Root cause: `MeshtasticManager.connect()` reassigned `this.transport`

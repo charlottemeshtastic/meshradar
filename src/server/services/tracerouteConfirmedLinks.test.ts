@@ -39,12 +39,12 @@ const row = (o: Partial<ConfirmedLinkTracerouteRow> = {}): ConfirmedLinkTracerou
   ...o,
 });
 
-/** The pending-row orientation: we sent it from MeshMonitor, the reply updated the row. */
+/** The pending-row orientation: we sent it from MeshRadar, the reply updated the row. */
 const sent = (o: Partial<ConfirmedLinkTracerouteRow> = {}): ConfirmedLinkTracerouteRow =>
   row({ fromNodeNum: US, toNodeNum: DEST, ...o });
 
 describe('confirmedLinkFromTraceroute — stored orientation', () => {
-  it('reads the row MeshMonitor writes for its own traceroute: our radio in fromNodeNum', () => {
+  it('reads the row MeshRadar writes for its own traceroute: our radio in fromNodeNum', () => {
     // The live row that exposed the bug: Sandbox -> BLESandbox, zero hops.
     const obs = confirmedLinkFromTraceroute({
       sourceId: 'sandbox', fromNodeNum: 3639506708, toNodeNum: 944633591,

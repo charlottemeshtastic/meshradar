@@ -499,7 +499,7 @@ function runTraceroutesTests(getBackend: () => TestBackend) {
    * `routePositions` (#1862: where each node stood when the run was recorded)
    * and `channel` (what `maskTraceroutesByChannel` gates the row on) must be
    * stored by BOTH write paths. The pending-row update used to drop both on
-   * every backend, so no run sent from MeshMonitor had a snapshot.
+   * every backend, so no run sent from MeshRadar had a snapshot.
    */
   const SNAPSHOT = JSON.stringify({ 1001: { lat: 30.1, lng: -90.1 }, 3003: { lat: 30.2, lng: -90.2, alt: 12 }, 2002: { lat: 30.3, lng: -90.3 } });
 
@@ -590,7 +590,7 @@ function runTraceroutesTests(getBackend: () => TestBackend) {
       .setSetting(localNodeNumSettingKey(sourceId), String(nodeNum));
   };
 
-  /** Sent from MeshMonitor: stored { from: requester, to: responder }. */
+  /** Sent from MeshRadar: stored { from: requester, to: responder }. */
   const writeSent = async (sourceId: string, requester: number, responder: number, ts: number, packetId: number) => {
     await repo.insertTraceroute(makeTraceroute({
       fromNodeNum: requester, toNodeNum: responder, fromNodeId: idOf(requester), toNodeId: idOf(responder),

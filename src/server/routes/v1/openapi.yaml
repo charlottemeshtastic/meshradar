@@ -1,11 +1,11 @@
 openapi: 3.0.3
 info:
-  title: MeshMonitor API
+  title: MeshRadar API
   description: |
-    MeshMonitor REST API v1 provides programmatic access to mesh network data.
+    MeshRadar REST API v1 provides programmatic access to mesh network data.
 
     ## Multi-source (breaking change — spec 2.0.0)
-    MeshMonitor 4.0 runs one installation against many Meshtastic/MQTT/MeshCore
+    MeshRadar 4.0 runs one installation against many Meshtastic/MQTT/MeshCore
     sources. Per-resource endpoints are now canonical under
     `/api/v1/sources/{sourceId}/...`:
 
@@ -54,7 +54,7 @@ info:
     URL prefix stays `v1` to keep existing token formats intact.
   version: 2.0.0
   contact:
-    name: MeshMonitor Support
+    name: MeshRadar Support
     url: https://github.com/aerospaceresearch/meshmonitor
   license:
     name: MIT
@@ -144,7 +144,7 @@ components:
           example: "v1"
         description:
           type: string
-          example: "MeshMonitor REST API v1"
+          example: "MeshRadar REST API v1"
         documentation:
           type: string
           example: "/api/v1/docs"
@@ -2110,7 +2110,7 @@ paths:
       summary: Get solar production estimates
       description: |
         Retrieve recent solar production estimates from forecast.solar.
-        Solar monitoring must be enabled and configured in MeshMonitor settings.
+        Solar monitoring must be enabled and configured in MeshRadar settings.
       parameters:
         - name: limit
           in: query
