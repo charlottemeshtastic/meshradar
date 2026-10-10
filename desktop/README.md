@@ -1,10 +1,10 @@
-# MeshMonitor Desktop
+# MeshRadar Desktop
 
-A lightweight Windows desktop application that runs MeshMonitor as a system tray service.
+A lightweight Windows desktop application that runs MeshRadar as a system tray service.
 
 ## Overview
 
-MeshMonitor Desktop is built with [Tauri](https://tauri.app/), a Rust-based framework for building lightweight desktop applications. It bundles the MeshMonitor backend server and Node.js runtime, allowing users to run MeshMonitor without Docker or a dedicated server.
+MeshRadar Desktop is built with [Tauri](https://tauri.app/), a Rust-based framework for building lightweight desktop applications. It bundles the MeshRadar backend server and Node.js runtime, allowing users to run MeshRadar without Docker or a dedicated server.
 
 ## Architecture
 
@@ -13,7 +13,7 @@ MeshMonitor Desktop is built with [Tauri](https://tauri.app/), a Rust-based fram
 │           Tauri Desktop App (~8MB)          │
 │  ┌───────────────────────────────────────┐  │
 │  │         System Tray Icon              │  │
-│  │  - Open MeshMonitor                   │  │
+│  │  - Open MeshRadar                   │  │
 │  │  - Settings (node IP, port)           │  │
 │  │  - Open Data Folder                   │  │
 │  │  - Quit                               │  │
@@ -92,9 +92,9 @@ Settings are stored in platform-appropriate locations:
 
 | Platform | Config Path |
 |----------|-------------|
-| Windows | `%APPDATA%\MeshMonitor\config.json` |
-| macOS | `~/Library/Application Support/MeshMonitor/config.json` |
-| Linux | `~/.config/meshmonitor/config.json` |
+| Windows | `%APPDATA%\MeshRadar\config.json` |
+| macOS | `~/Library/Application Support/MeshRadar/config.json` |
+| Linux | `~/.config/MeshRadar/config.json` |
 
 ### Environment Variables
 
@@ -112,7 +112,7 @@ The desktop app passes these environment variables to the backend:
 ## Building for Release
 
 The release workflow automatically:
-1. Builds the MeshMonitor server and frontend
+1. Builds the MeshRadar server and frontend
 2. Downloads Node.js for Windows x64
 3. Bundles everything into a Tauri app
 4. Creates MSI and NSIS installers

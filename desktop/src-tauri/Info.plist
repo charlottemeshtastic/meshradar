@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
   <key>NSLocalNetworkUsageDescription</key>
-  <string>MeshMonitor needs local network access to connect to your Meshtastic node on your local network.</string>
+  <string>MeshRadar needs local network access to connect to your Meshtastic node on your local network.</string>
 </dict>
 </plist>

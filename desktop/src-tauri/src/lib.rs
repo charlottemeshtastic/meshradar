@@ -42,7 +42,7 @@ pub struct BackendState {
     pub apprise_url: Mutex<Option<String>>,
 }
 
-/// Write a log message to the MeshMonitor log file
+/// Write a log message to the MeshRadar log file
 fn log_to_file(logs_path: &std::path::Path, message: &str) {
     let log_file_path = logs_path.join("desktop.log");
     if let Ok(mut file) = OpenOptions::new()
@@ -169,7 +169,7 @@ pub fn stop_apprise(state: &BackendState) {
     *state.apprise_url.lock().unwrap() = None;
 }
 
-/// Start the MeshMonitor backend server
+/// Start the MeshRadar backend server
 pub fn start_backend<R: Runtime>(app: &AppHandle<R>) -> Result<Child, String> {
     let config = Config::load()?;
 
@@ -182,7 +182,7 @@ pub fn start_backend<R: Runtime>(app: &AppHandle<R>) -> Result<Child, String> {
     std::fs::create_dir_all(&logs_path)
         .map_err(|e| format!("Failed to create logs directory: {}", e))?;
 
-    log_to_file(&logs_path, "=== Starting MeshMonitor backend ===");
+    log_to_file(&logs_path, "=== Starting MeshRadar backend ===");
 
     // Get the resource directory where the server files are bundled
     // Strip the \\?\ prefix on Windows as Node.js doesn't handle it correctly
@@ -253,7 +253,7 @@ pub fn start_backend<R: Runtime>(app: &AppHandle<R>) -> Result<Child, String> {
     }
     log_to_file(&logs_path, "services directory exists: OK");
 
-    println!("Starting MeshMonitor backend...");
+    println!("Starting MeshRadar backend...");
     println!("  Node path: {:?}", node_path);
     println!("  Server path: {:?}", server_path);
     println!("  Server dir: {:?}", server_dir);
