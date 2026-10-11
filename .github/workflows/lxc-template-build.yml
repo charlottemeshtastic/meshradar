@@ -1,10 +1,8 @@
 name: Build LXC Template
 
 on:
-  # Trigger on version tags
-  push:
-    tags:
-      - 'v*.*.*'
+  # MeshRadar: not run on version tags. The template clones the upstream
+  # MeshMonitor repo (lxc/build-lxc-template.sh), so it is not a MeshRadar build.
   # Allow manual trigger
   workflow_dispatch:
     inputs:
