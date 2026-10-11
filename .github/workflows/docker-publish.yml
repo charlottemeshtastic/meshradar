@@ -1,8 +1,8 @@
 name: Docker Build and Publish
 
 on:
-  release:
-    types: [published]
+  # MeshRadar: not run on releases; a release only builds the desktop app
+  # (desktop-release.yml). Run this by hand from the Actions tab if needed.
   workflow_dispatch:
     inputs:
       version:

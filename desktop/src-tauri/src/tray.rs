@@ -10,7 +10,7 @@ use crate::config::Config;
 /// Build and configure the system tray
 pub fn setup_tray<R: Runtime>(app: &AppHandle<R>) -> Result<(), Box<dyn std::error::Error>> {
     // Create menu items
-    let open_item = MenuItem::with_id(app, "open", "Open MeshMonitor", true, None::<&str>)?;
+    let open_item = MenuItem::with_id(app, "open", "Open MeshRadar", true, None::<&str>)?;
     let settings_item = MenuItem::with_id(app, "settings", "Settings...", true, None::<&str>)?;
     let logs_item = MenuItem::with_id(app, "logs", "View Logs", true, None::<&str>)?;
     let data_item = MenuItem::with_id(app, "data", "Open Data Folder", true, None::<&str>)?;
@@ -33,7 +33,7 @@ pub fn setup_tray<R: Runtime>(app: &AppHandle<R>) -> Result<(), Box<dyn std::err
         .icon(app.default_window_icon().unwrap().clone())
         .menu(&menu)
         .show_menu_on_left_click(false)
-        .tooltip("MeshMonitor")
+        .tooltip("MeshRadar")
         .on_menu_event(move |app, event| {
             handle_menu_event(app, event.id.as_ref());
         })
@@ -100,7 +100,7 @@ fn show_settings_window<R: Runtime>(app: &AppHandle<R>) {
             "settings",
             tauri::WebviewUrl::App("index.html".into()),
         )
-        .title("MeshMonitor Settings")
+        .title("MeshRadar Settings")
         .inner_size(450.0, 400.0)
         .resizable(false)
         .center()

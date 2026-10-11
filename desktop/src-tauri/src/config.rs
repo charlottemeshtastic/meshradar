@@ -119,24 +119,24 @@ impl Config {
 pub fn get_config_path() -> Result<PathBuf, String> {
     let config_dir =
         dirs::config_dir().ok_or_else(|| "Could not find config directory".to_string())?;
-    Ok(config_dir.join("MeshMonitor").join("config.json"))
+    Ok(config_dir.join("MeshRadar").join("config.json"))
 }
 
 /// Get the data directory path
 pub fn get_data_path() -> Result<PathBuf, String> {
     let data_dir = dirs::data_dir().ok_or_else(|| "Could not find data directory".to_string())?;
-    let meshmonitor_data = data_dir.join("MeshMonitor");
+    let meshradar_data = data_dir.join("MeshRadar");
 
     // Ensure directory exists
-    fs::create_dir_all(&meshmonitor_data)
+    fs::create_dir_all(&meshradar_data)
         .map_err(|e| format!("Failed to create data directory: {}", e))?;
 
-    Ok(meshmonitor_data)
+    Ok(meshradar_data)
 }
 
 /// Get the database path
 pub fn get_database_path() -> Result<PathBuf, String> {
-    Ok(get_data_path()?.join("meshmonitor.db"))
+    Ok(get_data_path()?.join("meshradar.db"))
 }
 
 /// Get the logs directory path

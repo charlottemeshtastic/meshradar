@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "MeshMonitor",
+  "productName": "MeshRadar",
   "version": "4.17.0-rc7",
-  "identifier": "org.meshmonitor.desktop",
+  "identifier": "io.github.charlottemeshtastic.meshradar",
   "build": {
     "beforeBuildCommand": "",
     "beforeDevCommand": "",
@@ -38,11 +38,11 @@
       "digestAlgorithm": "sha256",
       "timestampUrl": ""
     },
-    "shortDescription": "MeshMonitor - Meshtastic Node Monitoring",
-    "longDescription": "MeshMonitor is a web application for monitoring Meshtastic nodes over IP. This desktop version runs as a system tray application.",
+    "shortDescription": "MeshRadar - Meshtastic Node Monitoring",
+    "longDescription": "MeshRadar is a web application for monitoring Meshtastic nodes over IP. This desktop version runs as a system tray application.",
     "category": "Utility",
-    "publisher": "MeshMonitor Contributors",
-    "copyright": "Copyright 2024-present MeshMonitor Contributors"
+    "publisher": "Charlotte Meshtastic",
+    "copyright": "Copyright 2024-present MeshMonitor Contributors and Charlotte Meshtastic"
   },
   "plugins": {
     "shell": {

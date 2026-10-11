@@ -130,7 +130,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7
         with:
-          name: meshmonitor-desktop-windows-debug
+          name: meshradar-desktop-windows-debug
           path: desktop/src-tauri/target/debug/bundle/
           retention-days: 7
           if-no-files-found: warn
@@ -236,7 +236,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7
         with:
-          name: meshmonitor-desktop-macos-debug
+          name: meshradar-desktop-macos-debug
           path: desktop/src-tauri/target/debug/bundle/
           retention-days: 7
           if-no-files-found: warn
@@ -361,7 +361,7 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7
         with:
-          name: meshmonitor-desktop-macos-x64-debug
+          name: meshradar-desktop-macos-x64-debug
           path: desktop/src-tauri/target/x86_64-apple-darwin/debug/bundle/
           retention-days: 7
           if-no-files-found: warn

@@ -74,7 +74,7 @@ fn main() {
                     "setup",
                     tauri::WebviewUrl::App("index.html".into()),
                 )
-                .title("MeshMonitor Setup")
+                .title("MeshRadar Setup")
                 .inner_size(450.0, 400.0)
                 .resizable(false)
                 .center()

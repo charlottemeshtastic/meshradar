@@ -1,11 +1,11 @@
 [package]
 name = "meshmonitor-desktop"
 version = "0.1.0"
-description = "MeshMonitor Desktop - System tray application for Meshtastic monitoring"
+description = "MeshRadar Desktop - System tray application for Meshtastic monitoring"
 authors = ["MeshMonitor Contributors"]
 edition = "2021"
 license = "BSD-3-Clause"
-repository = "https://github.com/yeraze/meshmonitor"
+repository = "https://github.com/charlottemeshtastic/meshradar"
 
 [lib]
 name = "meshmonitor_desktop_lib"
