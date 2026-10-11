@@ -381,7 +381,11 @@ jobs:
         working-directory: desktop
         env:
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
-        run: npm run tauri:build -- --bundles app
+        run: |
+          # No signing secret: ad-hoc sign ("-") instead of passing an empty
+          # identity, which makes codesign fail with "no identity found".
+          if [ -z "$APPLE_SIGNING_IDENTITY" ]; then export APPLE_SIGNING_IDENTITY=-; fi
+          npm run tauri:build -- --bundles app
 
       # Re-sign node binary inside the app bundle with JIT entitlements
       # Tauri's signing strips our entitlements, so we need to re-apply them
@@ -763,7 +767,11 @@ jobs:
         working-directory: desktop
         env:
           APPLE_SIGNING_IDENTITY: ${{ secrets.APPLE_SIGNING_IDENTITY }}
-        run: npm run tauri:build -- --target x86_64-apple-darwin --bundles app
+        run: |
+          # No signing secret: ad-hoc sign ("-") instead of passing an empty
+          # identity, which makes codesign fail with "no identity found".
+          if [ -z "$APPLE_SIGNING_IDENTITY" ]; then export APPLE_SIGNING_IDENTITY=-; fi
+          npm run tauri:build -- --target x86_64-apple-darwin --bundles app
 
       # Re-sign node binary inside the app bundle with JIT entitlements
       # Tauri's signing strips our entitlements, so we need to re-apply them
