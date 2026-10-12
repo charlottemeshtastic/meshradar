@@ -170,7 +170,7 @@ env:
 
 # Image configuration
 image:
-  repository: "ghcr.io/yeraze/meshmonitor"
+  repository: "ghcr.io/charlottemeshtastic/meshradar"
   pullPolicy: "IfNotPresent"
   tag: "latest"
 
