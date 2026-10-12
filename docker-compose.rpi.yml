@@ -63,7 +63,7 @@ services:
         max-file: "2"
 
   meshmonitor:
-    image: ghcr.io/yeraze/meshmonitor:latest
+    image: ghcr.io/charlottemeshtastic/meshradar:latest
     container_name: meshmonitor-rpi
     restart: unless-stopped
     ports:

@@ -7,7 +7,7 @@
 
 A comprehensive web application for monitoring off-grid mesh networks — Meshtastic, MeshCore, and MQTT — from a single dashboard. Built with React, TypeScript, and Node.js, featuring a neon **Miami Vice** dark theme and multi-database support (SQLite, PostgreSQL, MySQL).
 
-> MeshRadar is a fork of [MeshMonitor](https://github.com/Yeraze/meshmonitor) by Yeraze, released under the same license. Links below to meshmonitor.org and the upstream Docker images point at the original project.
+> MeshRadar is a fork of [MeshMonitor](https://github.com/Yeraze/meshmonitor) by Yeraze, released under the same license. The Docker image is published at `ghcr.io/charlottemeshtastic/meshradar`; links to meshmonitor.org point at the original project's documentation.
 
 ![MeshRadar Interface](docs/images/main.png)
 
@@ -31,7 +31,7 @@ Get MeshRadar running in **60 seconds**:
 cat > docker-compose.yml << 'EOF'
 services:
   meshmonitor:
-    image: ghcr.io/yeraze/meshmonitor:latest
+    image: ghcr.io/charlottemeshtastic/meshradar:latest
     ports:
       - "8080:3001"
     volumes:
@@ -91,7 +91,7 @@ MeshRadar supports authentication via reverse proxy headers for seamless single 
 ```yaml
 services:
   meshmonitor:
-    image: ghcr.io/yeraze/meshmonitor:latest
+    image: ghcr.io/charlottemeshtastic/meshradar:latest
     environment:
       # Enable proxy authentication
       - PROXY_AUTH_ENABLED=true

@@ -1,7 +1,7 @@
 services:
   meshmonitor:
     # Use pre-built image from GitHub Container Registry
-    image: ghcr.io/yeraze/meshmonitor:latest
+    image: ghcr.io/charlottemeshtastic/meshradar:latest
 
     # Or build locally for testing
     # build:
